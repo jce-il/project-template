@@ -11,7 +11,7 @@ We're trying to use the best tools and practices in order to produce a quality e
 (replace 'jce-il/project-template' with your 'username/repo' and register to the relevant services)
 
 |Category|Status|
-|---|
+|---|---|
 | Version Control System| git & github |
 | Recommended IDE | [VSCode](https://code.visualstudio.com) |
 | Group Chat | [![Join the chat at https://gitter.im/jce-il/project-template](https://badges.gitter.im/jce-il/project-template.svg)](https://gitter.im/jce-il/project-template?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) |
