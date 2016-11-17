@@ -1,6 +1,6 @@
-# project-template
+# plastic-tableware
 
-A template repository with wiki for a team project at JCE's software engineering course (replace with the mission of your project).
+creating a plastic-tableware shop online with user friendly interface and various options for buth customers and seller.
 
 (See also:rRecommended [checklist](https://github.com/ddbeck/readme-checklist/blob/master/checklist.md) for a README) 
 
