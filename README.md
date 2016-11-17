@@ -1,6 +1,6 @@
 # plastic-tableware
 
-creating a plastic-tableware shop online with user friendly interface and various options for buth customers and seller.
+creating a plastic-tableware shop online with user friendly interface and various options for both customers and seller.
 
 (See also:rRecommended [checklist](https://github.com/ddbeck/readme-checklist/blob/master/checklist.md) for a README) 
 
