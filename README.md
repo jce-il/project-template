@@ -25,7 +25,7 @@ We're trying to use the best tools and practices in order to produce a quality e
 | Github Issues | [![GitHub issues](https://img.shields.io/github/issues/reutnagar/plastic-tableware.svg?style=flat)](https://github.com/reutnagar/plastic-tableware/issues) |
 | Project Management Board| [here](https://github.com/reutnagar/plastic-tableware/projects/1) |
 | Deployment | [![Heroku](http://heroku-badge.herokuapp.com/?app=plastic-tableware&style=flat&svg=1&root=index.html)] |
-| Project Course Status | ... |
+| Project Course Status | Inception |
 
 ## Please visit our [live application](https://plastic-tableware.herokuapp.com/)
 - Alright, currently only a landing page...
