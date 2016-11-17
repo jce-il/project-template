@@ -1,1 +1,12 @@
-
+Team mates:
+Ruty, Reut, Tova, Shani, Zehava, Sari.
+Diffrences between the mates: 
+Reut is married, has a one year old son, and is working at intel company, for more than a yaer.
+Tova is works in Shaham, her work envirment is .NET. Sari and Shani are married as well, and both have a daughter. Zehava is married, and working at Verisense company. And last and favorit comes Ruty.. which is a bright student. 
+Our Client:
+David has an indepentent company of shopping for disposable paper goods online.
+Our Team Codes:
+We are committed to making participation in this project a harassment-free experience for all the project mates, regardless of level of experience, and expression, disability, personal appearance, body size, race, ethnicity, age.
+Examples of unacceptable behavior by participants: Lack of punctuality or responsibility, insults, or any thoughtless behavier. 
+Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, wiki edits, issues, and other contributions that are not aligned to this Code of Conduct. Project maintainers who do not follow the Code of Conduct may be removed from the project team.
+Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by opening an issue or contacting one or more of the project maintainers.
