@@ -1,0 +1,12 @@
+{
+  "name": "app",
+  "version": "0.0.1",
+  "main":"test.js",
+  "author":"Test",
+  "description": "For test ",
+  "dependencies": {
+    "express": "latest",
+    "mongoose": "latest"
+  }
+
+}
