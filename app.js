@@ -10,5 +10,5 @@
 //})
 const express = require('express');
 const server = express()
-  .use((req, res) => res.sendFile(__dirname + '/src/index.html'))
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+  .use((req, res) => res.sendFile(__dirname + '/src/Admin/'))
+  .listen(3000, () => console.log(`Listening on 3000`));
