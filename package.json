@@ -1,12 +1,13 @@
 {
   "name": "app",
   "version": "0.0.1",
-  "main":"test.js",
-  "author":"Test",
+  "main": "test.js",
+  "author": "Test",
   "description": "For test ",
   "dependencies": {
-    "express": "latest",
+    "express": "^4.14.0",
+    "fs": "0.0.1-security",
+    "mongodb": "^2.2.15",
     "mongoose": "latest"
   }
-
 }
