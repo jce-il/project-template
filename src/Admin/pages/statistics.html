@@ -1,14 +1,13 @@
 ﻿    <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        ChartJS
-        <small>Preview sample</small>
+       סטטיסטיקות
       </h1>
-      <ol class="breadcrumb">
+      <!--<ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Charts</a></li>
         <li class="active">ChartJS</li>
-      </ol>
+      </ol>-->
     </section>
 
     <!-- Main content -->
@@ -18,13 +17,13 @@
           <!-- AREA CHART -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Area Chart</h3>
+              <h3 class="box-title">תרשים שטח</h3>
 
-              <div class="box-tools pull-right">
+            <!--   <div class="box-tools pull-left">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
+              </div> -->
             </div>
             <div class="box-body">
               <div class="chart">
@@ -38,13 +37,13 @@
           <!-- DONUT CHART -->
           <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Donut Chart</h3>
+              <h3 class="box-title">תרשים סופגנייה</h3>
 
-              <div class="box-tools pull-right">
+             <!--  <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
+              </div> -->
             </div>
             <div class="box-body">
               <canvas id="pieChart" style="height:250px"></canvas>
@@ -59,13 +58,13 @@
           <!-- LINE CHART -->
           <div class="box box-info">
             <div class="box-header with-border">
-              <h3 class="box-title">Line Chart</h3>
+              <h3 class="box-title">תרשים קו</h3>
 
-              <div class="box-tools pull-right">
+              <!-- <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
+              </div> -->
             </div>
             <div class="box-body">
               <div class="chart">
@@ -79,13 +78,13 @@
           <!-- BAR CHART -->
           <div class="box box-success">
             <div class="box-header with-border">
-              <h3 class="box-title">Bar Chart</h3>
+              <h3 class="box-title">טבלת עמודות</h3>
 
-              <div class="box-tools pull-right">
+             <!--  <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
+              </div> -->
             </div>
             <div class="box-body">
               <div class="chart">
@@ -122,7 +121,7 @@
     var areaChart = new Chart(areaChartCanvas);
 
     var areaChartData = {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
+      labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November","December"],
       datasets: [
         {
           label: "Electronics",
