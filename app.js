@@ -19,4 +19,5 @@ app.listen(3000, function () {
 })
 
 //testing
-console.log(data.DB.getProp1());
+
+
