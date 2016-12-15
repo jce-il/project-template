@@ -34,6 +34,34 @@ var test = function (db) {
         console.log("third operation:");
         console.log(docs);
     });
+	removeItem(item1);
+    db.collection('stock').find().toArray(function (err, docs) {
+        console.log("forth operation:");
+        console.log(docs);
+    });
+	//console.log("fifth operation:");
+	getItem();
+	//changeItem();
+	//db.collection('stock').find().toArray(function (err, docs) {
+        console.log("fifth operation:");
+        //console.log(docs);
+   // });
+	
+    	/*console.log("A");
+	changeItem(item2,{description: "this is item 2"}, {description: "this is the new item 2"});
+	console.log("A");
+	console.log(docs);*/
+	
+	/*console.log("check getAllItems");
+	var s=[];
+	s=getAllItems();
+	console.log(s);
+	console.log("check getAllItems");*/
+	//console.log(s);
+	//getItem(item3);
+	//console.log(g);
+	//var b=getItem(subCategory);
+	//console.log(b);
 };
 var Color = function () {
     var name, image, quantity, minQuantity;
@@ -46,7 +74,7 @@ var Color = function () {
 };
 var Item = function () {
     var category, subCategory;
-    var index, name, decription, location;
+    var index, name, description, location;
     var colors = [];
     var toString = function () {
         return JSON.stringify(this);
@@ -58,7 +86,7 @@ var item1 = {
     subCategory: "circle",
     index: "1",
     name: "item1",
-    decription: "this is item 1",
+    description: "this is item 1",
     location: "third shelf",
     colors: [
         { name: "red", quantity: 50, minQuantity: 5 },
@@ -72,7 +100,7 @@ var item2 = {
     subCategory: "circle",
     index: "2",
     name: "item2",
-    decription: "this is item 2",
+    description: "this is item 2",
     location: "second shelf",
     colors: [
         { name: "red", quantity: 50, minQuantity: 5 },
@@ -86,13 +114,14 @@ var item3 = {
     subCategory: "tall",
     index: "3",
     name: "item3",
-    decription: "this is item 3",
+    description: "this is item 3",
     location: "second shelf",
     colors: [
         { name: "red", quantity: 50, minQuantity: 5 },
         { name: "blue", quantity: 60, minQuantity: 5 },
         { name: "green", quantity: 100, minQuantity: 5 },
     ]
+	//colors = {name:["red","blue","green"],quantity:[50,60,100],minQuantity:[5,5,5]}
 };
 
 //Data-Base structure
@@ -158,19 +187,55 @@ var indexCollection = function (db, callback) {
     );
 };
 
-var getItem = function (query) {
-    var collection = db.collection('stock');
+/*var getItem = function (query){
+	db.collection.find(
+    {
+      category:
+        {
+          subCategory: 'circle',
+          name: 'item2'
+        }
+    }
+)*/
+
+/*var getItem = function(){
+	var collection = DB.collection('stock');
+	collection.find({"name":"item3"}).toArray(function(err, docs) { //foreach
+        console.log(docs);
+    });
+};*/
+var getItem = function () {
+    var collection = DB.collection('stock');
     // Find item
-    return collection.find(query).toArray();
-};
+    collection.find({"name":"item3"}).toArray(function (err, docs) {
+		console.log(docs);
+});
 var addItem = function (item) {
     var collection = DB.collection('stock');
     collection.insert(item);
 };
+var removeItem = function (item){
+	var collection = DB.collection('stock');
+    collection.remove(item);
+};
 var getAllItems = function () {
     //wait for db to be ready
     while (!DB.open);
-    return db.collection('stock').find().toArray();
-}
+    return DB.collection('stock').find().toArray();
+};
+var reduceQuantity = function(item,num){
+	
+};
+var raiseQuantity = function(item,num){
+	
+};
+var changeItem = function (){
+	var collection = DB.collection('stock');
+	//collection.find(item).update({key:value}, {$set:{key:newValue}});
+	collection.update({"category":"cups"}, {$set:{"category":"as"}}, function(err,result) {
+	console.log(result);
+	});	
+	//.update(selector, item[, options][, callback])
+};
 
-module.exports = { item1, item2, item3, getItem, addItem, Item, Color, getAllItems };
+module.exports = { item1, item2, item3, getItem, addItem, Item, Color, getAllItems ,changeItem ,reduceQuantity ,raiseQuantity};
