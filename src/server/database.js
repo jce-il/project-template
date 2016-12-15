@@ -29,39 +29,54 @@ var test = function (db) {
         console.log("second operation:");
         console.log(docs);
     });
-    addItem(item3);
+	addItem(item3);
+    db.collection('stock').find().toArray(function (err, docs) {
+        console.log("second operation:");
+        console.log(docs);
+    });
+    addItem(item2);
     db.collection('stock').find().toArray(function (err, docs) {
         console.log("third operation:");
         console.log(docs);
     });
-	removeItem(item1);
+	/*removeItem(item1);
     db.collection('stock').find().toArray(function (err, docs) {
         console.log("forth operation:");
         console.log(docs);
-    });
-	//console.log("fifth operation:");
-	getItem();
-	//changeItem();
-	//db.collection('stock').find().toArray(function (err, docs) {
+    });*/
+	
+	//getItemsByCategory("plates");
+	
+	//getItemsBySubCategory("circle");
+	
+	//getItemByIndex("3");
+	
+	/*addItemAPI("plates","circle","4","item4","this is item 1","third shelf");
+	db.collection('stock').find().toArray(function (err, docs) {
         console.log("fifth operation:");
-        //console.log(docs);
-   // });
+        console.log(docs);
+    });*/
 	
-    	/*console.log("A");
-	changeItem(item2,{description: "this is item 2"}, {description: "this is the new item 2"});
-	console.log("A");
-	console.log(docs);*/
+	//getAllItems();
 	
-	/*console.log("check getAllItems");
-	var s=[];
-	s=getAllItems();
-	console.log(s);
-	console.log("check getAllItems");*/
-	//console.log(s);
-	//getItem(item3);
-	//console.log(g);
-	//var b=getItem(subCategory);
-	//console.log(b);
+	changeItemNisayon({"index":"3"},{"index":"1"});
+	db.collection('stock').find().toArray(function (err, docs) {
+        console.log("sixth operation:");
+        console.log(docs);
+	});
+	
+	/*changeItem();
+	db.collection('stock').find().toArray(function (err, docs) {
+        console.log("sevnth operation:");
+        console.log(docs);
+	});*/
+	
+	/*changeItems();
+	db.collection('stock').find().toArray(function (err, docs) {
+        console.log("eighth operation:");
+        console.log(docs);
+	});*/
+	
 };
 var Color = function () {
     var name, image, quantity, minQuantity;
@@ -97,7 +112,7 @@ var item1 = {
  
 var item2 = {
     category: "plates",
-    subCategory: "circle",
+    subCategory: "square",
     index: "2",
     name: "item2",
     description: "this is item 2",
@@ -187,55 +202,83 @@ var indexCollection = function (db, callback) {
     );
 };
 
-/*var getItem = function (query){
-	db.collection.find(
-    {
-      category:
-        {
-          subCategory: 'circle',
-          name: 'item2'
-        }
-    }
-)*/
+//API's getItems
+var getItemsByCategory = function(category){ //work
+	getItem({"category":category});
+};
+var getItemsBySubCategory = function(subCategory){ //work
+	getItem({"subCategory":subCategory});
+};
+var getItemByIndex = function(index){ //work
+	getItem({"index":index});
+};
+var getAllItems = function(){ //work
+	while (!DB.open);
+	getItem({});
+};
 
-/*var getItem = function(){
-	var collection = DB.collection('stock');
-	collection.find({"name":"item3"}).toArray(function(err, docs) { //foreach
-        console.log(docs);
-    });
-};*/
-var getItem = function () {
+//Internal function getItem
+var getItem = function (query) { //work
     var collection = DB.collection('stock');
     // Find item
-    collection.find({"name":"item3"}).toArray(function (err, docs) {
-		console.log(docs);
-});
-var addItem = function (item) {
+    collection.find(query).toArray(function (err, docs) {
+        console.log("Found the following items:");
+        console.log(docs);
+        
+    });	
+};
+
+//API addItem
+var addItemAPI = function(category,subCategory,index,item,description,location){ //work 
+//לא שיניתי את מערך הצבעים כי אני לא יודעת איך לגשת איך לגשת אליהם
+	console.log("bhgdgg");
+	var item4 = {
+    index: index,
+    name: item,
+    description: description,
+    location: location,
+    colors: [
+        { name: "red", quantity: 50, minQuantity: 5 },
+        { name: "blue", quantity: 60, minQuantity: 5 },
+        { name: "green", quantity: 100, minQuantity: 5 },
+    ]
+	};
+	addItem(item4);
+};
+//Internal function addItem
+var addItem = function (item) { //work
     var collection = DB.collection('stock');
     collection.insert(item);
 };
-var removeItem = function (item){
+//Internal function & API removeItem
+var removeItem = function (item){ //work
 	var collection = DB.collection('stock');
     collection.remove(item);
 };
-var getAllItems = function () {
-    //wait for db to be ready
-    while (!DB.open);
-    return DB.collection('stock').find().toArray();
+
+/*reduceQuantity = function(index,num){
+	var collection = DB.collection('stock');
+	collection.find({"index":index}).toArray();
+//צריך חלץ את הכמות ואני לא יודעת איך	
+	var newQuantity = ;
+	newQuantity +=num;
+	changeItemNisayon({"quantity":""},{"quantity":newQuantity});
+};*/
+var changeItemNisayon = function (query1,query2){  //work!!!!!!!! I don't believe!!!!!!!!!
+	var collection = DB.collection('stock');
+	collection.update(query1, {$set:query2});
 };
-var reduceQuantity = function(item,num){
-	
-};
+
 var raiseQuantity = function(item,num){
 	
 };
-var changeItem = function (){
+var changeItems = function (){ //work 
 	var collection = DB.collection('stock');
-	//collection.find(item).update({key:value}, {$set:{key:newValue}});
-	collection.update({"category":"cups"}, {$set:{"category":"as"}}, function(err,result) {
-	console.log(result);
-	});	
-	//.update(selector, item[, options][, callback])
+	collection.update({"category":"plates"}, {$set:{"category":"df"}},{multi: true});//, function(err,docs) {
+};
+var changeItem = function (){  //work
+	var collection = DB.collection('stock');
+	collection.update({"category":"cups"}, {$set:{"category":"as"}});
 };
 
-module.exports = { item1, item2, item3, getItem, addItem, Item, Color, getAllItems ,changeItem ,reduceQuantity ,raiseQuantity};
+module.exports = { item1, item2, item3, getItem, addItem, Item, Color, getAllItems ,changeItem ,changeItems,changeItemNisayon ,raiseQuantity};
