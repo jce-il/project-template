@@ -29,16 +29,19 @@ var test = function (db) {
         console.log("second operation:");
         console.log(docs);
     });
+	
 	addItem(item3);
     db.collection('stock').find().toArray(function (err, docs) {
         console.log("second operation:");
         console.log(docs);
     });
+	
     addItem(item2);
     db.collection('stock').find().toArray(function (err, docs) {
         console.log("third operation:");
         console.log(docs);
     });
+	
 	/*removeItem(item1);
     db.collection('stock').find().toArray(function (err, docs) {
         console.log("forth operation:");
@@ -59,11 +62,11 @@ var test = function (db) {
 	
 	//getAllItems();
 	
-	changeItemNisayon({"index":"3"},{"index":"1"});
+	/*changeItemNisayon({"index":"3"},{"index":"1"});
 	db.collection('stock').find().toArray(function (err, docs) {
         console.log("sixth operation:");
         console.log(docs);
-	});
+	});*/
 	
 	/*changeItem();
 	db.collection('stock').find().toArray(function (err, docs) {
@@ -233,6 +236,8 @@ var addItemAPI = function(category,subCategory,index,item,description,location){
 //לא שיניתי את מערך הצבעים כי אני לא יודעת איך לגשת איך לגשת אליהם
 	console.log("bhgdgg");
 	var item4 = {
+    category: category,
+    subCategory: subCategory,
     index: index,
     name: item,
     description: description,
@@ -281,4 +286,4 @@ var changeItem = function (){  //work
 	collection.update({"category":"cups"}, {$set:{"category":"as"}});
 };
 
-module.exports = { item1, item2, item3, getItem, addItem, Item, Color, getAllItems ,changeItem ,changeItems,changeItemNisayon ,raiseQuantity};
+module.exports = { item1, item2, item3, getItem, addItem, Item, Color, getAllItems ,changeItem ,changeItems,changeItemNisayon ,raiseQuantity ,getItemsByCategory,getItemsBySubCategory,getItemByIndex,getAllItems,addItemAPI,removeItem};
