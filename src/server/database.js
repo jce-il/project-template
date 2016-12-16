@@ -18,7 +18,7 @@ MongoClient.connect(url, function (err, db) {
 
 var test = function (db) {
     db.collection('stock').remove();
-    db.collection('stock').find().toArray(
+    /*db.collection('stock').find().toArray(
         function (err, docs) {
             console.log("first operation:");
             console.log(docs);
@@ -34,12 +34,18 @@ var test = function (db) {
     db.collection('stock').find().toArray(function (err, docs) {
         console.log("second operation:");
         console.log(docs);
-    });
+    });*/
 	
     addItem(item2);
     db.collection('stock').find().toArray(function (err, docs) {
-        console.log("third operation:");
-        console.log(docs);
+        console.log("1 operation:");
+        console.log(docs[0].colors);
+    });
+	
+	reduceQuantity("2","red",3);
+	db.collection('stock').find().toArray(function (err, docs) {
+        console.log("2 operation:");
+        console.log(docs[0].colors);
     });
 	
 	/*removeItem(item1);
@@ -269,6 +275,14 @@ var removeItem = function (item){ //work
 	newQuantity +=num;
 	changeItemNisayon({"quantity":""},{"quantity":newQuantity});
 };*/
+
+var reduceQuantity = function(index,color,num){
+	var collection = DB.collection('stock');
+	var item = collection.find({"index":index,"colors.name":color},{colors:true});
+	var newQuantity = item.quantity-num;
+	changeItemNisayon({"index":index,"colors.name":color},{"colors.quantity":newQuantity});
+};
+
 var changeItemNisayon = function (query1,query2){  //work!!!!!!!! I don't believe!!!!!!!!!
 	var collection = DB.collection('stock');
 	collection.update(query1, {$set:query2});
