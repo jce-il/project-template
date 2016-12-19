@@ -26,6 +26,7 @@ Todo: delete all unnecessary items, add suitable labels (with priotity and estim
 - [ ] Feature scenarios/tests passing
 - [ ] Iteration page updated, including:
   - [ ] Iteration retrospective
+  - [ ] Code reviewes
   - [ ] Client review
   - [ ] Issues updates
   - [ ] Section on application of course materials
