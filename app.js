@@ -1,22 +1,43 @@
-//include .js files
-var data = require('./src/server/database.js');
-
-//
+//modules
 var express = require('express');
-var app = express();
+const  	app 		= express(),
+		bodyParser  = require('body-parser'),
+		port        = process.env.PORT || 8080,
+		mongoose	   = require('mongoose'),
+		session     = require('express-session');
 
-//add all linked files in index.html
-app.use(express.static('src/admin'));
+//middleware (files in app/services)=============================
+// tell express where to look for static assets
+app.use(express.static('/public'));
 
-//send Admin/index.html + all linked files
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/src/admin/index.html');
-});
+app.use(session({
+  secret: process.env.SECRET || "secret", 
+  cookie: { maxAge: 60000 },
+  resave: false,    // forces the session to be saved back to the store
+  saveUninitialized: false  // dont save unmodified
+}));
 
-//listen in port 3000. in heroku.com it should be 'PORT': an enviroment variable.
-app.listen(3000, function () {
-    console.log('listening on 3000')
+// set the routes 
+app.use(require('./app/routes'));
+
+//get json content from client
+app.use(bodyParser.json());
+//=========================================================
+
+
+
+
+// connect to database
+mongoose.connect("mongodb://localhost:27017/TestDB", function (err, db) {
+    if (!err) {
+        console.log("we are connected to mongo");
+    }
 })
 
-//testing
+
+// start our server ===========================
+app.listen(port, () => {
+  console.log(`App listening on http://localhost:${port}`);
+});
+
 
