@@ -60,7 +60,9 @@
             App.config(function ($routeProvider) {
                 $routeProvider
                   .when('/', {
-                        templateUrl: 'pages/login.html'
+                        templateUrl: 'pages/login.html',
+                        controller: 'login.Controller.js',
+                        controllerAs: 'vm',
                     })
                     .when('/dashboard', {
                         templateUrl: 'pages/dashboard.html'
