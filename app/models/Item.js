@@ -6,7 +6,7 @@ var Color = new Schema({
   image:  Buffer,
   quantity: Number,
   minQuantity: Number
-})
+});
 
 module.exports = mongoose.model('Item',{
     category: String,
@@ -17,4 +17,3 @@ module.exports = mongoose.model('Item',{
 	location: String,
 	colors:   [Color]    
 });
-
