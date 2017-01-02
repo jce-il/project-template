@@ -16,5 +16,6 @@ router.get('/admin', mainController.showHomeAdmin);
 /*router.get('*', function(req,res){
     res.sendFile(path.join(__dirname , '../public','view/admin/index.html'));
 });*/
-router.get('/createItem',itemsController.createItem);
-router.get('/getAllItems',itemsController.getAllItems);
+
+//router.get('/createItem',itemsController.createItem);
+//router.get('/getAllItems',itemsController.getAllItems);

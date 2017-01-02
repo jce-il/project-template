@@ -32,12 +32,34 @@ mongoose.connect("mongodb://localhost:27017/TestDB", function (err, db) {
     if (!err) {
         console.log("we are connected to mongo");
     }
-})
+	
+});
 
 
 // start our server ===========================
 app.listen(port, () => {
   console.log(`App listening on http://localhost:${port}`);
+});
+
+var app = angular.module("Item", []);
+
+	app.factory("StockService", function() {
+		var items = [
+			{ category: 'plates',subCategory: 'circle' ,index:'1' ,name:'item1' ,description: 'this is item 1' },
+			{ category: 'cups',subCategory: 'paper' ,index:'3' ,name:'item3' ,description: 'this is item 3' },
+			{ category: 'plates',subCategory: 'Square' ,index:'2' ,name:'item2' ,description: 'this is item 2' },
+			{ category: 'plates',subCategory: 'circle' ,index:'11' ,name:'item1' ,description: 'this is item 1' }
+		];
+		
+		return {
+			showAllItems: function() {
+			return items;
+		}
+	};
+});
+
+app.controller("showAllItemsCtrl", function($scope, StockService) {
+  $scope.items = StockService.showAllItems();
 });
 
 
