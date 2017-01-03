@@ -40,10 +40,10 @@ mongoose.connect("mongodb://localhost:27017/TestDB", function (err, db) {
 app.listen(port, () => {
   console.log(`App listening on http://localhost:${port}`);
 });
+/*
+var app1 = angular.module("Item", []);
 
-var app = angular.module("Item", []);
-
-	app.factory("StockService", function() {
+	app1.factory("StockService", function() {
 		var items = [
 			{ category: 'plates',subCategory: 'circle' ,index:'1' ,name:'item1' ,description: 'this is item 1' },
 			{ category: 'cups',subCategory: 'paper' ,index:'3' ,name:'item3' ,description: 'this is item 3' },
@@ -58,8 +58,8 @@ var app = angular.module("Item", []);
 	};
 });
 
-app.controller("showAllItemsCtrl", function($scope, StockService) {
+app1.controller("showAllItemsCtrl", function($scope, StockService) {
   $scope.items = StockService.showAllItems();
 });
-
+*/
 

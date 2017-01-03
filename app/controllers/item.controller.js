@@ -30,7 +30,8 @@ module.exports = {
 
 
 
-/*function showAllItems(req,res) {
+function showAllItems(req,res) {
+    /*
 	const items = [
 		{ category: 'plates',subCategory: 'circle' ,index:'1' ,name:'item1' ,description: 'this is item 1' },
 		{ category: 'cups',subCategory: 'paper' ,index:'3' ,name:'item3' ,description: 'this is item 3' },
@@ -47,5 +48,6 @@ module.exports = {
       success: req.flash('success')
     });
   });
+  */
 }
-*/
+
