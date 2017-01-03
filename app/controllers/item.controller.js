@@ -47,6 +47,7 @@ function showAllItems(req,res) {
         }
         else{
             res.json(stock);
+            console.log(stock);
             //res.render(path.join(__dirname , '../public/view/admin/index.html'));
             //res.render('index.html');
         }      

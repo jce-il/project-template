@@ -43,11 +43,17 @@
     <!-- AdminLTE for demo purposes -->
     <script src="dist/js/demo.js"></script>
     <!-- Angular 2.2.3 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-sanitize.min.js"></script>
+    <!--
     <script src="https://code.angularjs.org/1.3.0/angular.min.js"></script>
     <script src="https://code.angularjs.org/1.3.0/angular-route.min.js"></script>
     <script src="https://code.angularjs.org/1.3.0/angular-resource.min.js"></script>
     <script src="https://code.angularjs.org/1.3.0/angular-sanitize.min.js"></script>
-    <script src="js/item.controller.js"></script>
+    -->
+    <script src="js/main.controller.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -57,35 +63,7 @@
     <script>
         (function () {
             "use strict";
-            var App = angular.module("adminApp", ["ngRoute"]);
-            App.config(function ($routeProvider) {
-                $routeProvider
-                  .when('/', {
-                        templateUrl: 'pages/login.html',
-                        controller: 'login.Controller.js',
-                        controllerAs: 'vm',
-                    })
-                    .when('/dashboard', {
-                        templateUrl: 'pages/dashboard.html'
-                    })
-                  .when('/orders', {
-                      templateUrl: 'pages/orders.html'
-                  })
-                    .when('/stock', {
-                        templateUrl: 'pages/stock.html'
-                    })
-                  .when('/newItem', {
-                      templateUrl: 'pages/new_item.html'
-                  })
-                  .when('/statistics', {
-                      templateUrl: 'pages/statistics.html'
-                  })
-                  .when('/users', {
-                      templateUrl: 'pages/users.html'
-                  })
-                  
-                  .otherwise({ redirectTo: 'pages/dashboard.html' });
-            });
+            
 
         }());
     </script>
@@ -93,7 +71,7 @@
 <body class="hold-transition skin-blue sidebar-mini" ng-app="adminApp">
     
 <div class="wrapper">
-
+   
   <header class="main-header">
 
     <!-- Logo -->
