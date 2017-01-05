@@ -6,6 +6,13 @@
           טבלת מלאי
         <!--<small>advanced tables</small>-->
       </h1>
+      <div  class="edit-btn">
+        <button type="button" ng-click="" class="btn btn-danger">הוספה</button>
+       <button type="button" class="btn btn-default">ספירת מלאי</button>
+  <button type="button" class="btn btn-primary">מחיקה</button>  
+</div>
+
+
       <ol class="breadcrumb">
         <!--<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Tables</a></li>-->
@@ -14,9 +21,9 @@
     </section>
 
     <!-- Main content -->
-    <section  ng-app="item" ng-controller="itemCtrl" class="content" >
+    <section   ng-controller="itemCtrl" class="content" >
       <div class="row">
-        <div class="col-xs-12">
+        <div>
           <div class="box">
             <div class="box-header">
               <!--<h3 class="box-title">טבלת מלאי</h3>-->
@@ -24,6 +31,7 @@
             <!-- /.box-header -->
             <div class="box-body" >
               <table id="example2" class="table table-bordered table-hover">
+              <td></td>
                     <th><p><input type="text" ng-model="index"></p>קוד</th>
                     <th><p><input type="text" ng-model="name"></p>שם</th>
                     <th><p><input type="text" ng-model="category"></p>קטגוריה</th>
@@ -31,7 +39,20 @@
                     <th><p><input type="text" ng-model="description"></p>תאור</th>
                     <th><p><input type="text" ng-model="location"></p>מיקום</th>
                     <th><p><input type="text" ng-model="colors"></p>צבע</th>
-                  <tr ng-repeat="item in items">
+                  <tr>  
+                  <td>
+                  <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
+                  <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
+                  </td>
+                      <td> item.index | filter : index</td>
+                      <td>{{ item.name | filter : name</td>
+                      <td>{{ item.category }| filter : category</td>
+                      <td>{{ item.subCategory | filter : subCategory</td>
+                      <td>{{ item.description | filter : description</td>
+                      <td>{{ item.location | filter : location</td>
+                      <td>{{ item.colors | filter : colors</td>
+                  </tr>
+                 <tr ng-repeat="item in items">
                       <td>{{ item.index | filter : index}}</td>
                       <td>{{ item.name | filter : name}}</td>
                       <td>{{ item.category }| filter : category}</td>
@@ -52,3 +73,46 @@
         <!-- /.col -->
     </section>
     <!-- /.content -->
+
+
+<div class="container">
+
+<form>
+  <div class="form-group">
+     <div class="col-xs-8">
+        <label for="ex2">שם</label>
+        <input class="form-control" id="ex2" type="text">
+      </div>
+  </div>
+    <div class="form-group">
+     <div class="col-xs-8">
+        <label for="ex2">קטגוריה</label>
+        <input class="form-control" id="ex2" type="text">
+      </div>
+  </div>
+    <div class="form-group">
+     <div class="col-xs-8">
+        <label for="ex2">תת-קטגוריה</label>
+        <input class="form-control" id="ex2" type="text">
+      </div>
+  </div>
+  <div class="form-group col-xs-8">
+    <label for="exampleTextarea">תיאור</label>
+    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+  </div>
+    <div class="form-group col-xs-8">
+    <label for="exampleTextarea">מיקום</label>
+    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+  </div>
+  <div form-group col-xs-8>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+</div>
+
+
+
+
+
+
+<div class="swalClasses.container"></div>
