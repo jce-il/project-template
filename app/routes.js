@@ -15,6 +15,8 @@ router.get('/client', mainController.showHome);
 router.get('/admin', itemsController.showAllItems);
 router.get('/addItem', itemsController.addItem);
 router.get('/checkQuantity', itemsController.checkQuantity);
+router.get('/deleteItem', itemsController.deleteItem);
+router.get('/deleteAllItem', itemsController.deleteAllItem);
 
 
 /*router.get('*', function(req,res){
