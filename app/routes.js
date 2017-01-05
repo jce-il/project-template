@@ -10,7 +10,7 @@ router.use(express.static(path.join(__dirname , '../public/view/client')));
 // export router
 module.exports = router;
   
-  // main routes
+  /*// main routes
 router.get('/client', mainController.showHome);
 router.get('/admin', itemsController.showAllItems);
 router.get('/addItem', itemsController.addItem);
