@@ -1,18 +1,36 @@
 var express = require('express');
-var router = express.Router();
-
-var config=require('../configFile.json');
+//var router = express.Router();
+//var config=require('../configFile.json');
 
 var mongoose = require ('mongoose');
-var db=mongoose.createConnection(config.connectionString);
+//var db=mongoose.createConnection(config.connectionString);
 
 var userSchema = require('../models/user');
 var User = db.model('User',userSchema);
 
-// routes
+// functions for each different server calls.
 
+// function signUp(req, res) {
 
-router.post('/signIn', function (req, res) {
+//     var user = req.body;
+//     var newUser = new User({userName:user.userName, password:user.password});
+
+//     User.count({ userName: user.userName }, function (err, count) {
+//         if (count > 0) {
+//             res.json({ success: false, msg: "שם משתמש קיים ", user: user });
+//         }
+//         else
+//         {
+//             newUser.save();
+//             req.session.user = newUser;
+//             res.json({ success: true, msg: "ברוך הבא משתמש רשום חדש", user: user });
+
+//         }
+
+//     });
+// }
+
+function signIn(req, res) {
     
         var existUser = new User(req.body);
 
@@ -39,14 +57,14 @@ router.post('/signIn', function (req, res) {
 
                 }
                 else {
-                    res.json({ in: false, msg: "משתמש אינו קיים בפלטה", user: user });
+                    res.json({ in: false, msg: "משתמש אינו קיים ", user: user });
 
                 }
             });
         }
-});
+}
 
-router.post('/signOut', function (req, res) {
+function signOut(req, res) {
     req.session.destroy(function (err) {
         if (err) {
             console.log(err);
@@ -55,9 +73,9 @@ router.post('/signOut', function (req, res) {
         }
     });
 
-});
+}
 
-router.post('/getSessionInfo', function (req, res) {         //check if user is logged in or not?
+function getSessionInfo(req, res) {         //check if user is logged in or not?
     console.log(req.session.user);
     if(req.session.user == null)
     {
@@ -70,7 +88,7 @@ router.post('/getSessionInfo', function (req, res) {         //check if user is 
         res.json({signed: true, session: req.session });
     }
 
-});
+}
 
 
-module.exports = router;
+//module.exports = router;
