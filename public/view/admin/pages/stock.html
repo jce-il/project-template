@@ -21,7 +21,7 @@
     </section>
 
     <!-- Main content -->
-    <section   ng-controller="itemCtrl" class="content" >
+    <section ng-controller="itemCtrl" class="content" >
       <div class="row">
         <div>
           <div class="box">
@@ -31,52 +31,27 @@
             <!-- /.box-header -->
             <div class="box-body" >
               <table id="example2" class="table table-bordered table-hover">
-              <td></td>
-                    <th><p><input type="text" ng-model="index"></p>קוד</th>
-                    <th><p><input type="text" ng-model="name"></p>שם</th>
-                    <th><p><input type="text" ng-model="category"></p>קטגוריה</th>
-                    <th><p><input type="text" ng-model="subCategory"></p>תת-קטגוריה</th>
-                    <th><p><input type="text" ng-model="description"></p>תאור</th>
-                    <th><p><input type="text" ng-model="location"></p>מיקום</th>
-                    <th><p><input type="text" ng-model="colors"></p>צבע</th>
-                  <tr>  
-                  <td>
-                  <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
-                  <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
-                  </td>
-                      <td> item.index | filter : index</td>
-                      <td>{{ item.name | filter : name</td>
-                      <td>{{ item.category }| filter : category</td>
-                      <td>{{ item.subCategory | filter : subCategory</td>
-                      <td>{{ item.description | filter : description</td>
-                      <td>{{ item.location | filter : location</td>
-                      <td>{{ item.colors | filter : colors</td>
-                  </tr>
-                                    <tr>  
-                  <td>
-                  <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
-                  <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
-                  </td>
-                      <td>aa</td>
-                      <td>aa</td>
-                      <td>aa</td>
-                      <td>aa</td>
-                      <td>aa</td>
-                      <td>aa</td>
-                      <td>aa</td>
-                  </tr>
-                 <tr ng-repeat="item in items">
+              <tr>  <th></th>
+                    <th><p><input ng-model="search.index"></p>קוד</th>
+                    <th><p><input ng-model="search.name"></p>שם</th>
+                    <th><p><input ng-model="search.category"></p>קטגוריה</th>
+                    <th><p><input ng-model="search.subCategory"></p>תת-קטגוריה</th>
+                    <th><p><input ng-model="search.description"></p>תאור</th>
+                    <th><p><input ng-model="search.location"></p>מיקום</th>
+                    <th><p><input ng-model="search.colors"></p>צבע</th>
+              </tr>
+                 <tr ng-repeat="item in items | filter:search">
                       <td>
                       <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
                       <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
                       </td>
-                      <td>{{ item.index | filter : index}}</td>
-                      <td>{{ item.name | filter : name}}</td>
-                      <td>{{ item.category }| filter : category}</td>
-                      <td>{{ item.subCategory | filter : subCategory}}</td>
-                      <td>{{ item.description | filter : description}}</td>
-                      <td>{{ item.location | filter : location}}</td>
-                      <td>{{ item.colors | filter : colors}}</td>
+                      <td>{{ item.index }}</td>
+                      <td>{{ item.name }}</td>
+                      <td>{{ item.category }}</td>
+                      <td>{{ item.subCategory }}</td>
+                      <td>{{ item.description }}</td>
+                      <td>{{ item.location }}</td>
+                      <td>{{ item.colors }}</td>
                   </tr>
               </table>    
             </div>
