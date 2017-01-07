@@ -27,11 +27,14 @@ app.use(bodyParser.json());
 
 
 
-// connect to database
-mongoose.connect("mongodb://localhost:27017/TestDB", function (err, db) {
+// connect to databasein mLab
+//for local DB use: "mongodb://localhost:27017/TestDB"
+mongoose.connect("mongodb://test:1234qwer@ds054619.mlab.com:54619/plastic-tableware", function (err, db) {
     if (!err) {
         console.log("we are connected to mongo");
     }
+    else
+        console.log(err);
 	
 });
 
