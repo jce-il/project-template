@@ -1,6 +1,6 @@
-var App = angular.module("adminApp", ["ngRoute"]);
+var app = angular.module("adminApp", ["ngRoute"]);
 //routing
-            App.config(function ($routeProvider) {
+            app.config(function ($routeProvider) {
                 $routeProvider
                   .when('/', {
                         templateUrl: 'pages/login.html',
@@ -29,22 +29,27 @@ var App = angular.module("adminApp", ["ngRoute"]);
                   .otherwise({ redirectTo: 'pages/dashboard.html' });
             });
 
-function mainController($scope, $http) {
+app.controller('mainController',function($scope, $http) {
 	//$scope.formData = {};
 
     $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
     options.async = true;
 });
-	// when landing on the page, get all todos and show them
-	$http.get('/admin/stock')
-        .success(function(data) {
-			$scope.items = data;
-            console.log(data);
-		})
-		.error(function(data) {
-			console.log('Error: ' + data);
-		});
-        
+    });
+	// when landing on the page, get all todos and show them      
+app.controller('itemCtrl', function ($scope) {
+  $scope.items=[
+  { index:'2', name:'m1' , category: 'plates',subCategory: 'circle' ,description: 'this is item 1',location:'1', color:'item1'},
+  { index:'1', name:'item1' , category: 'plates',subCategory: 'circle' ,description: 'this is item 1',location:'1', color:'item1'},
+  { index:'1', name:'item1' , category: 'plates',subCategory: 'circle' ,description: 'this is item 1',location:'1', color:'item1'},
+  { index:'1', name:'item1' , category: 'plates',subCategory: 'circle' ,description: 'this is item 1',location:'1', color:'item1'},
+    { index:'1', name:'item1' , category: 'plates',subCategory: 'circle' ,description: 'this is item 1',location:'1', color:'item1'},
+    { index:'1', name:'item1' , category: 'cups',subCategory: 'paper' ,description: 'this is item 3',location:'1', color:'item1'},
+    { index:'1', name:'item1' , category: 'plates',subCategory: 'Square' ,description: 'this is item 2',location:'1', color:'item1'},
+    { index:'1', name:'item1' , category: 'plates',subCategory: 'circle' ,description: 'this is item 1',location:'1', color:'item1' }];
+   // Model and View bindings
+   // Small helper function not needed anywhere else
+});
 /*
 	// when submitting the add form, send the text to the node API
 	$scope.createTodo = function() {
@@ -70,4 +75,4 @@ function mainController($scope, $http) {
 			});
 	};
 */
-}
+
