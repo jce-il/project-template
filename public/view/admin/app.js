@@ -4,8 +4,8 @@ var app = angular.module("adminApp", ["ngRoute"]);
                 $routeProvider
                   .when('/', {
                         templateUrl: 'pages/login.html',
-                        controller: 'login.Controller.js',
-                        controllerAs: 'vm',
+                        controller: 'signInController'
+                       
                     })
                     .when('/dashboard', {
                         templateUrl: 'pages/dashboard.html'
@@ -76,3 +76,4 @@ app.controller('itemCtrl', function ($scope) {
 	};
 */
 
+app.controller("signInController", ["$scope", "$routeParams", "$http", signInController]);//calling the login controller
