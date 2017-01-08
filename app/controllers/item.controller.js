@@ -1,4 +1,4 @@
-//functions
+
 
 var Item = require('../models/Item');
 var path = require('path');
@@ -16,20 +16,12 @@ var path = require('path');
 module.exports = {
   showAllItems: showAllItems,
   addItem: addItem,
-  checkQuantity: checkQuantity
-
-  
+  checkQuantity: checkQuantity,
+  deleteItem: deleteItem,
+  deleteAllItems: deleteAllItems
 }
 
 function showAllItems(req,res) {    
-	/*var items = [
-		{ category: 'plates',subCategory: 'circle' ,index:'1' ,name:'item1' ,description: 'this is item 1' ,},
-		{ category: 'cups',subCategory: 'paper' ,index:'3' ,name:'item3' ,description: 'this is item 3' },
-		{ category: 'plates',subCategory: 'Square' ,index:'2' ,name:'item2' ,description: 'this is item 2' },
-		{ category: 'plates',subCategory: 'circle' ,index:'11' ,name:'item1' ,description: 'this is item 1' }
-	  ];
-    var item1 = new Item({ category: 'plates',subCategory: 'circle' ,index:'1' ,name:'item1' ,description: 'this is item 1' });
-    item1.save();*/
 	Item.find({}, (err, stock) => {
         if (err) {
             res.status(404);
@@ -49,19 +41,40 @@ function showAllItems(req,res) {
 }
 
 function addItem(req,res) {
-	var newItem = new Item({ category: 'ffff',subCategory: 'circle' ,index:'1' ,name:'item1' ,description: 'this is item 1',quantity:3,minQuantity:5 });
+	var newItem = new Item({ category: 'ffhjjk',subCategory: 'circle' ,index:'1' ,name:'item1' ,description: 'this is item 1',quantity:5,minQuantity:5 });
 	newItem.save();
 	console.log(newItem);
 	showAllItems(req,res);
 }
 
 function checkQuantity (req,res){
+	Item.$where('this.quantity <= this.minQuantity').exec(function(err, result) {
 	if (err) {
 	  throw err;
 	}
   console.log(result);
   res.json(result);
 
+}
+
+function deleteAllItems(req,res) {
+	Item.remove ({},function(err, result) {
+	if (err) {
+	  throw err;
+	}
+	console.log(result);
+	res.json(result);
+	});
+}
+
+function deleteItem(req,res) {
+	Item.remove ({quantity:5,minQuantity:5},function(err, result) {
+	if (err) {
+	  throw err;
+	}
+	console.log(result);
+	res.json(result);
+	});
 }
 	
 
