@@ -40,7 +40,7 @@
                     <th><p><input ng-model="search.location"></p>מיקום</th>
                     <th><p><input ng-model="search.colors"></p>צבע</th>
               </tr>
-                 <tr ng-repeat="item in items | filter:search">
+                 <tr data-ng-repeat="item in items | filter:search" data-ng-model = "items">
                       <td>
                       <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
                       <a href="#"><span class="glyphicon glyphicon-edit"></span></a>

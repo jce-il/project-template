@@ -18,7 +18,6 @@ $scope.master = {};
 
 $scope.addItem=function(item){
 // use $.param jQuery function to serialize data from JSON 
-	 console.log("addItem function"+ item.name+item.location);
 
             var data = $.param({
                 name : item.name,

@@ -1,5 +1,5 @@
 var express = require('express');
-
+var qs = require('querystring');
 var router = express.Router();
 router.get('/showAllItems', showAllItems);
 
@@ -29,12 +29,12 @@ function showAllItems(req,res) {
         }
         else{
             res.json(stock);
-            console.log(stock);
+            //console.log(stock);
             //res.render(path.join(__dirname , '../public/view/admin/index.html'));
             //res.render('index.html');
         }      
         console.log("hi");
-        console.log(stock);
+        //console.log(stock);
 		
   });
   
@@ -42,17 +42,27 @@ function showAllItems(req,res) {
 
 function addItem(req,res) {
 	//app.get('/api/users', function(req, res) {
-	var Name = req.params.name;
-	var Category = req.params.category;
-	var SubCategory = req.params.SubCategory;  
+console.log("get post request in server side");  
+      var body = '';
+        req.on('data', function (data) {
+            body += data;
+            // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
+            if (body.length > 1e6) { 
+                // FLOOD ATTACK OR FAULTY CLIENT, NUKE REQUEST
+                req.connection.destroy();
+            }
+        });   
+        req.on('end', function () {
+         var POST = qs.parse(body); 
+         var newItem = new Item({ category : POST.category,subCategory :  POST.subCategory ,name : POST.name , description : POST.description, location : POST.location });
+         newItem.save();
+         //console.log(newItem);            
+         res.send('Items added succesfuly!');
+         //showAllItems(req,res);
+        });
+         
 
 	
-	console.log("fdGSFGDF"+ Category);
-	var newItem = new Item({ category: Category,subCategory:  SubCategory ,name: Name });
-	newItem.save();
-	
-	console.log(newItem);
-	showAllItems(req,res);
 }
 
 function checkQuantity (req,res){
