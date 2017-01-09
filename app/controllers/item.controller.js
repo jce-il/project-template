@@ -41,8 +41,16 @@ function showAllItems(req,res) {
 }
 
 function addItem(req,res) {
-	var newItem = new Item({ category: 'ffhjjk',subCategory: 'circle' ,index:'1' ,name:'item1' ,description: 'this is item 1',quantity:5,minQuantity:5 });
+	//app.get('/api/users', function(req, res) {
+	var Name = req.params.name;
+	var Category = req.params.category;
+	var SubCategory = req.params.SubCategory;  
+
+	
+	console.log("fdGSFGDF"+ Category);
+	var newItem = new Item({ category: Category,subCategory:  SubCategory ,name: Name });
 	newItem.save();
+	
 	console.log(newItem);
 	showAllItems(req,res);
 }
