@@ -15,5 +15,7 @@ module.exports = mongoose.model('Item',{
 	name: String,
 	description: String,
 	location: String,
+	quantity: Number,
+	minQuantity: Number,
 	colors:   [Color]    
 });

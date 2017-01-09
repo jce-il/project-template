@@ -9,8 +9,19 @@ router.use(express.static(path.join(__dirname , '../public/view/client')));
 
 // export router
 module.exports = router;
-  
-  /*// main routes
+
+// main routes
+
+router.get('/client', mainController.showHome);
+router.get('/admin', itemsController.showAllItems);
+router.get('/checkQuantity', itemsController.checkQuantity);
+router.get('/deleteItem', itemsController.deleteItem);
+router.get('/deleteAllItems', itemsController.deleteAllItems);
+router.get('/addItem', itemsController.addItem);
+router.get('/a', itemsController.a);
+
+
+ /* // main routes
 router.get('/client', mainController.showHome);
 router.get('/admin', itemsController.showAllItems);
 router.get('/addItem', itemsController.addItem);

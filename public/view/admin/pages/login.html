@@ -29,39 +29,49 @@
         <div class="login-logo">
             <a href="../../index2.html"><b>Admin</b>LTE</a>
         </div>
-        <!-- /.login-logo -->
         <div class="login-box-body">
-            <p class="login-box-msg">Sign in to start Shopping</p>
+            <p class="login-box-msg">התחבר</p>
 
-            <form action="../../index2.html" method="post">
+
+                 
+               <form class="form-signin" name="inForm">
                 <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="sizing-addon1"></span>
-                    <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+                   <label for="inputUserName" class="sr-only">שם משתמש</label>
+                   <input id="inputUserName" ng-model="user.userName" class="form-control" placeholder="שם משתמש" name="userName" required="true" autofocus="" type="name">
                 </div>
                 <br>
                 <div class="form-group has-feedback">
-                    <input type="password" class="form-control" placeholder="Password">
+                     <label for="inputPassword" class="sr-only">סיסמא</label>
+                     <input id="inputPassword" ng-model="user.password" class="form-control" placeholder="סיסמא" name="password" required="true"  type="password">
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
+                 <button ng-click="signing(user)" class="btn btn-lg btn-primary btn-block" type="submit">התחבר</button>
+                  
+
+               
+                     
+            
+               
                 <div class="row">
                     <div class="col-xs-8">
                         <div class="checkbox icheck">
                             <label>
                                 <input type="checkbox">
-                                Remember Me
+                                זכור אותי
            
                             </label>
                         </div>
                     </div>
-                    <!-- /.col -->
-                    <div class="col-xs-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-                    </div>
-                    <!-- /.col -->
+
+
                 </div>
             </form>
+                    
+           
 
-            <a href="#">I forgot my password</a><br>
+
+            <a href="#">שכחתי את הסיסמא שלי</a><br>
             <a href="register.html" class="text-center">Register a new membership</a>
 
         </div>
@@ -86,4 +96,3 @@
 </script>
 </body>
 </html>
-
