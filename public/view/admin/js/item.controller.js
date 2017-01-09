@@ -1,21 +1,22 @@
 
-function itemCtrl($scope, $http, $routeParams) {
-	function showAllItems(){
- 				$http.get('/itemCtrlServer/showAllItems')
+function itemCtrl($scope, $http) {
+	
+ $scope.showAllItems=function(){
+ $http.get('/itemCtrlServer/showAllItems')
                     .success(function(data){
                         $scope.items = data;
                         console.log("Succeed loading");
                     })
                     .error(function(data){
                         console.log("Error: "+data);
-         			});
-	}
-	function addItem(){
-		var name =
-		var category =
-		var subCategory =
-		var description =
-		var location =
+         });
+}
+ $scope.addItem=function(){
+		var name =$scope.name; 
+		var category =$scope.category;
+		var subCategory =$scope.subCategory;
+		var description =$scope.description;
+		var location =$scope.location;
 
   				$http.get('/itemCtrlServer/addItem')
                     .success(function(data){
@@ -26,4 +27,7 @@ function itemCtrl($scope, $http, $routeParams) {
                         console.log("Error: "+data);
          });
     }
+
+
+
 };

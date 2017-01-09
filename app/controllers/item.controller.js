@@ -8,16 +8,7 @@ router.get('/addItem', addItem);
 var Item = require('../models/Item');
 var path = require('path');
 
-/*module.exports = {
-    get: function (req, res) {
-        
-        }
-    ,
-    post: function (req, res) {
-        
-    }
-
-
+/*
 module.exports = {
   showAllItems: showAllItems,
   addItem: addItem,
