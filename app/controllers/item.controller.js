@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 router.get('/showAllItems', showAllItems);
 
-router.get('/addItem', addItem);
+router.post('/addItem', addItem);
 
 var Item = require('../models/Item');
 var path = require('path');
