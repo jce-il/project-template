@@ -1,4 +1,5 @@
 var app = angular.module("adminApp", ["ngRoute"]);
+
 //routing
             app.config(function ($routeProvider) {
                 $routeProvider
@@ -37,7 +38,7 @@ app.controller('mainController',function($scope, $http) {
 });
     });
 	// when landing on the page, get all todos and show them      
-app.controller('itemCtrl', function ($scope) {
+/*app.controller('itemCtrl', function ($scope) {
   $scope.items=[
   { index:'2', name:'m1' , category: 'plates',subCategory: 'circle' ,description: 'this is item 1',location:'1', color:'item1'},
   { index:'1', name:'item1' , category: 'plates',subCategory: 'circle' ,description: 'this is item 1',location:'1', color:'item1'},
@@ -50,7 +51,7 @@ app.controller('itemCtrl', function ($scope) {
    // Model and View bindings
    // Small helper function not needed anywhere else
 });
-/*
+
 	// when submitting the add form, send the text to the node API
 	$scope.createTodo = function() {
 		$http.post('/api/todos', $scope.formData)
@@ -76,3 +77,13 @@ app.controller('itemCtrl', function ($scope) {
 	};
 */
 
+app.controller('itemCtrl', function($scope, $http) {
+    $http.get('item.controller/showAllItems')
+   .success(function(data) {  
+        $scope.items = data;
+        console.log(data);
+      })
+      .error(function(data) {
+        console.log('Error: ' + data);
+      });
+});
