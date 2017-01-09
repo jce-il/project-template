@@ -1,4 +1,9 @@
+var express = require('express');
 
+var router = express.Router();
+router.get('/showAllItems', showAllItems);
+
+router.get('/addItem', addItem);
 
 var Item = require('../models/Item');
 var path = require('path');
@@ -11,7 +16,7 @@ var path = require('path');
     post: function (req, res) {
         
     }
-}*/
+
 
 module.exports = {
   showAllItems: showAllItems,
@@ -22,6 +27,8 @@ module.exports = {
   a: a
 }
 
+}*/
+module.exports = router;
 
 function showAllItems(req,res) {    
 	Item.find({}, (err, stock) => {
