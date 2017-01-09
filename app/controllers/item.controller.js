@@ -18,8 +18,10 @@ module.exports = {
   addItem: addItem,
   checkQuantity: checkQuantity,
   deleteItem: deleteItem,
-  deleteAllItems: deleteAllItems
+  deleteAllItems: deleteAllItems,
+  changeItem: changeItem
 }
+
 
 function showAllItems(req,res) {    
 	Item.find({}, (err, stock) => {
@@ -77,5 +79,24 @@ function deleteItem(req,res) {
 	res.json(result);
 	});
 }
-	
 
+function changeItem(req,res) {
+   // var key = "category";
+	var value = "cups";
+    //Item.findOneAndUpdate({index: Item.index}, {$set: {key: value}}, {new: true}, function(err, doc){
+	Item.findOneAndUpdate({index:"1"}, {$set: {category: value}}, {new: true}, function(err, doc){
+        if(err){
+            throw err;
+        }
+
+        console.log(doc);
+        //res.json("הפריט עודכן");
+		//console.log("הפריט עודכן");
+		//console.log("a");
+		showAllItems(req,res);
+
+    });
+	console.log("fhdkbfhbh");
+	showAllItems(req,res);
+
+}
