@@ -19,7 +19,7 @@ module.exports = {
   checkQuantity: checkQuantity,
   deleteItem: deleteItem,
   deleteAllItems: deleteAllItems,
-  changeItem: changeItem
+  a: a
 }
 
 
@@ -80,23 +80,35 @@ function deleteItem(req,res) {
 	});
 }
 
-function changeItem(req,res) {
-   // var key = "category";
-	var value = "cups";
-    //Item.findOneAndUpdate({index: Item.index}, {$set: {key: value}}, {new: true}, function(err, doc){
-	Item.findOneAndUpdate({index:"1"}, {$set: {category: value}}, {new: true}, function(err, doc){
+function changeItem(res,item,key,value) {
+	console.log("in changeItem");
+    Item.findOneAndUpdate({index: item.index}, {$set: {category: value}}, function(err, doc){
         if(err){
             throw err;
         }
-
         console.log(doc);
-        //res.json("הפריט עודכן");
-		//console.log("הפריט עודכן");
-		//console.log("a");
-		showAllItems(req,res);
-
+		console.log("הפריט עודכן");
+		res.json("הפריט עודכן");
     });
-	console.log("fhdkbfhbh");
-	showAllItems(req,res);
 
 }
+
+function a(req,res) {
+	console.log("in a");
+	var item = new Item({ category: 'aaaa',subCategory: 'sss' ,index:'1' ,name:'www' ,description: 'this is item a',quantity:4,minQuantity:2 });
+	item.save();
+	changeCategoryOfItem(req,res,item)
+}
+
+function changeCategoryOfItem(req,res,item) {
+	console.log("in changeCategoryOfItem");
+	var key = 'category';
+	var value = "mmmmmm"
+	//var value = item.params.category;
+	changeItem(res,item,key,value);
+}
+
+
+
+
+

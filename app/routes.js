@@ -17,8 +17,8 @@ router.get('/admin', itemsController.showAllItems);
 router.get('/checkQuantity', itemsController.checkQuantity);
 router.get('/deleteItem', itemsController.deleteItem);
 router.get('/deleteAllItems', itemsController.deleteAllItems);
-router.get('/changeItem', itemsController.changeItem);
 router.get('/addItem', itemsController.addItem);
+router.get('/a', itemsController.a);
 
 
  /* // main routes
