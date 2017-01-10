@@ -1,0 +1,285 @@
+﻿    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        פרטי הזמנות
+        
+      </h1>
+      <!--<ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Forms</a></li>
+        <li class="active">Advanced Elements</li>
+      </ol>-->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="box box-info">
+            <div class="box-header with-border">
+                <h3 class="box-title">הזמנות אחרונות</h3>
+
+                <!-- <div class="box-tools pull-right">
+              <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+              </button>
+              <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div> -->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="table-responsive">
+                    <table class="table no-margin">
+                        <thead>
+                            <tr>
+                                <th>מספר הזמנה</th>
+                                <th>מספר פריטים</th>
+                                <th> סטטוס</th>
+                                <th> תדירות משתמש</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                <td>5</td>
+                                <td><span class="label label-success">בדרך</span></td>
+                                <td>
+                                    <div class="sparkbar" data-color="#00a65a" data-height="20">369</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                                <td>8 </td>
+                                <td><span class="label label-warning">הגיעה ליעד</span></td>
+                                <td>
+                                    <div class="sparkbar" data-color="#f39c12" data-height="20">280</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                                <td>8 </td>
+                                <td><span class="label label-primary">בתהליכי אריזה</span></td>
+                                <td>
+                                    <div class="sparkbar" data-color="#f39c12" data-height="20">280</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                                <td>8 </td>
+                                <td><span class="label label-default">ממתין למשלוח</span></td>
+                                <td>
+                                    <div class="sparkbar" data-color="#f39c12" data-height="20">280</div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <!--<a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">ביצועה הזמנה חדשה</a>-->
+                <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">  הצג את כל ההזמנות</a>
+            </div>
+            <!-- /.box-footer -->
+        </div>
+        <!-- /.box -->
+        </div>
+    
+      <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">תאריכון</h3>
+                </div>
+                <div class="box-body">
+                    <!-- Date -->
+                    <div class="form-group">
+                        <label>תאריך:</label>
+
+                        <div class="input-group date">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="datepicker">
+                        </div>
+                        <!-- /.input group -->
+                    </div>
+                    <!-- /.form group -->
+                    <!-- Date range -->
+                    <div class="form-group">
+                        <label>טווח תאריכים:</label>
+
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="reservation">
+                        </div>
+                        <!-- /.input group -->
+                    </div>
+                    <!-- /.form group -->
+                    <!-- Date and time range -->
+                    <div class="form-group">
+                        <label>טווח תאריכים + שעות:</label>
+
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-clock-o"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="reservationtime">
+                        </div>
+                        <!-- /.input group -->
+                    </div>
+                    <!-- /.form group -->
+                    <!-- Date and time range -->
+                    <div class="form-group">
+                        <label>כפתור טווח תאריכים:</label>
+
+                        <div class="input-group">
+                            <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+                                <span>
+                                    <i class="fa fa-calendar"></i> תאריכון
+                                </span>
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- /.form group -->
+
+                </div>
+                <!-- /.box-body -->
+            </div>
+          
+        
+        </div>
+        <!-- /.col (left) -->
+          <div class="col-md-6">
+              <div class="box box-info">
+                  <div class="box-header with-border">
+                      <h3 class="box-title">הזמנות מיוחדות</h3>
+
+                      <!-- <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                </div> -->
+                  </div>
+                  <!-- /.box-header -->
+                  <div class="box-body">
+                      <div class="table-responsive">
+                          <table class="table no-margin">
+                              <thead>
+                                  <tr>
+                                      <th>מספר הזמנה</th>
+                                      
+                                      <th> סטטוס</th>
+                                  
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                                     
+                                      <td><span class="label label-danger">לא הגיע ליעד</span></td>
+                                     
+                                  </tr>
+                                  <tr>
+                                      <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                                    
+                                      <td><span class="label label-warning">חסר פריט #01235</span></td>
+                                      
+                                  </tr>
+
+                              </tbody>
+                          </table>
+                      </div>
+                      <!-- /.table-responsive -->
+                  </div>
+                  <!-- /.box-body -->
+                  <div class="box-footer clearfix">
+                      <!--<a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">ביצועה הזמנה חדשה</a>-->
+                      <!--<a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">  הצג את כל ההזמנות</a>-->
+                  </div>
+                  <!-- /.box-footer -->
+              </div>
+              <!-- /.box -->
+          </div>
+          <!-- /.box -->
+
+          <!-- iCheck -->
+          
+          <!-- /.box -->
+        </div>
+        <!-- /.col (right) -->
+      </div>
+      <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+ <!-- Page script -->
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $(".select2").select2();
+
+    //Datemask dd/mm/yyyy
+    $("#datemask").inputmask("dd/mm/yyyy", {"placeholder": "dd/mm/yyyy"});
+    //Datemask2 mm/dd/yyyy
+    $("#datemask2").inputmask("mm/dd/yyyy", {"placeholder": "mm/dd/yyyy"});
+    //Money Euro
+    $("[data-mask]").inputmask();
+
+    //Date range picker
+    $('#reservation').daterangepicker();
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'});
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+        {
+          ranges: {
+            'Today': [moment(), moment()],
+            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+            'This Month': [moment().startOf('month'), moment().endOf('month')],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+          },
+          startDate: moment().subtract(29, 'days'),
+          endDate: moment()
+        },
+        function (start, end) {
+          $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+        }
+    );
+
+    //Date picker
+    $('#datepicker').datepicker({
+      autoclose: true
+    });
+
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+      checkboxClass: 'icheckbox_minimal-blue',
+      radioClass: 'iradio_minimal-blue'
+    });
+    //Red color scheme for iCheck
+    $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+      checkboxClass: 'icheckbox_minimal-red',
+      radioClass: 'iradio_minimal-red'
+    });
+    //Flat red color scheme for iCheck
+    $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      checkboxClass: 'icheckbox_flat-green',
+      radioClass: 'iradio_flat-green'
+    });
+
+    //Colorpicker
+    $(".my-colorpicker1").colorpicker();
+    //color picker with addon
+    $(".my-colorpicker2").colorpicker();
+
+    //Timepicker
+    $(".timepicker").timepicker({
+      showInputs: false
+    });
+  });
+</script>

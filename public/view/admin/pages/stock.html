@@ -1,0 +1,212 @@
+ 
+ <!-- Content Header (Page header) -->
+
+    <section class="content-header">
+      <h1>
+          טבלת מלאי
+        <!--<small>advanced tables</small>-->
+      </h1>
+      <div  class="edit-btn">
+        <button type="button" ng-click="" class="btn btn-danger" data-toggle="modal" data-target="#myModal">הוספה</button>
+       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#quantityModal">ספירת מלאי</button>
+  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#deleteModal">מחיקה</button>  
+</div>
+
+
+      <ol class="breadcrumb">
+        <!--<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Tables</a></li>-->
+        <!--<li class="active">טבלת מלאי</li>-->
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section ng-controller="itemCtrl" class="content"  data-ng-init="showAllItems()">
+      <div class="row">
+        <div>
+          <div class="box">
+            <div class="box-header">
+              <!--<h3 class="box-title">טבלת מלאי</h3>-->
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body" >
+              <table id="example2" class="table table-bordered table-hover">
+              <tr>  <th></th>
+                    <th><p><input ng-model="search.index"></p>קוד</th>
+                    <th><p><input ng-model="search.name"></p>שם</th>
+                    <th><p><input ng-model="search.category"></p>קטגוריה</th>
+                    <th><p><input ng-model="search.subCategory"></p>תת-קטגוריה</th>
+                    <th><p><input ng-model="search.description"></p>תאור</th>
+                    <th><p><input ng-model="search.location"></p>מיקום</th>
+                    <th><p><input ng-model="search.colors"></p>צבע</th>
+              </tr>
+                 <tr data-ng-repeat="item in items | filter:search" data-ng-model = "items">
+                      <td>
+                      <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
+                      <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
+                      </td>
+                      <td>{{ item.index }}</td>
+                      <td>{{ item.name }}</td>
+                      <td>{{ item.category }}</td>
+                      <td>{{ item.subCategory }}</td>
+                      <td>{{ item.description }}</td>
+                      <td>{{ item.location }}</td>
+                      <td>{{ item.colors }}</td>
+                  </tr>
+              </table>    
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+
+
+
+
+
+
+
+
+  <!-- Modal for adding item -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"הוספת פריט</h4>
+        </div>
+        <div class="modal-body">
+<div class="container" style="max-width: 100%;">
+
+<form  name="form" class="css-form" >
+<div class="col-xs-offset-4">
+  <div class="form-group row">
+     <div class="col-xs-6">
+        <label for="ex2">שם</label>
+        <input class="form-control" id="ex2" type="text" ng-model="item.name" name="name"  required >
+      </div>
+  </div>
+    <div class="form-group row">
+     <div class="col-xs-6">
+        <label for="ex2">קטגוריה</label>
+        <input class="form-control" id="ex2" type="text" ng-model="item.category" name="category" required >
+      </div>
+  </div>
+    <div class="form-group row">
+     <div class="col-xs-6">
+        <label for="ex2">תת-קטגוריה</label>
+        <input class="form-control" id="ex2" type="text" ng-model="item.subCategory" name="subCategory" required >
+      </div>
+  </div>
+  </div>
+  <div class="form-group col-xs-12 ">
+    <label for="exampleTextarea">תיאור</label>
+    <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="item.description" name="description" required ></textarea>
+  </div>
+    <div class="form-group col-xs-12 ">
+    <label for="exampleTextarea">מיקום</label>
+    <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="item.location" name="location" required ></textarea>
+  </div>        
+  <div class="modal-footer">
+      <div class="form-group">  
+          <button type="submit" class="btn btn-primary" ng-click="addItem(item)" value="Reset">שמור</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">ביטול</button>
+          <pre> master = {{master | json}}</pre>
+          </div>
+  </div>
+  
+</form>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </section>
+    <!-- /.content -->
+
+  <!-- Modal for delete item -->
+  <div class="modal fade" id="deleteModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">מחיקה</h4>
+        </div>
+        <div class="modal-body">
+<div class="container" style="max-width: 100%;">
+
+<form>
+<div class="col-xs-offset-4">
+  <div class="form-group row">
+     <div class="col-xs-6">
+        <label for="ex2">שם</label>
+        <input class="form-control" id="ex2" type="text">
+      </div>
+  </div>
+    <div class="form-group row">
+     <div class="col-xs-6">
+        <label for="ex2">קטגוריה</label>
+        <input class="form-control" id="ex2" type="text">
+      </div>
+  </div>
+  <div class="modal-footer">
+      <div class="form-group">  
+          <button type="submit" class="btn btn-primary">מחק</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">ביטול</button>
+          </div>
+  </div>  
+  </div>
+</form>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- Modal for quantityModal item -->
+  <div class="modal fade" id="quantityModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">ספירת מלאי למוצר</h4>
+        </div>
+        <div class="modal-body">
+<div class="container" style="max-width: 100%;">
+
+<form>
+<div class="col-xs-offset-4">
+  <div class="form-group row">
+     <div class="col-xs-6">
+        <label for="ex2">שם</label>
+        <input class="form-control" id="ex2" type="text">
+      </div>
+  </div>
+    <div class="form-group row">
+     <div class="col-xs-6">
+        <label for="ex2">קטגוריה</label>
+        <input class="form-control" id="ex2" type="text">
+      </div>
+  </div>
+  <div class="modal-footer">
+      <div class="form-group">  
+          <button type="submit" class="btn btn-primary">בדוק</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">ביטול</button>
+      </div>
+  </div> 
+  </div> 
+</form>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
