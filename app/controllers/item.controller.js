@@ -35,7 +35,7 @@ function showAllItems(req,res) {
         }      
         console.log("hi");
         //console.log(stock);
-		
+		//deleteAllItems(req,res);
   });
   
 }
@@ -57,7 +57,7 @@ console.log("get post request in server side");
          var newItem = new Item({ category : POST.category,subCategory :  POST.subCategory ,name : POST.name , description : POST.description, location : POST.location });
          newItem.save();
          //console.log(newItem);            
-         res.send('Items added succesfuly!');
+         res.send(newItem);
          //showAllItems(req,res);
         });
          

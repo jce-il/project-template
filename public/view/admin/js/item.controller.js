@@ -18,7 +18,7 @@ $scope.master = {};
 
 $scope.addItem=function(item){
 // use $.param jQuery function to serialize data from JSON 
-
+            alert("it ok????");
             var data = $.param({
                 name : item.name,
                 category : item.category,
@@ -37,6 +37,7 @@ $scope.addItem=function(item){
             .success(function (data, status, headers, config) {
                 $scope.PostDataResponse = data;
                 console.log("Succeed post addItem");
+                $scope.items.push(data);
             })
             .error(function (data, status, header, config) {
             	console.log("Error: "+data);
