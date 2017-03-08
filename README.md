@@ -1,6 +1,6 @@
 # Let It Know
 
-A template repository with wiki for a team project at JCE's software engineering course (replace with the mission of your project).
+create app for "open house for pride and tolerance in jerusalem"
 
 (See also:rRecommended [checklist](https://github.com/ddbeck/readme-checklist/blob/master/checklist.md) for a README) 
 
