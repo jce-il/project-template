@@ -22,7 +22,7 @@ We're trying to use the best tools and practices in order to produce a quality e
 | Current Release | [![Current Version](https://img.shields.io/github/release/jce-il/project-template.svg?style=flat)](https://github.com/jce-il/project-template/releases) |
 | Github Issues | [![GitHub issues](https://img.shields.io/github/issues/jce-il/project-template.svg?style=flat)](https://github.com/jce-il/project-template/issues) |
 | Project Management Board| [here](https://github.com/jce-il/project-template/projects/1) |
-| Deployment | [![Heroku](http://heroku-badge.herokuapp.com/?app=my-app&style=flat&svg=1&root=index.html)] |
+| Deployment | [![firebase](https://firebase.google.com/)] |
 | Security | [![Known Vulnerabilities](https://snyk.io/test/github/jce-il/project-template/badge.svg)](https://snyk.io/test/github/jce-il/project-template) |
 | Project Course Status | ... |
 
