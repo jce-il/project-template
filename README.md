@@ -1,6 +1,12 @@
 # Let It Know
 
-create app for "open house for pride and tolerance in jerusalem"
+create app for "open house for pride and tolerance in jerusalem" - 
+Our application will serve a few organizations who are responsible for the LGBT community at Jerusalem.
+
+The aforementioned organizations will use our applicatoin to handle distribution of event data to all the LGBT community in Jerusalem and LGBT community members outside Jerusalem who are temporarilly visiting Jerusalem and might be looking for events more specific to their liking without having too much hassle to find it.
+
+our application is designed in unification at mind - it will merge all the distribution system of several organizations at once
+as well as displaying Facebook event data of chosen pages which the LGBT community identify with.
 
 ![project logo (this one for is taken from basecamp - a project management service)](http://www.wdg.co.il/wp-content/uploads/2017/01/joh_LOGO.jpg)
 
@@ -48,9 +54,9 @@ Please visit our wiki for furthur project info:
 ### Iteration Pages
 - [Iteration 0 - ZFR](../../wiki/iter0-zfr)
 - [Iteration 1 - MVP]()
-- [Iteration 2 - Feature X]()
-- [Iteration 3 - Feature Y]()
-- [Iteration 4 - Feature Z]()
+- [Iteration 2 - Database creation, Calender display, Facebook event handler]()
+- [Iteration 3 - Event handler, permissoin handler ]()
+- [Iteration 4 - recommendations handler, add display options to Calender]()
 
 
 
