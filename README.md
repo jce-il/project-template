@@ -52,7 +52,7 @@ Please visit our wiki for furthur project info:
 - [Software Design Specification](../../wiki/sds)
 
 ### Iteration Pages
-- [Iteration 0 - ZFR](../../wiki/iter0-zfr)
+- [Iteration 0 - ZFR](https://github.com/yeseg11/Let-it-know/wiki/Iteration-0)
 - [Iteration 1 - MVP]()
 - [Iteration 2 - Database creation, Calender display, Facebook event handler]()
 - [Iteration 3 - Event handler, permissoin handler ]()
