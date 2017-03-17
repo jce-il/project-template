@@ -1,10 +1,12 @@
-# project-template
+# SALAMETCOM (Be Healthy)
+###### Copyright Owner ZeinaAbuSwai 2017
 
-A template repository with wiki for a team project at JCE's software engineering course (replace with the mission of your project).
+Salametcom is a non-profit organization that offers help and support to Arab/Palestinian patients who are hospitalized in Israeli hospitals.  
+This repository is for a team project done by software engineering students within the software engineering course in the Azrieli College of Engineering (JCE). In which a web app will be created for the organization to help organize and manage their and their volunteers' work. 
 
-(See also:rRecommended [checklist](https://github.com/ddbeck/readme-checklist/blob/master/checklist.md) for a README) 
+<< note to self:add wiki link here >>
 
-![project logo (this one for is taken from basecamp - a project management service)](https://www.klipfolio.com/sites/default/files/integrations/basecamp.png)
+![alt text](https://scontent-ams3-1.xx.fbcdn.net/v/t1.0-9/1976961_802297156470355_5153050688111667329_n.png?oh=cf7d97a48f5f4069ce3f83d99a31226f&oe=59585896)
 
 ## Tools & Practices
 We're trying to use the best tools and practices in order to produce a quality enginneered product.
@@ -14,21 +16,11 @@ We're trying to use the best tools and practices in order to produce a quality e
 |---|---|
 | Version Control System| git & github |
 | Recommended IDE | [VSCode](https://code.visualstudio.com) |
-| Group Chat | [![Join the chat at https://gitter.im/jce-il/project-template](https://badges.gitter.im/jce-il/project-template.svg)](https://gitter.im/jce-il/project-template?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) |
-| Build Status (CI) |  [![Build Status](https://travis-ci.org/jce-il/project-template.svg?branch=master)](https://travis-ci.org/jce-il/project-template) |
-| Dependencies | [![David](https://img.shields.io/david/dev/idleberg/vscode-badges.svg?style=flat-square)](https://david-dm.org/jce-il/project-template?type=dev) |
-| License | [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/) |
-| Test Coverege | [![codecov.io](https://codecov.io/github/jce-il/project-template/coverage.svg?branch=master)](https://codecov.io/github/jce-il/project-template?branch=master) |
-| Code Quality | [![Code Climate](https://codeclimate.com/github/jce-il/project-template.svg)](https://codeclimate.com/github/jce-il/project-template) |
-| Code Style | [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/jce-il/project-template) |
-| Current Release | [![Current Version](https://img.shields.io/github/release/jce-il/project-template.svg?style=flat)](https://github.com/jce-il/project-template/releases) |
+| Group Chat | [![Join the chat at https://gitter.im/jce-il/project-template](https://badges.gitter.im/jce-il/project-template.svg)](https://gitter.im/Salametcom2017/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link) |
+| License | [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://opensource.org/licenses/MIT) |
 | Issues | [![GitHub issues](https://img.shields.io/github/issues/jce-il/project-template.svg?style=flat)](https://github.com/jce-il/project-template/issues) |
 | Project Management Board| [here](https://github.com/jce-il/project-template/projects/1) |
-| Contributors | [![GitHub contributors](https://img.shields.io/github/contributors/jce-il/project-template.svg)](https://github.com/jce-il/project-template/graphs/contributors)|
-| Deployment | [![Heroku](http://heroku-badge.herokuapp.com/?app=my-app&style=flat&svg=1&root=index.html)] |
-| Security | [![Known Vulnerabilities](https://snyk.io/test/github/jce-il/project-template/badge.svg)](https://snyk.io/test/github/jce-il/project-template) |
-| Documnetation | [![Inline docs](http://inch-ci.org/github/jce-il/project-template.svg?branch=master)](http://inch-ci.org/github/jce-il/project-template) |
-| Project Course Status | ... |
+| Contributors | [![GitHub contributors](https://img.shields.io/github/contributors/jce-il/project-template.svg)](https://github.com/ZeinaAbuSwai/Salametcom/graphs/contributors)|
 
 ## Please visit our [live application](https://demo.reactstarterkit.com/)
 - Alright, currently only a landing page...
