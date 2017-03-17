@@ -4,7 +4,7 @@
 Salametcom is a non-profit organization that offers help and support to Arab/Palestinian patients who are hospitalized in Israeli hospitals.  
 This repository is for a team project done by software engineering students within the software engineering course in the Azrieli College of Engineering (JCE). In which a web app will be created for the organization to help organize and manage their and their volunteers' work. 
 
-[visit our wiki](https://github.com/ZeinaAbuSwai/Salametcom.wiki.git)
+[visit our wiki](https://github.com/ZeinaAbuSwai/Salametcom/wiki)
 
 ![alt text](https://scontent-ams3-1.xx.fbcdn.net/v/t1.0-9/1976961_802297156470355_5153050688111667329_n.png?oh=cf7d97a48f5f4069ce3f83d99a31226f&oe=59585896)
 
