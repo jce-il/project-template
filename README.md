@@ -1,6 +1,4 @@
-# project-template
-
-A template repository with wiki for a team project at JCE's software engineering course (replace with the mission of your project).
+# project-Rescue
 
 (See also:rRecommended [checklist](https://github.com/ddbeck/readme-checklist/blob/master/checklist.md) for a README) 
 
