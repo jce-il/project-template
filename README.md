@@ -1,6 +1,8 @@
-# project-Rescue
+RESCUE
 
-(See also:rRecommended [checklist](https://github.com/ddbeck/readme-checklist/blob/master/checklist.md) for a README) 
+WE WILL FIND YOU AND WE WILL **RESCUE** YOU!
+
+![(See also:rRecommended [checklist](https://github.com/ddbeck/readme-checklist/blob/master/checklist.md) for a README)] 
 
 ![project logo (this one for is taken from basecamp - a project management service)](https://lh3.googleusercontent.com/-o8THe2coeaA/UoINPAKETYI/AAAAAAAAAHY/TmJfDi-OjWI/w800-h800/3.jpg)
 
