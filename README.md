@@ -7,7 +7,7 @@ WE WILL FIND YOU AND WE WILL **RESCUE** YOU!
 ![project logo (this one for is taken from basecamp - a project management service)](https://upload.wikimedia.org/wikipedia/he/6/68/%D7%99%D7%97%D7%99%D7%93%D7%AA_%D7%97%D7%99%D7%9C%D7%95%D7%A5_%D7%9E%D7%92%D7%99%D7%9C%D7%95%D7%AA_%D7%99%D7%9D_%D7%94%D7%9E%D7%9C%D7%97.jpg)
 
 
-| Group Chat | ][![Join the chat at https://gitter.im/jce-il/project-template](https://badges.gitter.im/jce-il/project-template.svg)](https://gitter.im/Megilot-Rescue/Lobby#)]
+| Group Chat | [![Join the chat at https://gitter.im/jce-il/project-template](https://badges.gitter.im/jce-il/project-template.svg)](https://gitter.im/Megilot-Rescue/Lobby#)
 |---|---|
 
 
