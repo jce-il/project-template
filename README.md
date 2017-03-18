@@ -18,9 +18,9 @@ WE WILL FIND YOU AND WE WILL **RESCUE** YOU!
 
 **Project documents**
 
-*[User Manual](https://github.com/SergeiLevine/Rescue/wiki)
+[User Manual](https://github.com/SergeiLevine/Rescue/wiki)
 
-*[Team](https://github.com/SergeiLevine/Rescue/wiki/Team)
+[Team](https://github.com/SergeiLevine/Rescue/wiki/Team)
 
 
 
