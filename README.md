@@ -11,6 +11,7 @@ WE WILL FIND YOU AND WE WILL **RESCUE** YOU!
 ## Tools & Practices
 
 |Category|Status|
+|---|---|
 | Version Control System| git & github |
 | Recommended IDE | [VSCode](https://code.visualstudio.com) |
 | Group Chat | [![Join the chat at https://gitter.im/jce-il/project-template](https://badges.gitter.im/jce-il/project-template.svg)](https://gitter.im/Megilot-Rescue/Lobby#) |
