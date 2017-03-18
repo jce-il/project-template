@@ -15,13 +15,16 @@ WE WILL FIND YOU AND WE WILL **RESCUE** YOU!
 
 **Disclaimer**
 
-**The project is carried out as part of a [software engineering course](https://github.com/jce-il/se-class/wiki) at [Azrieli College of Engineering](https://www.jce.ac.il/)**
+The project is carried out as part of a [software engineering course](https://github.com/jce-il/se-class/wiki) at [Azrieli College of Engineering](https://www.jce.ac.il/)
 
 **Project documents**
 
 [User Manual](https://github.com/SergeiLevine/Rescue/wiki)
 
 [Team](https://github.com/SergeiLevine/Rescue/wiki/Team)
+
+[Planning](https://github.com/SergeiLevine/Rescue/wiki/Planing)
+
 
 
 
