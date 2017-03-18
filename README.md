@@ -8,7 +8,6 @@ WE WILL FIND YOU AND WE WILL **RESCUE** YOU!
 
 
 | Group Chat | [[![Join the chat at https://gitter.im/jce-il/project-template](https://badges.gitter.im/jce-il/project-template.svg)](https://gitter.im/Megilot-Rescue/Lobby#)]
-
 | Issues | [![GitHub issues](https://img.shields.io/github/issues/jce-il/project-template.svg?style=flat)](https://github.com/jce-il/project-template/issues) |
 |---|---|
 
