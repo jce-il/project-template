@@ -1,42 +1,20 @@
-***RESCUE***
+RESCUE
 
 WE WILL FIND YOU AND WE WILL **RESCUE** YOU!
 
-
+![(See also:rRecommended [checklist](https://github.com/ddbeck/readme-checklist/blob/master/checklist.md) for a README)] 
 
 ![project logo (this one for is taken from basecamp - a project management service)](https://lh3.googleusercontent.com/-o8THe2coeaA/UoINPAKETYI/AAAAAAAAAHY/TmJfDi-OjWI/w800-h800/3.jpg)
-
-
-| Group Chat | [![Join the chat at https://gitter.im/jce-il/project-template](https://badges.gitter.im/jce-il/project-template.svg)]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ## Tools & Practices
 We're trying to use the best tools and practices in order to produce a quality enginneered product.
 (replace 'jce-il/project-template' with your 'username/repo' and register to the relevant services)
 
-(See also:rRecommended [checklist](https://github.com/ddbeck/readme-checklist/blob/master/checklist.md) for a README)
-
 |Category|Status|
 |---|---|
 | Version Control System| git & github |
 | Recommended IDE | [VSCode](https://code.visualstudio.com) |
-(https://gitter.im/jce-il/project-template?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) |
+| Group Chat | [![Join the chat at https://gitter.im/jce-il/project-template](https://badges.gitter.im/jce-il/project-template.svg)](https://gitter.im/Megilot-Rescue/Lobby#) |
 | Build Status (CI) |  [![Build Status](https://travis-ci.org/jce-il/project-template.svg?branch=master)](https://travis-ci.org/jce-il/project-template) |
 | Dependencies | [![David](https://img.shields.io/david/dev/idleberg/vscode-badges.svg?style=flat-square)](https://david-dm.org/jce-il/project-template?type=dev) |
 | License | [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/) |
