@@ -4,7 +4,7 @@ A template repository with wiki for a team project at JCE's software engineering
 
 (See also:rRecommended [checklist](https://github.com/ddbeck/readme-checklist/blob/master/checklist.md) for a README) 
 
-![project logo (this one for is taken from basecamp - a project management service)](https://www.klipfolio.com/sites/default/files/integrations/basecamp.png)
+![project logo (this one for is taken from basecamp - a project management service)](https://yt3.ggpht.com/-pmrLcWAc-RI/AAAAAAAAAAI/AAAAAAAAAAA/iOE20WWPUyc/s900-c-k-no-mo-rj-c0xffffff/photo.jpg)
 
 ## Tools & Practices
 We're trying to use the best tools and practices in order to produce a quality enginneered product.
