@@ -12,12 +12,11 @@ WE WILL FIND YOU AND WE WILL **RESCUE** YOU!
 |---|---|
 | Issues | [![GitHub issues](https://img.shields.io/github/issues/jce-il/project-template.svg?style=flat)](https://github.com/jce-il/project-template/issues) |
 
+## Disclaimer
+This project is developed as part of the requirements for a [software engineering course](https://github.com/jce-il/se-class/wiki) at the software engineering department - [Azrieli College of Engineering](http://www.jce.ac.il/), Jerusalem, Israel.
 
-**Disclaimer**
 
-The project is carried out as part of a [software engineering course](https://github.com/jce-il/se-class/wiki) at [Azrieli College of Engineering](https://www.jce.ac.il/)
-
-**Project documents**
+##Project documents
 
 [User Manual](https://github.com/SergeiLevine/Rescue/wiki)
 
@@ -67,21 +66,6 @@ We're trying to use the best tools and practices in order to produce a quality e
 ## Please visit our [live application](https://demo.reactstarterkit.com/)
 - Alright, currently only a landing page...
 
-
-## Disclaimer
-This project is developed as part of the requirements for a [software engineering course](https://github.com/jce-il/se-class/wiki) at the software engineering department - [Azrieli College of Engineering](http://www.jce.ac.il/), Jerusalem, Israel.
-
-Please visit our wiki for furthur project info: 
-
-### [User Manual](../../wiki/user-manual) (empty for now)
-
-### [Team Page](../../wiki/team)
-
-### Project Documents
-- [Project Idea](docs/idea.pdf) ([Presentation](docs/idea-slides.pdf))
-- [Project Inception](../../wiki/inception)
-- [Software Requirements Specification](../../wiki/srs)
-- [Software Design Specification](../../wiki/sds)
 
 ### Iteration Pages
 - [Iteration 0 - ZFR](../../wiki/iter0-zfr)
