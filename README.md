@@ -23,11 +23,11 @@ This project is developed as part of the requirements for a [software engineerin
 
 ## Project documents
 
-[User Manual](https://github.com/SergeiLevine/Rescue/wiki)
+- [User Manual](https://github.com/SergeiLevine/Rescue/wiki)
 
-[Team](https://github.com/SergeiLevine/Rescue/wiki/Team)
+- [Team](https://github.com/SergeiLevine/Rescue/wiki/Team)
 
-[Planning](https://github.com/SergeiLevine/Rescue/wiki/Planing)
+- [Planning](https://github.com/SergeiLevine/Rescue/wiki/Planing)
 
 
 
