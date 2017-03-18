@@ -26,7 +26,7 @@ This project is developed as part of the requirements for a [software engineerin
 - [Home](https://github.com/SergeiLevine/Rescue/wiki)
 - [Team](https://github.com/SergeiLevine/Rescue/wiki/Team)
 - [Project Inception](https://github.com/SergeiLevine/Rescue/wiki/Planing)
-- [User Manual] (empty)
+- [User Manual](Empty)
 
 
 
