@@ -47,8 +47,6 @@ This project is developed as part of the requirements for a [software engineerin
 - [Team](https://github.com/SergeiLevine/Rescue/wiki/Team)
 - [Project Inception](https://github.com/SergeiLevine/Rescue/wiki/Planing)
 - [User Manual](Empty)
-- [TodoList](https://github.com/ddbeck/readme-checklist/blob/master/checklist.md)
-- [CheckList](Empty)
 
 ## Please visit our [live application](https://demo.reactstarterkit.com/)
 - Alright, currently only a landing page...
