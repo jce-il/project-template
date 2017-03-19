@@ -4,10 +4,6 @@ We are a team of develpors that brings you the next search and rescue applicatio
 Our app will help the police volunteer team to rescue people from harsh places and get backup is quickly as possible.
 Our app includes two interfaces a pc side software for the event commander and an mobile app for all the volunteers participating in the current event.
 
-**The Client**:
-
-Rescue unit "Megilot Dead Sea" operates in the northern Judean Desert providing assistance to travelers in trouble, injured or have lost their way. The unit is one of twelve operating units across the country from the Metula to Eilat. All members of the unit are volunteers working out of faith and a desire to offer assistance to any person acting for the sake of saving lives. [official website]
-
 *Copyright Owner The Megilot Search&Rescue Team 2017!*
 
 <img src="https://upload.wikimedia.org/wikipedia/he/6/68/%D7%99%D7%97%D7%99%D7%93%D7%AA_%D7%97%D7%99%D7%9C%D7%95%D7%A5_%D7%9E%D7%92%D7%99%D7%9C%D7%95%D7%AA_%D7%99%D7%9D_%D7%94%D7%9E%D7%9C%D7%97.jpg" width="650" height="550">
