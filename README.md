@@ -8,19 +8,6 @@ Our app includes two interfaces a pc side software for the event commander and a
 
 <img src="https://upload.wikimedia.org/wikipedia/he/6/68/%D7%99%D7%97%D7%99%D7%93%D7%AA_%D7%97%D7%99%D7%9C%D7%95%D7%A5_%D7%9E%D7%92%D7%99%D7%9C%D7%95%D7%AA_%D7%99%D7%9D_%D7%94%D7%9E%D7%9C%D7%97.jpg" width="650" height="550">
 
-## Project Explanation:
-
-
-
-
-## Project
-
-
-
-
-
-
-
 
 
 
@@ -44,9 +31,10 @@ This project is developed as part of the requirements for a [software engineerin
 ## Project documents
 
 - [Home](https://github.com/SergeiLevine/Rescue/wiki)
+- [User Manual](Empty)
 - [Team](https://github.com/SergeiLevine/Rescue/wiki/Team)
 - [Project Inception](https://github.com/SergeiLevine/Rescue/wiki/Planing)
-- [User Manual](Empty)
+
 
 ## Please visit our [live application](https://demo.reactstarterkit.com/)
 - Alright, currently only a landing page...
