@@ -1,8 +1,8 @@
-***Megilot Search&Rescue***
+## Megilot Search&Rescue
 
-We are a team of develpors that brings you the next search and rescue application to the volunteers unit of the israeli police force!
-Our app will help the police volunteer team to rescue people from harsh places and get backup is quickly as possible.
-Our app includes two interfaces a pc side software for the event commander and an mobile app for all the volunteers participating in the current event.
+We are a team of developers that bring you the next search and rescue application for the Israeli police force volunteer unit!
+Our app will help the police volunteer team to rescue people from harsh places and get backup as quickly as possible.
+Our app includes two interfaces, a PC side software for the event commander and a mobile app for all the volunteers participating in the current event.
 
 *Copyright Owner The Megilot Search&Rescue Team 2017!*
 
