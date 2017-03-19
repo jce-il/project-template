@@ -32,7 +32,7 @@ We're trying to use the best tools and practices in order to produce a quality e
 | Security | [![Known Vulnerabilities](https://snyk.io/test/github/jce-il/project-template/badge.svg)](https://snyk.io/test/github/jce-il/project-template) |
 | Project Course Status | ... |
 
-## Please visit our [live application](https://demo.reactstarterkit.com/)
+## Please visit our [live application](https://test-9d3f7.firebaseapp.com)
 - Alright, currently only a landing page...
 
 
