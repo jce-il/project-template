@@ -1,8 +1,12 @@
-***RESCUE***
+***Megilot Search&Rescue***
 
-WE WILL FIND YOU AND WE WILL **RESCUE** YOU!
+We are a team of develpors that brings you the next search and rescue application to the volunteers unit of the israeli police force!
+Our app will help the police volunteer team to rescue people from harsh places and get backup is quickly as possible.
+Our app includes two interfaces a pc side software for the event commander and an mobile app for all the volunteers participating in the current event.
 
+Copyright Owner The Megilot Search&Rescue Team 2017!
 
+Read here and help me complete this readme file :
 
 ![project logo (this one for is taken from basecamp - a project management service)](https://upload.wikimedia.org/wikipedia/he/6/68/%D7%99%D7%97%D7%99%D7%93%D7%AA_%D7%97%D7%99%D7%9C%D7%95%D7%A5_%D7%9E%D7%92%D7%99%D7%9C%D7%95%D7%AA_%D7%99%D7%9D_%D7%94%D7%9E%D7%9C%D7%97.jpg)
 
@@ -27,7 +31,8 @@ This project is developed as part of the requirements for a [software engineerin
 - [Team](https://github.com/SergeiLevine/Rescue/wiki/Team)
 - [Project Inception](https://github.com/SergeiLevine/Rescue/wiki/Planing)
 - [User Manual](Empty)
-
+- [TodoList](https://github.com/ddbeck/readme-checklist/blob/master/checklist.md)
+- [CheckList](Empty)
 
 
 
