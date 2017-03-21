@@ -38,7 +38,7 @@ We're trying to use the best tools and practices in order to produce a quality e
 | Documnetation | [![Inline docs](http://inch-ci.org/github/jce-il/project-template.svg?branch=master)](http://inch-ci.org/github/jce-il/project-template) |
 | Project Course Status | ... |
 
-## Please visit our [live application](https://demo.reactstarterkit.com/)
+## Please visit our [live application](https://test-9d3f7.firebaseapp.com)
 - Alright, currently only a landing page...
 
 
@@ -49,7 +49,7 @@ Please visit our wiki for furthur project info:
 
 ### [User Manual](../../wiki/user-manual) (empty for now)
 
-### [Team Page](../../wiki/Home)
+### [Team Page](../../wiki/Team)
 
 ### Project Documents
 - [Project Idea](docs/idea.pdf) ([Presentation](docs/idea-slides.pdf))
@@ -58,11 +58,11 @@ Please visit our wiki for furthur project info:
 - [Software Design Specification](../../wiki/sds)
 
 ### Iteration Pages
-- [Iteration 0 - ZFR](../../wiki/iter0-zfr)
-- [Iteration 1 - MVP]()
-- [Iteration 2 - Database creation, Calender display, Facebook event handler]()
-- [Iteration 3 - Event handler, permissoin handler ]()
-- [Iteration 4 - recommendations handler, add display options to Calender]()
+- [Iteration 0 - ZFR](https://github.com/yeseg11/Let-it-know/wiki/Iteration-0)
+- [Iteration 1 - MVP](https://github.com/yeseg11/Let-it-know/wiki/Iteration-1)
+- [Iteration 2 - Database creation, Calender display, Facebook event handler](https://github.com/yeseg11/Let-it-know/wiki/Iteration-2)
+- [Iteration 3 - Event handler, permissoin handler ](https://github.com/yeseg11/Let-it-know/wiki/Iteration-3)
+- [Iteration 4 - recommendations handler, add display options to Calender](https://github.com/yeseg11/Let-it-know/wiki/Iteration-4)
 
 
 
