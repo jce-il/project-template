@@ -35,7 +35,7 @@ This project is developed as part of the requirements for a [software engineerin
 
 ### Project Documents
 - [Project Idea](docs/idea.pdf) ([Presentation](docs/idea-slides.pdf))
-- [Project Inception](../../wiki/Project-Inception-(old))
+- [Project Inception](../../wiki/Project-Inception)
 - [Software Requirements Specification](../../wiki/srs)
 - [Software Design Specification](../../wiki/sds)
 
