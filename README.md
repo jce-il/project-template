@@ -1,8 +1,8 @@
 ## Megilot Search&Rescue
 
-We are a team of developers that bring you the next search and rescue application for the Israeli police force volunteer unit!
-Our app will help the police volunteer team to rescue people from harsh places and get backup as quickly as possible.
-Our app includes two interfaces, a PC side software for the event commander and a mobile app for all the volunteers participating in the current event.
+
+The purpose of this project is to create a system that will assist in the rescue of lost individuals in the megilot area.
+Our goal is to track the coordiantes of the volnteers in the field and provide a visual represenation of them to the HQ, allowing for faster desicion making and a clearer picture of the operation.
 
 *Copyright Owner The Megilot Search&Rescue Team 2017!*
 
