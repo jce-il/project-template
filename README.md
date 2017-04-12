@@ -45,6 +45,8 @@ We're trying to use the best tools and practices in order to produce a quality e
 ## Disclaimer
 This project is developed as part of the requirements for a [software engineering course](https://github.com/jce-il/se-class/wiki) at the software engineering department - [Azrieli College of Engineering](http://www.jce.ac.il/), Jerusalem, Israel.
 
+This project is using [FullCeldar API](https://fullcalendar.io/) and respects any and all copyright infrugement, FullCalendar API is under [MIT License](https://github.com/arshaw/fullcalendar/blob/master/license.txt) therefore no restrictions are given for the use of FullCalendar API.
+
 Please visit our wiki for furthur project info: 
 
 ### [User Manual](../../wiki/user-manual) (empty for now)
