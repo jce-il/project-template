@@ -73,7 +73,7 @@ let db_rendering = function()
 				let cell1 = row.insertCell(0);
 				let cell2 = row.insertCell(1);
 				if(status == "Approved")
-					cell2.innerHTML = status;
+					cell2.innerHTML = status.fontcolor("green");
 				else
 				{
 					if(is_admin == 1)
@@ -81,12 +81,12 @@ let db_rendering = function()
 						let aprvbtn = document.createElement('input');
 						aprvbtn.type = "button";
 						aprvbtn.setAttribute("onClick","approve("+ '"' + childSnapshot.key+ '"' +");");
-						aprvbtn.value = status;
+						aprvbtn.value = status.fontcolor("red");
 						cell2.appendChild(aprvbtn);
 					}
 					else
 					{
-						cell2.innerHTML = status;
+						cell2.innerHTML = status.fontcolor("red");
 					}
 				}
 				let cell3 = document.createTextNode(email);
