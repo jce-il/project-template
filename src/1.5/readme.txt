@@ -3,9 +3,7 @@ Version 1.5
 * Added Admin-page
 * Auth by FireAuth
 * Added icons for buttons
-* Added authoriztion of pages by admin
-* Used database to differ between Admin/user (user can post and read data, guest can read data, admin can read data post data and approve pages)
-* Added ability to move admin to another e-mail
+
 
 Version 1.43
 

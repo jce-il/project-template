@@ -8,7 +8,7 @@ $( document ).ready(function()
 			window.location = "../admin_page/admin.html";
 		}
    },500);
-   
+   auto_fill_buttons();
    
 });
 
@@ -120,6 +120,36 @@ let build_HTML = function()
 		
 	};
 	
+	
 	back_button_build();
 	login_form_build();
 };
+
+let auto_fill_buttons = function()
+{
+	// function for testing purposes
+	// autofill button function
+	
+	let btn1 = document.createElement("button");
+	btn1.type = "button";
+	btn1.name = "fill_user";
+	btn1.appendChild(document.createTextNode("Fill user (company) reguler"));
+	btn1.addEventListener("click",function() 
+	{
+		document.getElementById("email").value = "terem@gmail.com";
+		document.getElementById("password").value = "123456";
+	});
+	
+	let btn2 = document.createElement("button");
+	btn2.type = "button";
+	btn2.name = "Fill admin";
+	btn2.appendChild(document.createTextNode("Fill admin (nadav)"));
+	btn2.addEventListener("click",function() 
+	{
+		document.getElementById("email").value = "yeseg11@gmail.com";
+		document.getElementById("password").value = "123456";
+	});
+	
+	document.body.appendChild(btn1);
+	document.body.appendChild(btn2);
+}
