@@ -16,42 +16,43 @@ let db_rendering = function()
 	admin_req.once('value').then(function(snapshot)
 	{
 		if(snapshot.val().localeCompare(firebase.auth().currentUser.email)==0)
-			is_admin=1;
-		
-		let move_mail = function()
 		{
-			let new_email = document.getElementById("email").value;
-			let admin_req = firebase.database();
-			admin_req = admin_req.ref("admin");
-			admin_req.set(new_email);
-		};
-		
-		let form_obj = document.createElement("FORM");
-		form_obj.id = "form";
-		form_obj.autocomplete = "false";
-		form_obj.acceptCharset = "UTF-8";
-		form_obj.onsubmit = move_mail;
-		
-		let email = document.createElement("INPUT");
-		email.setAttribute("type", "email");
-		email.name = "email";
-		email.required = "true";
-		email.autocomplete = "false";
-		email.form = form_obj;
-		email.id = "email";
-		
-		let btn = document.createElement("button");
-		btn.form = form_obj;
-		btn.formNoValidate = false; // validate data
-		btn.type = "submit";
-		btn.name = "submit";
-		btn.innerHTML = "Make that e-mail admin!";
-		
-		form_obj.appendChild(document.createTextNode("Move admin to another e-mail: "));
-		form_obj.appendChild(email);
-		form_obj.appendChild(btn);
-		document.body.appendChild(document.createElement("br"));
-		document.body.appendChild(form_obj);
+			is_admin=1;
+			let move_mail = function()
+			{
+				let new_email = document.getElementById("email").value;
+				let admin_req = firebase.database();
+				admin_req = admin_req.ref("admin");
+				admin_req.set(new_email);
+			};
+			
+			let form_obj = document.createElement("FORM");
+			form_obj.id = "form";
+			form_obj.autocomplete = "false";
+			form_obj.acceptCharset = "UTF-8";
+			form_obj.onsubmit = move_mail;
+			
+			let email = document.createElement("INPUT");
+			email.setAttribute("type", "email");
+			email.name = "email";
+			email.required = "true";
+			email.autocomplete = "false";
+			email.form = form_obj;
+			email.id = "email";
+			
+			let btn = document.createElement("button");
+			btn.form = form_obj;
+			btn.formNoValidate = false; // validate data
+			btn.type = "submit";
+			btn.name = "submit";
+			btn.innerHTML = "Make that e-mail admin!";
+			
+			form_obj.appendChild(document.createTextNode("Move admin to another e-mail: "));
+			form_obj.appendChild(email);
+			form_obj.appendChild(btn);
+			document.body.appendChild(document.createElement("br"));
+			document.body.appendChild(form_obj);
+		}
 	});
 	
 	let database = firebase.database();
