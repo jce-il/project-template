@@ -23,7 +23,7 @@ We're trying to use the best tools and practices in order to produce a quality e
 | Dependencies | [![David](https://img.shields.io/david/dev/idleberg/vscode-badges.svg?style=flat-square)](https://david-dm.org/yeseg11/Let-it-know?type=dev) |
 | License | [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/) |
 | Test Coverege | [![codecov.io](https://codecov.io/github/yeseg11/Let-it-know/coverage.svg?branch=master)](https://codecov.io/githubyeseg11/Let-it-know?branch=master) |
-| Code Quality | [![Code Climate](https://codeclimate.com/github/jce-il/project-template.svg)](https://codeclimate.com/github/yeseg11/Let-it-know) |
+| Code Quality | [![Code Climate](https://codeclimate.com/github/yeseg11/Let-it-know.svg)](https://codeclimate.com/github/yeseg11/Let-it-know) |
 | Code Style | [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/yeseg11/Let-it-know) |
 | Current Release | [![Current Version](https://img.shields.io/github/release/yeseg11/Let-it-know.svg?style=flat)](https://github.com/yeseg11/Let-it-know/releases) |
 | Issues | [![GitHub issues](https://img.shields.io/github/issues/jce-il/project-template.svg?style=flat)](https://github.com/yeseg11/Let-it-know/issues) |
@@ -32,7 +32,7 @@ We're trying to use the best tools and practices in order to produce a quality e
 | Deployment | [![Firebase](https://img.shields.io/badge/Firebase%20server-running-brightgreen.svg)] |
 | Security | [![Known Vulnerabilities](https://snyk.io/test/github/yeseg11/Let-it-know/badge.svg)](https://snyk.io/test/github/yeseg11/Let-it-know) |
 | Documnetation | [![Inline docs](http://inch-ci.org/github/yeseg11/Let-it-know.svg?branch=master)](http://inch-ci.org/github/yeseg11/Let-it-know) |
-| Project Course Status | ![Week_Status](https://img.shields.io/badge/week-8-yellow.svg) |
+| Project Course Status | ![Week_Status](https://img.shields.io/badge/week-9-yellow.svg) |
 
 ## Please visit our [live application](https://test-9d3f7.firebaseapp.com)
 - Alright, currently only a landing page...
