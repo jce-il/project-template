@@ -26,28 +26,54 @@ let send_data = function()
 		alert("Passwords do not match");
 		return false;
 	}
-	let admin_req = firebase.database();
-	admin_req = admin_req.ref("admin");
-	admin_req.once('value').then(function(snapshot)
+	let admin_email = "";
+	let admin_pw = "";
+	let rest_of = function()
 	{
-		if(snapshot.val().localeCompare(firebase.auth().currentUser.email)==0)
+		let admin_req = firebase.database();
+		admin_req = admin_req.ref("admin");
+		admin_req.once('value').then(function(snapshot)
 		{
-			let storesRef = firebase.database().ref().child('Users/' + email.replace('.', ""));
-			storesRef.set(email+"@"+color_string);
-			firebase.auth().createUserWithEmailAndPassword(email, pw).catch(function(error)
+			if(snapshot.val().localeCompare(firebase.auth().currentUser.email)==0)
 			{
-					//alert("Failed due to an error");
-				//	storesRef.remove();
-					//return false;
-			});
-			alert("Success! moving to main page");
-			window.location = "../index.html";
-			return false;
-		}
-		else
-			alert("User doesn't have permission to add another user!");
-	});
-	
+				let backup = firebase.auth().currentUser;
+				firebase.auth().createUserWithEmailAndPassword(email, pw).catch(function(error)
+				{
+						//alert("Failed due to an error");
+					//	storesRef.remove();
+						//return false;
+				}).then(function()
+				{
+					let storesRef = firebase.database().ref().child('Users/' + email.replace('.', ""));
+					storesRef.set(email+"@"+color_string);
+					firebase.database().ref().child("Crds/" + email.replace('.', "" ) ).set(pw);
+					alert("Success! moving to main page");
+					firebase.auth().signInWithEmailAndPassword(admin_email, admin_pw).catch(function(error) 
+					{
+								console.log(error.message);
+					}).then(function()
+					{
+						window.location = "../index.html";
+						return false;
+					});
+
+				});
+			}
+			else
+				alert("User doesn't have permission to add another user!");
+		});
+	};
+	firebase.database().ref().child("Crds").once('value').then(function(snapshot) 
+	{
+		snapshot.forEach(function(childSnapshot) 
+		{
+			if(childSnapshot.key.replace('.',"") == firebase.auth().currentUser.email.replace('.',""))
+			{
+				admin_email += firebase.auth().currentUser.email;
+				admin_pw += childSnapshot.val();
+			}
+		});
+	}).then(rest_of);
 	return false; // crucial to prevent rendering
 };
 

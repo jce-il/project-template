@@ -57,7 +57,7 @@ let continue_rendering = function()
 				row.appendChild(change_color);
 				let cell3 = document.createElement('input');
 				cell3.type = "button";
-				cell3.setAttribute("onClick","del("+ '"' + childSnapshot.key+ '",' + i +");");
+				cell3.setAttribute("onClick","del("+ '"' + childSnapshot.key+ '",' + i +"," + "'" + email + "'" + ");");
 				cell3.value = "Delete";
 				if(email == admin_email)
 					cell3.disabled = true;
@@ -89,13 +89,63 @@ let Add_new = function()
 	window.location = "../create_user/create.html";
 };
 
-let del = function(key,index)
+let del = function(key,index,email)
 {
 	let rootRef = firebase.database().ref();
 	let storesRef = rootRef.child('Users/' + key);
 	//storesRef.remove();
-	document.getElementById("table").deleteRow(index+factor);
-	factor--;
+	let cred = "";
+	let backup = firebase.auth().currentUser;
+	if(is_admin == 1)
+	{
+		let admin_email = "";
+		let admin_pw = "";
+		firebase.database().ref().child("Crds").once('value').then(function(snapshot) 
+		{
+			snapshot.forEach(function(childSnapshot) 
+			{
+				if(childSnapshot.key.replace('.',"") == email.replace('.',"") )
+				{
+					cred += childSnapshot.val();
+				}
+				if(childSnapshot.key.replace('.',"") == firebase.auth().currentUser.email.replace('.',""))
+				{
+					admin_email += firebase.auth().currentUser.email;
+					admin_pw += childSnapshot.val();
+				}
+			});
+		}).then(function()
+		{
+			if(cred != "")
+			{
+				firebase.auth().signInWithEmailAndPassword(email, cred).catch(function(error) 
+				{
+					console.log(error.message);
+				}).then(function()
+				{
+					if(firebase.auth().currentUser.uid != backup.uid && firebase.auth().currentUser!=null)
+					{
+						firebase.auth().currentUser.delete().then(function() {
+							firebase.auth().signInWithEmailAndPassword(admin_email, admin_pw).catch(function(error) 
+							{
+								console.log(error.message);
+							}).then(function()
+							{
+									storesRef.remove();
+									firebase.database().ref().child("Crds/" + email.replace(".","")).remove();
+									document.getElementById("table").deleteRow(index+factor);
+									factor--;
+							});
+						
+						}, function(error) {
+						  console.log(error);
+						});
+					}
+				});
+			}
+		});
+	}
+	
 };
 
 let changeColor = function(key, index)

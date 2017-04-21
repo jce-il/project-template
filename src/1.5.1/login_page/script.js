@@ -22,14 +22,11 @@ let send_data = function()
 		firebase.auth().signInWithEmailAndPassword(email, pw).catch(function(error) 
 		{
 			console.log(error.message);
-		});
-		setTimeout(function() 
+		}).then(function()
 		{
 			if(firebase.auth().currentUser != null)
-			{
 				window.location = "../admin_page/admin.html";
-			}
-		},700);
+		});
 	}
 	
 	return false; // crucial to prevent rendering
