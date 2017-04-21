@@ -5,6 +5,7 @@ $( document ).ready(function()
 	db_rendering();
 	
 });
+let factor = 0;
 
 let db_rendering = function()
 {
@@ -79,6 +80,7 @@ let db_rendering = function()
 				else
 					status = "Approved";
 				let row = table.insertRow(i);
+				row.id = i;
 				let cell1 = row.insertCell(0);
 				let cell2 = row.insertCell(1);
 				if(status == "Approved")
@@ -89,8 +91,9 @@ let db_rendering = function()
 					{
 						let aprvbtn = document.createElement('input');
 						aprvbtn.type = "button";
-						aprvbtn.setAttribute("onClick","approve("+ '"' + childSnapshot.key+ '"' +");");
-						aprvbtn.value = status.fontcolor("red");
+						aprvbtn.style.backgroundColor = "red";
+						aprvbtn.setAttribute("onClick","approve("+ '"' + childSnapshot.key+ '"'+"," + i +");");
+						aprvbtn.value = status;
 						cell2.appendChild(aprvbtn);
 					}
 					else
@@ -102,7 +105,7 @@ let db_rendering = function()
 				row.appendChild(cell3);
 				let cell4 = document.createElement('input');
 				cell4.type = "button";
-				cell4.setAttribute("onClick","del("+ '"' + childSnapshot.key+ '"' +");");
+				cell4.setAttribute("onClick","del("+ '"' + childSnapshot.key+ '"'+","+i +");");
 				cell4.value = "Delete";
 				row.appendChild(cell4);
 				cell1.innerHTML = "<a href='https://www.facebook.com/" +childSnapshot.key+ "'>" + childSnapshot.key + "</a>";
@@ -151,28 +154,66 @@ let Add_new = function()
 			page = page.replace(/\D/g,''); // strips all non-numbers from page-id, leading to verifiable string
 		let storesRef = rootRef.child('Facebook/' + page);
 		storesRef.set("0" + firebase.auth().currentUser.email);
-		location.reload();
+		let row = document.getElementById("table").insertRow(document.getElementById("table").childElementCount);
+		row.id = document.getElementById("table").childElementCount;
+		let cell1 = row.insertCell(0);
+		let cell2 = row.insertCell(1);
+		let cell3 = row.insertCell(2);
+		cell1.innerHTML = "<a href='https://www.facebook.com/" +page+ "'>" + page + "</a>";
+		let status = "Not Approved";
+		if(is_admin == 1)
+		{
+			let aprvbtn = document.createElement('input');
+			aprvbtn.type = "button";
+			aprvbtn.style.backgroundColor = "red";
+			aprvbtn.setAttribute("onClick","approve("+ '"' + page+ '"'+"," + document.getElementById("table").childElementCount +");");
+			aprvbtn.value = status;
+			cell2.appendChild(aprvbtn);
+		}
+		else
+		{
+			cell2.innerHTML = status.fontcolor("red");
+		}
+		cell3.innerHTML = firebase.auth().currentUser.email;
+		let cell4 = document.createElement('input');
+		cell4.type = "button";
+		cell4.setAttribute("onClick","del("+ '"' + page+ '"'+","+ document.getElementById("table").childElementCount +");");
+		cell4.value = "Delete";
+		row.appendChild(cell4);
+		
 	}
 
 };
 
-let del = function(key)
+let del = function(key,i)
 {
 	let rootRef = firebase.database().ref();
 	let storesRef = rootRef.child('Facebook/' + key);
 	storesRef.remove();
-	location.reload();
+	document.getElementById("table").deleteRow(i+factor);
+	factor--;
 };
 
-let approve = function(key)
+let approve = function(key, i)
 {
 	let rootRef = firebase.database().ref();
 	let storesRef = rootRef.child('Facebook/' + key);
 	storesRef.once('value').then(function(snapshot)
 	{
 		storesRef.set("1" + snapshot.val().substring(1,snapshot.val().length));
+		let row = document.getElementById(i);
+		let cell1 = row.children[0];
+		let cell2 = row.children[1];
+		let cell3 = row.children[2];
+		let cell4 = row.children[3];
+		while(row.firstChild)
+			row.removeChild(row.firstChild);
+		row.appendChild(cell1);
+		let approved = "Approved";
+		row.appendChild(document.createTextNode(approved.fontcolor("green")));
+		row.appendChild(cell3);
+		row.appendChild(cell4);
 	});
-	location.reload();
 };
 
 let buttons_insert = function()
