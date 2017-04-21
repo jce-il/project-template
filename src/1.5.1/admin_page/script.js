@@ -210,7 +210,8 @@ let approve = function(key, i)
 			row.removeChild(row.firstChild);
 		row.appendChild(cell1);
 		let approved = "Approved";
-		row.appendChild(document.createTextNode(approved.fontcolor("green")));
+		let cell_new = row.insertCell(1);
+		cell_new.innerHTML = approved.fontcolor("green");
 		row.appendChild(cell3);
 		row.appendChild(cell4);
 	});
