@@ -217,6 +217,7 @@ $( document ).ready(function()
 	page_module.initModule();
 	//$('#calendar1').fullCalendar('removeEvents',id);
 	//console.log(page_module.events);
+	console.log(page_module.events);
 });
 
 

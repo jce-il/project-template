@@ -102,12 +102,12 @@ let db_rendering = function()
 					}
 				}
 				let cell3 = document.createTextNode(email);
-				row.appendChild(cell3);
+				row.insertCell(2).appendChild(cell3);
 				let cell4 = document.createElement('input');
 				cell4.type = "button";
 				cell4.setAttribute("onClick","del("+ '"' + childSnapshot.key+ '"'+","+i +");");
 				cell4.value = "Delete";
-				row.appendChild(cell4);
+				row.insertCell(3).appendChild(cell4);
 				cell1.innerHTML = "<a href='https://www.facebook.com/" +childSnapshot.key+ "'>" + childSnapshot.key + "</a>";
 				i++;
 			}
@@ -146,41 +146,49 @@ let Add_new = function()
 	else
 	{
 		let rootRef = firebase.database().ref();
-		
-		//if(page.charAt(page.length-1) == '/')  // HTML LINK breaker, decrepted
-		//	page = page.substr(0,page.length-1);
-		let page_unicoded = page.replace(/[^\x20-\x7E]+/g, '');
-		if(page.localeCompare(page_unicoded) != 0) // meaning page had some special unicoded characters! 
-			page = page.replace(/\D/g,''); // strips all non-numbers from page-id, leading to verifiable string
-		let storesRef = rootRef.child('Facebook/' + page);
-		storesRef.set("0" + firebase.auth().currentUser.email);
-		let row = document.getElementById("table").insertRow(document.getElementById("table").childElementCount);
-		row.id = document.getElementById("table").childElementCount;
-		let cell1 = row.insertCell(0);
-		let cell2 = row.insertCell(1);
-		let cell3 = row.insertCell(2);
-		cell1.innerHTML = "<a href='https://www.facebook.com/" +page+ "'>" + page + "</a>";
-		let status = "Not Approved";
-		if(is_admin == 1)
+		let is_admin = 0;
+		let admin_req = firebase.database();
+		admin_req = admin_req.ref("admin");
+		admin_req.once('value').then(function(snapshot)
 		{
-			let aprvbtn = document.createElement('input');
-			aprvbtn.type = "button";
-			aprvbtn.style.backgroundColor = "red";
-			aprvbtn.setAttribute("onClick","approve("+ '"' + page+ '"'+"," + document.getElementById("table").childElementCount +");");
-			aprvbtn.value = status;
-			cell2.appendChild(aprvbtn);
-		}
-		else
-		{
-			cell2.innerHTML = status.fontcolor("red");
-		}
-		cell3.innerHTML = firebase.auth().currentUser.email;
-		let cell4 = document.createElement('input');
-		cell4.type = "button";
-		cell4.setAttribute("onClick","del("+ '"' + page+ '"'+","+ document.getElementById("table").childElementCount +");");
-		cell4.value = "Delete";
-		row.appendChild(cell4);
-		
+			if(snapshot.val().localeCompare(firebase.auth().currentUser.email)==0)
+			{
+				is_admin = 1;
+			}
+			//if(page.charAt(page.length-1) == '/')  // HTML LINK breaker, decrepted
+			//	page = page.substr(0,page.length-1);
+			let page_unicoded = page.replace(/[^\x20-\x7E]+/g, '');
+			if(page.localeCompare(page_unicoded) != 0) // meaning page had some special unicoded characters! 
+				page = page.replace(/\D/g,''); // strips all non-numbers from page-id, leading to verifiable string
+			let storesRef = rootRef.child('Facebook/' + page);
+			storesRef.set("0" + firebase.auth().currentUser.email);
+			let row = document.getElementById("table").insertRow(document.getElementById("table").childElementCount);
+			row.id = document.getElementById("table").childElementCount;
+			let cell1 = row.insertCell(0);
+			let cell2 = row.insertCell(1);
+			let cell3 = row.insertCell(2);
+			cell1.innerHTML = "<a href='https://www.facebook.com/" +page+ "'>" + page + "</a>";
+			let status = "Not Approved";
+			if(is_admin == 1)
+			{
+				let aprvbtn = document.createElement('input');
+				aprvbtn.type = "button";
+				aprvbtn.style.backgroundColor = "red";
+				aprvbtn.setAttribute("onClick","approve("+ '"' + page+ '"'+"," + document.getElementById("table").childElementCount +");");
+				aprvbtn.value = status;
+				cell2.appendChild(aprvbtn);
+			}
+			else
+			{
+				cell2.innerHTML = status.fontcolor("red");
+			}
+			cell3.innerHTML = firebase.auth().currentUser.email;
+			let cell4 = document.createElement('input');
+			cell4.type = "button";
+			cell4.setAttribute("onClick","del("+ '"' + page+ '"'+","+ document.getElementById("table").childElementCount +");");
+			cell4.value = "Delete";
+			row.insertCell(3).appendChild(cell4);
+		});
 	}
 
 };
