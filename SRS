@@ -59,16 +59,15 @@ Users Behaviour
 
 3. Persistence
 
-All the data will be saved on mysql DataBase. Data store structure:
+All the data will be saved on a SQL DataBase:
 
-4. Non-functional Requirements
+4. Non-functional Requirements:
+The application will (in a future version) display a diffrent icon for each type of searcher: medic , climbing specialist , etc...
+The application will save navigational data after each event for analysis or police investigation.
+The application will save for each volunteer personal information including name and phone number.
+The administrator will have a seperate user name and password allowing access to all high level features.
+The user interface will be as simple and user friendly as possible..
 
-The application will support a 60 days ahead display.
-The administrator will log in on a seperate session.
-Firebase and Facebook response time will be quick.
-The system will integrate with Firebase database.
-The user interface will be simple and intuitive for use.
-The user will not need to register to the system.
 5. Risk Management
 
 Risk	Severity	Probability	Response
