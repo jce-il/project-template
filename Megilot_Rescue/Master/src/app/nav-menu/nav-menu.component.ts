@@ -9,6 +9,7 @@ export class NavMenuComponent implements OnInit {
 
   //arr =[{id:'obj1'},{id:'obj2'},{id:'obj3'},{id:'obj4'}];
   arr =[{id:'obj1'},{id:'obj2'},{id:'obj3'},{id:'obj4'}];
+  
   constructor() { }
 
   ngOnInit() {
