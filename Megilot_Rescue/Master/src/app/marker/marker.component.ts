@@ -8,6 +8,7 @@ import { Component, OnInit,Input } from '@angular/core';
 export class MarkerComponent implements OnInit {
   @Input() lat;
   @Input() lng;
+  @Input() name;
   constructor() { }
 
   ngOnInit() {

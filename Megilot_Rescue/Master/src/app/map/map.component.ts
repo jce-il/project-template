@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { SebmGoogleMap, SebmGoogleMapPolygon, LatLngLiteral} from 'angular2-google-maps/core';
+import { SebmGoogleMap, SebmGoogleMapPolygon, LatLngLiteral,SebmGoogleMapPolyline, SebmGoogleMapPolylinePoint} 
+from 'angular2-google-maps/core';
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -9,6 +11,8 @@ export class MapComponent implements OnInit {
   title: string = 'My first angular2-google-maps project';
   lat: number = 31.7683;
   lng: number = 35.2137;
+  markerArray=[{name:'A',lat:31.7683,lng:35.2137},{name:'B',lat:31.8683,lng:35.3137},{name:'C',lat:31.6683 , lng:35.1137}];
+
   paths: Array<LatLngLiteral> = [
     { lat: 0,  lng: 31.7683 },
     { lat: 0,  lng: 35.2137 },
@@ -33,6 +37,7 @@ export class MapComponent implements OnInit {
   constructor() { }
   
   ngOnInit() {
+    
   }
 
 }

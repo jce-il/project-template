@@ -4,7 +4,8 @@
 
 <sebm-google-map [latitude]="lat" [longitude]="lng">
   <!--<sebm-google-map-marker [latitude]="lat" [longitude]="lng" [title]="abc" [label]="oogabooga"></sebm-google-map-marker>-->
-<app-marker [lng]="lng" [lat]="lat" ></app-marker>
+<!--<app-marker [lng]="lng" [lat]="lat" [name]="'B'" ></app-marker>-->
+<app-marker *ngFor="let k of markerArray" [lng]="k.lng" [lat]="k.lat" [name]="k.name"></app-marker>
+<app-polyline></app-polyline>
 
-
-<!--<ul class='aa'><app-nav-item *ngFor="let k of arr" [item]="k"></app-nav-item></ul>-->
+<!--<app-nav-item *ngFor="let k of arr" [item]="k"></app-nav-item>-->
