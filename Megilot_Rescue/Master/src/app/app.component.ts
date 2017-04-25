@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+  auth=false;
+  login(event){
+    console.log("Login succesful")
+    this.auth=true;
+  }
 }

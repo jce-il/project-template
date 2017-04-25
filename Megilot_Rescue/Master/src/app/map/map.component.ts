@@ -17,11 +17,10 @@ export class MapComponent implements OnInit {
   {name:'C',lat:31.6683 , lng:35.1137,prevLat:32.6684,prevLng:35.1135}];
 
   paths: Array<LatLngLiteral> = [
-    { lat: 0,  lng: 31.7683 },
-    { lat: 0,  lng: 35.2137 },
-    { lat: 31.7683, lng: 35.2137 },
-    { lat: 31.7683, lng: 31.7683 },
-    { lat: 0,  lng: 31.7683 }
+    { lat: 31.5,  lng: 35.5 },
+    { lat: 30.5,  lng: 34.5 },
+    { lat: 31.5,  lng: 34 },
+    
   ]
   // Nesting paths will create a hole where they overlap;
   nestedPaths:Array<Array<LatLngLiteral>> =[[
@@ -37,6 +36,10 @@ export class MapComponent implements OnInit {
     { lat: 5, lng: 15 },
     { lat: 0, lng: 15 }
   ]]
+  drawPolygon(){
+    this.paths.push({lat:0,lng:0});
+    
+  }
   constructor() { }
   
   ngOnInit() {
