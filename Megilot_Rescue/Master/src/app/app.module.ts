@@ -10,6 +10,7 @@ import { MapComponent } from './map/map.component';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { MarkerComponent } from './marker/marker.component';
 import { PolylineComponent } from './polyline/polyline.component';
+import { PolypointComponent } from './polyline/polypoint/polypoint.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { PolylineComponent } from './polyline/polyline.component';
     NavItemComponent,
     MapComponent,
     MarkerComponent,
-    PolylineComponent
+    PolylineComponent,
+    PolypointComponent
   ],
   imports: [
     BrowserModule,

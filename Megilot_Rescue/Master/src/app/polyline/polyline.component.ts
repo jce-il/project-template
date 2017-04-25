@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-polyline',
@@ -6,9 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./polyline.component.css']
 })
 export class PolylineComponent implements OnInit {
-
+  @Input() lat1;
+  @Input() lng1;
+  @Input() lat2;
+  @Input() lng2;
   constructor() { }
-
+ 
   ngOnInit() {
   }
 

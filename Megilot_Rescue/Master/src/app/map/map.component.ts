@@ -11,7 +11,10 @@ export class MapComponent implements OnInit {
   title: string = 'My first angular2-google-maps project';
   lat: number = 31.7683;
   lng: number = 35.2137;
-  markerArray=[{name:'A',lat:31.7683,lng:35.2137},{name:'B',lat:31.8683,lng:35.3137},{name:'C',lat:31.6683 , lng:35.1137}];
+  prevPostion=[{lat:32.7693,lng:35.2147},{lat:32.8687,lng:35.3139},{lat:32.6684,lng:35.1135}];
+  markerArray=[{name:'A',lat:31.7683,lng:35.2137,prevLat:32.7693,prevLng:35.2147},
+  {name:'B',lat:31.8683,lng:35.3137,prevLat:32.8687,prevLng:35.3139},
+  {name:'C',lat:31.6683 , lng:35.1137,prevLat:32.6684,prevLng:35.1135}];
 
   paths: Array<LatLngLiteral> = [
     { lat: 0,  lng: 31.7683 },
