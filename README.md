@@ -34,7 +34,7 @@ We're trying to use the best tools and practices in order to produce a quality e
 | Documnetation | [![Inline docs](http://inch-ci.org/github/yeseg11/Let-it-know.svg?branch=master)](http://inch-ci.org/github/yeseg11/Let-it-know) |
 | Project Course Status | ![Week_Status](https://img.shields.io/badge/week-9-yellow.svg) |
 
-## Please visit our [live application](https://test-9d3f7.firebaseapp.com)
+## Please visit our [live application](https://let-it-know.firebaseapp.com)
 - Alright, currently only a landing page...
 
 
