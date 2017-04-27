@@ -1,0 +1,62 @@
+body{
+	background-image: url("/C:/Users/pc/Desktop/Megilot-Client-Side/www/img/Megilot.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+	background-attachment: fixed;
+	
+}
+
+.myparaStyle{
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    color: red;
+    background-color: blue;
+}
+
+.UsernameLabelStyle{
+	font-weight: bold;
+    font-family: "Times New Roman", Georgia, Serif;
+    border-radius: 8px;
+    padding-left: 20px;
+    margin: 20px;
+    margin-top: 170px;
+    margin-right: 78;
+    font-size: 20px;
+}
+
+.InputUsernameStyle{
+	font-family: "Times New Roman", Georgia, Serif;
+    border-radius: 8px;
+    width: 200px;
+	margin-left: 40px;
+    font-size: 20px;
+}
+
+.PasswordLabelStyle{
+	font-weight: bold;
+    font-family: "Times New Roman", Georgia, Serif;
+    border-radius: 8px;
+    padding-left: 40px;
+	font-size: 20px;
+}
+
+.InputPasswordStyle{
+	font-family: "Times New Roman", Georgia, Serif;
+    border-radius: 8px;
+    width: 200px;
+	margin-left: 40px;
+    font-size: 20px;
+}
+
+.SubmitLoginStyle{
+	font-weight: bold;
+    font-family: "Times New Roman", Georgia, Serif;
+    border-radius: 8px;
+    margin-top: 60px;
+	margin-left: 200px;
+	font-size: 20px;
+}
