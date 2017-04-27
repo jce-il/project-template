@@ -13,6 +13,6 @@
 <!--<app-polyline *ngFor="let i of markerArray" [lat1]="i.lat" [lat2]="i.prevLat" [lng1]="i.lng" [lng2]="i.prevLng"></app-polyline>-->
 <!--<app-polygon [paths]="paths"></app-polygon>-->
 <!--<app-polygon  [paths]="paths" ></app-polygon>-->
-<sebm-map-polygon [paths]="paths" [editable]="false" [visible]="show">
+<sebm-map-polygon [paths]="paths" [editable]="true" [visible]="show" [fillOpacity]="0" [geodesic]="true">
 </sebm-map-polygon>
 <!--<app-nav-item *ngFor="let k of arr" [item]="k"></app-nav-item>-->
