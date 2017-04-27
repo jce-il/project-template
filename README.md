@@ -22,7 +22,7 @@ Our goal is to track the coordiantes of the volnteers in the field and provide a
 | Version Control System| git & github |
 | Recommended IDE | [VSCode](https://code.visualstudio.com) |
 | Group Chat | [![Join the chat at https://gitter.im/jce-il/project-template](https://badges.gitter.im/jce-il/project-template.svg)](https://gitter.im/Megilot-Rescue/Lobby#) |
-| Github Issues | [![GitHub issues](https://img.shields.io/github/issues/jce-il/project-template.svg?style=flat)](https://github.com/SergeiLevine/Rescue/issues) |
+| Github Issues | [![GitHub issues](https://img.shields.io/badge/issues-5-yellow.svg)](https://github.com/SergeiLevine/Rescue/issues) |
 | Contributors | [![GitHub contributors](https://img.shields.io/badge/contributors-6-blue.svg)](https://github.com/SergeiLevine/Rescue/graphs/contributors) |
 
 ## Disclaimer
