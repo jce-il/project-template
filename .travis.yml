@@ -1,4 +1,17 @@
-language: ruby
-rvm: 2.2
-before_script: gem install awesome_bot
+# language setting
+language: node_js
 
+# version numbers, testing against two versions of node
+node_js:
+    - 0.10.25
+    - 0.11
+    
+# npm install runs by default but shown here for illustrative purposes
+before_install:
+    - npm install docco
+    - npm install coffee-script
+#install java project dependencies with ant
+install: ant deps
+# Running npm test to run your test cases
+script:
+    - npm test
