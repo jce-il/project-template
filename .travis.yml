@@ -10,8 +10,6 @@ node_js:
 before_install:
     - npm install docco
     - npm install coffee-script
-#install java project dependencies with ant
-install: ant deps
 # Running npm test to run your test cases
 script:
     - npm test
