@@ -1,0 +1,55 @@
+Versoin 1.3
+
+* added Facebook event database manipulation page
+* based configuration file on source
+* added Google Firebase operation API to db page
+* added viewable table and buttonized operation to table
+
+// TODO
+
+* Autheration by ID
+
+
+Version 1.2
+
+* moved token variable to configuration
+* added Google Firebase API to API-key configuration on config file
+* added firebase-DB support and load
+* added dynamic event from facebook load and render
+
+// TODO
+
+* Facebook DB page manipulation page
+
+
+
+
+Version 1.1
+
+* added Facebook API
+* added pre-configured JS file to convert Facebook API date to generlized date
+* added function to gather events from pre-configured Facebook page
+* lists all said event on fullcalendar API
+* virtual defiance on index.html to define each list of imports to it's conclusion
+* completed skeleton 
+
+// TODO
+* dynamic loaded Facebook page (/event) loading
+* database to load Facebook pages from
+
+
+
+
+
+First version
+
+* added a virtual div for calendar 
+* chosen an apporpiate calendar API
+* added chosen calendar API to logic and interface operations
+* did a skeleton build for apporpiate functions
+
+// TODO
+
+* add facebook API
+* add facebook page control page
+* add all events from facebook page database to calendar and load them
