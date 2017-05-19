@@ -14,6 +14,6 @@ var config_module= (function ()
 		firebase.initializeApp(config);// sending API key to server for verification 
 	};
 	
-	return config_firebase;
+	return { config_firebase, };
 }());
 config_module.config_firebase();
