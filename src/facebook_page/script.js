@@ -1,5 +1,6 @@
 $( document ).ready(function() 
 {
+    backlink();
 	createTable();
 	db_rendering();
 	
@@ -45,6 +46,15 @@ let createTable = function()
 	cell1.innerHTML = "Facebook page name";
 	cell2.innerHTML = "Delete";
 	cell3.innerHTML = "<input type='button' onclick='Add_new()' value='Add new Facebook page'/>";
+};
+
+let backlink = function()
+{
+    var link = document.createElement("a");
+    var txt= document.createTextNode("back to calendar");
+    link.appendChild(txt);
+    link.href = "../index.html";
+    document.body.appendChild(link);
 };
 
 let Add_new = function()
