@@ -1,3 +1,17 @@
+Version 1.2
+
+* moved token variable to configuration
+* added Google Firebase API to API-key configuration on config file
+* added firebase-DB support and load
+* added dynamic event from facebook load and render
+
+// TODO
+
+* Facebook DB page manipulation page
+
+
+
+
 Version 1.1
 
 * added Facebook API
