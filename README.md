@@ -26,7 +26,7 @@ We're trying to use the best tools and practices in order to produce a quality e
 | Code Quality | [![Code Climate](https://codeclimate.com/github/yeseg11/Let-it-know.svg)](https://codeclimate.com/github/yeseg11/Let-it-know) |
 | Code Style | [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/yeseg11/Let-it-know) |
 | Current Release | [![Current Version](https://img.shields.io/github/release/yeseg11/Let-it-know.svg?style=flat)](https://github.com/yeseg11/Let-it-know/releases) |
-| Issues | [![GitHub issues](https://img.shields.io/github/issues/jce-il/project-template.svg?style=flat)](https://github.com/yeseg11/Let-it-know/issues) |
+| Issues | [![GitHub issues](https://img.shields.io/github/issues/yeseg11/Let-it-know.svg?style=flat)](https://github.com/yeseg11/Let-it-know/issues) |
 | Project Management Board| [here](https://github.com/yeseg11/Let-it-know/projects/1) |
 | Contributors | [![GitHub contributors](https://img.shields.io/github/contributors/jce-il/project-template.svg)](https://github.com/yeseg11/Let-it-know/graphs/contributors)|
 | Deployment | [![Firebase](https://img.shields.io/badge/Firebase%20server-running-brightgreen.svg)] |
