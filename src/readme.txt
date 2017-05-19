@@ -1,4 +1,14 @@
-Versoin 1.3
+Version 1.4
+
+* Autheration by APP id instead of user-token, allowing grasp of event data without logging in
+* modulized config javascript in both config files and script files
+* hidden app id source with predefined password under module
+* hidden token id by app-id in module
+
+// TODO
+* Autheration page (login) for Facebook page database
+
+Version 1.3
 
 * added Facebook event database manipulation page
 * based configuration file on source
