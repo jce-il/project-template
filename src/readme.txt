@@ -1,3 +1,8 @@
+Version 1.42
+
+* added back button
+* added Load screen for facebook page (?)
+
 Version 1.41
 
 *fix - config.js on /facebook_page variable name was incorrect
