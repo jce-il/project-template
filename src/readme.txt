@@ -1,3 +1,15 @@
+Versoin 1.3
+
+* added Facebook event database manipulation page
+* based configuration file on source
+* added Google Firebase operation API to db page
+* added viewable table and buttonized operation to table
+
+// TODO
+
+* Autheration by ID
+
+
 Version 1.2
 
 * moved token variable to configuration
