@@ -1,3 +1,8 @@
+Version 1.41
+
+*fix - config.js on /facebook_page variable name was incorrect
+
+
 Version 1.4
 
 * Autheration by APP id instead of user-token, allowing grasp of event data without logging in

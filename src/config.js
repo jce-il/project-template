@@ -25,7 +25,7 @@ Date.prototype.setISO8601 = function (string) {
 
 
 
-var config_module= (function () 
+var config_module = (function () 
 {
 	let accessToken = "1888264188125920|gehNVYkmMDZifyIv_IfMk72_I80"; // access token further required by Facebook API
 	let pw = "Mgo6B97nHZKdwXMiGw5P";
