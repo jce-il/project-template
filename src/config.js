@@ -1,27 +1,32 @@
-Date.prototype.setISO8601 = function (string) {
-    let regexp = "([0-9]{4})(-([0-9]{2})(-([0-9]{2})" +
-        "(T([0-9]{2}):([0-9]{2})(:([0-9]{2})(\.([0-9]+))?)?" +
-        "(Z|(([-+])([0-9]{2}):([0-9]{2})))?)?)?)?";
-    let d = string.match(new RegExp(regexp));
-
-    let offset = 0;
-    let date = new Date(d[1], 0, 1);
-
-    if (d[3]) { date.setMonth(d[3] - 1); }
-    if (d[5]) { date.setDate(d[5]); }
-    if (d[7]) { date.setHours(d[7]); }
-    if (d[8]) { date.setMinutes(d[8]); }
-    if (d[10]) { date.setSeconds(d[10]); }
-    if (d[12]) { date.setMilliseconds(Number("0." + d[12]) * 1000); }
-    if (d[14]) {
-        offset = (Number(d[16]) * 60) + Number(d[17]);
-        offset *= ((d[15] == '-') ? 1 : -1);
+Date.prototype.setISO8601 = function(dString){
+    var regexp = /(\d\d\d\d)(-)?(\d\d)(-)?(\d\d)(T)?(\d\d)(:)?(\d\d)(:)?(\d\d)(\.\d+)?(Z|([+-])(\d\d)(:)?(\d\d))/;
+    if (dString.toString().match(new RegExp(regexp))) {
+        var d = dString.match(new RegExp(regexp));
+        var offset = 0;
+        this.setUTCDate(1);
+        this.setUTCFullYear(parseInt(d[1],10));
+        this.setUTCMonth(parseInt(d[3],10) - 1);
+        this.setUTCDate(parseInt(d[5],10));
+        this.setUTCHours(parseInt(d[7],10));
+        this.setUTCMinutes(parseInt(d[9],10));
+        this.setUTCSeconds(parseInt(d[11],10));
+        if (d[12]) {
+            this.setUTCMilliseconds(parseFloat(d[12]) * 1000);
+        }
+        else {
+            this.setUTCMilliseconds(0);
+        }
+        if (d[13] != 'Z') {
+            offset = (d[15] * 60) + parseInt(d[17],10);
+            offset *= ((d[14] == '-') ? -1 : 1);
+            this.setTime(this.getTime() - offset * 60 * 1000);
+        }
     }
-
-    offset -= date.getTimezoneOffset();
-    time = (Number(date) + (offset * 60 * 1000));
-    this.setTime(Number(time));
-} // pre-configured function, it converts date from Facebook API date format to Javascript date format
+    else {
+        this.setTime(Date.parse(dString));
+    }
+    return this;
+}; // pre-configured function, it converts date from Facebook API date format to Javascript date format
 
 
 

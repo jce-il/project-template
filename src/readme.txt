@@ -1,3 +1,46 @@
+
+Version 1.5.4
+
+* fixed callbacks to be function based instead of time based (//TODO link)
+
+// TODO callbacks for after gather_all_events() and get_users_db() to call localstorage_function to "repick" our last picked username filter
+
+Version 1.5.3
+
+* added local storage to remember last picked users for display filter
+* fixed username to deprecete "@domain" suffix
+* fixed password length to be >=6
+
+
+Version 1.5.2
+
+* Fix in date bug.
+
+Version 1.51
+
+* Added filtering to calendar
+* Events colored by source
+* Admin is capable of choosing colors for users (including himself)
+* Moved libraries to libs
+* Create new users (only admin)
+
+Version 1.5
+
+* Added Admin-page
+* Auth by FireAuth
+* Added icons for buttons
+
+
+Version 1.43
+
+* updated "back button" to image
+* fixed hebrew unicode issue with links
+
+Version 1.42
+
+* added back button
+* added Load screen for facebook page (?)
+
 Version 1.41
 
 *fix - config.js on /facebook_page variable name was incorrect
