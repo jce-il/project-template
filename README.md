@@ -8,15 +8,13 @@ _TODO_
 
 - Group Chat: &nbsp;&nbsp;  [![Join the chat](https://badges.gitter.im/jce-il/project-template.svg)](https://gitter.im/Hadasa-Rehabilitation/Lobby)
 
+<br/>
+<br/>
 
 
-
-
-
-
-
-
-
+Please visit our wiki for furthur project info: 
+### [User Manual](../../wiki/user-manual) (empty for now)
+### [Team Page](../../wiki/team)
 
 
 
