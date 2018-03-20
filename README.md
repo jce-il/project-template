@@ -2,7 +2,7 @@ for now our project name is:
 # Hadasa - Rehabilitation App
 
 ### our vision
-_TODO_
+_TODO_ a better tomorrow
 
 ![project logo)](images/Hadasa%20-%20Logo.jpg)
 
