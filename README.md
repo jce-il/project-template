@@ -3,7 +3,7 @@
 תחרות מדענים ומפתחים צעירים בישראל מתקיימת מזה 21 שנים.
 התחרות פונה לתלמידי תיכון בכיתות י'- י"ב מכל הארץ, הנמצאים בשלבי ביצוע וכתיבה של עבודות מחקר ופרויקטים טכנולוגיים מעולים בהיקף של 5 יחידות לימוד בתחומי פיזיקה, כימיה, מתמטיקה, מדעי החיים והסביבה, טכנולוגיה והנדסה, מדעי המחשב, היסטוריה ומדעי החברה או תחומים משולבים.
 
-![project logo (this one for is taken from basecamp - a project management service)](https://www.klipfolio.com/sites/default/files/integrations/basecamp.png)
+![project logo (this one for is taken from basecamp - a project management service)](https://www.mada.org.il/sites/default/files/title-young-2015.png)
 
 ## Tools & Practices
 We're trying to use the best tools and practices in order to produce a quality enginneered product.
