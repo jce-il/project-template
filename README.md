@@ -4,7 +4,7 @@ for now our project name is:
 ### our vision
 _TODO_ a better tomorrow
 
-![project logo)](images/Hadasa%20-%20Logo.jpg)
+![project logo](images/Hadasa%20-%20Logo.jpg)
 
 - Group Chat: &nbsp;&nbsp;  [![Join the chat](https://badges.gitter.im/jce-il/project-template.svg)](https://gitter.im/Hadasa-Rehabilitation/Lobby)
 
