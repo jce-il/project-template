@@ -1,8 +1,7 @@
 # ScientistsCompetition
 
-A template repository with wiki for a team project at JCE's software engineering course (replace with the mission of your project).
-
-(See also:rRecommended [checklist](https://github.com/ddbeck/readme-checklist/blob/master/checklist.md) for a README) 
+תחרות מדענים ומפתחים צעירים בישראל מתקיימת מזה 21 שנים.
+התחרות פונה לתלמידי תיכון בכיתות י'- י"ב מכל הארץ, הנמצאים בשלבי ביצוע וכתיבה של עבודות מחקר ופרויקטים טכנולוגיים מעולים בהיקף של 5 יחידות לימוד בתחומי פיזיקה, כימיה, מתמטיקה, מדעי החיים והסביבה, טכנולוגיה והנדסה, מדעי המחשב, היסטוריה ומדעי החברה או תחומים משולבים.
 
 ![project logo (this one for is taken from basecamp - a project management service)](https://www.klipfolio.com/sites/default/files/integrations/basecamp.png)
 
