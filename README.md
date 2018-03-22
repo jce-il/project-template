@@ -6,7 +6,7 @@
 ![project logo (this one for is taken from basecamp - a project management service)](https://www.mada.org.il/sites/default/files/title-young-2015.png)
 
 ## Hosting
-(http://www.mada.org.il/en)
+http://www.mada.org.il/en
 
 ## Tools & Practices
 We're trying to use the best tools and practices in order to produce a quality enginneered product.
