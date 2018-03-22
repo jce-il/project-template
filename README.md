@@ -11,6 +11,10 @@ Create a platform that will provide them with means for communication and self e
 
 <br/>
 <br/>
+### README table of contents:
+### [something something](https://github.com/DavidDr90/Hadasa-Rehabilitation/blob/master/README.md#next-is-the-tamplate-file-as-copyed-from-the-coures-repo)
+### [Tools and Practices](https://github.com/DavidDr90/Hadasa-Rehabilitation/blob/master/README.md#tools--practices)
+### [Disclaimer and Links](https://github.com/DavidDr90/Hadasa-Rehabilitation/blob/master/README.md#disclaimer)
 
 
 Please visit our wiki for furthur project info: 
