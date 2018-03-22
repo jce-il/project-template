@@ -1,7 +1,7 @@
 # ScientistsCompetition
 
-תחרות מדענים ומפתחים צעירים בישראל מתקיימת מזה 21 שנים.
-התחרות פונה לתלמידי תיכון בכיתות י'- י"ב מכל הארץ, הנמצאים בשלבי ביצוע וכתיבה של עבודות מחקר ופרויקטים טכנולוגיים מעולים בהיקף של 5 יחידות לימוד בתחומי פיזיקה, כימיה, מתמטיקה, מדעי החיים והסביבה, טכנולוגיה והנדסה, מדעי המחשב, היסטוריה ומדעי החברה או תחומים משולבים.
+Competition for young scientists and developers in Israel has been going on for 21 years.
+The science museum aims to promote scientific and technological education among youth from all sectors of the population by promoting science projects, especially for high school students in grades 10-12,who are in the process of writing and writing research papers and excellent technological projects in the fields of technology, computer science, physics, chemistry, environmental sciences, social sciences, life sciences and history.
 
 ![project logo (this one for is taken from basecamp - a project management service)](http://www.gojerusalem.co.il/_media/media/207/2452.jpg)
 ![](https://www.mada.org.il/sites/default/files/title-young-2015.png)
