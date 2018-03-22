@@ -3,7 +3,7 @@
 תחרות מדענים ומפתחים צעירים בישראל מתקיימת מזה 21 שנים.
 התחרות פונה לתלמידי תיכון בכיתות י'- י"ב מכל הארץ, הנמצאים בשלבי ביצוע וכתיבה של עבודות מחקר ופרויקטים טכנולוגיים מעולים בהיקף של 5 יחידות לימוד בתחומי פיזיקה, כימיה, מתמטיקה, מדעי החיים והסביבה, טכנולוגיה והנדסה, מדעי המחשב, היסטוריה ומדעי החברה או תחומים משולבים.
 
-![project logo (this one for is taken from basecamp - a project management service)](https://www.mada.org.il/sites/default/files/title-young-2015.png)(http://www.mada.org.il/ar)
+![project logo (this one for is taken from basecamp - a project management service)](https://www.mada.org.il/sites/default/files/title-young-2015.png)(http://www.gojerusalem.co.il/_media/media/207/2452.jpg)
 
 ## Hosting
 http://www.mada.org.il/en
