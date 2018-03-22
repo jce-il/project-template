@@ -11,7 +11,7 @@ Create a platform that will provide them with means for communication and self e
 
 <br/>
 <br/>
-### README table of contents:
+
 <br/>
 [Aphasia.](https://en.wikipedia.org/wiki/Aphasia)
 <br/>
