@@ -2,8 +2,8 @@ for now our project name is:
 # Hadasa - Rehabilitation App
 
 ### Our Vision
-Deliver a product to improve the condition of people suffering from Aphasia.
-Create a platformthat will provide them with means for communication and self expression.
+Deliver a product to improve the condition of people suffering from [Aphasia.](https://en.wikipedia.org/wiki/Aphasia) <br/>
+Create a platform that will provide them with means for communication and self expression.
 
 ![project logo](images/Hadasa%20-%20Logo.jpg)
 
