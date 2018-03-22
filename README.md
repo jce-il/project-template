@@ -13,7 +13,7 @@ Create a platform that will provide them with means for communication and self e
 <br/>
 ### README table of contents:
 <br/>
-[something something](https://github.com/DavidDr90/Hadasa-Rehabilitation/blob/master/README.md#next-is-the-tamplate-file-as-copyed-from-the-coures-repo)
+[Aphasia.](https://en.wikipedia.org/wiki/Aphasia)
 <br/>
 [Tools and Practices](https://github.com/DavidDr90/Hadasa-Rehabilitation/blob/master/README.md#tools--practices)
 <br/>
