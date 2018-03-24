@@ -1,4 +1,4 @@
-# Scientists Competition
+# Scientists Competition Registration System
 ## Bloomfield Science Museum Jerusalem
 
 Competition for young scientists and developers in Israel has been going on for 21 years.
