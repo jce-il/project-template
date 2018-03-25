@@ -12,11 +12,11 @@ Create a platform that will provide them with means for communication and self e
 
 - Group Chat: &nbsp;&nbsp;  [![Join the chat](https://badges.gitter.im/jce-il/project-template.svg)](https://gitter.im/Hadasa-Rehabilitation/Lobby)
 
-<br/> README table of contents: <br/>
-
+<!--<br/> README table of contents: <br/>
 - [Tempalte whateverrrr](https://github.com/DavidDr90/Hadasa-Rehabilitation#next-is-the-tamplate-file-as-copyed-from-the-coures-repo ) 
 - [Tools and Practices](https://github.com/DavidDr90/Hadasa-Rehabilitation/blob/master/README.md#tools--practices)
 - [Disclaimer and Links](https://github.com/DavidDr90/Hadasa-Rehabilitation/blob/master/README.md#disclaimer)
+-->
 
 
 Please visit our [wiki](https://github.com/daviddr90/Hadasa-Rehabilitation/wiki) for furthur project info: 
