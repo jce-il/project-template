@@ -22,9 +22,10 @@ Create a platform that will provide them with means for communication and self e
 Please visit our [wiki](https://github.com/daviddr90/Hadasa-Rehabilitation/wiki) for furthur project info: 
 ### [User Manual](../../wiki/user-manual) (empty for now)
 ### [Team Page](../../wiki/team)
+### [Inception](../../wiki/inception)
 
-## Please visit our [live application](https://demo.reactstarterkit.com/)
-- Alright, currently only a landing page...
+<!--## Please visit our [live application](https://demo.reactstarterkit.com/)
+- Alright, currently only a landing page...-->
 
 ## Disclaimer
 This project is developed as part of the requirements for a [software engineering course](https://github.com/jce-il/se-class/wiki) at the software engineering department - [Azrieli College of Engineering](http://www.jce.ac.il/), Jerusalem, Israel.
