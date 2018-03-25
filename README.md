@@ -20,7 +20,7 @@ Create a platform that will provide them with means for communication and self e
 
 
 Please visit our [wiki](https://github.com/daviddr90/Hadasa-Rehabilitation/wiki) for furthur project info: 
-### [User Manual](../../wiki/user-manual) (empty for now)
+<!--### [User Manual](../../wiki/user-manual) (empty for now)-->
 ### [Team Page](../../wiki/team)
 ### [Inception](../../wiki/inception)
 
