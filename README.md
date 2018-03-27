@@ -23,6 +23,8 @@ Please visit our [wiki](https://github.com/daviddr90/Hadasa-Rehabilitation/wiki)
 <!--### [User Manual](../../wiki/user-manual) (empty for now)-->
 ### [Team Page](../../wiki/team)
 ### [Inception](../../wiki/inception)
+### [SRS](../../wiki/srs)
+
 
 <!--## Please visit our [live application](https://demo.reactstarterkit.com/)
 - Alright, currently only a landing page...-->
