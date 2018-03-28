@@ -13,7 +13,7 @@ For the museum admins we ewill develop a data production system that will allow 
 about the registration process.
 
 ## Hosting
-http://www.mada.org.il/en
+
 
 ## Tools & Practices
 We're trying to use the best tools and practices in order to produce a quality enginneered product.
