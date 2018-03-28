@@ -1,7 +1,7 @@
 # Scientists Competition Registration System
 ## Bloomfield Science Museum Jerusalem
 
-[[https://image.ibb.co/jYHcVS/logo.jpg]]
+![alt text](https://image.ibb.co/jYHcVS/logo.jpg)
 
 Competition for young scientists and developers in Israel has been going on for 21 years.
 The science museum aims to promote scientific and technological education among youth from all sectors of the population by promoting science projects, especially for high school students in grades 10-12,who are in the process of writing and writing research papers and excellent technological projects in the fields of technology, computer science, physics, chemistry, environmental sciences, social sciences, life sciences and history.
