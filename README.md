@@ -1,4 +1,5 @@
-<h1 align="center">Reshit</h1>  <img src=http://www.tilboshet.co.il/images/itempics/52c47dbda520V_small.jpg>
+<h1>Reshit</h1>
+
 ## Summary
 
 This repository will include the source code for Reshit.
