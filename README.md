@@ -1,10 +1,6 @@
 <h1>Reshit
 <img align="right" src="http://www.tilboshet.co.il/images/itempics/52c47dbda520V_small.jpg" width="100" height="100"/>
 </h1>
-<br/><br/><br/>
-
-
-
 
 ## Summary
 
