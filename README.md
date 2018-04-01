@@ -1,7 +1,7 @@
-<h1>Reshit</h1>
+<h1>Reshit</h1> 
 
 ## Summary
-
+<img align="right" src="http://www.tilboshet.co.il/images/itempics/52c47dbda520V_small.jpg" width="100" height="100"/>
 This repository will include the source code for Reshit.
 
 The project's purpose is to unify and organize all the needed information for the teachers, in one click. 
