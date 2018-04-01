@@ -27,7 +27,7 @@ We're trying to use the best tools and practices in order to produce a quality e
 | Project Management Board| [here](https://github.com/jce-il/project-template/projects/1) |
 | Documnetation | [Wiki](https://github.com/Itay-Hefetz/ScientistsCompetition/wiki) |
 
-## Please visit our [live application](http://yharshama.mada.org.il/)
+## Please visit our [live application]()
 - This is the current signup system that the client wants to change
 
 
