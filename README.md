@@ -27,8 +27,8 @@ We're trying to use the best tools and practices in order to produce a quality e
 | Project Management Board| [here](https://github.com/jce-il/project-template/projects/1) |
 | Documnetation | [Wiki](https://github.com/Itay-Hefetz/ScientistsCompetition/wiki) |
 
-## Please visit our [live application]()
-- This is the current signup system that the client wants to change
+## Please visit our [live application](https://proto-d8703.firebaseapp.com/#/screens/d12245cc-1680-458d-89dd-4f0d7fb22724)
+- This is the current prototype of our registration system
 
 
 ## Disclaimer
