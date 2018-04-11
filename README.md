@@ -23,7 +23,7 @@ We're trying to use the best tools and practices in order to produce a quality e
 | Recommended IDE | [VSCode](https://code.visualstudio.com) |
 | Group Chat | [![Join the chat at https://gitter.im/jce-il/project-template](https://badges.gitter.im/jce-il/project-template.svg)](https://gitter.im/jce-il/ScientistsCompetition) |
 | License | [licence](https://github.com/Itay-Hefetz/ScientistsCompetition/blob/master/LICENSE) |
-| Issues | [[issues](https://github.com/Itay-Hefetz/ScientistsCompetition/issues) |
+| Issues | [issues](https://github.com/Itay-Hefetz/ScientistsCompetition/issues) |
 | Project Management Board| [here](https://github.com/jce-il/project-template/projects/1) |
 | Documnetation | [Wiki](https://github.com/Itay-Hefetz/ScientistsCompetition/wiki) |
 
