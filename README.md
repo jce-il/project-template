@@ -44,7 +44,7 @@ Please visit our wiki for furthur project info:
 - [Project Idea](docs/idea.pdf) ([Presentation](docs/idea-slides.pdf))
 - [Project Inception](../../wiki/inception)
 - [Software Requirements Specification](../../wiki/srs)
-- [Software Design Specification](../../wiki/sds)
+- [Software Design Specification](https://github.com/Itay-Hefetz/ScientistsCompetition/wiki/SDS)
 
 ### Iteration Pages
 - [Iteration 0 - ZFR](../../wiki/iter0-zfr)
