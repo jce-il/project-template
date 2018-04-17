@@ -24,7 +24,7 @@ We're trying to use the best tools and practices in order to produce a quality e
 | Group Chat | [![Join the chat at https://gitter.im/jce-il/project-template](https://badges.gitter.im/jce-il/project-template.svg)](https://gitter.im/jce-il/ScientistsCompetition) |
 | License | [Licence](https://github.com/Itay-Hefetz/ScientistsCompetition/blob/master/LICENSE) |
 | Issues | [Issues](https://github.com/Itay-Hefetz/ScientistsCompetition/issues) |
-| Project Management Board| [here](https://github.com/Itay-Hefetz/ScientistsCompetition/projects/4?add_cards_query=is%3Aopen) |
+| Project Management Board| [Main board](https://github.com/Itay-Hefetz/ScientistsCompetition/projects/4?add_cards_query=is%3Aopen) |
 | Documnetation | [Wiki](https://github.com/Itay-Hefetz/ScientistsCompetition/wiki) |
 
 ## Please visit our [live application](https://proto-d8703.firebaseapp.com/#/screens/d12245cc-1680-458d-89dd-4f0d7fb22724)
