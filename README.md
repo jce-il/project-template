@@ -38,7 +38,7 @@ Please visit our wiki for furthur project info:
 
 ### [User Manual](../../wiki/user-manual)
 
-### [Developers Manual](../../wiki/development-manual)
+### [Developers Manual](../../wiki/developers-manual)
 
 ### [Team Page](https://github.com/Itay-Hefetz/ScientistsCompetition/wiki/Team-Page)
 
