@@ -51,17 +51,7 @@ body
     padding-right: 10px;
 }
 
-input[type=text] 
-{
-    border-radius: 6px;
-    box-shadow: 0px 0px 2px #666666;
-}
-input[type=password] 
-{
-    border-radius: 6px;
-    box-shadow: 0px 0px 2px #666666;
-}
-input[type=checkbox] 
+input
 {
     border-radius: 6px;
     box-shadow: 0px 0px 2px #666666;

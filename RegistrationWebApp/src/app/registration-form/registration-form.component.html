@@ -47,21 +47,8 @@
         </td>
         <td class="marked">תאריך לידה*</td>
         <td>
-            <select id="day">
-                <option>יום</option>
-                <option>1</option>
-                <option>2</option>
-              </select>
-              <select id="month">
-                  <option>חודש</option>
-                  <option>ינואר</option>
-                  <option>פברואר</option>
-              </select>
-              <select id="year">
-                  <option>שנה</option>
-                  <option>1980</option>
-                  <option>1981</option>
-              </select>
+          <input type="date" id="exampleInput" name="input" ng-model="example.value"
+       placeholder="yyyy-MM-dd" min="1990-01-01" max="2099-12-31" required />
         </td>
       </tr>
       <tr>
