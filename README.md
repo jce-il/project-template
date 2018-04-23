@@ -12,7 +12,7 @@ For the museum admins we ewill develop a data production system that will allow 
 about the registration process.
 
 ## Hosting
-
+Firebase service
 
 ## Tools & Practices
 We're trying to use the best tools and practices in order to produce a quality enginneered product.
@@ -36,12 +36,13 @@ This project is developed as part of the requirements for a [software engineerin
 
 Please visit our wiki for furthur project info: 
 
-### [User Manual](../../wiki/user-manual) (empty for now)
+### [User Manual](../../wiki/user-manual)
+
+### [Developers Manual](../../wiki/developers-manual)
 
 ### [Team Page](https://github.com/Itay-Hefetz/ScientistsCompetition/wiki/Team-Page)
 
 ### Project Documents
-- [Project Idea](docs/idea.pdf) ([Presentation](docs/idea-slides.pdf))
 - [Project Inception](../../wiki/inception)
 - [Software Requirements Specification](../../wiki/srs)
 - [Software Design Specification](https://github.com/Itay-Hefetz/ScientistsCompetition/wiki/SDS)
@@ -49,9 +50,6 @@ Please visit our wiki for furthur project info:
 ### Iteration Pages
 - [Iteration 0 - ZFR](../../wiki/iter0-zfr)
 - [Iteration 1 - MVP](https://github.com/Itay-Hefetz/ScientistsCompetition/wiki/Iter1-MVP)
-- [Iteration 2 - Feature X]()
-- [Iteration 3 - Feature Y]()
-- [Iteration 4 - Feature Z]()
 
 
 
