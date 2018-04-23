@@ -1,0 +1,8 @@
+body{
+    background: radial-gradient(ellipse at center, rgba(222,239,255,1) 0%,rgba(152,190,222,1) 100%) 
+                ,radial-gradient(ellipse at center, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(73,165,191,1) 100%);
+    margin: 0;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-attachment: fixed;
+}
