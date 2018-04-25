@@ -1,10 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+
 import { AppComponent } from './app.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
-import { LoginScreenComponent } from './login-screen/login-screen.component';
-import { FooterComponent } from './footer/footer.component';
 import {DatabaseService} from './services/database.service';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -17,14 +16,11 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationFormComponent,
-    LoginScreenComponent,
-    LoginScreenComponent,
-    FooterComponent
+    RegistrationFormComponent
   ],
   imports: [
     BrowserModule,
-	  FormsModule,
+	FormsModule,
     AngularFireModule.initializeApp(environment.firebase), // imports firebase/app needed for everything
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
@@ -34,6 +30,6 @@ import { FormsModule } from '@angular/forms';
   providers: [
     DatabaseService
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

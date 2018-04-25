@@ -1,4 +1,4 @@
-/*.header
+.header
 {
 	background-color: #6999BD; 
 	height: 152px;
@@ -51,7 +51,17 @@ body
     padding-right: 10px;
 }
 
-input
+input[type=text] 
+{
+    border-radius: 6px;
+    box-shadow: 0px 0px 2px #666666;
+}
+input[type=password] 
+{
+    border-radius: 6px;
+    box-shadow: 0px 0px 2px #666666;
+}
+input[type=checkbox] 
 {
     border-radius: 6px;
     box-shadow: 0px 0px 2px #666666;
@@ -88,6 +98,7 @@ select
 .marked
 {
     color: red;
+    
 }
 
 .webSiteLogo
@@ -131,4 +142,3 @@ select
     text-align: center;
 }
 
-*/

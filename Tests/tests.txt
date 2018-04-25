@@ -1,0 +1,11 @@
+export declare class FirebaseApp implements FBApp {
+    name: string;
+    automaticDataCollectionEnabled: boolean;
+    options: {};
+    auth: () => FirebaseAuth;
+    database: () => FirebaseDatabase;
+    messaging: () => FirebaseMessaging;
+    storage: () => FirebaseStorage;
+    delete: () => Promise<any>;
+    firestore: () => FirebaseFirestore;
+}

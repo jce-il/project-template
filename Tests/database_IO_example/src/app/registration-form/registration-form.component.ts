@@ -1,5 +1,3 @@
-import {User} from '../user'
-
 import { Component, OnInit } from '@angular/core';
 import {DatabaseService} from '../services/database.service';
 import { AngularFirestore } from'angularfire2/firestore';
@@ -9,26 +7,22 @@ import { AngularFirestore } from'angularfire2/firestore';
   templateUrl: './registration-form.component.html',
   styleUrls: ['./registration-form.component.css']
 })
-export class RegistrationFormComponent{
-  types = ['student', 'teacher', 'checker', 'manager'];
-  user = new User(this.types[0], '', '', '', '', '')
-
-  submitted = false;
+export class RegistrationFormComponent implements OnInit {
 
   constructor(public db : DatabaseService) { }
 
-  onSubmit() { this.submitted = true; }
-
-  get diagnostic() { return JSON.stringify(this.user); }
+  ngOnInit() {
+  }
 
   public onClick()
   {
-    this.db.addData(this.user);
+    this.db.addData();
   }
 
-  public printDBdata()
+  public onPrint()
   {
-    //alert("alo");
     this.db.getData();
+
   }
+
 }

@@ -1,5 +1,5 @@
 {
-  "name": "scientists-competition",
+  "name": "angular2-authentication-firebase",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -21,18 +21,17 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
-<<<<<<< HEAD
-    "bootstrap": "^4.1.0",
-=======
+    "@firebase/app": "^0.2.0",
+    "angular2-fontawesome": "^5.2.1",
     "angularfire2": "^5.0.0-rc.6.0",
->>>>>>> cb94c9757ef7457b4f0e2c90271f42152cfb098d
     "core-js": "^2.4.1",
     "firebase": "^4.13.1",
+    "font-awesome": "^4.7.0",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
-    "@angular/cli": "~1.7.3",
+    "@angular/cli": "~1.7.4",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
     "@types/jasmine": "~2.8.3",
