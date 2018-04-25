@@ -33,5 +33,8 @@ export class RegistrationFormComponent{
 
   }
 
+  public alo(){
+    alert("Alo !");
+  }
 
 }
