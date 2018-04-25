@@ -32,16 +32,4 @@ export class RegistrationFormComponent{
     this.db.getData();
 
   }
-
-  public alo(){
-    alert("Alex !");
-
-  }
-  public alex()
-  {
-  
-
-  }
-
-
 }
