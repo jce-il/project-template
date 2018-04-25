@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DatabaseService} from '../services/database.service';
+import { AngularFirestore } from'angularfire2/firestore';
 
 @Component({
   selector: 'app-registration-form',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(public db : DatabaseService) { }
 
   ngOnInit() {
+  }
+
+  public onClick()
+  {
+    this.db.addData();
+  }
+
+  public onPrint()
+  {
+    this.db.getData();
+
   }
 
 }
