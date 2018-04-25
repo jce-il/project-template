@@ -19,17 +19,16 @@ export class RegistrationFormComponent{
 
   onSubmit() { this.submitted = true; }
 
-  // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.user); }
 
   public onClick()
   {
-    this.db.addData();
+    this.db.addData(this.user);
   }
 
-  public onPrint()
+  public printDBdata()
   {
+    //alert("alo");
     this.db.getData();
-
   }
 }

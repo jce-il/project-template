@@ -1,23 +1,22 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from'angularfire2/firestore'
-
+import { AngularFirestore } from'angularfire2/firestore';
+import {User} from '../user';
 @Injectable()
 export class DatabaseService {
 
   private dataCollections;
-  private data;
   private allData;
+  private user : User;
 
   constructor(private afs: AngularFirestore) 
   { 
     this.dataCollections = afs.collection<any>('usersInfo');
-    this.data = {name:"moran",lastName:"zargari"};
     this.allData = "";
   }
 
-  public addData()
+  public addData(user:User)
   {
-    this.dataCollections.add(this.data);
+    this.dataCollections.add(JSON.parse(JSON.stringify(user)));
   }
 
   public getData()
@@ -25,7 +24,9 @@ export class DatabaseService {
     this.dataCollections.valueChanges().subscribe(res=>{
       for(var i = 0 ; i < res.length; i++)
       {
-        this.allData += res[i].name + " " + res[i].lastName + "\n";
+
+        this.allData += "email: "+ res[i].email+ " password:"+ res[i].password+"\n";
+       
       }
       alert(this.allData);
     })
