@@ -34,11 +34,13 @@ export class RegistrationFormComponent{
   }
 
   public alo(){
-    alert("Alo !");
+    alert("Alex !");
+
   }
   public alex()
   {
-    
+  
+
   }
 
 
