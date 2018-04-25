@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
+import { LoginScreenComponent } from './login-screen/login-screen.component';
+import { FooterComponent } from './footer/footer.component';
 import { AppComponent } from './app.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import {DatabaseService} from './services/database.service';
@@ -16,7 +16,9 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationFormComponent
+    RegistrationFormComponent,
+    LoginScreenComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
