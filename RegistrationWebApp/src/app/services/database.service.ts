@@ -25,10 +25,12 @@ export class DatabaseService {
       for(var i = 0 ; i < res.length; i++)
       {
 
-        this.allData += "email: "+ res[i].email+ " password:"+ res[i].password+"\n";
+        this.allData += "email: "+ res[i].email+ " password:"+ res[i].password+"uid: "+res[i].uid+"\n";
+
        
       }
       alert(this.allData);
+      this.allData="";
     })
   }
 

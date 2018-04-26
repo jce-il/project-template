@@ -1,5 +1,5 @@
 import {User} from '../user'
-
+import { AuthService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {DatabaseService} from '../services/database.service';
 import { AngularFirestore } from'angularfire2/firestore';
@@ -16,7 +16,7 @@ export class RegistrationFormComponent{
 
   submitted = false;
 
-  constructor(public db : DatabaseService) { }
+  constructor(public db : DatabaseService,private auth: AuthService) { }
 
   onSubmit() { this.submitted = true; }
 
@@ -24,7 +24,11 @@ export class RegistrationFormComponent{
 
   public onClick()
   {
-    this.db.addData(this.user);
+    this.auth.emailSignUp(this.user.email,this.user.password)
+    .then((res) => {
+      this.user.uid=res.uid;
+      this.db.addData(this.user);
+    })
   }
 
   public printDBdata()
