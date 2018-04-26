@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DatabaseService} from '../services/database.service';
+import { AuthService } from '../services/auth.service';
+
 
 @Component({
   selector: 'app-user-home-page',
@@ -8,12 +10,10 @@ import {DatabaseService} from '../services/database.service';
 })
 export class UserHomePageComponent implements OnInit {
 
-  constructor(public db : DatabaseService) { }
+  constructor(public db : DatabaseService,private auth: AuthService) { }
 
   ngOnInit() {
     this.db.getAllDBUsers();
-    
   }
-
 
 }
