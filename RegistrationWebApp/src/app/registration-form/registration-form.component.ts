@@ -20,7 +20,7 @@ export class RegistrationFormComponent{
 
   onSubmit() { this.submitted = true; }
 
-  get diagnostic() { return JSON.stringify(this.user); }
+  //get diagnostic() { return JSON.stringify(this.user); }
 
   public registerUser()
   {
@@ -29,10 +29,5 @@ export class RegistrationFormComponent{
       this.user.uid=res.uid;
       this.db.addUserToDB(this.user);
     })
-  }
-
-  public printDBdata()
-  {
-    this.db.getAllDBUsers();
   }
 }

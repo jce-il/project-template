@@ -5,9 +5,8 @@ import {User} from '../user';
 export class DatabaseService {
 
   private dataCollections;
-  private registeredUsers;
+  public registeredUsers;
   private user : User;
-
   constructor(private afs: AngularFirestore) 
   { 
     const settings = {timestampsInSnapshots: true};
@@ -26,10 +25,8 @@ export class DatabaseService {
     this.dataCollections.valueChanges().subscribe(collection=>{
       for(var i = 0 ; i < collection.length; i++)
       {
-        this.registeredUsers += "email: "+ collection[i].email+ "\npassword:"+ collection[i].password+"\nuid: "+collection[i].uid+"\n\n";
+        this.registeredUsers += "   email:   "+ collection[i].email+ "\n   password:   "+ collection[i].password+"\n   uid:   "+collection[i].uid+"   \n\n   ";
       }
-      alert(this.registeredUsers);
-      this.registeredUsers="";
     })
   }
 
