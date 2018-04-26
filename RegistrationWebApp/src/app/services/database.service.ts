@@ -14,17 +14,17 @@ export class DatabaseService {
     this.registeredUsers = "";
   }
 
-  public addData(user:User)
+  public addUserToDB(user:User)
   {
     this.dataCollections.add(JSON.parse(JSON.stringify(user)));
   }
 
-  public getData()
+  public getAllDBUsers()
   {
-    this.dataCollections.valueChanges().subscribe(res=>{
-      for(var i = 0 ; i < res.length; i++)
+    this.dataCollections.valueChanges().subscribe(collection=>{
+      for(var i = 0 ; i < collection.length; i++)
       {
-        this.registeredUsers += "email: "+ res[i].email+ " password:"+ res[i].password+"uid: "+res[i].uid+"\n";
+        this.registeredUsers += "email: "+ collection[i].email+ " password:"+ collection[i].password+"uid: "+collection[i].uid+"\n";
       }
       alert(this.registeredUsers);
       this.registeredUsers="";

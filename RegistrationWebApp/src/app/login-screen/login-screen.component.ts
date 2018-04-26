@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { FormsModule, FormGroup,FormBuilder ,Validators,ReactiveFormsModule  } from '@angular/forms';
 
@@ -30,7 +30,7 @@ export class LoginScreenComponent implements OnInit {
   signIn() {
     this.auth.signIn(this.userForm.value['email'], this.userForm.value['password'])
        .then((res) => {
-         this.router.navigate(['registrationForm'])
+         this.router.navigate(['loginScreen'])
        })
        .catch((err) =>
        this.logInError=true

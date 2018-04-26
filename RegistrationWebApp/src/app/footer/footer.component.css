@@ -1,6 +1,17 @@
-*{
+.logo{
+    direction: rtl;
+    margin: 0;
     width: 100%;
-    position: fixed;
+    position: relative;
     bottom: 0;
-    height: 10%;
 }
+.logo img{ float: right; margin-left: 4%; margin-right: 3%;}
+.musem{ height: 60px;; width: 9%; margin-bottom: 15px; margin-right: 0;}
+.education{ height: 2%; width: 2%;}
+.intel{ height: 3%; width: 3%;}
+.keren{ height: 6%; width: 7%;}
+.uni{ height: 10%; width: 10%;}
+.academy{ height: 3%; width: 3%;}
+.federal{ height: 5%; width: 5%;}
+.iserd{ height: 2.5%; width: 2.5%;}
+

@@ -22,17 +22,17 @@ export class RegistrationFormComponent{
 
   get diagnostic() { return JSON.stringify(this.user); }
 
-  public onClick()
+  public registerUser()
   {
     this.auth.emailSignUp(this.user.email,this.user.password)
     .then((res) => {
       this.user.uid=res.uid;
-      this.db.addData(this.user);
+      this.db.addUserToDB(this.user);
     })
   }
 
   public printDBdata()
   {
-    this.db.getData();
+    this.db.getAllDBUsers();
   }
 }

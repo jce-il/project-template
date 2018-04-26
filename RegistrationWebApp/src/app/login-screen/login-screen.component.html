@@ -1,81 +1,67 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
-
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!------ Include the above in your HEAD tag ---------->
-  
-   <!-- page-header -->
-      <div class="page-header">
-          <div class="container">
-              <div class="row">
-                  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                      <div class="page-caption">
-                          <h1 class="page-title">תחרות מדענים ומפתחים צעירים בישראל</h1>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <!-- /.page-header-->
-      <!-- news -->
-      <div class="card-section">
-          <div class="container">
-              <div class="card-block bg-white mb30">
-                  <div class="row">
-                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                          <!-- section-title -->
-                          <div class="section-title mb-0">
-                              <form class="form-horizontal" [formGroup]="userForm" (ngSubmit)="signIn()">
-                                  <fieldset>
-                                  
-                                  <!-- Form Name -->
-                                  <legend>Login</legend>
-                                  
-                                  <!-- Text input-->
-                                  <div class="form-group">
-                                    <label class="col-md-4 control-label" for="username">Username</label>  
-                                    <div class="col-md-4">
-                                    <input id="username" name="username" type="email" placeholder="Username" class="form-control input-md" formControlName="email" required>
+ <!-- page-header -->
+    <div class="page-header">
+        <meta charset="utf-8"/>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="page-caption">
+                        <h1 class="page-title">תחרות מדענים ומפתחים צעירים בישראל</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.page-header-->
+    <!-- news -->
+    <div class="card-section">
+        <div class="container">
+            <div class="card-block bg-white mb30">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <!-- section-title -->
+                        <div class="section-title mb-0">
+                            <form class="form-horizontal" [formGroup]="userForm" (ngSubmit)="signIn()">
+                                <fieldset>
+                                
+                                <!-- Form Name -->
+                                <legend>כניסת משתמש</legend>
+                                
+                                    <div class="form-group">
+                                      <label for="exampleInputEmail1">כתובת דואר אלקטרוני</label>
+                                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="הזן כתובת דואר אלקטרוני" formControlName="email" required>
                                     </div>
-                                  </div>
-
-                                  <div *ngIf="formErrors.email">
+									<div *ngIf="formErrors.email">
                                       {{ formErrors.email }}
                                     </div>
-                                  
-                                  <!-- Password input-->
-                                  <div class="form-group">
-                                    <label class="col-md-4 control-label" for="password">Password</label>
-                                    <div class="col-md-4">
-                                      <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md" formControlName="password" required>
+                                    <div class="form-group">
+                                      <label for="exampleInputPassword1">סיסמא</label>
+                                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="הזן סיסמא" formControlName="password" required>
                                     </div>
-                                  </div>
-
-                                  <div *ngIf="formErrors.password">
+									
+									<div *ngIf="formErrors.password">
                                       {{ formErrors.password }}
                                     </div>
-                                  
-                                  <!-- Button -->
-                                  <div class="form-group">
-                                    <label class="col-md-4 control-label" for="btnSubmit"></label>
-                                    <div class="col-md-4">  
-									   <button id="btnSubmit" name="btnSubmit" class="btn btn-primary" [disabled]="!userForm.valid">Submit</button>
-                                    </div>
-                                    <div id="loginError" *ngIf="logInError">Invalid username or password!!</div>
-                                  </div>
-                                  
-                                  </fieldset>
-                                  </form>
-                          </div>
-                          <!-- /.section-title -->
-                      </div>
-                  </div>
-              </div>
-              <div class="row">
-                      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
-                Created for <a href="https://easetemplate.com/downloads/digital-marketing-website-template-hike-bold-design/" target="_blank">easetemplate</a>
-                </div></div>
-              </div>
-              </div>
-  
+									
+                                    <div class="btn">
+                                        <button type="submit" class="btnEnter btn-primary" [disabled]="!userForm.valid">היכנס</button>
+										<div id="loginError" *ngIf="logInError">Invalid username or password!!</div>
+                                        <a routerLink = "/registrationForm"><button type="submit" class="btnSignin btn-primary">הרשמה</button></a>
+                                    </div>                               
+                                </fieldset>
+                                </form>
+                        </div>
+                        <!-- /.section-title -->
+                    </div>
+                </div>
+            </div>
+            
+            </div>
+            </div>
+            <div class="footer">
+                <app-footer></app-footer>
+            </div>
