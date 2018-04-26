@@ -41,15 +41,14 @@
                                     <div class="form-group">
                                       <label for="exampleInputPassword1">סיסמא</label>
                                       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="הזן סיסמא" formControlName="password" required>
+                                      <div id="loginError" *ngIf="logInError">שם משתמש או סיסמא אינם נכונים</div>
                                     </div>
-									
 									<div *ngIf="formErrors.password">
                                       {{ formErrors.password }}
                                     </div>
 									
                                     <div class="btn">
                                         <button type="submit" class="btnEnter btn-primary" [disabled]="!userForm.valid">היכנס</button>
-										<div id="loginError" *ngIf="logInError">Invalid username or password!!</div>
                                         <a routerLink = "/registrationForm"><button type="submit" class="btnSignin btn-primary">הרשמה</button></a>
                                     </div>                               
                                 </fieldset>

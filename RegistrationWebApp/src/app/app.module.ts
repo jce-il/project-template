@@ -14,6 +14,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './services/app-routing.module';
 import { AuthService } from './services/auth.service'
 import { FormsModule, FormGroup,FormBuilder ,Validators,ReactiveFormsModule  } from '@angular/forms';
+import { UserHomePageComponent } from './user-home-page/user-home-page.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FormsModule, FormGroup,FormBuilder ,Validators,ReactiveFormsModule  } f
     AppComponent,
     RegistrationFormComponent,
     LoginScreenComponent,
-    FooterComponent
+    FooterComponent,
+    UserHomePageComponent
   ],
   imports: [
     BrowserModule,

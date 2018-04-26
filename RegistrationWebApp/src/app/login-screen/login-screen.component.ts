@@ -30,7 +30,7 @@ export class LoginScreenComponent implements OnInit {
   signIn() {
     this.auth.signIn(this.userForm.value['email'], this.userForm.value['password'])
        .then((res) => {
-         this.router.navigate(['loginScreen'])
+         this.router.navigate(['homepage'])
        })
        .catch((err) =>
        this.logInError=true
