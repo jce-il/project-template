@@ -40,7 +40,6 @@ export class LoginScreenComponent implements OnInit {
   signIn() {
     this.auth.signIn(this.userForm.value['email'], this.userForm.value['password'])
        .then((res) => {
-         alert(res.uid);
          this.router.navigate(['registrationForm'])
        })
        .catch((err) => console.log('error: ' + err));

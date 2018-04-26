@@ -33,7 +33,6 @@ export class RegistrationFormComponent{
 
   public printDBdata()
   {
-    //alert("alo");
     this.db.getData();
   }
 }
