@@ -7,6 +7,9 @@ export class User {
         public password : string,
         public birthday : string,
         public engFname? : string,
-        public engLname? : string
+        public engLname? : string,
+        public address? : string,
+        public schoolName? : string,
+        public uid? : string,
 ){}
 }
