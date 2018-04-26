@@ -5,13 +5,13 @@ import {User} from '../user';
 export class DatabaseService {
 
   private dataCollections;
-  private allData;
+  private registeredUsers;
   private user : User;
 
   constructor(private afs: AngularFirestore) 
   { 
     this.dataCollections = afs.collection<any>('usersInfo');
-    this.allData = "";
+    this.registeredUsers = "";
   }
 
   public addData(user:User)
@@ -24,13 +24,10 @@ export class DatabaseService {
     this.dataCollections.valueChanges().subscribe(res=>{
       for(var i = 0 ; i < res.length; i++)
       {
-
-        this.allData += "email: "+ res[i].email+ " password:"+ res[i].password+"uid: "+res[i].uid+"\n";
-
-       
+        this.registeredUsers += "email: "+ res[i].email+ " password:"+ res[i].password+"uid: "+res[i].uid+"\n";
       }
-      alert(this.allData);
-      this.allData="";
+      alert(this.registeredUsers);
+      this.registeredUsers="";
     })
   }
 
