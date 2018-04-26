@@ -1,0 +1,25 @@
+<form [formGroup]="userForm"  *ngIf="newUser"  (ngSubmit)="signup()">
+
+    <h3>New User Signup</h3>
+    <label for="email">Email</label>
+    <input type="email"  class="input"
+           formControlName="email" required >
+  
+    <div *ngIf="formErrors.email">
+      {{ formErrors.email }}
+    </div>
+  
+    <label for="password">Password</label>
+    <input type="password" class="input"
+           formControlName="password" required >
+  
+    <div *ngIf="formErrors.password" class="notification is-danger">
+      {{ formErrors.password }}
+    </div>
+  
+    <div *ngIf="userForm.valid" class="notification is-success">Form is valid</div>
+    <button type="submit" class="button" [disabled]="!userForm.valid">Submit</button>
+  
+  </form>
+
+  

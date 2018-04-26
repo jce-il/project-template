@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormsModule, FormGroup,FormBuilder ,Validators,ReactiveFormsModule  } from '@angular/forms';
 
@@ -6,14 +6,14 @@ type UserFields = 'email' | 'password';
 type FormErrors = { [u in UserFields]: string };
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.css']
 })
-export class LoginComponent implements OnInit {
+export class SignUpComponent implements OnInit {
 
   userForm: FormGroup;
-  passReset = false; 
+  newUser = true;
   formErrors: FormErrors = {
     'email': '',
     'password': '',
@@ -30,25 +30,20 @@ export class LoginComponent implements OnInit {
     },
   };
 
-  constructor(private auth: AuthService ,private fb: FormBuilder) {}
+  constructor(private auth: AuthService ,private fb: FormBuilder) { }
 
   ngOnInit() {
     this.buildForm();
   }
 
-  signIn() {
-    this.auth.signIn(this.userForm.value['email'], this.userForm.value['password'])
-       .then((res) => {
-          console.log(res);
+  signup() {
+    this.auth.emailSignUp(this.userForm.value['email'], this.userForm.value['password'])
+    .then((res) => {
+      console.log(res);
 
-       })
-       .catch((err) => console.log('error: ' + err));
- }
-
- resetPassword() {
-  this.auth.resetPassword(this.userForm.value['email'])
-    .then(() => this.passReset = true);
-}
+   })
+   .catch((err) => console.log('error: ' + err));
+  }
 
   buildForm() {
     this.userForm = this.fb.group({
@@ -63,5 +58,3 @@ export class LoginComponent implements OnInit {
     });
   }
 }
-
-
