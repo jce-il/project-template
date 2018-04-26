@@ -3,6 +3,7 @@ import {User} from '../user'
 import { Component, OnInit } from '@angular/core';
 import {DatabaseService} from '../services/database.service';
 import { AngularFirestore } from'angularfire2/firestore';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration-form',
