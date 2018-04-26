@@ -1,0 +1,84 @@
+
+<div class = "back">
+    <img class = "webSiteLogo" src = "assets/logo.png">
+    <table class="tablestyle" cellspacing="3">
+      <tr>
+        <td class="head" colspan="4">טופס הרשמה לתלמידים</td>
+      </tr>
+      <tr>
+        <p></p>
+      </tr>
+    <form>
+      <tr>
+        <td class="marked"><label for="firstName">שם פרטי*</label></td>
+        <td><input type = "text" id="firstName" required [(ngModel)]="user.firstName" name = "firstName"/></td>
+        <td class="marked"><label for = "lastName">שם משפחה*</label></td>
+        <td><input type = "text" id = "lastName" required [(ngModel)]="user.lastName" name = "lastName"/></td>
+        
+      </tr>
+      <tr>
+        <td>שם פרטי באנגלית</td>
+        <td><input type = "text" id = "engFname" [(ngModel)]="user.engFname" name = "engFname"/></td>
+        <td>שם משפחה באנגלית</td>
+        <td><input type = "text" id = "engLname" [(ngModel)]="user.engLname" name = "engLname"/></td>
+      </tr>
+      <tr>
+        <td class="marked">דואר אלקטרוני*</td>
+        <td><input type = "text" id = "email" required [(ngModel)]="user.email" name = "email"/></td>
+        <td class="marked">סוג משתמש*</td>
+      <td> <select class="user-type" id="type" required [(ngModel)]="user.type" name="type">
+          <option *ngFor="let type of types" [value]="type">{{type}}</option>
+        </select>
+      </td>
+      </tr>
+      <tr>
+        <td class="marked">סיסמא*</td>
+        <td><input type="password" id = "password" required [(ngModel)]="user.password" name = "password"/></td>
+        <td class="marked">אימות סיסמא*</td>
+        <td><input type="password" id = "txtAugust"/></td>
+      </tr>
+      <tr>
+        <td class="marked">נייד/טלפון בבית*</td>
+        <td><input type = "text" id = "txtSeptember"/></td>
+        <td>טלפון נוסף</td>
+        <td><input type = "text" id = "txtOctober"/></td>
+      </tr>
+      <tr>
+        <td>מין</td>
+        <td>
+          <input type = "checkbox" id = "male">זכר
+          <input type = "checkbox" id = "female">נקבה
+        </td>
+        <td class="marked">תאריך לידה*</td>
+        <td>
+          <input type="date" name="input" ng-model="example.value"
+       placeholder="yyyy-MM-dd" min="1990-01-01" max="2099-12-31" id = "birthday" required [(ngModel)]="user.birthday" name = "birthday"/>
+        </td>
+      </tr>
+      <tr>
+        <td>כתובת</td>
+        <td><input type = "text" id = "txtBonusPointsa"/></td>
+        <td>ישוב</td>
+        <td><input type = "text" id = "txtBonusPointsb"/></td>
+      </tr>
+      <tr>
+        <td>שם ביה"ס</td>
+        <td><input type = "text" id = "txtBonusPointsc"/></td>
+        <td>ישוב ביה"ס</td>
+        <td><input type = "text" id = "txtBonusPointsd"/></td>
+      </tr>
+    </form>
+      <tr>
+        <br>
+      </tr>
+      {{diagnostic}}
+
+      <tr>
+        <td class="shift" colspan="4"><button id = "Calculate" class="btn" (click) = "onClick()">שמור והמשך לשלב הבא</button>
+        <td class="shift" colspan="4"><button id = "Calculate" class="btn" (click) = "printDBdata()">הדפס פרטים מתוך DB</button>
+
+      </tr>
+    </table>
+  
+    <img class = "downBanner" src = "assets/down.JPG">
+</div>
