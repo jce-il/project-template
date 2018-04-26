@@ -13,22 +13,12 @@ type FormErrors = { [u in UserFields]: string };
 })
 export class LoginScreenComponent implements OnInit {
 
+  logInError=false;
   userForm: FormGroup;
   passReset = false; 
   formErrors: FormErrors = {
     'email': '',
     'password': '',
-  };
-  validationMessages = {
-    'email': {
-      'required': 'Email is required.',
-      'email': 'Email must be a valid email',
-    },
-    'password': {
-      'required': 'Password is required.',
-      'minlength': 'Password must be at least 4 characters long.',
-      'maxlength': 'Password cannot be more than 40 characters long.',
-    },
   };
 
   constructor(private auth: AuthService ,private fb: FormBuilder,private router: Router) {}
@@ -40,10 +30,11 @@ export class LoginScreenComponent implements OnInit {
   signIn() {
     this.auth.signIn(this.userForm.value['email'], this.userForm.value['password'])
        .then((res) => {
-         alert(res.uid);
          this.router.navigate(['registrationForm'])
        })
-       .catch((err) => console.log('error: ' + err));
+       .catch((err) =>
+       this.logInError=true
+      );
  }
 
  resetPassword() {
