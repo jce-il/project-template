@@ -10,6 +10,8 @@ export class DatabaseService {
 
   constructor(private afs: AngularFirestore) 
   { 
+    const settings = {timestampsInSnapshots: true};
+    afs.app.firestore().settings(settings);
     this.dataCollections = afs.collection<any>('usersInfo');
     this.registeredUsers = "";
   }
