@@ -26,7 +26,7 @@ export class DatabaseService {
     this.dataCollections.valueChanges().subscribe(collection=>{
       for(var i = 0 ; i < collection.length; i++)
       {
-        this.registeredUsers += "email: "+ collection[i].email+ " password:"+ collection[i].password+"uid: "+collection[i].uid+"\n";
+        this.registeredUsers += "email: "+ collection[i].email+ "\npassword:"+ collection[i].password+"\nuid: "+collection[i].uid+"\n\n";
       }
       alert(this.registeredUsers);
       this.registeredUsers="";
