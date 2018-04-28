@@ -44,23 +44,31 @@ export class RegistrationFormComponent{
   get phone() { return this.userform.get('phone'); }
 
   public validateForm(){
+    // Limitations on fields in the registration form
     this.userform = new FormGroup({
       'firstname': new FormControl(this.user.firstName, [
+        //first name is required, must be in Hebrew, at least 2 letters.
         Validators.required,
         Validators.minLength(2),
         Validators.pattern("[א-ת]+")
       ]),
       'lastname': new FormControl(this.user.lastName, [
-        Validators.required
+        //last name is required, must be in Hebrew, at least 2 letters.
+        Validators.required,
+        Validators.minLength(2),
+        Validators.pattern("[א-ת ]+")
       ]),
       'email': new FormControl(this.user.email, [
+        //Email is required, must be in email format
         Validators.required,
         Validators.email
       ]),
       'engfname': new FormControl(this.user.engFname, [
+        //English First Name. Must have only English letters
         Validators.pattern("[a-zA-Z ]*")
       ]),
       'phone' : new FormControl("", [
+        //phone number is required, must be 8-11 digits (only numbers).
         Validators.pattern("[0-9]*"),
         Validators.minLength(8),
         Validators.maxLength(11)
