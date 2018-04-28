@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import {DatabaseService} from '../services/database.service';
 import { AngularFirestore } from'angularfire2/firestore';
 import { RouterLink, Router } from '@angular/router';
-import { FormsModule, FormGroup,FormControl, FormBuilder ,Validators,ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule, FormGroup,FormControl, FormBuilder ,Validators,ReactiveFormsModule } from '@angular/forms';
 
 
 @Component({
@@ -13,13 +13,37 @@ import { FormsModule, FormGroup,FormControl, FormBuilder ,Validators,ReactiveFor
   styleUrls: ['./registration-form.component.css']
 })
 export class RegistrationFormComponent{
-  types = ['student', 'teacher', 'checker', 'manager'];
-  user = new User(false, this.types[0])
-  userform: FormGroup;
-  public submitted = false;
+  private userTypes;
+  private user : User;
+  private userform: FormGroup;
 
+  ngOnInit() 
+  {
+    this.validateForm()
+  }
 
-  ngOnInit(): void {
+  constructor(public db : DatabaseService,private auth: AuthService) 
+  {
+    this.user = new User(false, this.userTypes[0]);
+    this.userTypes = ['student', 'teacher', 'checker', 'manager'];
+  }
+
+  public registerUser()
+  {
+    this.auth.emailSignUp(this.user.email,this.user.password)
+    .then((res) => {
+      this.user.uid=res.uid;
+      this.db.addUserToDB(this.user);
+    })
+  }
+
+  get firstname() { return this.userform.get('firstname'); }
+  get lastname() { return this.userform.get('lastname'); }
+  get email() { return this.userform.get('email'); }
+  get engfname() { return this.userform.get('engfname'); }
+  get phone() { return this.userform.get('phone'); }
+
+  public validateForm(){
     this.userform = new FormGroup({
       'firstname': new FormControl(this.user.firstName, [
         Validators.required,
@@ -44,27 +68,5 @@ export class RegistrationFormComponent{
     });
   }
 
-  get firstname() { return this.userform.get('firstname'); }
-  get lastname() { return this.userform.get('lastname'); }
-  get email() { return this.userform.get('email'); }
-  get engfname() { return this.userform.get('engfname'); }
-  get phone() { return this.userform.get('phone'); }
-
-  constructor(public db : DatabaseService,private auth: AuthService) { }
-
-  public onSubmit() 
-  { 
-    this.submitted = true; 
-  }
-
-  //get diagnostic() { return JSON.stringify(this.user); }
-
-  public registerUser()
-  {
-    this.auth.emailSignUp(this.user.email,this.user.password)
-    .then((res) => {
-      this.user.uid=res.uid;
-      this.db.addUserToDB(this.user);
-    })
-  }
 }
+
