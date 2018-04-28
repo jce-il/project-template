@@ -12,12 +12,15 @@ import { FormsModule, FormGroup,FormControl, FormBuilder ,Validators,ReactiveFor
   templateUrl: './registration-form.component.html',
   styleUrls: ['./registration-form.component.css']
 })
-export class RegistrationFormComponent{
-  types = ['student', 'teacher', 'checker', 'manager'];
-  user = new User(this.types[0], '', '', '', '', '')
-  userform: FormGroup;
+export class RegistrationFormComponent
+{
+  public types = ['student', 'teacher', 'checker', 'manager'];
+  public user = new User(false,this.types[0], '', '', '', '', '')
+  public userform: FormGroup;
+  public submitted = false;
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
     this.userform = new FormGroup({
       'firstName': new FormControl(this.user.firstName, [
         Validators.required,
@@ -32,12 +35,12 @@ export class RegistrationFormComponent{
   get firstname() { return this.userform.get('firstName'); }
   get lastname() { return this.userform.get('lastName'); }
 
-
-  submitted = false;
-
   constructor(public db : DatabaseService,private auth: AuthService) { }
 
-  onSubmit() { this.submitted = true; }
+  public onSubmit() 
+  { 
+    this.submitted = true; 
+  }
 
   //get diagnostic() { return JSON.stringify(this.user); }
 

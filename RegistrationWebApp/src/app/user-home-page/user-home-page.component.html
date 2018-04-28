@@ -1,2 +1,8 @@
-<button (click)="auth.LogOut()">LOG FUCKING OUT</button>
-<p>{{db.registeredUsers}}</p>
+<button (click)="logOut()">LOG OUT</button>
+<div *ngIf="db.loggedIn">
+    <p>First name: {{db.loggedInUser.firstName}}</p>
+    <p>Last name: {{db.loggedInUser.lastName}}</p>
+    <p>Email: {{db.loggedInUser.email}}</p>
+    <p>Password: {{db.loggedInUser.password}}</p>
+    <p>User id: {{db.loggedInUser.uid}}</p>
+</div>

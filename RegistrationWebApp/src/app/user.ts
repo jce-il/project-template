@@ -1,5 +1,6 @@
 export class User {
     constructor(
+        public loggedIn : boolean,
         public type : string,
         public firstName : string,
         public lastName : string,
