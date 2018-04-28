@@ -7,12 +7,16 @@ export class DatabaseService {
   private dataCollections;
   public registeredUsers;
   private user : User;
+  public loggedInUserUID : string;
+  public loggedInUser : User;
+  public loggedIn : boolean; //check if this is the right way to do
   constructor(private afs: AngularFirestore) 
   { 
     const settings = {timestampsInSnapshots: true};
     afs.app.firestore().settings(settings);
     this.dataCollections = afs.collection<any>('usersInfo');
     this.registeredUsers = "";
+    this.loggedIn = false;
   }
 
   public addUserToDB(user:User)
@@ -27,6 +31,20 @@ export class DatabaseService {
       {
         this.registeredUsers += "   email:   "+ collection[i].email+ "\n   password:   "+ collection[i].password+"\n   uid:   "+collection[i].uid+"   \n\n   ";
       }
+    })
+  }
+
+  public getLoggedInUser(){
+
+    this.dataCollections.valueChanges().subscribe(collection=>{
+    for(var i = 0 ; i < collection.length; i++)
+    {
+      if(collection[i].uid === this.loggedInUserUID)
+      {
+        this.loggedInUser = collection[i];
+        this.loggedIn = true;
+      }
+    }        
     })
   }
 

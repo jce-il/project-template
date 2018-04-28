@@ -14,7 +14,12 @@ export class UserHomePageComponent implements OnInit {
 
   ngOnInit() {
     this.db.registeredUsers = '';
-    this.db.getAllDBUsers();
+    this.db.getLoggedInUser();
+  }
+
+  public logOut(){
+    this.auth.LogOut();
+    this.db.loggedIn = false;
   }
 
 }

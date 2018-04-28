@@ -14,9 +14,10 @@ import { FormsModule, FormGroup,FormControl, FormBuilder ,Validators,ReactiveFor
 })
 export class RegistrationFormComponent{
   types = ['student', 'teacher', 'checker', 'manager'];
-  user = new User(this.types[0])
+  user = new User(false, this.types[0])
   userform: FormGroup;
-  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  public submitted = false;
+
 
   ngOnInit(): void {
     this.userform = new FormGroup({
@@ -49,12 +50,12 @@ export class RegistrationFormComponent{
   get engfname() { return this.userform.get('engfname'); }
   get phone() { return this.userform.get('phone'); }
 
-
-  submitted = false;
-
   constructor(public db : DatabaseService,private auth: AuthService) { }
 
-  onSubmit() { this.submitted = true; }
+  public onSubmit() 
+  { 
+    this.submitted = true; 
+  }
 
   //get diagnostic() { return JSON.stringify(this.user); }
 

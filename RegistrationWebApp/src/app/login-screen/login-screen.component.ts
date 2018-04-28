@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { FormsModule, FormGroup,FormBuilder ,Validators,ReactiveFormsModule  } from '@angular/forms';
+import {DatabaseService} from '../services/database.service';
 
 type UserFields = 'email' | 'password';
 type FormErrors = { [u in UserFields]: string };
@@ -21,7 +22,7 @@ export class LoginScreenComponent implements OnInit {
     'password': '',
   };
 
-  constructor(private auth: AuthService ,private fb: FormBuilder,private router: Router) {}
+  constructor(private auth: AuthService ,private fb: FormBuilder,private router: Router, private db: DatabaseService) {}
 
   ngOnInit() {
     this.buildForm();
@@ -30,6 +31,7 @@ export class LoginScreenComponent implements OnInit {
   signIn() {
     this.auth.signIn(this.userForm.value['email'], this.userForm.value['password'])
        .then((res) => {
+         this.db.loggedInUserUID = res.uid;
          this.router.navigate(['homepage'])
        })
        .catch((err) =>
