@@ -1,6 +1,7 @@
 
 <div class = "back">
     <img class = "webSiteLogo" src = "assets/logo.png">
+    <form>
     <table class="tablestyle" cellspacing="3">
       <tr>
         <td class="head" colspan="4">טופס הרשמה לתלמידים</td>
@@ -8,23 +9,68 @@
       <tr>
         <p></p>
       </tr>
-    <form>
       <tr>
         <td class="marked"><label for="firstName">שם פרטי*</label></td>
-        <td><input type = "text" id="firstName" required [(ngModel)]="user.firstName" name = "firstName"/></td>
+        <td>
+          <div [formGroup]="userform">
+            <input type = "text" id="firstName" required [(ngModel)]="user.firstName" name = "firstName" formControlName="firstname"/>
+              <div *ngIf="firstname.invalid && (firstname.dirty)"
+              class="alert alert-danger">
+              <div *ngIf="firstname.errors.required">
+                  חובה להזין שם פרטי.
+                </div>
+                <div *ngIf="firstname.errors.minlength">
+                  שם פרטי חייב להכיל לפחות שתי אותיות.
+                </div>
+                <div *ngIf="firstname.errors.pattern">
+                    עברית כפרה
+                </div>
+              </div>
+          </div>
+        </td>
         <td class="marked"><label for = "lastName">שם משפחה*</label></td>
-        <td><input type = "text" id = "lastName" required [(ngModel)]="user.lastName" name = "lastName"/></td>
+        <td>
+          <div [formGroup]="userform">
+            <input type = "text" id = "lastName" required [(ngModel)]="user.lastName" name = "lastName" formControlName="lastname"/>
+            <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
+              class="alert alert-danger">
+              <div *ngIf="lastname.errors.required">
+                  חובה להזין שם משפחה.
+              </div>
+            </div>
+          </div>
+        </td>
         
       </tr>
       <tr>
         <td>שם פרטי באנגלית</td>
-        <td><input type = "text" id = "engFname" [(ngModel)]="user.engFname" name = "engFname"/></td>
+        <td>
+          <div [formGroup]="userform">
+          <input type = "text" id = "engFname" [(ngModel)]="user.engFname" name = "engFname" formControlName="engfname"/>
+          <div *ngIf="engfname.invalid && (engfname.dirty || engfname.touched)"
+              class="alert alert-danger">
+          <div *ngIf="engfname.errors.pattern">
+              English please
+          </div>
+          </div>
+          </div>
+        </td>
         <td>שם משפחה באנגלית</td>
         <td><input type = "text" id = "engLname" [(ngModel)]="user.engLname" name = "engLname"/></td>
       </tr>
       <tr>
         <td class="marked">דואר אלקטרוני*</td>
-        <td><input type = "text" id = "email" required [(ngModel)]="user.email" name = "email"/></td>
+        <td>
+         <div [formGroup]="userform">
+          <input type = "email" id = "email" required [(ngModel)]="user.email" name = "email" formControlName="email"/>
+          <div *ngIf="email.invalid && (email.dirty)"
+              class="alert alert-danger">
+              <div *ngIf="email.errors.email">
+                  כתובת דואר אלקטרוני אינה תקינה
+             </div>
+            </div>
+        </div>
+        </td>
         <td class="marked">סוג משתמש*</td>
       <td> <select class="user-type" id="type" required [(ngModel)]="user.type" name="type">
           <option *ngFor="let type of types" [value]="type">{{type}}</option>
@@ -39,7 +85,20 @@
       </tr>
       <tr>
         <td class="marked">נייד/טלפון בבית*</td>
-        <td><input type = "text" id = "txtSeptember"/></td>
+        <td>
+          <div [formGroup]="userform">
+          <input type = "phone" id = "phone" required [(ngModel)]="user.phone" name = "phone" formControlName="phone"/>
+          <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+            class="alert alert-danger">
+            <div *ngIf="phone.errors.pattern">
+             אלווו! טלפון זה מספרים..
+           </div>
+           <div *ngIf="(phone.errors.minlength || phone.errors.maxlength)">
+              מספר טלפון לא תקין.
+            </div>
+          </div>
+          </div>
+        </td>
         <td>טלפון נוסף</td>
         <td><input type = "text" id = "txtOctober"/></td>
       </tr>
@@ -67,7 +126,6 @@
         <td>ישוב ביה"ס</td>
         <td><input type = "text" id = "txtBonusPointsd"/></td>
       </tr>
-    </form>
       <tr>
         <br>
       </tr>
@@ -77,6 +135,6 @@
         </td>
       </tr>
     </table>
-  
+  </form>
     <img class = "downBanner" src = "assets/down.JPG">
 </div>
