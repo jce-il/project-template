@@ -1,134 +1,31 @@
-.header
-{
-	background-color: #6999BD; 
-	height: 152px;
-	margin-bottom: 11px;
-	border: 2px solid #000000;
-	border-radius: 8px;
-}
-
-.head
-{
-    text-align: center;
-    font-size: 30px;
-}
-
-.logo
-{
-	float: right;
-}
-	
-.taxTitle
-{
-	padding-top: 5px;
-	text-shadow: 5px 6px 14px #000000;
-	color: #B7FBFD;
-	font-size: 67px;
-    padding-left: 36px;
-}
-
-body
-{
-	background-color: #C4E1F6; 
-}
-
-.tablestyle
-{
-	border-radius: 12px 12px 12px 12px;
-	color: #000000;
-	font-family: 'Narkisim';
-    font-weight: normal;
-    font-size: 15px;
+*{
     direction: rtl;
-    margin-left:auto; 
-    margin-right:auto;
-    margin-top: 40px;
-    background:  linear-gradient(to bottom, #F7F7F7 0%, #E8E8E8 50%, #CFCFCF 100%);
-    background-size: cover;
-    background-position: 50% 50%;
-    box-shadow: 0px 0px 23px 0px rgba(50, 50, 50, 1);
-    text-shadow: 1px 1px 2px #8b8b8b;
-    padding-left: 10px;
-    padding-right: 10px;
+    
 }
 
-input
-{
-    border-radius: 6px;
-    box-shadow: 0px 0px 2px #666666;
+.page-header {border-radius: 10px; background: url('../../assets/Role-of-technology.jpg')no-repeat; position: relative; background-size: cover; margin: 0;}
+.page-caption { padding-top: 120px; padding-bottom: 104px; }
+.page-title { position: relative; top: -10px; width: 1400px; height: 50px; right: -200px; direction: rtl; float: right; font-size: 95px; line-height: 1; color: rgb(237, 222, 241); font-weight: bolder; text-align: right; font-family: 'Shuneet', serif; text-shadow: 10px 8px 10px rgb(31, 2, 43); }
+h3{font-weight: bolder; font-family: 'Shuneet', serif; font-size:55px; color:  rgb(204, 231, 173); float: left; position: relative; left: -290px; top: 60px; text-shadow: 10px 14px 10px rgb(24, 32, 19); }
+
+.container{
+    direction: rtl;
+    text-align: right;
+    position: relative;
+    bottom: 60px;
 }
 
-select
-{
-    border-radius: 6px;
-    box-shadow: 0px 0px 2px #666666;
+required{
+    color: brown;
 }
 
-.shift
-{
-	padding-bottom: 20px;
-	text-align: center;
-	font-size: 18px;
+.btn{ float: left;}
+
+button{
+    border-radius: 12px;
+    background-color: rgb(67, 103, 145);
+    margin: 10px;
+    color: aliceblue;
 }
 
-.btn
-{
-	background: #c7c7c7;
-	background-image: linear-gradient(to bottom, #c7c7c7, #949494);
-	border-radius: 16px;
-    text-shadow: 1px 1px 2px #808080;
-	box-shadow: 3px 3px 9px #666666;
-	font-family: 'Narkisim';
-	color: #000000;
-	font-size: 18px;
-	padding: 10px 20px 10px 20px;
-    text-decoration: none;
-    text-align: center;
-}
-
-.marked
-{
-    color: red;
-}
-
-.webSiteLogo
-{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    opacity: 0.9;
-    margin-top: 1%;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-    width: 100%;
-}
-
-.downBanner
-{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 60px;
-    opacity: 0.9;
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 16px;
-    width: 100%;
-}
-
-.back
-{
-    background: radial-gradient(ellipse at center, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(73,165,191,1) 100%);
-    margin-left: 30%;
-    margin-right: 30%;
-
-    box-shadow: 0px 0px 23px 0px rgba(50, 50, 50, 1);
-    border-radius: 16px;
-
-
-}
-
-.remark
-{
-    text-align: center;
-}
-
+.well{ border-radius: 15px; position: relative;}

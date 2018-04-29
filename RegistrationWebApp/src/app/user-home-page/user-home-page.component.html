@@ -1,5 +1,7 @@
-<button (click)="logOut()">LOG OUT</button>
+<button (click)="logOut()">Log Out</button>
 <div *ngIf="db.loggedIn">
+    <p>Logged in user details:</p>
+    <br>
     <p>First name: {{db.loggedInUser.firstName}}</p>
     <p>Last name: {{db.loggedInUser.lastName}}</p>
     <p>Email: {{db.loggedInUser.email}}</p>

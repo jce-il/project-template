@@ -1,146 +1,163 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href='http://serve.fontsproject.com/css?family=Shuneet:400,800' rel ='stylesheet' type='text/css'>
 
-<div class = "back">
-  <img class = "webSiteLogo" src = "assets/logo.png">
-  <form>
-  <table class="tablestyle" cellspacing="3">
-    <tr>
-      <td class="head" colspan="4">טופס הרשמה לתלמידים</td>
-    </tr>
-    <tr>
-      <p></p>
-    </tr>
-    <tr>
-      <td class="marked"><label for="firstName">שם פרטי*</label></td>
-      <td>
-        <div [formGroup]="userform">
-          <input type = "text" id="firstName" required [(ngModel)]="user.firstName" name = "firstName" formControlName="firstname"/>
-            <div *ngIf="firstname.invalid && (firstname.dirty)"
-            class="alert alert-danger">
-            <div *ngIf="firstname.errors.required">
-                חובה להזין שם פרטי.
+<div class="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="page-caption">
+                    <div class="page-title"> 
+                        <p> תחרות מדענים ומפתחים צעירים בישראל</p></div>
+                        <h3>תשע״ח 2018</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h1 class="well">טופס הרשמה</h1>
+    <div class="col-lg-12 well">
+      <div class="row">
+        <form>
+            <div class="col-sm-12">
+                <legend>רישום למערכת</legend>
+				
+				<div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>סוג משתמש *</label>
+						<select class="user-type" id="type" required [(ngModel)]="user.type" name="type">
+							<option *ngFor="let type of userTypes" [value]="type">{{type}}</option>
+						</select>
+					</div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label>דואר אלקטרוני *</label>
+                        <input type = "text" id = "email" required [(ngModel)]="user.email" name = "email"/>
+                        </div>
+                  </div>
+                  <div class="row">
+                      <div class="col-sm-6 form-group">
+                          <label>סיסמא *</label>
+                          <input type="password" id = "password" required [(ngModel)]="user.password" name = "password"/>
+                      </div>
+                      <div class="col-sm-6 form-group">
+                          <td class="marked">אימות סיסמא *</td>
+                          <td><input type="password" id = "txtAugust"/></td>
+                      </div>
+                  </div>
+                  
+
+                </div>  
+
+              <legend>פרטים אישים</legend>
+  
+            <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-6 form-group">
+                    <label for="firstName">שם פרטי *</label>
+                    <input type="text" id="firstName" placeholder="הזן שם פרטי" required [(ngModel)]="user.firstName" name = "firstName">
+                  </div>
+                  <div class="col-sm-6 form-group">
+                      <label for="lastName">שם משפחה *</label>
+                      <input type="text" id = "lastName" placeholder="הזן שם משפחה" required [(ngModel)]="user.lastName" name = "lastName">
+                  </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-sm-6 form-group">
+                    <label for="engFname">שם פרטי באנגלית</label>
+                    <input type="text" id="engFname" [(ngModel)]="user.engFname" name = "engFname">
+                  </div>
+                  <div class="col-sm-6 form-group">
+                      <label for="lastNameE">שם משפחה באנגלית</label>
+                      <input type = "text" id = "engLname" [(ngModel)]="user.engLname" name = "engLname"/>                  
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                            <label>נייד / טלפון בבית *</label>
+                            <input type="text"  id="phone1">
+                            </div>
+                          <div class="col-sm-6 form-group">
+                              <label>טלפון נוסף</label>
+                              <input type="text"  id="phone2">
+                          </div>
+                </div>
+            </div>
+           
+            <div class="col-sm-12">
+                <div class="gander">
+                    <label>מין</label>
+                      <input type = "checkbox" id = "male">זכר
+                      <input type = "checkbox" id = "female">נקבה
+                </div>
+            </div>
+            
+            <div class="col-sm-12">
+                <div class="birthDate">
+                    <label>תאריך לידה*</label>
+                    <input type="date" name="input" ng-model="example.value"
+                   placeholder="yyyy-MM-dd" min="1990-01-01" max="2099-12-31" id = "birthday" required [(ngModel)]="user.birthday" name = "birthday"/>
+                </div>
+            </div>
+            
+            <div class="col-sm-12">
+                <div class="row">
+                  <div class="col-lg-12">
+                      <label>כתובת</label>
+                  </div>
+                    
+                      <div class="col-sm-3 form-group">
+                        <label>ישוב</label>
+                        <input type = "text" id = "txtBonusPointsb"/>
+                      </div>	
+                      <div class="col-sm-3 form-group">
+                        <label>רחוב</label>
+                        <input type = "text" id = "address" [(ngModel)]="user.address" name = "address"/>                
+                      </div>	
+                      <div class="col-sm-3 form-group">
+                        <label>מספר</label>
+                        <input type="text">
+                      </div>		
+                    </div>
               </div>
-              <div *ngIf="firstname.errors.minlength">
-                שם פרטי חייב להכיל לפחות שתי אותיות.
+            
+              
+              <div class="col-sm-12">
+                <div class="row">
+                    
+                      <div class="col-sm-4 form-group">
+                          <label>בית ספר</label>
+                          <input type = "text" id = "schoolName" [(ngModel)]="user.schoolName" name = "schoolName"/>
+                      </div>
+                      <div class="col-sm-4 form-group">
+                        <label>ישוב בית ספר</label>
+                          <input type = "text" id = "txtBonusPointsd"/>
+                      </div>
+                      
+                </div>
+                  
+                
               </div>
-              <div *ngIf="firstname.errors.pattern">
-                  עברית כפרה
-              </div>
-            </div>
-        </div>
-      </td>
-      <td class="marked"><label for = "lastName">שם משפחה*</label></td>
-      <td>
-        <div [formGroup]="userform">
-          <input type = "text" id = "lastName" required [(ngModel)]="user.lastName" name = "lastName" formControlName="lastname"/>
-          <div *ngIf="lastname.invalid && (lastname.dirty)"
-            class="alert alert-danger">
-            <div *ngIf="lastname.errors.required">
-                חובה להזין שם משפחה.
-            </div>
-            <div *ngIf="lastname.errors.minlength">
-              שם משפחה חייב להכיל לפחות שתי אותיות.
-            </div>
-            <div *ngIf="lastname.errors.pattern">
-                אותיות בעברית בלבד
-            </div>
-          </div>
-        </div>
-      </td>
-      
-    </tr>
-    <tr>
-      <td>שם פרטי באנגלית</td>
-      <td>
-        <div [formGroup]="userform">
-        <input type = "text" id = "engFname" [(ngModel)]="user.engFname" name = "engFname" formControlName="engfname"/>
-        <div *ngIf="engfname.invalid && (engfname.dirty)"
-            class="alert alert-danger">
-        <div *ngIf="engfname.errors.pattern">
-            English please
-        </div>
-        </div>
-        </div>
-      </td>
-      <td>שם משפחה באנגלית</td>
-      <td><input type = "text" id = "engLname" [(ngModel)]="user.engLname" name = "engLname"/></td>
-    </tr>
-    <tr>
-      <td class="marked">דואר אלקטרוני*</td>
-      <td>
-       <div [formGroup]="userform">
-        <input type = "email" id = "email" required [(ngModel)]="user.email" name = "email" formControlName="email"/>
-        <div *ngIf="email.invalid && (email.dirty)"
-            class="alert alert-danger">
-            <div *ngIf="email.errors.email">
-                כתובת דואר אלקטרוני אינה תקינה
-           </div>
-          </div>
+        </form>
       </div>
-      </td>
-      <td class="marked">סוג משתמש*</td>
-    <td> <select class="user-type" id="type" required [(ngModel)]="user.type" name="type">
-        <option *ngFor="let type of types" [value]="type">{{type}}</option>
-      </select>
-    </td>
-    </tr>
-    <tr>
-      <td class="marked">סיסמא*</td>
-      <td><input type="password" id = "password" required [(ngModel)]="user.password" name = "password"/></td>
-      <td class="marked">אימות סיסמא*</td>
-      <td><input type="password" id = "txtAugust"/></td>
-    </tr>
-    <tr>
-      <td class="marked">נייד/טלפון בבית*</td>
-      <td>
-        <div [formGroup]="userform">
-        <input type = "phone" id = "phone" required [(ngModel)]="user.phone" name = "phone" formControlName="phone"/>
-        <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
-          class="alert alert-danger">
-          <div *ngIf="phone.errors.pattern">
-           אלווו! טלפון זה מספרים..
-         </div>
-         <div *ngIf="(phone.errors.minlength || phone.errors.maxlength)">
-            מספר טלפון לא תקין.
-          </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="btn">
+            <a routerLink = "/loginScreen"><button id = "Calculate" class="btn" (click) = "registerUser()">הירשם</button></a>
         </div>
-        </div>
-      </td>
-      <td>טלפון נוסף</td>
-      <td><input type = "text" id = "txtOctober"/></td>
-    </tr>
-    <tr>
-      <td>מין</td>
-      <td>
-        <input type = "checkbox" id = "male">זכר
-        <input type = "checkbox" id = "female">נקבה
-      </td>
-      <td class="marked">תאריך לידה*</td>
-      <td>
-        <input type="date" name="input" ng-model="example.value"
-     placeholder="yyyy-MM-dd" min="1990-01-01" max="2099-12-31" id = "birthday" required [(ngModel)]="user.birthday" name = "birthday"/>
-      </td>
-    </tr>
-    <tr>
-      <td>כתובת</td>
-      <td><input type = "text" id = "address" [(ngModel)]="user.address" name = "address"/></td>
-      <td>ישוב</td>
-      <td><input type = "text" id = "txtBonusPointsb"/></td>
-    </tr>
-    <tr>
-      <td>שם ביה"ס</td>
-      <td><input type = "text" id = "schoolName" [(ngModel)]="user.schoolName" name = "schoolName"/></td>
-      <td>ישוב ביה"ס</td>
-      <td><input type = "text" id = "txtBonusPointsd"/></td>
-    </tr>
-    <tr>
-      <br>
-    </tr>
-    <tr>
-      <td class="shift" colspan="4">
-        <a routerLink = "/loginScreen"><button id = "Calculate" class="btn" (click) = "registerUser()">הירשם</button></a>
-      </td>
-    </tr>
-  </table>
-</form>
-  <img class = "downBanner" src = "assets/down.JPG">
+    </div>
+    
+</div>
+
+<div class="footer">
+  <app-footer></app-footer>
 </div>

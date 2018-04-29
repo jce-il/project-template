@@ -24,7 +24,7 @@ export class RegistrationFormComponent{
 
   constructor(public db : DatabaseService,private auth: AuthService) 
   {
-    this.userTypes = ['student', 'teacher', 'checker', 'manager'];
+    this.userTypes = ['תלמיד', 'מורה'];
     this.user = new User(false, this.userTypes[0]);
   }
 
