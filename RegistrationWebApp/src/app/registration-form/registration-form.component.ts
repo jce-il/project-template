@@ -37,12 +37,6 @@ export class RegistrationFormComponent{
     })
   }
 
-  get firstname() { return this.userform.get('firstname'); }
-  get lastname() { return this.userform.get('lastname'); }
-  get email() { return this.userform.get('email'); }
-  get engfname() { return this.userform.get('engfname'); }
-  get phone() { return this.userform.get('phone'); }
-
   public validateForm(){
     // Limitations on fields in the registration form
     this.userform = new FormGroup({
@@ -75,6 +69,13 @@ export class RegistrationFormComponent{
       ])
     });
   }
+
+  // gets - link the formControls to html
+  get firstname() { return this.userform.get('firstname'); }
+  get lastname() { return this.userform.get('lastname'); }
+  get email() { return this.userform.get('email'); }
+  get engfname() { return this.userform.get('engfname'); }
+  get phone() { return this.userform.get('phone'); }
 
 }
 
