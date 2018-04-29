@@ -9,9 +9,14 @@ export class User {
         public birthday? : string,
         public engFname? : string,
         public engLname? : string,
-        public address? : string,
-        public schoolName? : string,
         public uid? : string,
-        public phone? : string
+        public phone? : string,
+        public anotherPhone? : string,
+        public gender? : string,
+        public city? : string,
+        public street? : string,
+        public appartment? : string,     
+        public schoolName? : string,   
+        public schoolCity? : string
 ){}
 }

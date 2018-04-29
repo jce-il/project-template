@@ -35,22 +35,20 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-6 form-group">
-                        <label>דואר אלקטרוני *</label>
+                        <label>דואר אלקטרוני*</label>
                         <input type = "text" id = "email" required [(ngModel)]="user.email" name = "email"/>
                         </div>
                   </div>
                   <div class="row">
                       <div class="col-sm-6 form-group">
-                          <label>סיסמא *</label>
+                          <label>סיסמא*</label>
                           <input type="password" id = "password" required [(ngModel)]="user.password" name = "password"/>
                       </div>
                       <div class="col-sm-6 form-group">
-                          <td class="marked">אימות סיסמא *</td>
-                          <td><input type="password" id = "txtAugust"/></td>
+                          <td><label>אימות סיסמא*</label>
+                          <input type="password"/></td>
                       </div>
                   </div>
-                  
-
                 </div>  
 
               <legend>פרטים אישים</legend>
@@ -83,11 +81,11 @@
                 <div class="row">
                     <div class="col-sm-6 form-group">
                             <label>נייד / טלפון בבית *</label>
-                            <input type="text"  id="phone1">
+                            <input type="text"  id="phone1" [(ngModel)]="user.phone" name = "phoneNumber">
                             </div>
                           <div class="col-sm-6 form-group">
                               <label>טלפון נוסף</label>
-                              <input type="text"  id="phone2">
+                              <input type="text"  id="phone2"  [(ngModel)]="user.anotherPhone" name = "anotherPhoneNumber">
                           </div>
                 </div>
             </div>
@@ -95,8 +93,8 @@
             <div class="col-sm-12">
                 <div class="gander">
                     <label>מין</label>
-                      <input type = "checkbox" id = "male">זכר
-                      <input type = "checkbox" id = "female">נקבה
+                      <input type = "checkbox" id = "male" [(ngModel)]="user.gender" name = "gender">זכר
+                      <input type = "checkbox" id = "female"  [(ngModel)]="user.gender" name = "gender">נקבה
                 </div>
             </div>
             
@@ -104,27 +102,27 @@
                 <div class="birthDate">
                     <label>תאריך לידה*</label>
                     <input type="date" name="input" ng-model="example.value"
-                   placeholder="yyyy-MM-dd" min="1990-01-01" max="2099-12-31" id = "birthday" required [(ngModel)]="user.birthday" name = "birthday"/>
+                    placeholder="yyyy-mm-dd" min="1990-01-01" max="2099-12-31" id = "birthday" required [(ngModel)]="user.birthday" name = "birthday"/>
                 </div>
             </div>
             
             <div class="col-sm-12">
                 <div class="row">
                   <div class="col-lg-12">
-                      <label>כתובת</label>
+                      <legend>כתובת</legend>
                   </div>
                     
-                      <div class="col-sm-3 form-group">
+                      <div class="col-sm-4 form-group">
                         <label>ישוב</label>
-                        <input type = "text" id = "txtBonusPointsb"/>
+                        <input type = "text" id = "city"  [(ngModel)]="user.city" name = "city"/>
                       </div>	
-                      <div class="col-sm-3 form-group">
+                      <div class="col-sm-4 form-group">
                         <label>רחוב</label>
-                        <input type = "text" id = "address" [(ngModel)]="user.address" name = "address"/>                
+                        <input type = "text" id = "street" [(ngModel)]="user.street" name = "street"/>                
                       </div>	
-                      <div class="col-sm-3 form-group">
-                        <label>מספר</label>
-                        <input type="text">
+                      <div class="col-sm-4 form-group">
+                        <label>מספר בית</label>
+                        <input type="text" id = "appartment" [(ngModel)]="user.appartment" name = "appartment">
                       </div>		
                     </div>
               </div>
@@ -139,7 +137,7 @@
                       </div>
                       <div class="col-sm-4 form-group">
                         <label>ישוב בית ספר</label>
-                          <input type = "text" id = "txtBonusPointsd"/>
+                        <input type = "text" id = "schoolCity" [(ngModel)]="user.schoolCity" name = "schoolCity"/>
                       </div>
                       
                 </div>
@@ -152,7 +150,7 @@
 
     <div class="col-sm-12">
         <div class="btn">
-            <a routerLink = "/loginScreen"><button id = "Calculate" class="btn" (click) = "registerUser()">הירשם</button></a>
+            <a routerLink = "/loginScreen"><button id = "Calculate" class="btn" (click) = "registerUser()">הירשם והמשך לשלב הבא</button></a>
         </div>
     </div>
     
