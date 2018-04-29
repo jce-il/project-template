@@ -110,6 +110,6 @@ export class RegistrationFormComponent{
   get gender() { return this.userform.get('gender'); }
 
 
-  
+
 }
 
