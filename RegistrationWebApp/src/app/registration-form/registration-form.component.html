@@ -39,9 +39,8 @@
                         <div [formGroup]="userform">
                             <label>דואר אלקטרוני*</label>
                             <input type = "email" id = "email" required [(ngModel)]="user.email" name = "email" formControlName="email"/>
-                            <div *ngIf="email.invalid && (email.dirty)"
-                                class="alert alert-danger">
-                                <div *ngIf="email.errors.email">
+                            <div *ngIf="email.invalid && (email.dirty)">
+                                <div *ngIf="email.errors.email && !CheckIfEmptyField(user.email)" class="alert alert-danger">
                                     כתובת דואר אלקטרוני אינה תקינה
                                </div>
                               </div>
@@ -55,9 +54,9 @@
                           <div [formGroup]="userform">
                               <label>סיסמא*</label>
                               <input type="password" id = "password" required [(ngModel)]="user.password" name = "password" formControlName="password"/>
-                                <div *ngIf="password.invalid && (password.dirty)"
+                                <div *ngIf="password.invalid && (password.dirty) && !CheckIfEmptyField(user.password)"
                                 class="alert alert-danger">
-                                <div *ngIf="password.errors.required">
+                                <div *ngIf="password.errors.required && !CheckIfEmptyField(user.password)">
                                     חובה להזין סיסמא.
                                   </div>
                                   <div *ngIf="password.errors.minlength">
@@ -70,10 +69,10 @@
 
                           <div [formGroup]="userform">
                               <label>אימות סיסמא*</label>
-                              <input type="password" id = "confimpassword" name = "confimpassword" formControlName="confimpassword" required/>
-                                <div *ngIf="confimpassword.invalid && (confimpassword.dirty)"
+                              <input type="confimpassword" id = "confimpassword" name = "confimpassword" formControlName="confimpassword" required/>
+                                <div *ngIf="confimpassword.invalid && (confimpassword.dirty) && !CheckIfEmptyField(user.password)"
                                 class="alert alert-danger">
-                                <div *ngIf="confimpassword.errors.required">
+                                <div *ngIf="confimpassword.errors.required && !CheckIfEmptyField(user.password)">
                                     חובה להזין אימות סיסמה.
                                 </div>
                                 </div>
@@ -91,15 +90,15 @@
                       <div [formGroup]="userform">
                           <label for="firstName">שם פרטי *</label>
                           <input type = "text" id="firstName" required [(ngModel)]="user.firstName" placeholder="הזן שם פרטי" name = "firstName" formControlName="firstname"/>
-                            <div *ngIf="firstname.invalid && (firstname.dirty)"
+                            <div *ngIf="firstname.invalid && (firstname.dirty) && !CheckIfEmptyField(user.firstName)"
                             class="alert alert-danger">
-                            <div *ngIf="firstname.errors.required">
+                            <div *ngIf="firstname.errors.required && !CheckIfEmptyField(user.firstName)">
                                 חובה להזין שם פרטי.
                               </div>
-                              <div *ngIf="firstname.errors.minlength">
+                              <div *ngIf="firstname.errors.minlength  && !CheckIfEmptyField(user.firstName)">
                                 שם פרטי חייב להכיל לפחות שתי אותיות.
                               </div>
-                              <div *ngIf="firstname.errors.pattern">
+                              <div *ngIf="firstname.errors.pattern  && !CheckIfEmptyField(user.firstName)">
                                   עברית כפרה
                               </div>
                             </div>
@@ -110,15 +109,15 @@
                       <div [formGroup]="userform">
                           <label for="lastName">שם משפחה *</label>
                           <input type = "text" id = "lastName" required [(ngModel)]="user.lastName" placeholder="הזן שם משפחה" name = "lastName" formControlName="lastname"/>
-                          <div *ngIf="lastname.invalid && (lastname.dirty)"
+                          <div *ngIf="lastname.invalid && (lastname.dirty) && !CheckIfEmptyField(user.lastName)"
                             class="alert alert-danger">
-                            <div *ngIf="lastname.errors.required">
+                            <div *ngIf="lastname.errors.required && !CheckIfEmptyField(user.lastName)">
                                 חובה להזין שם משפחה.
                             </div>
-                            <div *ngIf="lastname.errors.minlength">
+                            <div *ngIf="lastname.errors.minlength && !CheckIfEmptyField(user.lastName)">
                               שם משפחה חייב להכיל לפחות שתי אותיות.
                             </div>
-                            <div *ngIf="lastname.errors.pattern">
+                            <div *ngIf="lastname.errors.pattern && !CheckIfEmptyField(user.lastName)">
                                 אותיות בעברית בלבד
                             </div>
                           </div>
@@ -132,9 +131,9 @@
                       <div [formGroup]="userform">
                           <label for="engFname">שם פרטי באנגלית</label>
                           <input type = "text" id = "engFname" [(ngModel)]="user.engFname" name = "engFname" formControlName="engfname"/>
-                          <div *ngIf="engfname.invalid && (engfname.dirty)"
+                          <div *ngIf="engfname.invalid && (engfname.dirty) && !CheckIfEmptyField(user.engFname)"
                               class="alert alert-danger">
-                          <div *ngIf="engfname.errors.pattern">
+                          <div *ngIf="engfname.errors.pattern && !CheckIfEmptyField(user.engFname)">
                               English please
                           </div>
                         </div>
@@ -152,12 +151,12 @@
                         <div [formGroup]="userform">
                             <label>נייד / טלפון בבית *</label>
                             <input type = "phone" id = "phone" required [(ngModel)]="user.phone" name = "phone" formControlName="phone"/>
-                            <div *ngIf="phone.invalid && (phone.dirty)"
+                            <div *ngIf="phone.invalid && (phone.dirty) && !CheckIfEmptyField(user.phone)"
                               class="alert alert-danger">
-                              <div *ngIf="phone.errors.pattern">
+                              <div *ngIf="phone.errors.pattern && !CheckIfEmptyField(user.phone)">
                                מספרים בלבד
                              </div>
-                             <div *ngIf="(phone.errors.minlength || phone.errors.maxlength)">
+                             <div *ngIf="(phone.errors.minlength || phone.errors.maxlength) && !CheckIfEmptyField(user.phone)">
                                 מספר טלפון לא תקין.
                               </div>
                             </div>
@@ -177,24 +176,24 @@
                         <option >זכר</option>
                         <option >נקבה</option>
                     </select>
-                    <div *ngIf="gender.invalid && (gender.dirty)"
+                    <div *ngIf="gender.invalid && (gender.dirty) && !CheckIfEmptyField(user.gender)"
                     class="alert alert-danger">
-                  <div *ngIf="gender.errors.required">
+                  <div *ngIf="gender.errors.required && !CheckIfEmptyField(user.gender)">
                   שדה חובה  
                   </div>
                 </div>
                 </div>
             </div>
-            
+            <div *ngIf="isUserStudent()">
             <div class="col-sm-12">
                 <div class="birthDate" [formGroup]="userform">
                     <label>תאריך לידה*</label>
                     <input type="date" name="input" ng-model="example.value"
                     placeholder="yyyy-mm-dd" min="1990-01-01" max="2099-12-31" id = "birthday" 
                     required [(ngModel)]="user.birthday" name = "birthday" formControlName="birthday"/>
-                    <div *ngIf="birthday.invalid && (birthday.dirty)"
+                    <div *ngIf="birthday.invalid && (birthday.dirty) && !CheckIfEmptyField(user.birthday)"
                     class="alert alert-danger">
-                  <div *ngIf="birthday.errors.required">
+                  <div *ngIf="birthday.errors.required && !CheckIfEmptyField(user.birthday)">
                   שדה חובה  
                   </div>
                 </div>
@@ -235,10 +234,11 @@
                       </div>
                 </div>
               </div>
+            </div>
         </form>
       </div>
     </div>
-
+    
     <div class="col-sm-12">
         <div class="btn">
             <button id = "Calculate" class="btn" (click) = "registerUser()">הירשם והמשך לשלב הבא</button>

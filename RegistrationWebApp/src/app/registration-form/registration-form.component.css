@@ -5,8 +5,8 @@
 
 .page-header {border-radius: 10px; background: url('../../assets/Role-of-technology.jpg')no-repeat; position: relative; background-size: cover; margin: 0;}
 .page-caption { padding-top: 120px; padding-bottom: 104px; }
-.page-title { position: relative; top: -10px; width: 1400px; height: 50px; right: -200px; direction: rtl; float: right; font-size: 95px; line-height: 1; color: rgb(237, 222, 241); font-weight: bolder; text-align: right; font-family: 'Shuneet', serif; text-shadow: 10px 8px 10px rgb(31, 2, 43); }
-h3{font-weight: bolder; font-family: 'Shuneet', serif; font-size:55px; color:  rgb(204, 231, 173); float: left; position: relative; left: -290px; top: 60px; text-shadow: 10px 14px 10px rgb(24, 32, 19); }
+.page-title { position: relative; top: -10px; width: 1400px; height: 50px; right: -200px; direction: rtl; float: right; font-size: 80px; line-height: 1; color: rgb(237, 222, 241); font-weight: bolder; text-align: right; font-family: 'Shuneet', serif; text-shadow: 10px 8px 10px rgb(31, 2, 43); }
+h3{font-weight: bolder; font-family: 'Shuneet', serif; font-size:55px; color:  rgb(204, 231, 173); float: left; position: relative; left: -260px; top: 60px; text-shadow: 10px 14px 10px rgb(24, 32, 19); }
 
 .container{
     direction: rtl;
@@ -30,4 +30,8 @@ button{
 
 .well{ border-radius: 15px; position: relative;}
 
-.hideError{font-size: 44px; color: maroon}
+.hideError{font-size: 25px; color: rgb(253, 0, 0); text-align: center}
+
+.alert{
+    color: red;
+}

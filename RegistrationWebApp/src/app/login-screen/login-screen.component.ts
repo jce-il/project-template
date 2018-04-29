@@ -22,7 +22,7 @@ export class LoginScreenComponent implements OnInit {
     'password': '',
   };
 
-  constructor(private auth: AuthService ,private fb: FormBuilder,private router: Router, private db: DatabaseService) {}
+  constructor(public auth: AuthService ,public fb: FormBuilder,public router: Router, public db: DatabaseService) {}
 
   ngOnInit() {
     this.buildForm();

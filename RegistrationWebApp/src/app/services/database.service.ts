@@ -4,9 +4,9 @@ import {User} from '../user';
 @Injectable()
 export class DatabaseService {
 
-  private dataCollections;
+  public dataCollections;
   public registeredUsers;
-  private user : User;
+  public user : User;
   public loggedInUserUID : string;
   public loggedInUser : User;
   public loggedIn : boolean; //check if this is the right way to do

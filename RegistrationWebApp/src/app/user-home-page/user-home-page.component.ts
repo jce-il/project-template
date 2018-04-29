@@ -10,7 +10,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class UserHomePageComponent implements OnInit {
 
-  constructor(private db : DatabaseService,private auth: AuthService) { }
+  constructor(public db : DatabaseService,public auth: AuthService) { }
 
   ngOnInit() {
     this.db.registeredUsers = '';

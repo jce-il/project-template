@@ -13,21 +13,21 @@ import { FormsModule, FormGroup,FormControl, FormBuilder ,Validators,ReactiveFor
   styleUrls: ['./registration-form.component.css']
 })
 export class RegistrationFormComponent{
-  private userTypes;
-  private user : User;
-  private userform: FormGroup;
+  userTypes;
+  user : User;
+  userform: FormGroup;
   signUpError=false;
 
   ngOnInit() {
     this.validateForm()
   }
 
-  constructor(public db : DatabaseService,private auth: AuthService, private router: Router){
+  constructor(public db : DatabaseService,public auth: AuthService, public router: Router){
     this.userTypes = ['תלמיד', 'מורה'];
     this.user = new User(false, this.userTypes[0]);
   }
 
-    // register user to DB
+  // add new user to Database
   public registerUser(){
     if (this.userform.valid){
       this.signUpError=false;
@@ -84,19 +84,35 @@ export class RegistrationFormComponent{
         Validators.required
       ]),
       'confimpassword' : new FormControl("", [
-        //confim password is required, must be the same as password.
-        Validators.required
-        ]),
-        'birthday' : new FormControl("", [
-          //birthday is required
-          Validators.required
-          ]),
-        'gender' : new FormControl("", [
-          //gender is required
-          Validators.required
-          ])
+      //confim password is required, must be the same as password.
+      Validators.required
+      ]),
+      'birthday' : new FormControl("", [
+      //birthday is required
+      Validators.required
+      ]),
+      'gender' : new FormControl("", [
+      //gender is required
+      Validators.required
+      ])
     });
   }
+  //function to display fields from student or teacher registration
+  public isUserStudent(){ 
+    if(this.user.type == 'מורה')
+      return false;
+    else
+      return true;
+  }
+
+  public CheckIfEmptyField(field: string)
+  { 
+    if(field == '')
+      return true;
+    else
+      return false;
+  }
+
 
   // gets - link the formControls to html
   get firstname() { return this.userform.get('firstname'); }
