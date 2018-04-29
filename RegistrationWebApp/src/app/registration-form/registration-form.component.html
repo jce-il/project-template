@@ -50,12 +50,34 @@
                   </div>
                   <div class="row">
                       <div class="col-sm-6 form-group">
-                          <label>סיסמא*</label>
-                          <input type="password" id = "password" required [(ngModel)]="user.password" name = "password"/>
+                          
+
+                          <div [formGroup]="userform">
+                              <label>סיסמא*</label>
+                              <input type="password" id = "password" required [(ngModel)]="user.password" name = "password" formControlName="password"/>
+                                <div *ngIf="password.invalid && (password.dirty)"
+                                class="alert alert-danger">
+                                <div *ngIf="password.errors.required">
+                                    חובה להזין סיסמא.
+                                  </div>
+                                  <div *ngIf="password.errors.minlength">
+                                    הסיסמא חייבת להכיל לפחות 6 אותיות.
+                                  </div>
+                                </div>
+                            </div>
                       </div>
                       <div class="col-sm-6 form-group">
-                          <td><label>אימות סיסמא*</label>
-                          <input type="password"/></td>
+
+                          <div [formGroup]="userform">
+                              <label>אימות סיסמא*</label>
+                              <input type="confimpassword" id = "confimpassword" name = "confimpassword" formControlName="confimpassword" required/>
+                                <div *ngIf="confimpassword.invalid && (confimpassword.dirty)"
+                                class="alert alert-danger">
+                                <div *ngIf="confimpassword.errors.required">
+                                    חובה להזין אימות סיסמה.
+                                </div>
+                                </div>
+                            </div>
                       </div>
                   </div>
                 </div>  
@@ -68,7 +90,7 @@
 
                       <div [formGroup]="userform">
                           <label for="firstName">שם פרטי *</label>
-                          <input type = "text" id="firstName" required [(ngModel)]="user.firstName" name = "firstName" formControlName="firstname"/>
+                          <input type = "text" id="firstName" required [(ngModel)]="user.firstName" placeholder="הזן שם פרטי" name = "firstName" formControlName="firstname"/>
                             <div *ngIf="firstname.invalid && (firstname.dirty)"
                             class="alert alert-danger">
                             <div *ngIf="firstname.errors.required">
@@ -148,19 +170,34 @@
                 </div>
             </div>
            
-            <div class="col-sm-12">
-                <div class="gander">
-                    <label>מין</label>
-                      <input type = "checkbox" id = "male" [(ngModel)]="user.gender" name = "gender">זכר
-                      <input type = "checkbox" id = "female"  [(ngModel)]="user.gender" name = "gender">נקבה
+            <div class="col-sm-12"> 
+                <div class="gander" [formGroup]="userform">
+                    <label>מין*</label>
+                    <select class="user-gender" id="gender" required [(ngModel)]="user.gender" name="gender" formControlName="gender">
+                        <option >זכר</option>
+                        <option >נקבה</option>
+                    </select>
+                    <div *ngIf="gender.invalid && (gender.dirty)"
+                    class="alert alert-danger">
+                  <div *ngIf="gender.errors.required">
+                  שדה חובה  
+                  </div>
+                </div>
                 </div>
             </div>
             
             <div class="col-sm-12">
-                <div class="birthDate">
+                <div class="birthDate" [formGroup]="userform">
                     <label>תאריך לידה*</label>
                     <input type="date" name="input" ng-model="example.value"
-                    placeholder="yyyy-mm-dd" min="1990-01-01" max="2099-12-31" id = "birthday" required [(ngModel)]="user.birthday" name = "birthday"/>
+                    placeholder="yyyy-mm-dd" min="1990-01-01" max="2099-12-31" id = "birthday" 
+                    required [(ngModel)]="user.birthday" name = "birthday" formControlName="birthday"/>
+                    <div *ngIf="birthday.invalid && (birthday.dirty)"
+                    class="alert alert-danger">
+                  <div *ngIf="birthday.errors.required">
+                  שדה חובה  
+                  </div>
+                </div>
                 </div>
             </div>
             
@@ -188,7 +225,6 @@
               
               <div class="col-sm-12">
                 <div class="row">
-                    
                       <div class="col-sm-4 form-group">
                           <label>בית ספר</label>
                           <input type = "text" id = "schoolName" [(ngModel)]="user.schoolName" name = "schoolName"/>
@@ -197,10 +233,7 @@
                         <label>ישוב בית ספר</label>
                         <input type = "text" id = "schoolCity" [(ngModel)]="user.schoolCity" name = "schoolCity"/>
                       </div>
-                      
                 </div>
-                  
-                
               </div>
         </form>
       </div>
@@ -208,7 +241,10 @@
 
     <div class="col-sm-12">
         <div class="btn">
-            <a routerLink = "/loginScreen"><button id = "Calculate" class="btn" (click) = "registerUser()">הירשם והמשך לשלב הבא</button></a>
+            <button id = "Calculate" class="btn" (click) = "registerUser()">הירשם והמשך לשלב הבא</button>
+        </div>
+        <div class = "hideError" [hidden]="!signUpError">
+         יש למלא את כל שדות החובה כנדרש
         </div>
     </div>
     

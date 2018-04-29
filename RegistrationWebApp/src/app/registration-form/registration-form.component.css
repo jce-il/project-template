@@ -29,3 +29,5 @@ button{
 }
 
 .well{ border-radius: 15px; position: relative;}
+
+.hideError{font-size: 44px; color: maroon}

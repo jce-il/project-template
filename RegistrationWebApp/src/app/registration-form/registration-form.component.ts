@@ -16,25 +16,37 @@ export class RegistrationFormComponent{
   private userTypes;
   private user : User;
   private userform: FormGroup;
+  signUpError=false;
 
-  ngOnInit() 
-  {
+  ngOnInit() {
     this.validateForm()
   }
 
-  constructor(public db : DatabaseService,private auth: AuthService) 
-  {
+  constructor(public db : DatabaseService,private auth: AuthService, private router: Router){
     this.userTypes = ['תלמיד', 'מורה'];
     this.user = new User(false, this.userTypes[0]);
   }
 
-  public registerUser()
-  {
-    this.auth.emailSignUp(this.user.email,this.user.password)
+    // register user to DB
+  public registerUser(){
+    if (this.userform.valid){
+      this.signUpError=false;
+      this.auth.emailSignUp(this.user.email,this.user.password)
+      .catch(error => {
+        if (error.code == 'auth/email-already-in-use') { // in case that email already in use
+        alert("כתובת המייל כבר בשימוש באתר");
+        this.signUpError=true;
+        }
+      })
     .then((res) => {
+      if (this.signUpError==true)// condition to prevent error
+        return;
       this.user.uid=res.uid;
       this.db.addUserToDB(this.user);
+      this.router.navigate(['loginScreen'])
     })
+  }
+  else{ this.signUpError= true; }
   }
 
   public validateForm(){
@@ -64,9 +76,25 @@ export class RegistrationFormComponent{
       'phone' : new FormControl("", [
         //phone number is required, must be 8-11 digits (only numbers).
         Validators.pattern("[0-9]*"),
-        Validators.minLength(8),
-        Validators.maxLength(11)
-      ])
+        Validators.minLength(6),
+      ]),
+      'password' : new FormControl("", [
+        //password is required, must at least 6 letters.
+        Validators.minLength(6),
+        Validators.required
+      ]),
+      'confimpassword' : new FormControl("", [
+        //confim password is required, must be the same as password.
+        Validators.required
+        ]),
+        'birthday' : new FormControl("", [
+          //birthday is required
+          Validators.required
+          ]),
+        'gender' : new FormControl("", [
+          //gender is required
+          Validators.required
+          ])
     });
   }
 
@@ -76,6 +104,12 @@ export class RegistrationFormComponent{
   get email() { return this.userform.get('email'); }
   get engfname() { return this.userform.get('engfname'); }
   get phone() { return this.userform.get('phone'); }
+  get password() { return this.userform.get('password'); }
+  get confimpassword() { return this.userform.get('confimpassword'); }
+  get birthday() { return this.userform.get('birthday'); }
+  get gender() { return this.userform.get('gender'); }
 
+
+  
 }
 
