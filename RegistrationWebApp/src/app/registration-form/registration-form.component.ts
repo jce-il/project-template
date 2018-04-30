@@ -30,6 +30,10 @@ export class RegistrationFormComponent{
 
   // add new user to Database
   public registerUser(){
+    if (this.user.type==='מורה'){ // in case its teacher--> birthday is not required
+      this.userform.get('birthday').clearValidators();
+      this.userform.get('birthday').updateValueAndValidity();
+    }
     if (this.userform.valid){ // no validate errors
       this.signUpError=false;
       this.auth.emailSignUp(this.user.email,this.user.password) // sign up User

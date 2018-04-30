@@ -69,7 +69,7 @@
 
                           <div [formGroup]="userform">
                               <label>אימות סיסמא*</label>
-                              <input type="confimpassword" id = "confimpassword" name = "confimpassword" formControlName="confimpassword" required/>
+                              <input type="password" id = "confimpassword" name = "confimpassword" formControlName="confimpassword" required/>
                                 <div *ngIf="confimpassword.invalid && (confimpassword.dirty) && !CheckIfEmptyField(user.password)"
                                 class="alert alert-danger">
                                 <div *ngIf="confimpassword.errors.required && !CheckIfEmptyField(user.password)">
