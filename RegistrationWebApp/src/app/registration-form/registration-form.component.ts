@@ -13,10 +13,10 @@ import { FormsModule, FormGroup,FormControl, FormBuilder ,Validators,ReactiveFor
   styleUrls: ['./registration-form.component.css']
 })
 export class RegistrationFormComponent{
-  userTypes;
+  userTypes; //array of user types
   user : User;
   userform: FormGroup;
-  signUpError=false;
+  signUpError: boolean;
 
   ngOnInit() {
     this.validateForm()
@@ -24,29 +24,33 @@ export class RegistrationFormComponent{
 
   constructor(public db : DatabaseService,public auth: AuthService, public router: Router){
     this.userTypes = ['תלמיד', 'מורה'];
-    this.user = new User(false, this.userTypes[0]);
+    this.user = new User(false, this.userTypes[0]); //deafult type is student
+    this.signUpError=false
   }
 
   // add new user to Database
   public registerUser(){
-    if (this.userform.valid){
+    if (this.userform.valid){ // no validate errors
       this.signUpError=false;
-      this.auth.emailSignUp(this.user.email,this.user.password)
+      this.auth.emailSignUp(this.user.email,this.user.password) // sign up User
       .catch(error => {
         if (error.code == 'auth/email-already-in-use') { // in case that email already in use
-        alert("כתובת המייל כבר בשימוש באתר");
+        alert("כתובת המייל כבר בשימוש באתר. נא התחבר או השתמש בכתובת מייל אחרת");// error message
         this.signUpError=true;
         }
       })
-    .then((res) => {
+      .then((res) => {
       if (this.signUpError==true)// condition to prevent error
         return;
-      this.user.uid=res.uid;
-      this.db.addUserToDB(this.user);
-      this.router.navigate(['loginScreen'])
-    })
-  }
-  else{ this.signUpError= true; }
+        //successfully registered:
+      this.user.uid=res.uid; // sets the uid value in the attribute
+      this.db.addUserToDB(this.user); // add user to database
+      this.router.navigate(['loginScreen'])// go to the login screen
+      })
+    }
+    else{ // validate error
+      this.signUpError= true; 
+    }
   }
 
   public validateForm(){
@@ -76,7 +80,8 @@ export class RegistrationFormComponent{
       'phone' : new FormControl("", [
         //phone number is required, must be 8-11 digits (only numbers).
         Validators.pattern("[0-9]*"),
-        Validators.minLength(6),
+        Validators.minLength(8),
+        Validators.maxLength(11)
       ]),
       'password' : new FormControl("", [
         //password is required, must at least 6 letters.
@@ -104,9 +109,8 @@ export class RegistrationFormComponent{
     else
       return true;
   }
-
-  public CheckIfEmptyField(field: string)
-  { 
+  //check if a field is empty
+  public CheckIfEmptyField(field: string){ 
     if(field == '')
       return true;
     else
