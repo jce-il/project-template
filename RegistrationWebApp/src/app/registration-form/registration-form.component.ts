@@ -17,6 +17,7 @@ export class RegistrationFormComponent{
   user : User;
   userform: FormGroup;
   signUpError: boolean;
+  userPasswordValidation : string;
 
   ngOnInit() {
     this.validateForm()
@@ -119,6 +120,13 @@ export class RegistrationFormComponent{
       return true;
     else
       return false;
+  }
+
+  public validatePassword()
+  {
+    if(this.user.password == this.userPasswordValidation)
+      return true;
+    return false;
   }
 
 
