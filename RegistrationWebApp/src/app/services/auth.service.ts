@@ -9,6 +9,7 @@ export class AuthService
 {
   private user: Observable<firebase.User>;
   private currentUser: firebase.User = null;
+  emailError=false;
 
   constructor(private _firebaseAuth: AngularFireAuth,private router: Router ) 
   {
@@ -30,6 +31,14 @@ export class AuthService
   {
     const fbAuth = firebase.auth();
     return fbAuth.sendPasswordResetEmail(email)
+    .catch(error => {
+      if (error.code == 'auth/user-not-found') { // in case that email not found
+        this.emailError=true
+        console.log("maaaa!!");
+      }
+      else
+        this.emailError=true
+      }) 
   }
   
   isLoggedIn() 

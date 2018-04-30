@@ -16,7 +16,6 @@ export class LoginScreenComponent implements OnInit {
 
   logInError=false;
   userForm: FormGroup;
-  passReset = false; 
   formErrors: FormErrors = {
     'email': '',
     'password': '',
@@ -38,11 +37,6 @@ export class LoginScreenComponent implements OnInit {
        this.logInError=true
       );
  }
-
- resetPassword() {
-  this.auth.resetPassword(this.userForm.value['email'])
-    .then(() => this.passReset = true);
-}
 
   buildForm() {
     this.userForm = this.fb.group({

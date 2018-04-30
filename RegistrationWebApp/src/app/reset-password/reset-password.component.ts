@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-reset-password',
@@ -10,19 +10,25 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class ResetPasswordComponent implements OnInit {
 
-  passReset = false; 
-  user = {
+  passReset = false; //flag to know if the button was clicked 
+  user = { //holds the user input(email)
     email: ''
   };
-
   constructor(public auth: AuthService) { }
 
   ngOnInit() {
   }
 
-  resetPassword() {
+  resetPassword() {//this method send a firebase email to the input address to reset the password.
     this.auth.resetPassword(this.user.email)
-      .then(() => this.passReset = true);
+      .then(() => {
+        if(!this.auth.emailError)
+          this.passReset = true;
+        else{
+          alert("   הזן כתובת מחדש.  !כתובת דואר אלקטרוני אינה תקינה או לא קיימת במערכת")
+          this.auth.emailError = false;
+        }
+      })// Terms to tell the user to access his e-mail box
   }
 
 }
