@@ -71,7 +71,7 @@
                               <label class = "req">אימות סיסמא*</label>
                               <input type="password" id = "confimpassword" required [(ngModel)]="userPasswordValidation" name = "confimpassword" formControlName="confimpassword"/>
                                 <div *ngIf="(confimpassword.dirty) && !CheckIfEmptyField(userPasswordValidation) && !validatePassword()" class="alert alert-danger">         
-                                    חובה להזין אימות סיסמה.                  
+                                   הסיסמה אינה זהה לסיסמה המקורית.                  
                                 </div>
                             </div>
                       </div>

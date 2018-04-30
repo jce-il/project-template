@@ -16,7 +16,7 @@ export class RegistrationFormComponent{
   userTypes; //array of user types
   user : User;
   userform: FormGroup;
-  signUpError: boolean;
+  signUpError: boolean; //if true -> there is an error in the registration form
   userPasswordValidation : string;
 
   ngOnInit() {
@@ -26,14 +26,14 @@ export class RegistrationFormComponent{
   constructor(public db : DatabaseService,public auth: AuthService, public router: Router){
     this.userTypes = ['תלמיד', 'מורה'];
     this.user = new User(false, this.userTypes[0]); //deafult type is student
-    this.signUpError=false
+    this.signUpError=false;
   }
 
   // add new user to Database
   public registerUser(){
     if (this.user.type==='מורה'){ // in case its teacher--> birthday is not required
       this.userform.get('birthday').clearValidators();
-      this.userform.get('birthday').updateValueAndValidity();
+      this.userform.get('birthday').updateValueAndValidity(); //now teacher can register
     }
     if (!this.validatePassword()){ // condition to prevent confirm password
       this.signUpError=true;
