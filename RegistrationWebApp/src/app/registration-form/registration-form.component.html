@@ -170,12 +170,13 @@
                 <div class="gander" [formGroup]="userform">
                     <label>מין*</label>
                     <select class="user-gender" id="gender" required [(ngModel)]="user.gender" name="gender" formControlName="gender">
+                        <option ></option>
                         <option >זכר</option>
                         <option >נקבה</option>
                     </select>
-                    <div *ngIf="gender.invalid && (gender.dirty) && !CheckIfEmptyField(user.gender)"
+                    <div *ngIf="gender.invalid && (gender.dirty)"
                     class="alert alert-danger">
-                  <div *ngIf="gender.errors.required && !CheckIfEmptyField(user.gender)">
+                  <div *ngIf="gender.errors.required">
                   שדה חובה  
                   </div>
                 </div>
