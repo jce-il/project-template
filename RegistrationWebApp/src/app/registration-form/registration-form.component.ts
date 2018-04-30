@@ -71,7 +71,7 @@ export class RegistrationFormComponent{
         //first name is required, must be in Hebrew, at least 2 letters.
         Validators.required,
         Validators.minLength(2),
-        Validators.pattern("[א-ת]+")
+        Validators.pattern("[א-ת ]+")
       ]),
       'lastname': new FormControl(this.user.lastName, [
         //last name is required, must be in Hebrew, at least 2 letters.
@@ -85,6 +85,10 @@ export class RegistrationFormComponent{
         Validators.email
       ]),
       'engfname': new FormControl(this.user.engFname, [
+        //English First Name. Must have only English letters
+        Validators.pattern("[a-zA-Z ]*")
+      ]),
+      'englname': new FormControl(this.user.engFname, [
         //English First Name. Must have only English letters
         Validators.pattern("[a-zA-Z ]*")
       ]),
@@ -141,6 +145,7 @@ export class RegistrationFormComponent{
   get lastname() { return this.userform.get('lastname'); }
   get email() { return this.userform.get('email'); }
   get engfname() { return this.userform.get('engfname'); }
+  get englname() { return this.userform.get('englname'); }
   get phone() { return this.userform.get('phone'); }
   get password() { return this.userform.get('password'); }
   get confimpassword() { return this.userform.get('confimpassword'); }
