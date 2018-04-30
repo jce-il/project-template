@@ -17,6 +17,7 @@ export class RegistrationFormComponent{
   user : User;
   userform: FormGroup;
   signUpError: boolean;
+  userPasswordValidation : string;
 
   ngOnInit() {
     this.validateForm()
@@ -30,14 +31,24 @@ export class RegistrationFormComponent{
 
   // add new user to Database
   public registerUser(){
+    if (this.user.type==='מורה'){ // in case its teacher--> birthday is not required
+      this.userform.get('birthday').clearValidators();
+      this.userform.get('birthday').updateValueAndValidity();
+    }
+    if (!this.validatePassword()){ // condition to prevent confirm password
+      this.signUpError=true;
+      alert("אימות הסיסמה אינו זהה לסיסמה המקורית");
+      return;
+    }
     if (this.userform.valid){ // no validate errors
       this.signUpError=false;
       this.auth.emailSignUp(this.user.email,this.user.password) // sign up User
       .catch(error => {
+        this.signUpError=true;
         if (error.code == 'auth/email-already-in-use') { // in case that email already in use
         alert("כתובת המייל כבר בשימוש באתר. נא התחבר או השתמש בכתובת מייל אחרת");// error message
-        this.signUpError=true;
         }
+        else {alert ("כתובת המייל אינה תקינה")}
       })
       .then((res) => {
       if (this.signUpError==true)// condition to prevent error
@@ -115,6 +126,13 @@ export class RegistrationFormComponent{
       return true;
     else
       return false;
+  }
+
+  public validatePassword()
+  {
+    if(this.user.password == this.userPasswordValidation)
+      return true;
+    return false;
   }
 
 

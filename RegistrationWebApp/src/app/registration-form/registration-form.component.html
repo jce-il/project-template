@@ -69,12 +69,9 @@
 
                           <div [formGroup]="userform">
                               <label>אימות סיסמא*</label>
-                              <input type="confimpassword" id = "confimpassword" name = "confimpassword" formControlName="confimpassword" required/>
-                                <div *ngIf="confimpassword.invalid && (confimpassword.dirty) && !CheckIfEmptyField(user.password)"
-                                class="alert alert-danger">
-                                <div *ngIf="confimpassword.errors.required && !CheckIfEmptyField(user.password)">
-                                    חובה להזין אימות סיסמה.
-                                </div>
+                              <input type="password" id = "confimpassword" required [(ngModel)]="userPasswordValidation" name = "confimpassword" formControlName="confimpassword"/>
+                                <div *ngIf="(confimpassword.dirty) && !CheckIfEmptyField(userPasswordValidation) && !validatePassword()" class="alert alert-danger">         
+                                    חובה להזין אימות סיסמה.                  
                                 </div>
                             </div>
                       </div>
