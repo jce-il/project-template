@@ -35,14 +35,20 @@ export class RegistrationFormComponent{
       this.userform.get('birthday').clearValidators();
       this.userform.get('birthday').updateValueAndValidity();
     }
+    if (!this.validatePassword()){ // condition to prevent confirm password
+      this.signUpError=true;
+      alert("אימות הסיסמה אינו זהה לסיסמה המקורית");
+      return;
+    }
     if (this.userform.valid){ // no validate errors
       this.signUpError=false;
       this.auth.emailSignUp(this.user.email,this.user.password) // sign up User
       .catch(error => {
+        this.signUpError=true;
         if (error.code == 'auth/email-already-in-use') { // in case that email already in use
         alert("כתובת המייל כבר בשימוש באתר. נא התחבר או השתמש בכתובת מייל אחרת");// error message
-        this.signUpError=true;
         }
+        else {alert ("כתובת המייל אינה תקינה")}
       })
       .then((res) => {
       if (this.signUpError==true)// condition to prevent error
