@@ -3,9 +3,6 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link href='http://serve.fontsproject.com/css?family=Shuneet:400,800' rel ='stylesheet' type='text/css'>
 
-<!------ Include the above in your HEAD tag ---------->
-
- <!-- page-header -->
     <div class="page-header">
         <meta charset="utf-8"/>
         <div class="container">
@@ -19,19 +16,15 @@
             </div>
         </div>
     </div>
-    <!-- /.page-header-->
-    <!-- news -->
     <body>
         <div class="card-section">
             <div class="container">
                 <div class="card-block bg-white mb30">
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <!-- section-title -->
                             <div class="section-title mb-0">
                                 <form class="form-horizontal" [formGroup]="userForm" (ngSubmit)="signIn()">
                                     <fieldset>
-                                        <!-- Form Name -->
                                         <legend>כניסת משתמש</legend>  
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">כתובת דואר אלקטרוני</label>
@@ -47,14 +40,13 @@
                                         </div>
                                         <div *ngIf="formErrors.password">{{ formErrors.password }}</div>            
                                         <div class="btn">
-                                            <button type="submit" class="btnSignin btn-primary">היכנס</button>
+                                            <button type="submit" class="btnSignin btn-primary">כניסה</button>
                                             <a routerLink = "/registrationForm"><button type="submit" class="btnSignin btn-primary">הרשמה</button></a>
-                                            <a routerLink = "/resetPassword">שכחתי סיסמא</a>
+                                            <a routerLink = "/resetPassword"><button type="submit" class="btnSignin btn-primary">אפס סיסמא</button></a>
                                         </div>                               
                                     </fieldset>
                                 </form>
                             </div>
-                            <!-- /.section-title -->
                         </div>
                     </div>
                 </div>
