@@ -17,6 +17,7 @@ export class User {
         public street? : string,
         public appartment? : string,     
         public schoolName? : string,   
-        public schoolCity? : string
+        public schoolCity? : string,
+        public docId? : string
 ){}
 }

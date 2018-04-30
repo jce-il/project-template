@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from'angularfire2/firestore';
+import { AngularFirestore , AngularFirestoreDocument } from'angularfire2/firestore';
 import {User} from '../user';
+import { Observable } from 'rxjs/Observable';
+
 @Injectable()
 export class DatabaseService {
 
@@ -10,6 +12,7 @@ export class DatabaseService {
   public loggedInUserUID : string;
   public loggedInUser : User;
   public loggedIn : boolean; //check if this is the right way to do
+  listingDoc: AngularFirestoreDocument<User>;
   constructor(private afs: AngularFirestore) 
   { 
     const settings = {timestampsInSnapshots: true};
@@ -22,6 +25,28 @@ export class DatabaseService {
   public addUserToDB(user:User)
   {
     this.dataCollections.add(JSON.parse(JSON.stringify(user)));
+  }
+
+  updateListing(email: string) 
+  {
+      var docId;
+      var updatedUser;
+      this.afs.collection("usersInfo").snapshotChanges().map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as User;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+      }).subscribe((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+              if(doc.email == email)
+              {
+                this.listingDoc = this.afs.doc(`usersInfo/${doc.id}`);
+                updatedUser = new User (true,'this is just a check');
+                this.listingDoc.update(JSON.parse(JSON.stringify(updatedUser)));
+              }
+          });
+      });
   }
 
   public getAllDBUsers()
