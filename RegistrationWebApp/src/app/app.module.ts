@@ -16,6 +16,7 @@ import { AuthService } from './services/auth.service'
 import { FormsModule, FormGroup,FormBuilder ,Validators,ReactiveFormsModule  } from '@angular/forms';
 import { UserHomePageComponent } from './user-home-page/user-home-page.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { AuthGuardService } from './services/auth-guard.service'
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
   ],
   providers: [
     DatabaseService,
-    AuthService
+    AuthService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

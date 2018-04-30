@@ -31,6 +31,7 @@ export class LoginScreenComponent implements OnInit {
     this.auth.signIn(this.userForm.value['email'], this.userForm.value['password'])
        .then((res) => {
          this.db.loggedInUserUID = res.uid;
+         this.auth.currentUser=res;
          this.router.navigate(['homepage'])
        })
        .catch((err) =>
