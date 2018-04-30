@@ -15,6 +15,7 @@ import { AppRoutingModule } from './services/app-routing.module';
 import { AuthService } from './services/auth.service'
 import { FormsModule, FormGroup,FormBuilder ,Validators,ReactiveFormsModule  } from '@angular/forms';
 import { UserHomePageComponent } from './user-home-page/user-home-page.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { UserHomePageComponent } from './user-home-page/user-home-page.component
     RegistrationFormComponent,
     LoginScreenComponent,
     FooterComponent,
-    UserHomePageComponent
+    UserHomePageComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
