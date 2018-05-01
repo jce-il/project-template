@@ -25,7 +25,6 @@
             <form>
                 <div class="col-sm-12">
                     <legend>רישום למערכת</legend>
-
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <label class="req">סוג משתמש *</label>
@@ -36,7 +35,6 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6 form-group">
-
                             <div [formGroup]="userform">
                                 <label class="req">דואר אלקטרוני*</label>
                                 <input type="email" id="email" required [(ngModel)]="user.email" name="email" formControlName="email" />
@@ -64,21 +62,17 @@
                             </div>
                         </div>
                         <div class="col-sm-6 form-group">
-
                             <div [formGroup]="userform">
                                 <label class="req">אימות סיסמא*</label>
-                                <input type="password" id="confimpassword" required [(ngModel)]="userPasswordValidation" name="confimpassword" formControlName="confimpassword"
-                                />
+                                <input type="password" id="confimpassword" required [(ngModel)]="userPasswordValidation" name="confimpassword" formControlName="confimpassword"/>
                                 <div *ngIf="(confimpassword.dirty) && !CheckIfEmptyField(userPasswordValidation) && !validatePassword()" class="alert alert-danger">
-                                        הסיסמה אינה זהה לסיסמה המקורית.                  
-                                 </div>
+                                    הסיסמה אינה זהה לסיסמה המקורית.                  
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <legend>פרטים אישים</legend>
-
+                    </div>
+                    <legend>פרטים אישים</legend>
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="col-sm-6 form-group">
@@ -101,7 +95,6 @@
                             </div>
                         </div>
                         <div class="col-sm-6 form-group">
-
                             <div [formGroup]="userform">
                                 <label for="lastName" class="req">שם משפחה *</label>
                                 <input type="text" id="lastName" required [(ngModel)]="user.lastName" placeholder="הזן שם משפחה" name="lastName" formControlName="lastname"
@@ -135,7 +128,6 @@
                             </div>
                         </div>
                         <div class="col-sm-6 form-group">
-
                             <div [formGroup]="userform">
                                 <label for="engLname">שם משפחה באנגלית</label>
                                 <input type="text" id="engLname" [(ngModel)]="user.engLname" name="engLname" formControlName="englname" />
@@ -170,7 +162,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col-sm-12">
                     <div class="gander" [formGroup]="userform">
                         <label class="req">מין*</label>
@@ -199,13 +190,11 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-sm-12">
                         <div class="row">
                             <div class="col-lg-12">
                                 <legend>כתובת</legend>
                             </div>
-
                             <div class="col-sm-4 form-group">
                                 <label>ישוב</label>
                                 <input type="text" id="city" [(ngModel)]="user.city" name="city" />
@@ -220,8 +209,6 @@
                             </div>
                         </div>
                     </div>
-
-
                     <div class="col-sm-12">
                         <div class="row">
                             <div class="col-sm-4 form-group">
@@ -238,7 +225,6 @@
             </form>
         </div>
     </div>
-
     <div class="col-sm-12">
         <div class="btn">
             <button id="Calculate" class="btn" (click)="registerUser()">הירשם והמשך לשלב הבא</button>
@@ -247,9 +233,7 @@
             יש למלא את כל שדות החובה כנדרש
         </div>
     </div>
-
 </div>
-
 <div class="footer">
     <app-footer></app-footer>
 </div>
