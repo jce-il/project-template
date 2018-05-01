@@ -13,7 +13,7 @@ export class DatabaseService {
   public loggedInUser: User;
   public loggedIn: boolean; //check if this is the right way to do
   listingDoc: AngularFirestoreDocument<User>;
-  
+
   constructor(private afs: AngularFirestore) {
     const settings = { timestampsInSnapshots: true };
     afs.app.firestore().settings(settings);
@@ -25,6 +25,7 @@ export class DatabaseService {
   public addUserToDB(user: User) {
     this.dataCollections.add(JSON.parse(JSON.stringify(user)));
   }
+
 
   updateListing(email: string) {
     var docId;
@@ -39,8 +40,7 @@ export class DatabaseService {
       querySnapshot.forEach((doc) => {
         if (doc.email == email) {
           this.listingDoc = this.afs.doc(`usersInfo/${doc.id}`);
-          updatedUser = new User(true, 'this is just a check');
-          this.listingDoc.update(JSON.parse(JSON.stringify(updatedUser)));
+          this.listingDoc.update(JSON.parse(JSON.stringify(this.loggedInUser)));
         }
       });
     });

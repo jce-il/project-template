@@ -1,5 +1,5 @@
 <p><button (click)="logOut()">Log Out</button></p>
-<p><button (click)="update()">Update info</button></p>
+<p><button (click)="updateInfo()">Update info</button></p>
 <div *ngIf="db.loggedIn">
     <hr>
     <p>First name<input type="text" [(ngModel)]="db.loggedInUser.firstName" name="email" /></p>
