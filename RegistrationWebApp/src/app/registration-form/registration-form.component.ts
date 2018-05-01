@@ -16,8 +16,13 @@ export class RegistrationFormComponent {
   userTypes; //array of user types
   user: User;
   userform: FormGroup;
+<<<<<<< HEAD
+  signUpError: boolean; //if true -> there is an error in the registration form
+  userPasswordValidation : string;
+=======
   signUpError: boolean;
   userPasswordValidation: string;
+>>>>>>> 288ffaf3882753cbef4c776e7d8f9d57cabacf05
 
   ngOnInit() {
     this.validateForm()
@@ -26,14 +31,18 @@ export class RegistrationFormComponent {
   constructor(public db: DatabaseService, public auth: AuthService, public router: Router) {
     this.userTypes = ['תלמיד', 'מורה'];
     this.user = new User(false, this.userTypes[0]); //deafult type is student
+<<<<<<< HEAD
+    this.signUpError=false;
+=======
     this.signUpError = false
+>>>>>>> 288ffaf3882753cbef4c776e7d8f9d57cabacf05
   }
 
   // add new user to Database
   public registerUser() {
     if (this.user.type === 'מורה') { // in case its teacher--> birthday is not required
       this.userform.get('birthday').clearValidators();
-      this.userform.get('birthday').updateValueAndValidity();
+      this.userform.get('birthday').updateValueAndValidity(); //now teacher can register
     }
     if (!this.validatePassword()) { // condition to prevent confirm password
       this.signUpError = true;

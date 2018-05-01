@@ -50,8 +50,6 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6 form-group">
-
-
                             <div [formGroup]="userform">
                                 <label class="req">סיסמא*</label>
                                 <input type="password" id="password" required [(ngModel)]="user.password" name="password" formControlName="password" />
@@ -72,8 +70,8 @@
                                 <input type="password" id="confimpassword" required [(ngModel)]="userPasswordValidation" name="confimpassword" formControlName="confimpassword"
                                 />
                                 <div *ngIf="(confimpassword.dirty) && !CheckIfEmptyField(userPasswordValidation) && !validatePassword()" class="alert alert-danger">
-                                    חובה להזין אימות סיסמה.
-                                </div>
+                                        הסיסמה אינה זהה לסיסמה המקורית.                  
+                                 </div>
                             </div>
                         </div>
                     </div>
