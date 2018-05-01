@@ -22,4 +22,10 @@ export class UserHomePageComponent implements OnInit {
     this.db.loggedIn = false;
   }
 
+  public updateInfo() {
+    this.db.updateListing(this.db.loggedInUser.email);
+    alert("Data updated!");
+  }
+
+
 }
