@@ -37,7 +37,7 @@ export class RegistrationFormComponent {
     }
     if (!this.validatePassword()) { // condition to prevent confirm password
       this.signUpError = true;
-      alert("אימות הסיסמה אינו זהה לסיסמה המקורית");
+      alert("אימות הסיסמא אינו זהה לסיסמא המקורית");
       return;
     }
     if (this.userform.valid) { // no validate errors
@@ -48,7 +48,7 @@ export class RegistrationFormComponent {
           if (error.code == 'auth/email-already-in-use') { // in case that email already in use
             alert("כתובת המייל כבר בשימוש באתר. נא התחבר או השתמש בכתובת מייל אחרת");// error message
           }
-          else { alert("כתובת המייל אינה תקינה") }
+          else { alert("כתובת דואר אלקטרוני אינה תקינה") }
         })
         .then((res) => {
           if (this.signUpError == true)// condition to prevent error
@@ -93,10 +93,10 @@ export class RegistrationFormComponent {
         Validators.pattern("[a-zA-Z ]*")
       ]),
       'phone': new FormControl("", [
-        //phone number is required, must be 8-11 digits (only numbers).
-        Validators.pattern("[0-9]*"),
-        Validators.minLength(8),
-        Validators.maxLength(11)
+        //phone number is required, must be 9-13 digits (only numbers).
+        Validators.pattern("[0-9-]*"),
+        Validators.minLength(9),
+        Validators.maxLength(13)
       ]),
       'password': new FormControl("", [
         //password is required, must at least 6 letters.
