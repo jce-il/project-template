@@ -14,10 +14,17 @@ import { FormsModule, FormGroup, FormControl, FormBuilder, Validators, ReactiveF
 })
 export class RegistrationFormComponent {
   userTypes; //array of user types
+<<<<<<< HEAD
   user: User; // User Object - Contains all fields. Will be uploaded as a Jason object to server
   userform: FormGroup; // tracks the value and validity state of a group of FormControl
   signUpError: boolean; //if true -> there is an error in the registration form
   userPasswordValidation : string; // will contain the password verification
+=======
+  user: User;
+  userform: FormGroup;
+  signUpError: boolean;
+  userPasswordValidation: string;
+>>>>>>> 8ecfeea8c511a684cd9a82f574a48c721cede778
 
   ngOnInit() {
     this.validateForm()
@@ -26,7 +33,11 @@ export class RegistrationFormComponent {
   constructor(public db: DatabaseService, public auth: AuthService, public router: Router) {
     this.userTypes = ['תלמיד', 'מורה'];
     this.user = new User(false, this.userTypes[0]); //deafult type is student
+<<<<<<< HEAD
     this.signUpError=false; // default- no registration form errors
+=======
+    this.signUpError = false
+>>>>>>> 8ecfeea8c511a684cd9a82f574a48c721cede778
   }
 
   // add new user to Database
