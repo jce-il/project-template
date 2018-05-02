@@ -1,60 +1,53 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<link href='http://serve.fontsproject.com/css?family=Shuneet:400,800' rel ='stylesheet' type='text/css'>
+<link href='http://serve.fontsproject.com/css?family=Shuneet:400,800' rel='stylesheet' type='text/css'>
 
-    <div class="page-header">
-        <meta charset="utf-8"/>
+
+<body>
+    <div class = "banner"></div>
+    <div class="card-section">
         <div class="container">
-            <div class="row">
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="page-caption">
-                        <div class="page-title"> <p> תחרות מדענים ומפתחים צעירים בישראל</p></div>
-                        <h3>תשע״ח 2018</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <body>
-        <div class="card-section">
-            <div class="container">
-                <div class="card-block bg-white mb30">
-                    <div class="row">
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="section-title mb-0">
-                                <form class="form-horizontal" [formGroup]="userForm" (ngSubmit)="signIn()">
-                                    <fieldset>
-                                        <legend>כניסת משתמש</legend>  
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">כתובת דואר אלקטרוני</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="הזן כתובת דואר אלקטרוני" formControlName="email" required>
-                                        </div>
-                                        <div *ngIf="formErrors.email">
-                                            {{ formErrors.email }}
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputPassword1">סיסמא</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="הזן סיסמא" formControlName="password" required>
-                                            <div class = "redError" id="loginError" *ngIf="logInError">שם משתמש או סיסמא אינם נכונים</div>
-                                        </div>
-                                        <div *ngIf="formErrors.password">{{ formErrors.password }}</div>            
-                                        <div class="btn">
-                                            <button type="submit" class="btnSignin btn-primary">כניסה</button>
-                                            <a routerLink = "/registrationForm"><button type="submit" class="btnSignin btn-primary">הרשמה</button></a>
-                                            <a routerLink = "/resetPassword"><button type="submit" class="btnSignin btn-primary">אפס סיסמא</button></a>
-                                        </div>                               
-                                    </fieldset>
-                                </form>
-                            </div>
+            <div class="card-block mb30">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="section-title mb-0">
+                            <form class="form-horizontal" [formGroup]="userForm" (ngSubmit)="signIn()">
+                                <fieldset>
+                                    <legend>כניסת משתמש</legend>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">כתובת דואר אלקטרוני</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="הזן כתובת דואר אלקטרוני"
+                                            formControlName="email" required>
+                                    </div>
+                                    <div *ngIf="formErrors.email">
+                                        {{ formErrors.email }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">סיסמא</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="הזן סיסמא" formControlName="password"
+                                            required>
+                                        <div class="redError" id="loginError" *ngIf="logInError">שם משתמש או סיסמא אינם נכונים</div>
+                                    </div>
+                                    <div *ngIf="formErrors.password">{{ formErrors.password }}</div>
+                                    <div class="btn">
+                                        <button type="submit" class="btnSignin btn-primary">כניסה</button>
+                                        <a routerLink="/registrationForm">
+                                            <button type="submit" class="btnSignin btn-primary">הרשמה</button>
+                                        </a>
+                                        <a routerLink="/resetPassword">
+                                            <button type="submit" class="btnSignin btn-primary">אפס סיסמא</button>
+                                        </a>
+                                    </div>
+                                </fieldset>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="page-footer">
-                <app-footer></app-footer>
-        </div>
-    </body>
-    
-
+    </div>
+    <div class="page-footer">
+        <app-footer></app-footer>
+    </div>
+</body>

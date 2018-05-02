@@ -1,14 +1,10 @@
-.logo{
-    direction: rtl;
-    position: relative;
-    bottom: 0;
-}
+
 .logo img{ margin-right: 3%; margin-left: 4%; margin-bottom: 0;}
-.musem{ height: 8%; width: 7%;}
+.musem{ height: 4%; width: 7%;}
 .education{ height: 4%; width: 2%;}
 .intel{ height: 3%; width: 3%;}
 .keren{ height: 4%; width: 7%;}
-.uni{ height: 6%; width: 10%;}
+.uni{ height: 4%; width: 10%;}
 .academy{ height: 3%; width: 3%;}
 .federal{ height: 5%; width: 5%;}
 .iserd{ height: 2.5%; width: 2.5%; }

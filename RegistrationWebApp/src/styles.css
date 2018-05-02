@@ -1,6 +1,5 @@
 body{
-    background: #effaff;
-    margin: 0;
+    background-image:url('./assets/back.jpg');
     background-repeat: no-repeat;
     height: 100%;
     background-attachment: fixed;
