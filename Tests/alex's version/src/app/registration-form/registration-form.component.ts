@@ -14,10 +14,10 @@ import { FormsModule, FormGroup, FormControl, FormBuilder, Validators, ReactiveF
 })
 export class RegistrationFormComponent {
   userTypes; //array of user types
-  user: User; // User Object - Contains all fields. Will be uploaded as a Jason object to server
-  userform: FormGroup; // tracks the value and validity state of a group of FormControl
-  signUpError: boolean; //if true -> there is an error in the registration form
-  userPasswordValidation : string; // will contain the password verification
+  user: User;
+  userform: FormGroup;
+  signUpError: boolean;
+  userPasswordValidation: string;
 
   ngOnInit() {
     this.validateForm()
@@ -26,7 +26,7 @@ export class RegistrationFormComponent {
   constructor(public db: DatabaseService, public auth: AuthService, public router: Router) {
     this.userTypes = ['תלמיד', 'מורה'];
     this.user = new User(false, this.userTypes[0]); //deafult type is student
-    this.signUpError=false; // default- no registration form errors
+    this.signUpError = false
   }
 
   // add new user to Database
@@ -37,7 +37,7 @@ export class RegistrationFormComponent {
     }
     if (!this.validatePassword()) { // condition to prevent confirm password
       this.signUpError = true;
-      alert("אימות הסיסמא אינו זהה לסיסמא המקורית");
+      alert("אימות הסיסמה אינו זהה לסיסמה המקורית");
       return;
     }
     if (this.userform.valid) { // no validate errors
@@ -48,7 +48,7 @@ export class RegistrationFormComponent {
           if (error.code == 'auth/email-already-in-use') { // in case that email already in use
             alert("כתובת המייל כבר בשימוש באתר. נא התחבר או השתמש בכתובת מייל אחרת");// error message
           }
-          else { alert("כתובת דואר אלקטרוני אינה תקינה") }
+          else { alert("כתובת המייל אינה תקינה") }
         })
         .then((res) => {
           if (this.signUpError == true)// condition to prevent error
@@ -93,10 +93,10 @@ export class RegistrationFormComponent {
         Validators.pattern("[a-zA-Z ]*")
       ]),
       'phone': new FormControl("", [
-        //phone number is required, must be 9-13 digits (only numbers).
-        Validators.pattern("[0-9-]*"),
-        Validators.minLength(9),
-        Validators.maxLength(13)
+        //phone number is required, must be 8-11 digits (only numbers).
+        Validators.pattern("[0-9]*"),
+        Validators.minLength(8),
+        Validators.maxLength(11)
       ]),
       'password': new FormControl("", [
         //password is required, must at least 6 letters.
@@ -104,7 +104,7 @@ export class RegistrationFormComponent {
         Validators.required
       ]),
       'confimpassword': new FormControl("", [
-        //confim password is required, (must be the same as password - implements in another function).
+        //confim password is required, must be the same as password.
         Validators.required
       ]),
       'birthday': new FormControl("", [
@@ -117,7 +117,6 @@ export class RegistrationFormComponent {
       ])
     });
   }
-
   //function to display fields from student or teacher registration
   public isUserStudent() {
     if (this.user.type == 'מורה')
@@ -125,21 +124,20 @@ export class RegistrationFormComponent {
     else
       return true;
   }
-
   //check if a field is empty
   public CheckIfEmptyField(field: string) {
     if (field == '')
-      return true; // field is empty
+      return true;
     else
       return false;
   }
 
-  // compares the password field to the password verification field
   public validatePassword() {
     if (this.user.password == this.userPasswordValidation)
-      return true; // Password is verified
+      return true;
     return false;
   }
+
 
   // gets - link the formControls to html
   get firstname() { return this.userform.get('firstname'); }
@@ -152,5 +150,8 @@ export class RegistrationFormComponent {
   get confimpassword() { return this.userform.get('confimpassword'); }
   get birthday() { return this.userform.get('birthday'); }
   get gender() { return this.userform.get('gender'); }
+
+
+
 }
 
