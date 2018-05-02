@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {DatabaseService} from '../services/database.service';
+import { DatabaseService } from '../services/database.service';
 import { AuthService } from '../services/auth.service';
 
 
@@ -10,16 +10,22 @@ import { AuthService } from '../services/auth.service';
 })
 export class UserHomePageComponent implements OnInit {
 
-  constructor(public db : DatabaseService,public auth: AuthService) { }
+  constructor(public db: DatabaseService, public auth: AuthService) { }
 
   ngOnInit() {
     this.db.registeredUsers = '';
     this.db.getLoggedInUser();
   }
 
-  public logOut(){
+  public logOut() {
     this.auth.LogOut();
     this.db.loggedIn = false;
   }
+
+  public updateInfo() {
+    this.db.updateListing(this.db.loggedInUser.email);
+    alert("Data updated!");
+  }
+
 
 }
