@@ -30,13 +30,15 @@
                                         <div class="redError" id="loginError" *ngIf="logInError">שם משתמש או סיסמא אינם נכונים</div>
                                     </div>
                                     <div *ngIf="formErrors.password">{{ formErrors.password }}</div>
-                                    <div class="btn">
-                                        <button type="submit" class="btnSignin btn-primary">כניסה</button>
+                                    
+                                    
+                                    <div class="btnlogin">
+                                            <a routerLink="/resetPassword" class="forgetPassword">
+                                                שכחתי סיסמא
+                                            </a>
+                                        <button type="submit" class="btnEnter btn-primary">כניסה</button>
                                         <a routerLink="/registrationForm">
                                             <button type="submit" class="btnSignin btn-primary">הרשמה</button>
-                                        </a>
-                                        <a routerLink="/resetPassword">
-                                            <button type="submit" class="btnSignin btn-primary">אפס סיסמא</button>
                                         </a>
                                     </div>
                                 </fieldset>

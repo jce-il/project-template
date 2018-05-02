@@ -11,25 +11,32 @@ h5 { font-size: 17px; }
 h6 { font-size: 12px; }
 p { margin: 0 0 20px; line-height: 1.7; }
 p:last-child { margin: 0px; }
-a { text-decoration: none; color: #000000; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; transition: all 0.3s; }
-a:focus, a:hover { text-decoration: none; color: #f85759; }
 
 .page-header {border-radius: 10px; background: url('../../assets/Role-of-technology.jpg')no-repeat; position: relative; background-size: cover; margin: 0;}
-.page-caption { padding-top: 150px; padding-bottom: 104px; }
-.page-title { position: relative; top: -128px; width: 1400px; height: 50px; right: -200px; direction: rtl; float: right; font-size: 80px; line-height: 1; color: rgb(237, 222, 241); font-weight: bolder; text-align: right; font-family: 'Shuneet', serif; text-shadow: 10px 8px 10px rgb(31, 2, 43); }
+.page-caption {padding-top: 150px; padding-bottom: 104px; }
+.page-title { position: relative; top: -128px; width: 1400px; height: 50px; right: -200px; direction: rtl; float: right; font-size: 80px; line-height: 1; color: rgb(237, 222, 241);}
 h3{ font-family: 'Shuneet', serif; font-size:55px; color:  rgb(204, 231, 173); float: left; position: relative; left: -260px; text-shadow: 10px 14px 10px rgb(24, 32, 19); }
 
-.card-section { direction: rtl; position: relative;top:200px;}
-.card-block {text-align: right; padding-top: 100px; padding-bottom: 10%; padding-right: 13%; border-radius: 15px;background: radial-gradient(ellipse at center, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.5); opacity: 0.99;}
+.card-section { direction: rtl; position: relative; top:200px; right: 15%; }
+.card-block {text-align: right; padding-top: 30px; padding-bottom: 5%; padding-right: 5%; border-radius: 15px;background: radial-gradient(ellipse at center, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.5); opacity: 0.99;  width: 50%;}
 .section-title { direction: rtl; margin-bottom: 80px;}
-.section-title legend{ margin-bottom: 20px; width: 600px; font-size: 20px; font-weight: bolder;}
-.form-group{ margin-right: 25%; width: 200px; font-size: 13px;}
+.section-title legend{ margin-bottom: 20px; width: 500px; font-size: 20px; font-weight: bolder;}
+.form-group{ margin-right: 10%; width: 200px; font-size: 13px;}
 
-.btn{ float: left; margin-left: 50%; margin-top: 10px;  }
-.btnEnter{background-color: rgba(23, 72, 161, 0.808); border-color: transparent; border-radius: 10px; width: 80px; height: 30px; font-weight: bold; font-size: 13px; margin-left: 10px;}
+.btnlogin{margin-left: 5%;  text-align: center;}
+.btnEnter{background-color: rgba(23, 72, 161, 0.808); border-color: transparent; border-radius: 10px; width: 80px; height: 30px; font-weight: bold; font-size: 13px; margin-left: 10px; margin-right: 30%;}
 .btnEnter:focus, .btnEnter:hover { background-color: lightsteelblue; color: #25292a; border-color: transparent;}
-.btnSignin{background-color: rgba(18, 52, 117, 0.808); border-color: transparent; border-radius: 10px; width: 80px; height: 30px; font-size: 13px;}
+.btnSignin{ background-color: rgba(18, 52, 117, 0.808); border-color: transparent; border-radius: 10px; width: 80px; height: 30px; font-size: 13px;}
 .btnSignin:focus, .btnSignin:hover { background-color: rgb(146, 183, 231); color: #25292a; border-color: transparent;}
+.forgetPassword {
+    float: right;
+    margin-right: 60px;
+    padding: 0;
+    font-size: 10px;
+    color: #000000; 
+}
+
+.forgetPassword:focus, .forgetPassword:hover { color: red; }
 
 .page-footer{
     position: fixed;
