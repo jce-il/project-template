@@ -24,12 +24,21 @@ required{
     color: brown;
 }
 
-.btn{ float: right;}
+.gander{
+    margin-bottom: 15px;
+}
+
+.birthDate{
+    margin-bottom: 15px;
+}
 
 button{
+    float: left;
     border-radius: 12px;
     background-color: rgb(67, 103, 145);
     color: aliceblue;
+    margin: 15px;
+    height: 40px;
 }
 
 .well{ border-radius: 15px; position: relative; background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);}
