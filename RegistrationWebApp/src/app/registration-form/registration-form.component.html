@@ -73,7 +73,7 @@
 
                 <div [formGroup]="userform">
                     <label for="firstName" class="req">שם פרטי *</label>
-                    <input type="text" id="firstName" required [(ngModel)]="user.firstName" placeholder="הזן שם פרטי" name="firstName" formControlName="firstname"
+                    <input type="text" id="firstName" required [(ngModel)]="user.firstName" name="firstName" formControlName="firstname"
                     />
                     <div *ngIf="firstname.invalid && (firstname.dirty) && !CheckIfEmptyField(user.firstName)" class="alert alert-danger">
                         <div *ngIf="firstname.errors.required && !CheckIfEmptyField(user.firstName)">
@@ -92,7 +92,7 @@
 
                 <div [formGroup]="userform">
                     <label for="lastName" class="req">שם משפחה *</label>
-                    <input type="text" id="lastName" required [(ngModel)]="user.lastName" placeholder="הזן שם משפחה" name="lastName" formControlName="lastname"
+                    <input type="text" id="lastName" required [(ngModel)]="user.lastName" name="lastName" formControlName="lastname"
                     />
                     <div *ngIf="lastname.invalid && (lastname.dirty) && !CheckIfEmptyField(user.lastName)" class="alert alert-danger">
                         <div *ngIf="lastname.errors.required && !CheckIfEmptyField(user.lastName)">
