@@ -40,7 +40,6 @@ export class RegistrationFormComponent {
     }
     if (!this.validatePassword()) { // condition to prevent confirm password
       this.signUpError = true;
-      alert("אימות הסיסמא אינו זהה לסיסמא המקורית");
       return;
     }
     if (this.userform.valid) { // no validate errors

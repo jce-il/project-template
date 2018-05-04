@@ -63,3 +63,9 @@ legend,.form-group{
     background-image:url('../../assets/sc.png');
     background-repeat: no-repeat;
  }
+ 
+
+ .error{
+    color: red;
+    font-size: 14px;
+ }

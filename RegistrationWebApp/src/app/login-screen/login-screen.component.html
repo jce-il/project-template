@@ -27,9 +27,9 @@
                                         <label for="exampleInputPassword1">סיסמא</label>
                                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="הזן סיסמא" formControlName="password"
                                             required>
-                                        <div class="redError" id="loginError" *ngIf="logInError">שם משתמש או סיסמא אינם נכונים</div>
+                                        <div class="error" id="loginError" *ngIf="logInError">שם משתמש או סיסמא אינם נכונים</div>
                                     </div>
-                                    <div *ngIf="formErrors.password">{{ formErrors.password }}</div>
+                                    <div class = "error" *ngIf="formErrors.password">{{ formErrors.password }}</div>
                                     
                                     
                                     <div class="btnlogin">
