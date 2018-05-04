@@ -69,3 +69,8 @@ legend,.form-group{
     color: red;
     font-size: 14px;
  }
+
+
+ .container{
+    min-width: 700px;
+ }
