@@ -11,7 +11,6 @@
                 <legend>רישום למערכת</legend>
             </div>
         </div>
-
         <div class="row">
             <div class="col-sm-4 form-group">
                 <label class="req">סוג משתמש *</label>
@@ -27,13 +26,12 @@
                     <input type="email" id="email" required [(ngModel)]="user.email" name="email" formControlName="email" />
                     <div *ngIf="email.invalid && (email.dirty)">
                         <div *ngIf="email.errors.email && !CheckIfEmptyField(user.email)" class="alert alert-danger">
-                            כתובת דואר אלקטרוני אינה תקינה
+                            נא להזין כתובת דואר אלקטרוני תקינה
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-sm-4 form-group">
                 <div [formGroup]="userform">
@@ -41,75 +39,66 @@
                     <input type="password" id="password" required [(ngModel)]="user.password" name="password" formControlName="password" />
                     <div *ngIf="password.invalid && (password.dirty) && !CheckIfEmptyField(user.password)" class="alert alert-danger">
                         <div *ngIf="password.errors.required && !CheckIfEmptyField(user.password)">
-                            חובה להזין סיסמא.
+                            חובה להזין סיסמא
                         </div>
                         <div *ngIf="password.errors.minlength">
-                            הסיסמא חייבת להכיל לפחות 6 אותיות.
+                            הסיסמא חייבת להכיל לפחות 6 אותיות
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4 form-group">
-
                 <div [formGroup]="userform">
                     <label class="req">אימות סיסמא *</label>
-                    <input type="password" id="confimpassword" required [(ngModel)]="userPasswordValidation" name="confimpassword" formControlName="confimpassword"
-                    />
+                    <input type="password" id="confimpassword" required [(ngModel)]="userPasswordValidation" name="confimpassword" formControlName="confimpassword"/>
                     <div *ngIf="(confimpassword.dirty) && !CheckIfEmptyField(userPasswordValidation) && !validatePassword()" class="alert alert-danger">
-                        הסיסמה אינה זהה לסיסמה המקורית.
+                    יש להזין סיסמא תואמת לשדה הסיסמא
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-sm-10">
                 <legend>פרטים אישים</legend>
             </div>
         </div>
-
         <div class="row">
             <div class="col-sm-4 form-group">
 
                 <div [formGroup]="userform">
                     <label for="firstName" class="req">שם פרטי *</label>
-                    <input type="text" id="firstName" required [(ngModel)]="user.firstName" name="firstName" formControlName="firstname"
-                    />
+                    <input type="text" id="firstName" required [(ngModel)]="user.firstName" name="firstName" formControlName="firstname"/>
                     <div *ngIf="firstname.invalid && (firstname.dirty) && !CheckIfEmptyField(user.firstName)" class="alert alert-danger">
                         <div *ngIf="firstname.errors.required && !CheckIfEmptyField(user.firstName)">
-                            חובה להזין שם פרטי.
+                            חובה להזין שם פרטי
                         </div>
                         <div *ngIf="firstname.errors.minlength  && !CheckIfEmptyField(user.firstName)">
-                            שם פרטי חייב להכיל לפחות שתי אותיות.
+                            שם פרטי חייב להכיל לפחות שתי אותיות
                         </div>
                         <div *ngIf="firstname.errors.pattern  && !CheckIfEmptyField(user.firstName)">
-                            עברית כפרה
+                            יש להזין בשדה זה אותיות בעברית בלבד
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4 form-group">
-
                 <div [formGroup]="userform">
                     <label for="lastName" class="req">שם משפחה *</label>
-                    <input type="text" id="lastName" required [(ngModel)]="user.lastName" name="lastName" formControlName="lastname"
-                    />
+                    <input type="text" id="lastName" required [(ngModel)]="user.lastName" name="lastName" formControlName="lastname"/>
                     <div *ngIf="lastname.invalid && (lastname.dirty) && !CheckIfEmptyField(user.lastName)" class="alert alert-danger">
                         <div *ngIf="lastname.errors.required && !CheckIfEmptyField(user.lastName)">
-                            חובה להזין שם משפחה.
+                            חובה להזין שם משפחה
                         </div>
                         <div *ngIf="lastname.errors.minlength && !CheckIfEmptyField(user.lastName)">
-                            שם משפחה חייב להכיל לפחות שתי אותיות.
+                            שם משפחה חייב להכיל לפחות שתי אותיות
                         </div>
                         <div *ngIf="lastname.errors.pattern && !CheckIfEmptyField(user.lastName)">
-                            אותיות בעברית בלבד
+                            יש להזין בשדה זה אותיות בעברית בלבד
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
         <div class="row">
             <div class="col-sm-4 form-group">
                 <div [formGroup]="userform">
@@ -117,7 +106,7 @@
                     <input type="text" id="engFname" [(ngModel)]="user.engFname" name="engFname" formControlName="engfname" />
                     <div *ngIf="engfname.invalid && (engfname.dirty) && !CheckIfEmptyField(user.engFname)" class="alert alert-danger">
                         <div *ngIf="engfname.errors.pattern && !CheckIfEmptyField(user.engFname)">
-                            יש להזין בשדה זה אותיות באנגלית בלבד.
+                            יש להזין בשדה זה אותיות באנגלית בלבד
                         </div>
                     </div>
                 </div>
@@ -128,14 +117,12 @@
                     <input type="text" id="engLname" [(ngModel)]="user.engLname" name="engLname" formControlName="englname" />
                     <div *ngIf="englname.invalid && (englname.dirty)" class="alert alert-danger">
                         <div *ngIf="englname.errors.pattern">
-                            יש להזין בשדה זה אותיות באנגלית בלבד.
+                            יש להזין בשדה זה אותיות באנגלית בלבד
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
         <div class="row">
             <div class="col-sm-4 form-group">
                 <div [formGroup]="userform">
@@ -143,10 +130,10 @@
                     <input type="phone" id="phone" required [(ngModel)]="user.phone" name="phone" formControlName="phone" />
                     <div *ngIf="phone.invalid && (phone.dirty) && !CheckIfEmptyField(user.phone)" class="alert alert-danger">
                         <div *ngIf="phone.errors.pattern && !CheckIfEmptyField(user.phone)">
-                            מספרים בלבד
+                            יש להזין בשדה זה מספרים בלבד
                         </div>
                         <div *ngIf="(phone.errors.minlength || phone.errors.maxlength) && !CheckIfEmptyField(user.phone)">
-                            מספר טלפון לא תקין.
+                            יש להזין מספר טלפון תקין
                         </div>
                     </div>
                 </div>
@@ -173,7 +160,6 @@
                 </div>
             </div>
         </div>
-
         <div *ngIf="isUserStudent()">
             <div class="row">
                 <div class="col-sm-4">
@@ -181,8 +167,8 @@
                         <label class="req">תאריך לידה *</label>
                         <input type="date" name="input" ng-model="example.value" placeholder="yyyy-mm-dd" min="1990-01-01" max="2099-12-31" id="birthday"
                             required [(ngModel)]="user.birthday" name="birthday" formControlName="birthday" />
-                        <div *ngIf="birthday.invalid && (birthday.dirty) && !CheckIfEmptyField(user.birthday)" class="alert alert-danger">
-                            <div *ngIf="birthday.errors.required && !CheckIfEmptyField(user.birthday)">
+                        <div *ngIf="birthday.invalid && (birthday.dirty)" class="alert alert-danger">
+                            <div *ngIf="birthday.errors.required">
                                 שדה חובה
                             </div>
                         </div>
@@ -208,7 +194,6 @@
                     <input type="text" id="appartment" [(ngModel)]="user.appartment" name="appartment">
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-4 form-group">
                     <label>בית ספר</label>
@@ -226,7 +211,6 @@
                 יש למלא את כל שדות החובה כנדרש
             </div>
         </div>
-
     </form>
 </div>
 <div class="footer">

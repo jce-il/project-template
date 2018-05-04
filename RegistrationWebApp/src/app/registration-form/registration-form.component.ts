@@ -46,7 +46,7 @@ export class RegistrationFormComponent {
         .catch(error => {
           this.signUpError = true;
           if (error.code == 'auth/email-already-in-use') { // in case that email already in use
-            alert("כתובת המייל כבר בשימוש באתר. נא התחבר או השתמש בכתובת מייל אחרת");// error message
+            alert("כתובת המייל נמצאת כבר בשימוש באתר. נא התחבר או השתמש בכתובת מייל אחרת");// error message
           }
           else { alert("כתובת דואר אלקטרוני אינה תקינה") }
         })
@@ -123,7 +123,7 @@ export class RegistrationFormComponent {
     if (this.user.type == 'מורה')
       return false;
     else
-      return true;
+      return true; // type is student
   }
 
   //check if a field is empty
