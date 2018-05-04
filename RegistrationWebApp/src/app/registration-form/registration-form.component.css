@@ -47,8 +47,7 @@ button{
 
 .alert{
     color: red;
-   /* background: no-repeat;
-    border: none;*/
+    font-size: 75%;
 }
 .req{
     color: firebrick; 

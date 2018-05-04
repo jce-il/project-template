@@ -16,8 +16,7 @@ import { AuthService } from './services/auth.service'
 import { FormsModule, FormGroup,FormBuilder ,Validators,ReactiveFormsModule  } from '@angular/forms';
 import { UserHomePageComponent } from './user-home-page/user-home-page.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { AuthGuardService } from './services/auth-guard.service'
-
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +37,7 @@ import { AuthGuardService } from './services/auth-guard.service'
     AngularFireStorageModule, 
     AngularFireDatabaseModule,
     AppRoutingModule
-  ],
+    ],
   providers: [
     DatabaseService,
     AuthService,

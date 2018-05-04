@@ -4,7 +4,7 @@
 <link href='http://serve.fontsproject.com/css?family=Shuneet:400,800' rel='stylesheet' type='text/css'>
 <div class = "banner"></div>
 <div class="container">
-    <h2 class="well">טופס הרשמה לתחרות</h2>
+    <h2 class="well">{{title}}</h2>
     <form>
         <div class="row">
             <div class="col-sm-10">
@@ -130,10 +130,10 @@
                     <input type="phone" id="phone" required [(ngModel)]="user.phone" name="phone" formControlName="phone" />
                     <div *ngIf="phone.invalid && (phone.dirty) && !CheckIfEmptyField(user.phone)" class="alert alert-danger">
                         <div *ngIf="phone.errors.pattern && !CheckIfEmptyField(user.phone)">
-                            יש להזין בשדה זה מספרים בלבד
+                            יש להזין מספרים בלבד
                         </div>
                         <div *ngIf="(phone.errors.minlength || phone.errors.maxlength) && !CheckIfEmptyField(user.phone)">
-                            יש להזין מספר טלפון תקין
+                            נא להזין מספר טלפון תקין
                         </div>
                     </div>
                 </div>
@@ -165,7 +165,7 @@
                 <div class="col-sm-4">
                     <div class="birthDate" [formGroup]="userform">
                         <label class="req">תאריך לידה *</label>
-                        <input type="date" name="input" ng-model="example.value" placeholder="yyyy-mm-dd" min="1990-01-01" max="2099-12-31" id="birthday"
+                        <input type="date" name="input" ng-model="example.value" placeholder="yyyy-mm-dd" min="1990-01-01" max="2050-12-31" id="birthday"
                             required [(ngModel)]="user.birthday" name="birthday" formControlName="birthday" />
                         <div *ngIf="birthday.invalid && (birthday.dirty)" class="alert alert-danger">
                             <div *ngIf="birthday.errors.required">

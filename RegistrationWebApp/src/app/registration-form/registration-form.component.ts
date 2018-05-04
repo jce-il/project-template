@@ -18,7 +18,8 @@ export class RegistrationFormComponent {
   userform: FormGroup; // tracks the value and validity state of a group of FormControl
   signUpError: boolean; //if true -> there is an error in the registration form
   userPasswordValidation : string; // will contain the password verification
-
+  title : string;
+  date;
   ngOnInit() {
     this.validateForm()
   }
@@ -27,6 +28,8 @@ export class RegistrationFormComponent {
     this.userTypes = ['תלמיד', 'מורה'];
     this.user = new User(false, this.userTypes[0]); //deafult type is student
     this.signUpError=false; // default- no registration form errors
+    this.date = new Date();
+    this.title = "טופס הרשמה לתחרות מדענים צעירים " + this.date.getFullYear();;
   }
 
   // add new user to Database
@@ -94,7 +97,7 @@ export class RegistrationFormComponent {
       ]),
       'phone': new FormControl("", [
         //phone number is required, must be 9-13 digits (only numbers).
-        Validators.pattern("[0-9-]*"),
+        Validators.pattern("0[0-9-]*"),
         Validators.minLength(9),
         Validators.maxLength(13)
       ]),
