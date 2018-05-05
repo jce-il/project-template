@@ -14,13 +14,13 @@ export class AuthService {
     this.user = _firebaseAuth.authState;
   }
 
-  signIn(email, password) //this method allow to an registerd user to login the firebase server.
+  signIn(email, password) //this method allow to an registered user to login.
   {
     const credential = firebase.auth.EmailAuthProvider.credential(email, password);
     return this._firebaseAuth.auth.signInWithEmailAndPassword(email, password)
   }
 
-  emailSignUp(email: string, password: string) //this method allow to user to registare the firebase server.
+  emailSignUp(email: string, password: string) //this method allows user to signup to the web-app with provided email and password.
   {
     return this._firebaseAuth.auth.createUserWithEmailAndPassword(email, password);
   }
@@ -46,7 +46,7 @@ export class AuthService {
       return true;
   }
 
-  LogOut() //this method allow a register user to logout.
+  LogOut() //this method allow a register user to logout from the website.
   {
     this._firebaseAuth.auth.signOut()
       .then((res) => {

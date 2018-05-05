@@ -32,7 +32,7 @@ export class RegistrationFormComponent {
     this.title = "טופס הרשמה לתחרות מדענים צעירים " + this.date.getFullYear();;
   }
 
-  // add new user to Database
+  // on register user button click adds new user to Database according to the data that was collected from the registration form
   public registerUser() {
     if (this.user.type === 'מורה') { // in case its teacher--> birthday is not required
       this.userform.get('birthday').clearValidators();
