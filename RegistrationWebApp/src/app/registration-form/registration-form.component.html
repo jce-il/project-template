@@ -130,10 +130,13 @@
                     <input type="phone" id="phone" required [(ngModel)]="user.phone" name="phone" formControlName="phone" />
                     <div *ngIf="phone.invalid && (phone.dirty) && !CheckIfEmptyField(user.phone)" class="alert alert-danger">
                         <div *ngIf="phone.errors.pattern && !CheckIfEmptyField(user.phone)">
-                            יש להזין מספרים בלבד
-                        </div>
-                        <div *ngIf="(phone.errors.minlength || phone.errors.maxlength) && !CheckIfEmptyField(user.phone)">
                             נא להזין מספר טלפון תקין
+                        </div>
+                        <div *ngIf="(phone.errors.minlength) &&  !CheckIfEmptyField(user.phone)">
+                            המספר קצר מדי
+                        </div>
+                        <div *ngIf="(phone.errors.maxlength) && !CheckIfEmptyField(user.phone)">
+                            המספר ארוך מדי
                         </div>
                     </div>
                 </div>
