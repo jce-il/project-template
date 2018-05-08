@@ -17,14 +17,11 @@ import { FormsModule, FormGroup,FormBuilder ,Validators,ReactiveFormsModule  } f
 import { UserHomePageComponent } from './user-home-page/user-home-page.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AuthGuardService } from './services/auth-guard.service';
-<<<<<<< HEAD
 import { UploadFileService } from './services/upload-file.service';
 import { ProjectUploadScreenComponent } from './project-upload-screen/project-upload-screen.component';
-=======
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { StepsBarComponent } from './steps-bar/steps-bar.component';
 import { HeaderComponent } from './header/header.component';
->>>>>>> c3e81ee1f949c925c72e34729950f79e5e52e154
 
 @NgModule({
   declarations: [
@@ -34,13 +31,10 @@ import { HeaderComponent } from './header/header.component';
     FooterComponent,
     UserHomePageComponent,
     ResetPasswordComponent,
-<<<<<<< HEAD
-    ProjectUploadScreenComponent
-=======
+    ProjectUploadScreenComponent,
     ContactUsComponent,
     StepsBarComponent,
     HeaderComponent
->>>>>>> c3e81ee1f949c925c72e34729950f79e5e52e154
   ],
   imports: [
     BrowserModule,
