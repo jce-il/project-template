@@ -19,7 +19,7 @@ export class ResetPasswordComponent implements OnInit {
   ngOnInit() {
   }
 
-  resetPassword() {//this method send a firebase email to the input address to reset the password.
+  resetPassword() {//on resetPassword click this method send a firebase email to the input address to reset the password.
     this.auth.resetPassword(this.user.email)
       .then(() => {
         if(!this.auth.emailError)

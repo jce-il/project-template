@@ -5,7 +5,7 @@ import { RegistrationFormComponent } from '../registration-form/registration-for
 import { UserHomePageComponent } from '../user-home-page/user-home-page.component';
 import { ResetPasswordComponent } from '../reset-password/reset-password.component'
 import { AuthGuardService } from './auth-guard.service'
-
+//routing links to navigate through the web-app
 const appRouets: Routes = [
   { path: '', redirectTo: '/loginScreen', pathMatch: 'full' },
   { path: 'loginScreen', component: LoginScreenComponent },

@@ -24,13 +24,13 @@ export class LoginScreenComponent implements OnInit {
   constructor(public auth: AuthService, public fb: FormBuilder, public router: Router, public db: DatabaseService) { }
 
   ngOnInit() {
-    this.buildForm();
+    this.buildForm(); 
   }
 
-  signIn() {
-    this.auth.signIn(this.userForm.value['email'], this.userForm.value['password'])
+  signIn() { //enables the sign in button function
+    this.auth.signIn(this.userForm.value['email'], this.userForm.value['password']) //using the auth service
       .then((res) => {
-        this.db.loggedInUserUID = res.uid;
+        this.db.loggedInUserUID = res.uid; //takes logged in user UID
         this.auth.currentUser = res;
         this.router.navigate(['homepage'])
       })
@@ -39,7 +39,7 @@ export class LoginScreenComponent implements OnInit {
       );
   }
 
-  buildForm() {
+  buildForm() { //form validation function - validates user input
     this.userForm = this.fb.group({
       'email': ['', [
         Validators.required,
