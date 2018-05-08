@@ -1,23 +1,23 @@
-.header-screen{
-    direction: rtl;
-    float: right;
-    display: inline-flex;
-    padding-bottom: 3%;
+*{
+    position: fixed;
+    width: 100%;
+    height: 21%;
+    right: 0;
+    margin: 0;
+    top: 0;
+    background-color: rgba(240, 248, 255, 0.308);
 }
 
-.steps{
-    width: 10%;
-    margin: 8% 4% 0 0;
-}
 
 .banner {
-    top: 0;
-    margin-right: 10px;
-    margin-top: 20px;
-    height: 113px;
-    width: 200px;
+    position: fixed;
+    right: 0;
+    top: 2%;
+    height: 25%;
+    width: 15%;
     z-index: 1;
     font-size: 70px;
     background-image:url('../../assets/sc.png');
     background-repeat: no-repeat;
+    background-color: transparent;
  }

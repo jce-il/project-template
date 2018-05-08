@@ -1,7 +1,10 @@
+*{
+	width: 100%;
+	position: sticky;
+}
+
 .container{
 	direction: rtl;
-	position: relative;
-	top: 0;
 }
 
 .btn-info{
@@ -14,32 +17,31 @@
 
 .process{
 	display:table;
-	width:100%;
 	position:relative;
+	top: 10%;
+	margin-top: 5%;
 }
 
 .process-row{
 	display:table-row;
-	width: 100%;
 }
 
 .process-row:before{
 	top: 27%;
-	right: 2%;
+	right: 5%;
 	position:absolute;
 	content:" ";
-	width:85%;
+	width:1200px;
 	height:1px;
-	background-color:#ccc;
+	background-color:rgb(141, 139, 139);
 }
 
 .process-step{
 	display:table-cell;
 	text-align:center;
 	position:relative;
-	width: 100%;
 	top: 0;
-	padding: 0 12% 0 15%;
+	padding: 0 60px 0 60px;
 
 }
 
