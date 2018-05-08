@@ -1,0 +1,61 @@
+.container{
+	direction: rtl;
+	position: relative;
+	top: 0;
+}
+
+.btn-info{
+	background-color: steelblue;
+}
+
+.process-step .btn:focus{
+	outline:none;
+}
+
+.process{
+	display:table;
+	width:100%;
+	position:relative;
+}
+
+.process-row{
+	display:table-row;
+	width: 100%;
+}
+
+.process-row:before{
+	top: 27%;
+	right: 2%;
+	position:absolute;
+	content:" ";
+	width:85%;
+	height:1px;
+	background-color:#ccc;
+}
+
+.process-step{
+	display:table-cell;
+	text-align:center;
+	position:relative;
+	width: 100%;
+	top: 0;
+	padding: 0 12% 0 15%;
+
+}
+
+.process-step p{
+	color: black;
+	text-align: center;
+	margin: 4px 1px 0 0;
+	width: 75px;
+	font-size: 18px;
+	font-weight: bolder;
+}
+
+.btn-circle{
+	width:70px;
+	height:70px;
+	text-align:center;
+	font-size:12px;
+	border-radius:50%;
+}

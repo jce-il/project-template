@@ -1,0 +1,43 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<div class="container">
+ <div class="row">
+  <div class="process">
+   <div class="process-row nav nav-tabs">
+      <div class="process-step">
+          <button type="button" class="btn btn-info btn-circle" data-toggle="tab" (click)="homePage()"><i class="fa fa-home fa-3x"></i></button>
+          <p>דף הבית</p>
+         </div>
+    <div class="process-step">
+     <button type="button" class="btn btn-default btn-circle" data-toggle="tab" (click)="personalInfo()"><i class="fa fa-user fa-2x"></i></button>
+     <p>פרטים אישים</p>
+    </div>
+    <div class="process-step">
+     <button type="button" class="btn btn-default btn-circle" data-toggle="tab" href="#menu2"><i class="fa fa-file-text-o fa-2x"></i></button>
+     <p>הפרויקט שלי</p>
+    </div>
+    <div class="process-step">
+     <button type="button" class="btn btn-default btn-circle" data-toggle="tab" href="#menu3"><i class="fa fa-envelope-o fa-2x"></i></button>
+     <p>הודעות</p>
+    </div>
+    <div class="process-step">
+     <button type="button" class="btn btn-default btn-circle" data-toggle="tab" href="#menu4"><i class="fa fa-cogs fa-2x"></i></button>
+     <p>Configure display</p>
+    </div>
+    <div class="process-step">
+     <button type="button" class="btn btn-default btn-circle" data-toggle="tab" href="#menu5"><i class="fa fa-phone fa-2x"></i></button>
+     <p>צור קשר</p>
+    </div>
+    <div class="process-step">
+        <button type="button" class="btn btn-default btn-circle" data-toggle="tab" (click)="logOut()"><i class="fa fa-sign-out fa-2x"></i></button>
+        <p>התנתק</p>
+       </div>
+   </div>
+  </div>
+
+ </div>
+</div>
