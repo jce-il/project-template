@@ -28,10 +28,14 @@ export class StepsBarComponent implements OnInit {
     this.router.navigate(['homepage'])
     alert("Home Page");
   }
-
+  // on personal info button click
   public personalInfo(){
     this.router.navigate(['registrationForm']);
-  
+  }
+
+  // on contact us button click
+  public contactUs(){
+    this.router.navigate(['contactUs']);
   }
 //on update info button click updates logged in users info according to the info that was inserted in the temporary update form
   public updateInfo() {
