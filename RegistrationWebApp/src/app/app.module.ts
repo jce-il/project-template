@@ -29,7 +29,7 @@ import { HeaderComponent } from './header/header.component';
     FooterComponent,
     UserHomePageComponent,
     ResetPasswordComponent,
-    ContactUsComponent
+    ContactUsComponent,
     StepsBarComponent,
     HeaderComponent
   ],
