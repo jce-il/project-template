@@ -5,6 +5,7 @@ import { RegistrationFormComponent } from '../registration-form/registration-for
 import { UserHomePageComponent } from '../user-home-page/user-home-page.component';
 import { ResetPasswordComponent } from '../reset-password/reset-password.component';
 import { ContactUsComponent } from '../contact-us/contact-us.component';
+import { ProjectUploadScreenComponent } from '../project-upload-screen/project-upload-screen.component';
 import { AuthGuardService } from './auth-guard.service'
 //routing links to navigate through the web-app
 const appRouets: Routes = [
@@ -13,7 +14,8 @@ const appRouets: Routes = [
   { path: 'registrationForm', component: RegistrationFormComponent },
   { path: 'homepage', component: UserHomePageComponent/*, canActivate: [AuthGuardService]*/ }, //calling canActivate function from the AuthGuardService class to handle security
   { path: 'resetPassword', component: ResetPasswordComponent },
-  { path: 'contactUs', component: ContactUsComponent}
+  { path: 'contactUs', component: ContactUsComponent},
+  { path: 'projectUpload', component: ProjectUploadScreenComponent}
 ]
 
 @NgModule({
