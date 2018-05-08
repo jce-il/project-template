@@ -73,13 +73,13 @@ export class RegistrationFormComponent {
         //first name is required, must be in Hebrew, at least 2 letters.
         Validators.required,
         Validators.minLength(2),
-        Validators.pattern("[א-ת ]+")
+        Validators.pattern("[א-ת ']+")
       ]),
       'lastname': new FormControl(this.user.lastName, [
         //last name is required, must be in Hebrew, at least 2 letters.
         Validators.required,
         Validators.minLength(2),
-        Validators.pattern("[א-ת ]+")
+        Validators.pattern("[א-ת ']+")
       ]),
       'email': new FormControl(this.user.email, [
         //Email is required, must be in email format
@@ -88,11 +88,11 @@ export class RegistrationFormComponent {
       ]),
       'engfname': new FormControl(this.user.engFname, [
         //English First Name. Must have only English letters
-        Validators.pattern("[a-zA-Z ]*")
+        Validators.pattern("[a-zA-Z ']*")
       ]),
       'englname': new FormControl(this.user.engFname, [
         //English First Name. Must have only English letters
-        Validators.pattern("[a-zA-Z ]*")
+        Validators.pattern("[a-zA-Z ']*")
       ]),
       'phone': new FormControl("", [
         //phone number is required, must be 9-13 digits (only numbers).
