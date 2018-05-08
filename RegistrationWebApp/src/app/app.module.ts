@@ -17,6 +17,7 @@ import { FormsModule, FormGroup,FormBuilder ,Validators,ReactiveFormsModule  } f
 import { UserHomePageComponent } from './user-home-page/user-home-page.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AuthGuardService } from './services/auth-guard.service';
     LoginScreenComponent,
     FooterComponent,
     UserHomePageComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
