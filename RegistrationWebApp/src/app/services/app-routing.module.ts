@@ -10,7 +10,7 @@ const appRouets: Routes = [
   { path: '', redirectTo: '/loginScreen', pathMatch: 'full' },
   { path: 'loginScreen', component: LoginScreenComponent },
   { path: 'registrationForm', component: RegistrationFormComponent },
-  { path: 'homepage', component: UserHomePageComponent },//calling canActivate function from the AuthGuardService class to handle security
+  { path: 'homepage', component: UserHomePageComponent/*, canActivate: [AuthGuardService]*/ }, //calling canActivate function from the AuthGuardService class to handle security
   { path: 'resetPassword', component: ResetPasswordComponent }
 ]
 
