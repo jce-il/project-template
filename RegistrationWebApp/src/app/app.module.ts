@@ -17,6 +17,8 @@ import { FormsModule, FormGroup,FormBuilder ,Validators,ReactiveFormsModule  } f
 import { UserHomePageComponent } from './user-home-page/user-home-page.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { UploadFileService } from './services/upload-file.service';
+import { ProjectUploadScreenComponent } from './project-upload-screen/project-upload-screen.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { AuthGuardService } from './services/auth-guard.service';
     LoginScreenComponent,
     FooterComponent,
     UserHomePageComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ProjectUploadScreenComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,8 @@ import { AuthGuardService } from './services/auth-guard.service';
   providers: [
     DatabaseService,
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    UploadFileService
   ],
   bootstrap: [AppComponent]
 })
