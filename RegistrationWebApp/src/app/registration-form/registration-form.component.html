@@ -2,13 +2,18 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href='http://serve.fontsproject.com/css?family=Shuneet:400,800' rel='stylesheet' type='text/css'>
-<div class = "banner"></div>
+<div class="banner"></div>
 <div class="container">
     <h2 class="well">{{title}}</h2>
     <form>
         <div class="row">
             <div class="col-sm-10">
-                <legend>רישום למערכת</legend>
+                <div *ngIf="!this.db.loggedIn">
+                    <legend>רישום למערכת</legend>
+                </div>
+                <div *ngIf="this.db.loggedIn">
+                    <legend>עדכון פרטים אישיים</legend>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -50,9 +55,10 @@
             <div class="col-sm-4 form-group">
                 <div [formGroup]="userform">
                     <label class="req">אימות סיסמא *</label>
-                    <input type="password" id="confimpassword" required [(ngModel)]="userPasswordValidation" name="confimpassword" formControlName="confimpassword"/>
+                    <input type="password" id="confimpassword" required [(ngModel)]="userPasswordValidation" name="confimpassword" formControlName="confimpassword"
+                    />
                     <div *ngIf="(confimpassword.dirty) && !CheckIfEmptyField(userPasswordValidation) && !validatePassword()" class="alert alert-danger">
-                    יש להזין סיסמא תואמת לשדה הסיסמא
+                        יש להזין סיסמא תואמת לשדה הסיסמא
                     </div>
                 </div>
             </div>
@@ -67,7 +73,7 @@
 
                 <div [formGroup]="userform">
                     <label for="firstName" class="req">שם פרטי *</label>
-                    <input type="text" id="firstName" required [(ngModel)]="user.firstName" name="firstName" formControlName="firstname"/>
+                    <input type="text" id="firstName" required [(ngModel)]="user.firstName" name="firstName" formControlName="firstname" />
                     <div *ngIf="firstname.invalid && (firstname.dirty) && !CheckIfEmptyField(user.firstName)" class="alert alert-danger">
                         <div *ngIf="firstname.errors.required && !CheckIfEmptyField(user.firstName)">
                             חובה להזין שם פרטי
@@ -84,7 +90,7 @@
             <div class="col-sm-4 form-group">
                 <div [formGroup]="userform">
                     <label for="lastName" class="req">שם משפחה *</label>
-                    <input type="text" id="lastName" required [(ngModel)]="user.lastName" name="lastName" formControlName="lastname"/>
+                    <input type="text" id="lastName" required [(ngModel)]="user.lastName" name="lastName" formControlName="lastname" />
                     <div *ngIf="lastname.invalid && (lastname.dirty) && !CheckIfEmptyField(user.lastName)" class="alert alert-danger">
                         <div *ngIf="lastname.errors.required && !CheckIfEmptyField(user.lastName)">
                             חובה להזין שם משפחה
@@ -209,7 +215,12 @@
             </div>
         </div>
         <div class="btnsign">
-            <button id="Calculate" class="btnsign" (click)="registerUser()">הירשם והמשך לשלב הבא</button>
+            <div *ngIf="!this.db.loggedIn">
+                <button id="Calculate" class="btnsign" (click)="registerUser()">הירשם והמשך לשלב הבא</button>
+            </div>
+            <div *ngIf="this.db.loggedIn">
+                <button id="Calculate" class="btnsign" (click)="db.updateListing(user.email)">עדכן פרטים</button>
+            </div>
             <div class="col-sm-6 form-group hideError" [hidden]="!signUpError">
                 יש למלא את כל שדות החובה כנדרש
             </div>

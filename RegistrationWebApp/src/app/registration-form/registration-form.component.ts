@@ -26,10 +26,16 @@ export class RegistrationFormComponent {
 
   constructor(public db: DatabaseService, public auth: AuthService, public router: Router) {
     this.userTypes = ['תלמיד', 'מורה'];
-    this.user = new User(false, this.userTypes[0]); //deafult type is student
+    if(!this.db.loggedIn)
+      this.user = new User(false, this.userTypes[0]); //deafult type is student
+    else
+      this.user = this.db.loggedInUser;
     this.signUpError=false; // default- no registration form errors
     this.date = new Date();
-    this.title = "טופס הרשמה לתחרות מדענים צעירים " + this.date.getFullYear();;
+    if(!this.db.loggedIn)
+      this.title = "טופס הרשמה לתחרות מדענים צעירים " + this.date.getFullYear();
+    else
+      this.title = "טופס עדכון פרטים";
   }
 
   // on register user button click adds new user to Database according to the data that was collected from the registration form
