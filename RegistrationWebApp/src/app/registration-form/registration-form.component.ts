@@ -155,6 +155,8 @@ export class RegistrationFormComponent {
     }
     this.db.user = this.user; //update current user data of the service !!!
     this.db.updateListing(this.user.email);
+    alert("הפרטים עודכנו בהצלחה")
+    this.router.navigate(['homepage']);
   }
   
 
