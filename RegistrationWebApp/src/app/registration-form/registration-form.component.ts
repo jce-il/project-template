@@ -148,6 +148,15 @@ export class RegistrationFormComponent {
       return true; // Password is verified
     return false;
   }
+  public updateInfo() {
+    if (!this.validatePassword()) { // condition to prevent confirm password
+      this.signUpError = true;
+      return;
+    }
+    this.db.user = this.user; //update current user data of the service !!!
+    this.db.updateListing(this.user.email);
+  }
+  
 
   // gets - link the formControls to html
   get firstname() { return this.userform.get('firstname'); }

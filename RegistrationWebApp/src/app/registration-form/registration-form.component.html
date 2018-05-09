@@ -219,7 +219,7 @@
                 <button id="Calculate" class="btnsign" (click)="registerUser()">הירשם והמשך לשלב הבא</button>
             </div>
             <div *ngIf="this.db.loggedIn">
-                <button id="Calculate" class="btnsign" (click)="db.updateListing(user.email)">עדכן פרטים</button>
+                <button id="Calculate" class="btnsign" (click)="updateInfo()">עדכן פרטים</button>
             </div>
             <div class="col-sm-6 form-group hideError" [hidden]="!signUpError">
                 יש למלא את כל שדות החובה כנדרש

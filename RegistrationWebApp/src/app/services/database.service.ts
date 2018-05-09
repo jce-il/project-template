@@ -31,7 +31,7 @@ export class DatabaseService {
 
   //updates users info that was found by email. New data is stored in the "loggedInUser" object
   updateListing(email: string) {
-    alert(email);
+  
     this.afs.collection("usersInfo").snapshotChanges().map(actions => { //collects the DB table meta data including all table fields id and users
       return actions.map(a => {
         const data = a.payload.doc.data() as User;
@@ -43,7 +43,7 @@ export class DatabaseService {
       querySnapshot.forEach((doc) => {
         if (doc.email == email) {
           this.listingDoc = this.afs.doc(`usersInfo/${doc.id}`); //takes the listing that will be updated by the doc.id (listing's id)
-          this.listingDoc.update(JSON.parse(JSON.stringify(this.loggedInUser))); //finaly updates the listing
+          this.listingDoc.update(JSON.parse(JSON.stringify(this.user))); //finaly updates the listing
         }
       });
     });
