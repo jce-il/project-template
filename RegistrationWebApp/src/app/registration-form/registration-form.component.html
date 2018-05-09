@@ -12,11 +12,11 @@
                     <legend>רישום למערכת</legend>
                 </div>
                 <div *ngIf="this.db.loggedIn">
-                    <legend>עדכון פרטים אישיים</legend>
+                    <legend>פרטי משתמש</legend>
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div *ngIf="!this.db.loggedIn" class="row">
             <div class="col-sm-4 form-group">
                 <label class="req">סוג משתמש *</label>
                 <select class="user-type" id="type" required [(ngModel)]="user.type" name="type">
@@ -24,7 +24,7 @@
                 </select>
             </div>
         </div>
-        <div class="row">
+        <div *ngIf="!this.db.loggedIn" class="row">
             <div class="col-sm-4 form-group">
                 <div [formGroup]="userform">
                     <label class="req">דואר אלקטרוני *</label>
