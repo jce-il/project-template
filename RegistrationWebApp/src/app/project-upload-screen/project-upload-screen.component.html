@@ -1,10 +1,167 @@
-<div *ngIf="currentFileUpload" class="progress">
-  <div class="progress-bar progress-bar-striped"
-      role="progressbar" style="width: 15%" attr.aria-valuenow="{{progress.percentage}}"
-      aria-valuemin="0" aria-valuemax="100"
-      [ngStyle]="{width:progress.percentage+'%'}">
-      {{progress.percentage}}%</div>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div class="banner"></div>
+<div class="container">
+    <h2 class="well">יצירת פריט עבודה חדש</h2>
+    <form>
+        <div class="row">
+            <div class="col-sm-10">
+                <div>
+                    <legend>חברי הצוות</legend>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 form-group">
+                <label class="req">שותף ראשון:</label>
+                <input type="text" id="partner1"/>
+                <label class="req">שותף שני:</label>
+                <input type="text" id="partner2"/>
+                <label class="req">שותף שלישי:</label>
+                <input type="text" id="partner2"/>
+                <label class="req">שם העבודה:</label>
+                <input type="text" id="partner2"/>
+                <label class="req">דואר אלקטרוני איש קשר מטעם בית הספר:</label>
+                <input type="email" id="email"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10">
+                <legend>אודות העבודה</legend>
+            </div>
+        </div>
+          <div class="row">
+            <div class="col-sm-4 form-group">
+                <label class="req">התחום אליו משתייכת העבודה:</label>
+                <select class="user-type" id="type">
+                    <option *ngFor="let type of fields" [value]="type">{{type}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 form-group">
+              <label class="req">תחום מחקר אחר (פרט):</label>
+              <input type="text"/>
+              <label class="req">מוסד אקדמי בו התבצעה העבודה במידה וקיים:</label>
+              <input type="text"/>
+              <label class="req">סוג העבודה המוגשת:</label>
+              <label class="req">עבודה מחקרית</label>
+              <input type="checkbox"/>
+              <label class="req">עבודה טכנולוגית</label>
+              <input type="checkbox"/>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 form-group">
+            <label class="req">סטאטוס העבודה:</label>
+            <select class="user-type" id="type">
+                <option *ngFor="let type of projectStatus" [value]="type">{{type}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group">
+          <label class="req">שאלת מחקר/מטרת הפרוייקט:</label>
+          <textarea rows="6" cols="80"></textarea>
+          <label class="req">רקע:</label>
+          <textarea rows="6" cols="80"></textarea>
+          <label class="req">תיאור קצר:</label>
+          <textarea rows="6" cols="80"></textarea>
+          <label class="req">היקף:</label>
+          <textarea rows="6" cols="80"></textarea>  
+          <label class="req">חדשנות:</label>
+          <textarea rows="6" cols="80"></textarea>
+          <label class="req">יתרונות/תרומה:</label>
+          <textarea rows="6" cols="80"></textarea>          
+          <label class="req">נקודת מבט אישית:</label>
+          <textarea rows="6" cols="80"></textarea>        
+      </div>
+  </div>
+    <div class="row">    
+        <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">  
+            <div class="input-group image-preview">
+                  <div class="btn btn-default image-preview-input">
+                      <input type="file" (change)="selectFile($event)"/>
+                      <span class="glyphicon glyphicon-folder-open"></span>
+                      <span class="image-preview-input-title">בחר קובץ</span>
+                  </div>
+                  <div>
+                      <button type="button" class="btn btn-labeled btn-primary" [disabled]="!selectedFiles" (click)="upload()">
+                      <span class="btn-label">
+                        <i class="glyphicon glyphicon-upload"></i>
+                      </span>Upload</button>
+                  </div>
+                  <div *ngIf="currentFileUpload" class="progress">
+                      <div class="progress-bar progress-bar-striped"
+                          role="progressbar" style="width: 15%" attr.aria-valuenow="{{progress.percentage}}"
+                          aria-valuemin="0" aria-valuemax="100"
+                          [ngStyle]="{width:progress.percentage+'%'}">
+                          {{progress.percentage}}%</div>
+                  </div> 
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10">
+            <legend>מנחים ויועצים</legend>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4 form-group">
+            <h4>מנחה ראשון</h4>
+            <label>תואר</label>
+            <input type="text" id="city"/>
+            <label>שם מלא</label>
+            <input type="text" id="city"/>
+            <label>מוסד</label>
+            <input type="text" id="city"/>
+            <label>תפקיד/תחום עיסוק</label>
+            <input type="text" id="city"/>
+            <label>טלפון</label>
+            <input type="text" id="city"/>
+            <label>דואר אלקטרוני</label>
+            <input type="email" id="city"/>
+        </div>
+        <div class="col-sm-4 form-group">
+            <h4>מנחה שני</h4>
+            <label>תואר</label>
+            <input type="text" id="city"/>
+            <label>שם מלא</label>
+            <input type="text" id="city"/>
+            <label>מוסד</label>
+            <input type="text" id="city"/>
+            <label>תפקיד/תחום עיסוק</label>
+            <input type="text" id="city"/>
+            <label>טלפון</label>
+            <input type="text" id="city"/>
+            <label>דואר אלקטרוני</label>
+            <input type="email" id="city"/>
+        </div>
+        <div class="col-sm-4 form-group">
+            <h4>מנחה שלישי</h4>
+            <label>תואר</label>
+            <input type="text" id="city"/>
+            <label>שם מלא</label>
+            <input type="text" id="city"/>
+            <label>מוסד</label>
+            <input type="text" id="city"/>
+            <label>תפקיד/תחום עיסוק</label>
+            <input type="text" id="city"/>
+            <label>טלפון</label>
+            <input type="text" id="city"/>
+            <label>דואר אלקטרוני</label>
+            <input type="email" id="city"/>
+        </div>
+    </div>
+      <div class="row">
+        <a class="btn btn-primary btn-default" id="save">שמור</a>
+      </div>
+      <br><br>
+    </form>
 </div>
 
-<p><input type="file"(change)="selectFile($event)"></p>
-<p><button [disabled]="!selectedFiles" (click)="upload()">Upload</button></p>
+<div class="footer">
+    <app-footer></app-footer>
+</div>

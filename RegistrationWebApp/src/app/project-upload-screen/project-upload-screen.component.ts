@@ -14,8 +14,20 @@ export class ProjectUploadScreenComponent implements OnInit {
   selectedFiles: FileList;
   currentFileUpload: FileUpload;
   progress: { percentage: number } = { percentage: 0 };
+  fields;
+  projectStatus;
 
-  constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService) { }
+  constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService) 
+  { 
+    this.fields = ["בחר תחום מתוך הרשימה",
+    "מתמטיקה","מדעי החיים","כימיה",
+    "הנדסה/טכנולוגיה","היסטוריה",
+    "מדעי הסביבה","פיזיקה","מדעי המחשב","מדעי החברה"];
+    this.projectStatus = ["בחר סטאטוס מתוך הרשימה","עוד לא התחלתי את העבודה המעשית",
+    "עוד לא סיימתי את העבודה המעשית ואין לי תוצאות",
+    "עוד לא סיימתי את העבודה המעשית אך יש לי תוצאות חלקיות",
+    "סיימתי את כל העבודה המעשית ואני בכתיבת העבודה"];
+  }
 
   ngOnInit() {
   }
