@@ -42,4 +42,10 @@ export class StepsBarComponent implements OnInit {
     this.db.updateListing(this.db.loggedInUser.email);
     alert("Data updated!");
   }
+ // on My Project info button click
+  public MyProject(){
+    this.router.navigate(['projectUpload']);
+  }
+
+  
 }
