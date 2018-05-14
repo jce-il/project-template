@@ -32,7 +32,7 @@ export class RegistrationFormComponent {
     this.db.getLoggedInUser()
     this.db.getMetaData();
     this.db.setMetaData();
-
+    //delay in order to wait for the getLoggedInUser function to recive the data
     setTimeout(() => {
       this.db.loggedIn = this.cookieService.get('User login status');
       this.userTypes = ['תלמיד', 'מורה'];

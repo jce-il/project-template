@@ -39,7 +39,7 @@ export class DatabaseService {
       }
     }
   }
-
+  //recive user list with document ids from firebase
   getMetaData() {
     this.observableUsers = this.dataCollections.snapshotChanges().map(actions => { //collects the DB table meta data including all table fields id and users
       return actions.map(a => {
@@ -51,7 +51,7 @@ export class DatabaseService {
 
     return this.observableUsers;
   }
-
+  //after reciving the metadata from firebase - set it to the userslist variable
   setMetaData() {
     this.getMetaData().subscribe(res => {
       this.usersList = res;
