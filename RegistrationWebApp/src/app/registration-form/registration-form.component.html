@@ -11,7 +11,7 @@
         <form>
             <div class="row">
                 <div class="col-sm-10">
-                    <div *ngIf="this.db.loggedIn == 'false'">
+                    <div *ngIf="this.db.loggedIn != 'true'">
                         <legend>רישום למערכת</legend>
                     </div>
                     <div *ngIf="this.db.loggedIn == 'true'">
@@ -19,7 +19,7 @@
                     </div>
                 </div>
             </div>
-            <div *ngIf="this.db.loggedIn == 'false'" class="row">
+            <div *ngIf="this.db.loggedIn != 'true'" class="row">
                 <div class="col-sm-4 form-group">
                     <label class="req">סוג משתמש *</label>
                     <select class="user-type" id="type" required [(ngModel)]="user.type" name="type">
@@ -27,7 +27,7 @@
                     </select>
                 </div>
             </div>
-            <div *ngIf="this.db.loggedIn == 'false'" class="row">
+            <div *ngIf="this.db.loggedIn != 'true'" class="row">
                 <div class="col-sm-4 form-group">
                     <div [formGroup]="userform">
                         <label class="req">דואר אלקטרוני *</label>
@@ -218,7 +218,7 @@
                 </div>
             </div>
             <div class="btnsign">
-                <div *ngIf="this.db.loggedIn == 'false'">
+                <div *ngIf="this.db.loggedIn != 'true'">
                     <button id="Calculate" class="btnsign" (click)="registerUser()">הירשם והמשך לשלב הבא</button>
                 </div>
                 <div *ngIf="this.db.loggedIn == 'true'">

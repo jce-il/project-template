@@ -37,7 +37,7 @@ export class RegistrationFormComponent {
       this.db.loggedIn = this.cookieService.get('User login status');
       this.userTypes = ['תלמיד', 'מורה'];
 
-      if (this.db.loggedIn == 'false')
+      if (this.db.loggedIn != 'true')
         this.user = new User(false, this.userTypes[0]); //deafult type is student
 
       else
@@ -46,7 +46,7 @@ export class RegistrationFormComponent {
       this.signUpError = false; // default- no registration form errors
       this.date = new Date();
 
-      if (this.db.loggedIn == 'false')
+      if (this.db.loggedIn != 'true')
         this.title = "טופס הרשמה לתחרות מדענים צעירים " + this.date.getFullYear();
 
       else
