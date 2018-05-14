@@ -6,12 +6,10 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
-  private user: Observable<firebase.User>;
   currentUser: firebase.User = null; //a variable that hold the current loggeed in user data.
   emailError = false;//this variable handle errors.
 
   constructor(private _firebaseAuth: AngularFireAuth, private router: Router) {
-    this.user = _firebaseAuth.authState;
   }
 
   signIn(email, password) //this method allow to an registered user to login.

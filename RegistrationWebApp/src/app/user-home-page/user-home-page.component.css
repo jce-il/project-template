@@ -1,5 +1,6 @@
 *{
     width: 100%;
+    direction: rtl;
 }
 .container{
     direction: rtl;

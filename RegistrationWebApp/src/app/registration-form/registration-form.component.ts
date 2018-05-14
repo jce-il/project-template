@@ -5,6 +5,8 @@ import { DatabaseService } from '../services/database.service';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { RouterLink, Router } from '@angular/router';
 import { FormsModule, FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
+
 
 
 @Component({
@@ -17,26 +19,43 @@ export class RegistrationFormComponent {
   user: User; // User Object - Contains all fields. Will be uploaded as a Jason object to server
   userform: FormGroup; // tracks the value and validity state of a group of FormControl
   signUpError: boolean; //if true -> there is an error in the registration form
-  userPasswordValidation : string; // will contain the password verification
-  title : string;
+  userPasswordValidation: string; // will contain the password verification
+  title: string;
   date;
   ngOnInit() {
-    this.validateForm()
+
   }
 
-  constructor(public db: DatabaseService, public auth: AuthService, public router: Router) {
-    this.userTypes = ['תלמיד', 'מורה'];
-    if(!this.db.loggedIn)
-      this.user = new User(false, this.userTypes[0]); //deafult type is student
-    else
-      this.user = this.db.loggedInUser;
-    this.signUpError=false; // default- no registration form errors
-    this.date = new Date();
-    if(!this.db.loggedIn)
-      this.title = "טופס הרשמה לתחרות מדענים צעירים " + this.date.getFullYear();
-    else
-      this.title = "טופס עדכון פרטים";
+  constructor(public db: DatabaseService, public auth: AuthService, public router: Router, private cookieService: CookieService) {
+
+    this.db.loggedInUserUID = this.cookieService.get('User uid');
+    this.db.getLoggedInUser()
+    this.db.getMetaData();
+    this.db.setMetaData();
+
+    setTimeout(() => {
+      this.db.loggedIn = this.cookieService.get('User login status');
+      this.userTypes = ['תלמיד', 'מורה'];
+
+      if (this.db.loggedIn == 'false')
+        this.user = new User(false, this.userTypes[0]); //deafult type is student
+
+      else
+        this.user = this.db.loggedInUser;
+
+      this.signUpError = false; // default- no registration form errors
+      this.date = new Date();
+
+      if (this.db.loggedIn == 'false')
+        this.title = "טופס הרשמה לתחרות מדענים צעירים " + this.date.getFullYear();
+
+      else
+        this.title = "טופס עדכון פרטים";
+
+      this.validateForm()
+    }, 1500);
   }
+
 
   // on register user button click adds new user to Database according to the data that was collected from the registration form
   public registerUser() {
@@ -158,7 +177,7 @@ export class RegistrationFormComponent {
     alert("הפרטים עודכנו בהצלחה")
     this.router.navigate(['homepage']);
   }
-  
+
 
   // gets - link the formControls to html
   get firstname() { return this.userform.get('firstname'); }

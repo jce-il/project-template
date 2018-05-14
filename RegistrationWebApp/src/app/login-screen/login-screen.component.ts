@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { FormsModule, FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { DatabaseService } from '../services/database.service';
+import { CookieService } from 'ngx-cookie-service';
 
 type UserFields = 'email' | 'password';
 type FormErrors = { [u in UserFields]: string };
@@ -20,18 +21,17 @@ export class LoginScreenComponent implements OnInit {
     'email': '',
     'password': '',
   };
-
-  constructor(public auth: AuthService, public fb: FormBuilder, public router: Router, public db: DatabaseService) { }
+  constructor(public auth: AuthService, public fb: FormBuilder, public router: Router, public db: DatabaseService, private cookieService: CookieService) { }
 
   ngOnInit() {
-    this.buildForm(); 
+    this.buildForm();
   }
 
   signIn() { //enables the sign in button function
     this.auth.signIn(this.userForm.value['email'], this.userForm.value['password']) //using the auth service
       .then((res) => {
-        this.db.loggedInUserUID = res.uid; //takes logged in user UID
-        this.auth.currentUser = res;
+        this.cookieService.set('User uid', res.uid);
+        this.cookieService.set('User login status', 'true');
         this.router.navigate(['homepage'])
       })
       .catch((err) =>

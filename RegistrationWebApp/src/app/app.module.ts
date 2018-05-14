@@ -22,6 +22,8 @@ import { ProjectUploadScreenComponent } from './project-upload-screen/project-up
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { StepsBarComponent } from './steps-bar/steps-bar.component';
 import { HeaderComponent } from './header/header.component';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { HeaderComponent } from './header/header.component';
     DatabaseService,
     AuthService,
     AuthGuardService,
-    UploadFileService
+    UploadFileService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

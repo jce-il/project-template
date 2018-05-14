@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../services/database.service';
 import { AuthService } from '../services/auth.service';
 import { RouterLink, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-steps-bar',
@@ -10,42 +11,36 @@ import { RouterLink, Router } from '@angular/router';
 })
 export class StepsBarComponent implements OnInit {
 
-  constructor(public db: DatabaseService, public auth: AuthService, public router: Router) { }
+  constructor(public db: DatabaseService, public auth: AuthService, public router: Router, private cookieService: CookieService) { }
 
   ngOnInit() {
-    this.db.registeredUsers = ''; //clean string - this is temp info only
-    this.db.getLoggedInUser(); // in order to print logged in user info - on init get it
   }
 
   // on log out button click
   public logOut() {
+    this.cookieService.set('User login status', 'false');
     this.auth.LogOut();
-    this.db.loggedIn = false;
+    this.db.loggedIn = 'false';
   }
 
   // on home page button click
-  public homePage(){
+  public homePage() {
     this.router.navigate(['homepage'])
     alert("Home Page");
   }
   // on personal info button click
-  public personalInfo(){
+  public personalInfo() {
     this.router.navigate(['registrationForm']);
   }
 
   // on contact us button click
-  public contactUs(){
+  public contactUs() {
     this.router.navigate(['contactUs']);
   }
-//on update info button click updates logged in users info according to the info that was inserted in the temporary update form
-  public updateInfo() {
-    this.db.updateListing(this.db.loggedInUser.email);
-    alert("Data updated!");
-  }
- // on My Project info button click
-  public MyProject(){
+  // on My Project info button click
+  public MyProject() {
     this.router.navigate(['projectUpload']);
   }
 
-  
+
 }

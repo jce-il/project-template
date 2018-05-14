@@ -11,17 +11,18 @@ export class DatabaseService {
   public user: User; //will hold the data that was collected from a user that wants to register to the website
   public loggedInUserUID: string; //only holds logged in users id
   public loggedInUser: User; // holds logged in user info 
-  public loggedIn: boolean; //check if this is the right way to do
+  public loggedIn: string; //check if this is the right way to do
   listingDoc: AngularFirestoreDocument<User>; //holds FB listing for update operation
+  observableUsers: Observable<User[]>;
+  usersList = [];
 
   constructor(private afs: AngularFirestore) {
     //==========Connection to firebase table============//
     const settings = { timestampsInSnapshots: true };
     afs.app.firestore().settings(settings);
     this.dataCollections = afs.collection<any>('usersInfo');
+    this.loggedIn = 'false';
     //===================================================//
-    this.registeredUsers = "";
-    this.loggedIn = false;
   }
 
   //adds all info that was provided through the registration form to user object and ads it to the firebase DB
@@ -31,24 +32,33 @@ export class DatabaseService {
 
   //updates users info that was found by email. New data is stored in the "loggedInUser" object
   updateListing(email: string) {
-  
-    this.afs.collection("usersInfo").snapshotChanges().map(actions => { //collects the DB table meta data including all table fields id and users
+    for (var i = 0; i < this.usersList.length; i++) {
+      if (this.usersList[i].email == email) {
+        this.listingDoc = this.dataCollections.doc(`${this.usersList[i].id}`); //takes the listing that will be updated by the doc.id (listing's id)
+        this.listingDoc.update(JSON.parse(JSON.stringify(this.user)));
+      }
+    }
+  }
+
+  getMetaData() {
+    this.observableUsers = this.dataCollections.snapshotChanges().map(actions => { //collects the DB table meta data including all table fields id and users
       return actions.map(a => {
         const data = a.payload.doc.data() as User;
         const id = a.payload.doc.id;
         return { id, ...data };
       });
-      //searches through the collectes list of user the current user to update
-    }).subscribe((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        if (doc.email == email) {
-          this.listingDoc = this.afs.doc(`usersInfo/${doc.id}`); //takes the listing that will be updated by the doc.id (listing's id)
-          this.listingDoc.update(JSON.parse(JSON.stringify(this.user))); //finaly updates the listing
-        }
-      });
+    })
+
+    return this.observableUsers;
+  }
+
+  setMetaData() {
+    this.getMetaData().subscribe(res => {
+      this.usersList = res;
     });
   }
-//currently a temp function that stores basic users information that is found at the FBDB.
+
+  //currently a temp function that stores basic users information that is found at the FBDB.
   public getAllDBUsers() {
     this.dataCollections.valueChanges().subscribe(collection => {
       for (var i = 0; i < collection.length; i++) {
@@ -58,15 +68,16 @@ export class DatabaseService {
   }
   //returns the currently logged in user by his uid
   public getLoggedInUser() {
-
     this.dataCollections.valueChanges().subscribe(collection => {
       for (var i = 0; i < collection.length; i++) {
         if (collection[i].uid === this.loggedInUserUID) {
           this.loggedInUser = collection[i];
-          this.loggedIn = true;
         }
       }
     })
+
+
+
   }
 
 
