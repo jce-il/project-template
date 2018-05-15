@@ -53,7 +53,7 @@ export class RegistrationFormComponent {
         this.title = "טופס עדכון פרטים";
 
       this.validateForm()
-    }, 1500);
+    }, 2500);
   }
 
 

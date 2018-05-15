@@ -25,6 +25,8 @@ export class LoginScreenComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
+    if(this.cookieService.get('User login status') == 'true')
+      this.router.navigate(['homepage']);
   }
 
   signIn() { //enables the sign in button function
