@@ -11,20 +11,52 @@
         <div class="row">
             <div class="col-sm-10">
                 <div>
-                    <legend>חברי הצוות</legend>
+                    <legend>דואר אלקטרוני של חברי הצוות</legend>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-4 form-group">
-                <label class="req">שותף ראשון:</label>
-                <input type="text" id="partner1" [(ngModel)]="project.user2mail" name="partner2"/>
-                <label class="req">שותף שני:</label>
-                <input type="text" id="partner2" [(ngModel)]="project.user3mail" name="partner3"/>
-                <label class="req">שם העבודה:</label>
-                <input type="text" id="projectname" required [(ngModel)]="project.project_name" name="projectname"/>
+                <div [formGroup]="projectform">
+                    <label class="req">כתובת דואר אלקטרוני שלי:</label>
+                    <input type="text" id="partner1" [(ngModel)]="project.user1mail" name="partner1" formControlName="partner1"/>
+                    <div *ngIf="partner1.invalid && (partner1.dirty)">
+                        <div *ngIf="partner1.errors.email && !CheckIfEmptyField(project.user1mail)" class="alert alert-danger">
+                            נא להזין כתובת דואר אלקטרוני תקינה
+                        </div>
+                     </div>
+                </div>
+                <div [formGroup]="projectform">
+                <label class="req">כתובת דואר אלקטרוני של חבר צוות נוסף:</label>
+                <input type="text" id="partner2" [(ngModel)]="project.user2mail" name="partner2" formControlName="partner2"/>
+                    <div *ngIf="partner2.invalid && (partner2.dirty)">
+                        <div *ngIf="partner2.errors.email && !CheckIfEmptyField(project.user2mail)" class="alert alert-danger">
+                            נא להזין כתובת דואר אלקטרוני תקינה
+                        </div>
+                    </div>
+                </div>
+                <div [formGroup]="projectform">
+                <label class="req">כתובת דואר אלקטרוני של חבר צוות נוסף:</label>
+                <input type="text" id="partner3" [(ngModel)]="project.user3mail" name="partner3" formControlName="partner3"/>
+                    <div *ngIf="partner3.invalid && (partner3.dirty)">
+                        <div *ngIf="partner3.errors.email && !CheckIfEmptyField(project.user3mail)" class="alert alert-danger">
+                            נא להזין כתובת דואר אלקטרוני תקינה
+                        </div>
+                    </div>
+                </div>
+                <div [formGroup]="projectform">
+                    <label class="req">שם העבודה:</label>
+                    <input type="text" id="projectname" required [(ngModel)]="project.project_name" name="projectname" formControlName="projectname"/>
+                </div>
+                <div [formGroup]="projectform">
                 <label class="req">דואר אלקטרוני איש קשר מטעם בית הספר:</label>
-                <input type="email" id="email" required [(ngModel)]="project.school_contact_mail" name="email"/>
+                <input type="email" id="email_school" required [(ngModel)]="project.school_contact_mail" name="email_school" formControlName="email_school"/>
+                <div *ngIf="email_school.invalid && (email_school.dirty)">
+                        <div *ngIf="email_school.errors.email && !CheckIfEmptyField(project.school_contact_mail)" class="alert alert-danger">
+                            נא להזין כתובת דואר אלקטרוני תקינה
+                        </div>
+                </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -34,10 +66,12 @@
         </div>
           <div class="row">
             <div class="col-sm-4 form-group">
-                <label class="req">התחום אליו משתייכת העבודה:</label>
-                <select class="user-type" id="project_field" required [(ngModel)]="project.project_field" name="project_field">
-                    <option *ngFor="let type of fields" [value]="type">{{type}}</option>
-                </select>
+                <div [formGroup]="projectform">
+                    <label class="req">התחום אליו משתייכת העבודה:</label>
+                    <select class="user-type" id="project_field" required [(ngModel)]="project.project_field" name="project_field" formControlName="project_field">
+                        <option *ngFor="let type of fields" [value]="type">{{type}}</option>
+                    </select>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -83,7 +117,7 @@
         <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">  
             <div class="input-group image-preview">
                   <div class="btn btn-default image-preview-input">
-                      <input type="file" (change)="selectFile($event)"/>
+                      <input type="file" (change)="selectFile($event)" required name="fileupload"/>
                       <span class="glyphicon glyphicon-folder-open"></span>
                       <span class="image-preview-input-title">בחר קובץ</span>
                   </div>
