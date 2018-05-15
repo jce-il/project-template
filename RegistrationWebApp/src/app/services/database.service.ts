@@ -57,11 +57,14 @@ export class DatabaseService {
     }
   }
 
+  /* the function finds the listing to update by email, and then,
+   updates it's data by selecting the user from selected user
+    by the given user index*/
   asignProjectToUser(email: string, userIndex) {
     for (var i = 0; i < this.usersList.length; i++) {
       if (this.usersList[i].email == email) {
         this.listingDoc = this.dataCollections.doc(`${this.usersList[i].id}`); //takes the listing that will be updated by the doc.id (listing's id)
-        this.listingDoc.update(JSON.parse(JSON.stringify(this.selectedUser[userIndex])));
+        this.listingDoc.update(JSON.parse(JSON.stringify(this.selectedUser[userIndex])));// 
       }
     }
   }
@@ -89,8 +92,8 @@ export class DatabaseService {
     });
   }
 
-  getProjectMetaData() {
-    this.observableProjects = this.projectCollections.snapshotChanges().map(actions => { //collects the DB table meta data including all table fields id and users
+  getProjectMetaData() { //collects the DB table meta data including all table fields id and users
+    this.observableProjects = this.projectCollections.snapshotChanges().map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as User;
         const id = a.payload.doc.id;
@@ -121,11 +124,11 @@ export class DatabaseService {
     })
   }
 
-  public getUser(email1 : string, email2 : string) {
+  public getUser(email1 : string, email2 : string) { // get user asiggned to project
     this.dataCollections.valueChanges().subscribe(collection => {
       
       for (var i = 0; i < collection.length; i++) 
-      {
+      { //find participantes email's and puts them in array
         if (collection[i].email === email1) {
           this.selectedUser[0] = collection[i];
         }
@@ -136,8 +139,7 @@ export class DatabaseService {
     })
   }
 
-  public getProjectID(pname : string)
-  {
+  public getProjectID(pname : string){ //get project ID by Project name
     for(var i = 0 ; i < this.projectsList.length ; i++)
     {
       if(this.projectsList[i].project_name == pname)
