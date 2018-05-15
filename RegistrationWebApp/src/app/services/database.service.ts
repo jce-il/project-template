@@ -13,6 +13,7 @@ export class DatabaseService {
   public user: User; //will hold the data that was collected from a user that wants to register to the website
   public loggedInUserUID: string; //only holds logged in users id
   public loggedInUser: User; // holds logged in user info 
+  selectedUser = [];
   public loggedIn: string; //check if this is the right way to do
   listingDoc: AngularFirestoreDocument<User>; //holds FB listing for update operation
   observableUsers: Observable<User[]>;
@@ -41,17 +42,26 @@ export class DatabaseService {
     this.dataCollections.add(JSON.parse(JSON.stringify(user)));
   }
 
-   //adds all info that was provided through the project-upload form to project object and ads it to the firebase DB
-   public addProjectToDB(project: Project) {
+  //adds all info that was provided through the project-upload form to project object and ads it to the firebase DB
+  public addProjectToDB(project: Project) {
     this.projectCollections.add(JSON.parse(JSON.stringify(project)));
   }
-  
+
   //updates users info that was found by email. New data is stored in the "loggedInUser" object
   updateListing(email: string) {
     for (var i = 0; i < this.usersList.length; i++) {
       if (this.usersList[i].email == email) {
         this.listingDoc = this.dataCollections.doc(`${this.usersList[i].id}`); //takes the listing that will be updated by the doc.id (listing's id)
         this.listingDoc.update(JSON.parse(JSON.stringify(this.user)));
+      }
+    }
+  }
+
+  asignProjectToUser(email: string, userIndex) {
+    for (var i = 0; i < this.usersList.length; i++) {
+      if (this.usersList[i].email == email) {
+        this.listingDoc = this.dataCollections.doc(`${this.usersList[i].id}`); //takes the listing that will be updated by the doc.id (listing's id)
+        this.listingDoc.update(JSON.parse(JSON.stringify(this.selectedUser[userIndex])));
       }
     }
   }
@@ -111,8 +121,30 @@ export class DatabaseService {
     })
   }
 
-  public getUser(email: string){
-
+  public getUser(email1 : string, email2 : string) {
+    this.dataCollections.valueChanges().subscribe(collection => {
+      
+      for (var i = 0; i < collection.length; i++) 
+      {
+        if (collection[i].email === email1) {
+          this.selectedUser[0] = collection[i];
+        }
+        else if (collection[i].email === email2) {
+          this.selectedUser[1] = collection[i];
+        }
+      }
+    })
   }
 
+  public getProjectID(pname : string)
+  {
+    for(var i = 0 ; i < this.projectsList.length ; i++)
+    {
+      if(this.projectsList[i].project_name == pname)
+      {
+        return this.projectsList[i].id;
+      }
+    }
+    return 'not found';
+  }
 }

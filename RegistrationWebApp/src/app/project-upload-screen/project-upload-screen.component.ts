@@ -52,5 +52,16 @@ export class ProjectUploadScreenComponent implements OnInit {
   public addProject(){
     this.project.project_file = this.currentFileUpload; // assigned file in project field
     this.db.addProjectToDB(this.project);
+    this.db.getUser(this.project.user2mail,this.project.user3mail);
+    this.db.getProjectMetaData();
+    this.db.setMetaData();
+    setTimeout(() =>{
+      var proj_id = this.db.getProjectID(this.project.project_name);
+      this.db.selectedUser[0].project = proj_id;
+      this.db.selectedUser[1].project = proj_id;  
+      //console.log(this.db.selectedUser[1].project);   
+      this.db.asignProjectToUser(this.db.selectedUser[0].email,0);
+      this.db.asignProjectToUser(this.db.selectedUser[1].email,1);
+    },4000);
   }
 }

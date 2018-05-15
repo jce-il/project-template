@@ -21,6 +21,6 @@ export class User {
         public schoolName?: string,
         public schoolCity?: string,
         public docId?: string,
-        public project_?: Project
+        public project?: Project
     ) { }
 }
