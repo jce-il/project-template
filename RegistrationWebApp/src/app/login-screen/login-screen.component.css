@@ -20,20 +20,21 @@ h3{ font-family: 'Shuneet', serif; font-size:55px; color:  rgb(204, 231, 173); f
 .card-section { direction: rtl; position: relative; top:200px; right: 15%; }
 .card-block {text-align: right; padding-top: 30px; padding-bottom: 5%; padding-right: 5%; border-radius: 15px;background: radial-gradient(ellipse at center, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.5); opacity: 0.99;  width: 50%;}
 .section-title { direction: rtl; margin-bottom: 80px;}
-.section-title legend{ margin-bottom: 20px; width: 500px; font-size: 20px; font-weight: bolder;}
-.form-group{ margin-right: 10%; width: 200px; font-size: 13px;}
+.section-title legend{ margin-bottom: 20px; width: 500px; font-size: 30px; font-weight: bolder;}
+.form-group{ margin-right: 10%; width: 200px; font-size: 16px;}
 
 .btnlogin{margin-left: 5%;  text-align: center;}
-.btnEnter{background-color: rgba(23, 72, 161, 0.808); border-color: transparent; border-radius: 10px; width: 80px; height: 30px; font-weight: bold; font-size: 13px; margin-left: 10px; margin-right: 30%;}
+.btnEnter{background-color: rgba(23, 72, 161, 0.808); border-color: transparent; border-radius: 10px; width: 80px; height: 30px; font-weight: bold; font-size: 15px; margin-left: 10px; margin-right: 30%;}
 .btnEnter:focus, .btnEnter:hover { background-color: lightsteelblue; color: #25292a; border-color: transparent;}
-.btnSignin{ background-color: rgba(18, 52, 117, 0.808); border-color: transparent; border-radius: 10px; width: 80px; height: 30px; font-size: 13px;}
+.btnSignin{ background-color: rgba(18, 52, 117, 0.808); border-color: transparent; border-radius: 10px; width: 80px; height: 30px; font-size: 15px;}
 .btnSignin:focus, .btnSignin:hover { background-color: rgb(146, 183, 231); color: #25292a; border-color: transparent;}
 .forgetPassword {
     float: right;
     margin-right: 60px;
     padding: 0;
-    font-size: 10px;
-    color: #000000; 
+    font-size: 13px;
+    color: #357bcc; 
+    text-decoration: underline;
 }
 
 .forgetPassword:focus, .forgetPassword:hover { color: red; }

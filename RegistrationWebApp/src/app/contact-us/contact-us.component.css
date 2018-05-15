@@ -12,3 +12,12 @@
     .h1 small {
     font-size: 24px;
     }
+
+    .footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        opacity: 0.95;
+     }
