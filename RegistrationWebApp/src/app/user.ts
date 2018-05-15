@@ -1,3 +1,5 @@
+import { Project } from './project';
+
 export class User {
     constructor(
         public loggedIn: boolean,
@@ -18,6 +20,7 @@ export class User {
         public appartment?: string,
         public schoolName?: string,
         public schoolCity?: string,
-        public docId?: string
+        public docId?: string,
+        public project_?: Project
     ) { }
 }

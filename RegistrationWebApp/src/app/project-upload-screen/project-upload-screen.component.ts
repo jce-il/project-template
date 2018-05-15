@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../services/database.service';
 import { AuthService } from '../services/auth.service';
 import { UploadFileService } from '../services/upload-file.service';
+import { FormsModule, FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { FileUpload } from '../fileupload';
+import { Project } from '../project';
+
 
 @Component({
   selector: 'app-project-upload-screen',
@@ -16,6 +19,8 @@ export class ProjectUploadScreenComponent implements OnInit {
   progress: { percentage: number } = { percentage: 0 };
   fields;
   projectStatus;
+  project: Project;
+  projectform: FormGroup; // tracks the value and validity state of a group of FormControl
 
   constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService) 
   { 
@@ -27,6 +32,7 @@ export class ProjectUploadScreenComponent implements OnInit {
     "עוד לא סיימתי את העבודה המעשית ואין לי תוצאות",
     "עוד לא סיימתי את העבודה המעשית אך יש לי תוצאות חלקיות",
     "סיימתי את כל העבודה המעשית ואני בכתיבת העבודה"];
+    this.project = new Project();
   }
 
   ngOnInit() {
@@ -39,9 +45,12 @@ export class ProjectUploadScreenComponent implements OnInit {
   upload() {
     const file = this.selectedFiles.item(0);
     this.selectedFiles = undefined; //reset ? 
-
     this.currentFileUpload = new FileUpload(file);
     this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress);
   }
 
+  public addProject(){
+    this.project.project_file = this.currentFileUpload; // assigned file in project field
+    this.db.addProjectToDB(this.project);
+  }
 }

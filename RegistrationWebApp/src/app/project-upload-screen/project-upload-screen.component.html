@@ -18,15 +18,13 @@
         <div class="row">
             <div class="col-sm-4 form-group">
                 <label class="req">שותף ראשון:</label>
-                <input type="text" id="partner1"/>
+                <input type="text" id="partner1" [(ngModel)]="project.user2mail" name="partner2"/>
                 <label class="req">שותף שני:</label>
-                <input type="text" id="partner2"/>
-                <label class="req">שותף שלישי:</label>
-                <input type="text" id="partner2"/>
+                <input type="text" id="partner2" [(ngModel)]="project.user3mail" name="partner3"/>
                 <label class="req">שם העבודה:</label>
-                <input type="text" id="partner2"/>
+                <input type="text" id="projectname" required [(ngModel)]="project.project_name" name="projectname"/>
                 <label class="req">דואר אלקטרוני איש קשר מטעם בית הספר:</label>
-                <input type="email" id="email"/>
+                <input type="email" id="email" required [(ngModel)]="project.school_contact_mail" name="email"/>
             </div>
         </div>
         <div class="row">
@@ -37,7 +35,7 @@
           <div class="row">
             <div class="col-sm-4 form-group">
                 <label class="req">התחום אליו משתייכת העבודה:</label>
-                <select class="user-type" id="type">
+                <select class="user-type" id="project_field" required [(ngModel)]="project.project_field" name="project_field">
                     <option *ngFor="let type of fields" [value]="type">{{type}}</option>
                 </select>
             </div>
@@ -45,12 +43,12 @@
         <div class="row">
           <div class="col-sm-4 form-group">
               <label class="req">תחום מחקר אחר (פרט):</label>
-              <input type="text"/>
+              <input type="text" />
               <label class="req">מוסד אקדמי בו התבצעה העבודה במידה וקיים:</label>
-              <input type="text"/>
+              <input type="text" id="location" required [(ngModel)]="project.location" name="location"/>
               <label class="req">סוג העבודה המוגשת:</label>
               <label class="req">עבודה מחקרית</label>
-              <input type="checkbox"/>
+              <input type="checkbox" id="type" required [(ngModel)]="project.type" name="type"/>
               <label class="req">עבודה טכנולוגית</label>
               <input type="checkbox"/>
           </div>
@@ -58,7 +56,7 @@
       <div class="row">
         <div class="col-sm-4 form-group">
             <label class="req">סטאטוס העבודה:</label>
-            <select class="user-type" id="type">
+            <select class="user-type" id="status" required [(ngModel)]="project.status" name="status">
                 <option *ngFor="let type of projectStatus" [value]="type">{{type}}</option>
             </select>
         </div>
@@ -66,19 +64,19 @@
     <div class="row">
       <div class="col-sm-4 form-group">
           <label class="req">שאלת מחקר/מטרת הפרוייקט:</label>
-          <textarea rows="6" cols="80"></textarea>
+          <textarea rows="6" cols="80" id="target" required [(ngModel)]="project.target" name="target"></textarea>
           <label class="req">רקע:</label>
-          <textarea rows="6" cols="80"></textarea>
+          <textarea rows="6" cols="80" id="background" required [(ngModel)]="project.background" name="background"></textarea>
           <label class="req">תיאור קצר:</label>
-          <textarea rows="6" cols="80"></textarea>
+          <textarea rows="6" cols="80" id="description" required [(ngModel)]="project.description" name="description"></textarea>
           <label class="req">היקף:</label>
-          <textarea rows="6" cols="80"></textarea>  
+          <textarea rows="6" cols="80" id="scope" required [(ngModel)]="project.scope" name="scope"></textarea>
           <label class="req">חדשנות:</label>
-          <textarea rows="6" cols="80"></textarea>
+          <textarea rows="6" cols="80" id="inovetion" required [(ngModel)]="project.inovetion" name="inovetion"></textarea>
           <label class="req">יתרונות/תרומה:</label>
-          <textarea rows="6" cols="80"></textarea>          
+          <textarea rows="6" cols="80" id="advantages" required [(ngModel)]="project.advantages" name="advantages"></textarea>
           <label class="req">נקודת מבט אישית:</label>
-          <textarea rows="6" cols="80"></textarea>        
+          <textarea rows="6" cols="80" id="retrospective" required [(ngModel)]="project.retrospective" name="retrospective"></textarea>
       </div>
   </div>
     <div class="row">    
@@ -158,7 +156,7 @@
         </div>
     </div>
       <div class="row">
-        <a class="btn btn-primary btn-default" id="save">שמור</a>
+        <button class="btn btn-primary btn-default" id="save" (click)="addProject()" [disabled]="progress.percentage != 100">שמור</button>
       </div>
       <br><br>
     </form>

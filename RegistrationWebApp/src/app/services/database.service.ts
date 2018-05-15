@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { User } from '../user';
 import { Observable } from 'rxjs/Observable';
+import { Project } from '../project';
+
 
 @Injectable()
 export class DatabaseService {
 
-  public dataCollections; //will hold the DB collection table that is stored in the firebase 
+  public dataCollections; //will hold the DB collection table that is stored in the firebase
   public registeredUsers; //a string that holds information that was collected from getAllDBUsers() function
   public user: User; //will hold the data that was collected from a user that wants to register to the website
   public loggedInUserUID: string; //only holds logged in users id
@@ -16,6 +18,14 @@ export class DatabaseService {
   observableUsers: Observable<User[]>;
   usersList = [];
 
+  /* project*/
+  public projectCollections;
+  public project: Project;
+  listingProjectDoc: AngularFirestoreDocument<Project>; //holds FB listing for update operation
+  observableProjects: Observable<Project[]>; //
+  projectsList = [];
+
+
   constructor(private afs: AngularFirestore) {
     //==========Connection to firebase table============//
     const settings = { timestampsInSnapshots: true };
@@ -23,6 +33,7 @@ export class DatabaseService {
     this.dataCollections = afs.collection<any>('usersInfo');
     this.loggedIn = 'false';
     //===================================================//
+    this.projectCollections = afs.collection<any>('projectsInfo');
   }
 
   //adds all info that was provided through the registration form to user object and ads it to the firebase DB
@@ -30,6 +41,11 @@ export class DatabaseService {
     this.dataCollections.add(JSON.parse(JSON.stringify(user)));
   }
 
+   //adds all info that was provided through the project-upload form to project object and ads it to the firebase DB
+   public addProjectToDB(project: Project) {
+    this.projectCollections.add(JSON.parse(JSON.stringify(project)));
+  }
+  
   //updates users info that was found by email. New data is stored in the "loggedInUser" object
   updateListing(email: string) {
     for (var i = 0; i < this.usersList.length; i++) {
@@ -39,6 +55,7 @@ export class DatabaseService {
       }
     }
   }
+
   //recive user list with document ids from firebase
   getMetaData() {
     this.observableUsers = this.dataCollections.snapshotChanges().map(actions => { //collects the DB table meta data including all table fields id and users
@@ -56,7 +73,24 @@ export class DatabaseService {
     this.getMetaData().subscribe(res => {
       this.usersList = res;
     });
+
+    this.getProjectMetaData().subscribe(res => {
+      this.projectsList = res;
+    });
   }
+
+  getProjectMetaData() {
+    this.observableProjects = this.projectCollections.snapshotChanges().map(actions => { //collects the DB table meta data including all table fields id and users
+      return actions.map(a => {
+        const data = a.payload.doc.data() as User;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    })
+
+    return this.observableProjects;
+  }
+
 
   //currently a temp function that stores basic users information that is found at the FBDB.
   public getAllDBUsers() {
@@ -75,11 +109,10 @@ export class DatabaseService {
         }
       }
     })
-
-
-
   }
 
+  public getUser(email: string){
 
+  }
 
 }
