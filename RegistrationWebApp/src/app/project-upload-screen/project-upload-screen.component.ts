@@ -93,7 +93,7 @@ export class ProjectUploadScreenComponent implements OnInit {
       ]),
       'email_school':  new FormControl(this.project.user3mail, [
         //Teacher Email is required, must be in email format.
-        Validators.required,
+        //Validators.required,
         Validators.email
       ]),
       'project_field':  new FormControl(this.project.user3mail, [
