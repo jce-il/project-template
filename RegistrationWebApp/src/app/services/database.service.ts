@@ -124,7 +124,7 @@ export class DatabaseService {
     })
   }
 
-  public getUser(email1 : string, email2 : string) { // get user asiggned to project
+  public getUser(email1 : string, email2 : string , email3 : string) { // get user asiggned to project
     this.dataCollections.valueChanges().subscribe(collection => {
       
       for (var i = 0; i < collection.length; i++) 
@@ -134,6 +134,9 @@ export class DatabaseService {
         }
         else if (collection[i].email === email2) {
           this.selectedUser[1] = collection[i];
+        }
+        else if (collection[i].email === email3) {
+          this.selectedUser[2] = collection[i];
         }
       }
     })
