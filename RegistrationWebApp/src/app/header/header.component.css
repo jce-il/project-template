@@ -5,6 +5,8 @@
     right: 0;
     margin: 0;
     top: 0;
+    z-index: 1;
+
 }
 
 .header{
@@ -14,7 +16,6 @@
 }
 
 .banner {
-    position: fixed;
     right: 0;
     top: 2%;
     height: 25%;
