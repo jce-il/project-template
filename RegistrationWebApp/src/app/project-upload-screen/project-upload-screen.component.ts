@@ -79,25 +79,26 @@ export class ProjectUploadScreenComponent implements OnInit {
       return;
     }
     this.projectError = false;
+
     this.project.project_file = this.currentFileUpload; // assigned file in project field
-    this.db.addProjectToDB(this.project).then(() => {
-      this.db.getUser(this.project.user1mail, this.project.user2mail, this.project.user3mail).then(() => {
-        this.db.setMetaData();
-        setTimeout(() => {
-          var proj_id = this.db.getProjectID(this.project.project_name);
-          this.db.selectedUser[0].project = proj_id;
-          this.db.selectedUser[0].teacher = this.project.school_contact_mail;
-          this.db.selectedUser[1].project = proj_id;
-          this.db.selectedUser[1].teacher = this.project.school_contact_mail;
-          this.db.selectedUser[2].project = proj_id;
-          this.db.selectedUser[2].teacher = this.project.school_contact_mail;
-          this.db.asignProjectToUser(this.db.selectedUser[0].email, 0);
-          this.db.asignProjectToUser(this.db.selectedUser[1].email, 1);
-          this.db.asignProjectToUser(this.db.selectedUser[2].email, 2);
-        }, 2000)
+    this.db.addProjectToDB(this.project)
+    this.db.getUser(this.project.user1mail, this.project.user2mail, this.project.user3mail).then(() => {
+      this.db.setMetaData();
+      setTimeout(() => {
+        var proj_id = this.db.getProjectID(this.project.project_name);
+        this.db.selectedUser[0].project = proj_id;
+        this.db.selectedUser[0].teacher = this.project.school_contact_mail;
+        this.db.selectedUser[1].project = proj_id;
+        this.db.selectedUser[1].teacher = this.project.school_contact_mail;
+        this.db.selectedUser[2].project = proj_id;
+        this.db.selectedUser[2].teacher = this.project.school_contact_mail;
+        this.db.asignProjectToUser(this.db.selectedUser[0].email, 0);
+        this.db.asignProjectToUser(this.db.selectedUser[1].email, 1);
+        this.db.asignProjectToUser(this.db.selectedUser[2].email, 2);
         alert("הפרוייקט הועלה בהצלחה");
-      });
+      }, 2500)
     });
+
   }
 
   public validateForm() {

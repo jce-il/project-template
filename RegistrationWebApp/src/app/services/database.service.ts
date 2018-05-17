@@ -44,10 +44,7 @@ export class DatabaseService {
 
   //adds all info that was provided through the project-upload form to project object and ads it to the firebase DB
   public addProjectToDB(project: Project) {
-    return new Promise((resolve, reject) => {
-      this.projectCollections.add(JSON.parse(JSON.stringify(project)));
-      resolve();
-    });
+    this.projectCollections.add(JSON.parse(JSON.stringify(project)));
   }
 
   //updates users info that was found by email. New data is stored in the "loggedInUser" object
@@ -95,14 +92,14 @@ export class DatabaseService {
   }
 
   getProjectMetaData() { //collects the DB table meta data including all table fields id and users
-      this.observableProjects = this.projectCollections.snapshotChanges().map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data() as User;
-          const id = a.payload.doc.id;
-          return { id, ...data };
-        });
-    });  
-    return this.observableProjects;  
+    this.observableProjects = this.projectCollections.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as User;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    });
+    return this.observableProjects;
   }
 
 
