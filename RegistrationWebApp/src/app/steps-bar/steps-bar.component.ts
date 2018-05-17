@@ -26,7 +26,6 @@ export class StepsBarComponent implements OnInit {
   // on home page button click
   public homePage() {
     this.router.navigate(['homepage'])
-    alert("Home Page");
   }
   // on personal info button click
   public personalInfo() {
@@ -42,5 +41,9 @@ export class StepsBarComponent implements OnInit {
     this.router.navigate(['projectUpload']);
   }
 
+    // on message info button click
+    public msgPage() {
+      this.router.navigate(['msgpage']);
+    }
 
 }
