@@ -19,7 +19,7 @@
             <div class="col-sm-4 form-group">
                 <div [formGroup]="projectform">
                     <label class="req">כתובת דואר אלקטרוני שלי*</label>
-                    <input type="text" id="partner1" [(ngModel)]="project.user1mail" name="partner1" formControlName="partner1"/>
+                    <input type="text" id="partner1" required [(ngModel)]="project.user1mail" name="partner1" formControlName="partner1"/>
                     <div *ngIf="partner1.invalid && (partner1.dirty)">
                         <div *ngIf="partner1.errors.email && !CheckIfEmptyField(project.user1mail)" class="alert alert-danger">
                             נא להזין כתובת דואר אלקטרוני תקינה
@@ -49,8 +49,8 @@
                     <input type="text" id="projectname" required [(ngModel)]="project.project_name" name="projectname" formControlName="projectname"/>
                 </div>
                 <div [formGroup]="projectform">
-                <label class="req">דואר אלקטרוני איש קשר מטעם בית הספר*</label>
-                <input type="email" id="email_school" required [(ngModel)]="project.school_contact_mail" name="email_school" formControlName="email_school"/>
+                <label class="reg">דואר אלקטרוני איש קשר מטעם בית הספר</label>
+                <input type="email" id="email_school" [(ngModel)]="project.school_contact_mail" name="email_school" formControlName="email_school"/>
                 <div *ngIf="email_school.invalid && (email_school.dirty)">
                         <div *ngIf="email_school.errors.email && !CheckIfEmptyField(project.school_contact_mail)" class="alert alert-danger">
                             נא להזין כתובת דואר אלקטרוני תקינה
@@ -76,10 +76,12 @@
         </div>
         <div class="row">
           <div class="col-sm-4 form-group">
-              <label class="reg">תחום מחקר אחר (פרט)</label>
-              <input type="text" />
+            <div [formGroup]="projectform" *ngIf="project.project_field == 'אחר'" >
+                <label class="req">תחום מחקר אחר (פרט)*</label>
+                <input type="text"  [(ngModel)]="this.projectField" formControlName="other"/>
+              </div>
               <label class="reg">מוסד אקדמי בו התבצעה העבודה במידה וקיים</label>
-              <input type="text" id="location" required [(ngModel)]="project.location" name="location"/>
+              <input type="text" id="location" [(ngModel)]="project.location" name="location"/>
               <label class="req">סוג העבודה המוגשת*</label>
             <select id="type" required [(ngModel)]="project.type" name="type"> 
               <option>מחקרית</option>
@@ -98,19 +100,19 @@
     <div class="row">
       <div class="col-sm-4 form-group">
           <label class="reg">שאלת מחקר/מטרת הפרוייקט</label>
-          <textarea rows="6" cols="80" id="target" required [(ngModel)]="project.target" name="target"></textarea>
+          <textarea rows="6" cols="80" id="target" [(ngModel)]="project.target" name="target"></textarea>
           <label class="reg">רקע</label>
-          <textarea rows="6" cols="80" id="background" required [(ngModel)]="project.background" name="background"></textarea>
+          <textarea rows="6" cols="80" id="background" [(ngModel)]="project.background" name="background"></textarea>
           <label class="reg">תיאור קצר</label>
-          <textarea rows="6" cols="80" id="description" required [(ngModel)]="project.description" name="description"></textarea>
+          <textarea rows="6" cols="80" id="description" [(ngModel)]="project.description" name="description"></textarea>
           <label class="reg">היקף</label>
-          <textarea rows="6" cols="80" id="scope" required [(ngModel)]="project.scope" name="scope"></textarea>
+          <textarea rows="6" cols="80" id="scope" [(ngModel)]="project.scope" name="scope"></textarea>
           <label class="reg">חדשנות</label>
-          <textarea rows="6" cols="80" id="inovetion" required [(ngModel)]="project.inovetion" name="inovetion"></textarea>
+          <textarea rows="6" cols="80" id="inovetion" [(ngModel)]="project.inovetion" name="inovetion"></textarea>
           <label class="reg">יתרונות/תרומה</label>
-          <textarea rows="6" cols="80" id="advantages" required [(ngModel)]="project.advantages" name="advantages"></textarea>
+          <textarea rows="6" cols="80" id="advantages" [(ngModel)]="project.advantages" name="advantages"></textarea>
           <label class="reg">נקודת מבט אישית</label>
-          <textarea rows="6" cols="80" id="retrospective" required [(ngModel)]="project.retrospective" name="retrospective"></textarea>
+          <textarea rows="6" cols="80" id="retrospective" [(ngModel)]="project.retrospective" name="retrospective"></textarea>
       </div>
   </div>
     <div class="row">    
@@ -192,6 +194,9 @@
       <div class="row">
         <button class="btn btn-primary btn-default" id="save" (click)="addProject()" [disabled]="progress.percentage != 100">שלח פרוייקט לתחרות</button>
       </div>
+      <div class="col-sm-6 form-group hideError" [hidden]="!projectError">
+        יש למלא את כל שדות החובה כנדרש
+    </div>
       <br><br>
     </form>
 </div>
