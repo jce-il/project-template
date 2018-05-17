@@ -95,7 +95,7 @@ export class ProjectUploadScreenComponent implements OnInit {
         this.db.asignProjectToUser(this.db.selectedUser[0].email, 0);
         this.db.asignProjectToUser(this.db.selectedUser[1].email, 1);
         this.db.asignProjectToUser(this.db.selectedUser[2].email, 2);
-        alert("הפרוייקט הועלה בהצלחה");
+        alert("Project with doc id mumber "+proj_id+" has been uploaded");
       }, 2500)
     });
 

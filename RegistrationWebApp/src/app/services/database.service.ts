@@ -119,9 +119,10 @@ export class DatabaseService {
           if (collection[i].uid === this.loggedInUserUID) {
             this.loggedInUser = collection[i];
             resolve();
-            break;
+            return;
           }
         }
+        resolve();
       })
     });
   }
