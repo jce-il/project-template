@@ -162,10 +162,14 @@ export class RegistrationFormComponent {
     return false;
   }
   public updateInfo() {
-    if (!this.validatePassword()) { // condition to prevent confirm password
-      this.signUpError = true;
-      return;
+    if (this.user.type === 'מורה') { // in case its teacher--> birthday is not required
+      this.userform.get('birthday').clearValidators();
+      this.userform.get('birthday').updateValueAndValidity(); //now teacher can register
     }
+    this.userform.get('password').clearValidators();
+    this.userform.get('password').updateValueAndValidity(); //clear validator
+    this.userform.get('confimpassword').clearValidators();
+    this.userform.get('confimpassword').updateValueAndValidity(); //clear validator
     this.db.user = this.user; //update current user data of the service !!!
     this.db.updateListing(this.user.email);
     alert("הפרטים עודכנו בהצלחה")

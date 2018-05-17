@@ -21,7 +21,7 @@
                         <legend>רישום למערכת</legend>
                     </div>
                     <div *ngIf="this.db.loggedIn == 'true'">
-                        <legend>פרטי משתמש</legend>
+                        <legend *ngIf="this.db.loggedIn != 'true'">פרטי משתמש</legend>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
             </div>
             <div class="row">
                 <div class="col-sm-4 form-group">
-                    <div [formGroup]="userform">
+                    <div *ngIf="this.db.loggedIn != 'true'" [formGroup]="userform">
                         <label class="req">סיסמא *</label>
                         <input type="password" id="password" required [(ngModel)]="user.password" name="password" formControlName="password" />
                         <div *ngIf="password.invalid && (password.dirty) && !CheckIfEmptyField(user.password)" class="alert alert-danger">
@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="col-sm-4 form-group">
-                    <div [formGroup]="userform">
+                    <div *ngIf="this.db.loggedIn != 'true'" [formGroup]="userform">
                         <label class="req">אימות סיסמא *</label>
                         <input type="password" id="confimpassword" required [(ngModel)]="userPasswordValidation" name="confimpassword" formControlName="confimpassword"
                         />
