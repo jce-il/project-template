@@ -1,3 +1,6 @@
+*{
+    direction: rtl;
+}
 
 .logo img{ margin-right: 3%; margin-left: 4%; margin-bottom: 0;}
 .musem{ height: 4%; width: 7%;}
