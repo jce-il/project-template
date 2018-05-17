@@ -1,14 +1,66 @@
+.header{
+    position: fixed;
+}
 
-.jumbotron {
-    background: #358CCE;
-    color: #FFF;
-    border-radius: 0px;
-    }
-    .jumbotron-sm { padding-top: 24px;
-    padding-bottom: 24px; }
-    .jumbotron small {
-    color: #FFF;
-    }
+.well{
+    background-color: rgba(214, 221, 228, 0.822);
+    box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.75);
+    border-radius: 5px 5px 5px 5px;
+    border-color: transparent;
+    margin-left: 10px;
+    
+}
+address{
+    margin-right: 20px;
+    color: rgb(214, 234, 253);
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 1px #566c81;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #96bcec;
+}
+
+address strong{
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+legend{
+    color: rgba(184, 93, 9, 0.897);
+    font-size: 30px;
+    font-weight: bolder;
+    text-shadow: 3px 4px 8px #d9e3f1;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #bbd5f5;
+}
+legend a{
+    letter-spacing: 1.5px;
+    color: rgba(184, 93, 9, 0.897);
+    margin-right: 10px;
+    font-size: 35px;
+    text-shadow: 4px 5px 8px #fff7ef;
+    font-weight: bolder;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #1b1001;
+}
+.input-group-addon{
+    float: right;
+    margin: 0;
+    width: 10%;
+    height: 34px;
+}
+
+#email{
+    width: 90%;
+    margin: 0;
+}
+.container{
+    margin-top: 230px;
+    direction: rtl;
+    text-align: right;    
+}
+
+
     .h1 small {
     font-size: 24px;
     }
