@@ -32,8 +32,8 @@
 	position:absolute;
 	content:" ";
 	width:1200px;
-	height:1px;
-	background-color:rgb(141, 139, 139);
+	height:3px;
+	background-color:rgb(196, 146, 90);
 }
 
 .process-step{
@@ -60,4 +60,5 @@ p{
 	text-align:center;
 	font-size:12px;
 	border-radius:50%;
+	box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.75);
 }
