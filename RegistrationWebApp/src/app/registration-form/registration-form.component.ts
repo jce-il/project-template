@@ -23,18 +23,10 @@ export class RegistrationFormComponent {
   title: string;
   date;
   ngOnInit() {
-
-  }
-
-  constructor(public db: DatabaseService, public auth: AuthService, public router: Router, private cookieService: CookieService) {
-
     this.db.loggedInUserUID = this.cookieService.get('User uid');
-    this.db.getLoggedInUser()
-    this.db.getMetaData();
-    this.db.setMetaData();
-    //delay in order to wait for the getLoggedInUser function to recive the data
-    setTimeout(() => {
-      this.db.loggedIn = this.cookieService.get('User login status');
+    this.db.loggedIn = this.cookieService.get('User login status');
+    this.db.getLoggedInUser().then(() => {
+      this.db.setMetaData();
       this.userTypes = ['תלמיד', 'מורה'];
 
       if (this.db.loggedIn != 'true')
@@ -53,8 +45,10 @@ export class RegistrationFormComponent {
         this.title = "טופס עדכון פרטים";
 
       this.validateForm()
-    }, 2500);
+    })
+    //delay in order to wait for the getLoggedInUser function to recive the data
   }
+  constructor(public db: DatabaseService, public auth: AuthService, public router: Router, private cookieService: CookieService) { }
 
 
   // on register user button click adds new user to Database according to the data that was collected from the registration form

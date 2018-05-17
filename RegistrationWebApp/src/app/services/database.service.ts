@@ -44,7 +44,10 @@ export class DatabaseService {
 
   //adds all info that was provided through the project-upload form to project object and ads it to the firebase DB
   public addProjectToDB(project: Project) {
-    this.projectCollections.add(JSON.parse(JSON.stringify(project)));
+    return new Promise((resolve, reject) => {
+      this.projectCollections.add(JSON.parse(JSON.stringify(project)));
+      resolve();
+    });
   }
 
   //updates users info that was found by email. New data is stored in the "loggedInUser" object
@@ -86,22 +89,20 @@ export class DatabaseService {
     this.getMetaData().subscribe(res => {
       this.usersList = res;
     });
-
     this.getProjectMetaData().subscribe(res => {
       this.projectsList = res;
     });
   }
 
   getProjectMetaData() { //collects the DB table meta data including all table fields id and users
-    this.observableProjects = this.projectCollections.snapshotChanges().map(actions => {
-      return actions.map(a => {
-        const data = a.payload.doc.data() as User;
-        const id = a.payload.doc.id;
-        return { id, ...data };
-      });
-    })
-
-    return this.observableProjects;
+      this.observableProjects = this.projectCollections.snapshotChanges().map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data() as User;
+          const id = a.payload.doc.id;
+          return { id, ...data };
+        });
+    });  
+    return this.observableProjects;  
   }
 
 
@@ -115,38 +116,42 @@ export class DatabaseService {
   }
   //returns the currently logged in user by his uid
   public getLoggedInUser() {
-    this.dataCollections.valueChanges().subscribe(collection => {
-      for (var i = 0; i < collection.length; i++) {
-        if (collection[i].uid === this.loggedInUserUID) {
-          this.loggedInUser = collection[i];
+    return new Promise((resolve, reject) => {
+      this.dataCollections.valueChanges().subscribe(collection => {
+        for (var i = 0; i < collection.length; i++) {
+          if (collection[i].uid === this.loggedInUserUID) {
+            this.loggedInUser = collection[i];
+            resolve();
+            break;
+          }
         }
-      }
-    })
+      })
+    });
   }
 
-  public getUser(email1 : string, email2 : string , email3 : string) { // get user asiggned to project
-    this.dataCollections.valueChanges().subscribe(collection => {
-      
-      for (var i = 0; i < collection.length; i++) 
-      { //find participantes email's and puts them in array
-        if (collection[i].email === email1) {
-          this.selectedUser[0] = collection[i];
+  public getUser(email1: string, email2: string, email3: string) { // get user asiggned to project
+    return new Promise((resolve, reject) => {
+      this.dataCollections.valueChanges().subscribe(collection => {
+
+        for (var i = 0; i < collection.length; i++) { //find participantes email's and puts them in array
+          if (collection[i].email === email1) {
+            this.selectedUser[0] = collection[i];
+          }
+          else if (collection[i].email === email2) {
+            this.selectedUser[1] = collection[i];
+          }
+          else if (collection[i].email === email3) {
+            this.selectedUser[2] = collection[i];
+          }
         }
-        else if (collection[i].email === email2) {
-          this.selectedUser[1] = collection[i];
-        }
-        else if (collection[i].email === email3) {
-          this.selectedUser[2] = collection[i];
-        }
-      }
-    })
+        resolve();
+      })
+    });
   }
 
-  public getProjectID(pname : string){ //get project ID by Project name
-    for(var i = 0 ; i < this.projectsList.length ; i++)
-    {
-      if(this.projectsList[i].project_name == pname)
-      {
+  public getProjectID(pname: string) { //get project ID by Project name
+    for (var i = 0; i < this.projectsList.length; i++) {
+      if (this.projectsList[i].project_name == pname) {
         return this.projectsList[i].id;
       }
     }
