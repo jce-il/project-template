@@ -23,6 +23,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { StepsBarComponent } from './steps-bar/steps-bar.component';
 import { HeaderComponent } from './header/header.component';
 import { CookieService } from 'ngx-cookie-service';
+import { MsgScreenComponent } from './msg-screen/msg-screen.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { CookieService } from 'ngx-cookie-service';
     ProjectUploadScreenComponent,
     ContactUsComponent,
     StepsBarComponent,
-    HeaderComponent
+    HeaderComponent,
+    MsgScreenComponent
   ],
   imports: [
     BrowserModule,
