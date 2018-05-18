@@ -1,7 +1,8 @@
 *{
     position: fixed;
     width: 100%;
-    height: 21%;
+    height: 180px;
+    min-height: 180px;
     right: 0;
     margin: 0;
     top: 0;

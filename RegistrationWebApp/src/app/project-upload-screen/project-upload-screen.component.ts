@@ -40,19 +40,20 @@ export class ProjectUploadScreenComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.db.setMetaData();
   }
-
+//Holds the selected file from the form
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
-
+  //Uploads the selected file to firebase storage
   upload() {
     const file = this.selectedFiles.item(0);
-    this.selectedFiles = undefined; //reset ? 
+    this.selectedFiles = undefined; 
     this.currentFileUpload = new FileUpload(file);
     this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress);
   }
-
+  //collects all the info from the 'add project form' and sets it with all the needed DB connections in the database
   public addProject() {
     if (this.CheckIfEmptyField(this.project.user2mail)) { // 1 participant
       this.projectform.get('partner2').clearValidators();
@@ -79,12 +80,21 @@ export class ProjectUploadScreenComponent implements OnInit {
       return;
     }
     this.projectError = false;
-
+    /*This part to the following:
+    1. Gets the selected file to upload from the form anf sets in into the project_file property in the project object
+    2. Collects all inserted info that was inserted into the form and then uploads the project to FB using addProjectToDB() func
+    3. Sets 3 users to the selectedUser property by the e-mail addresses that were given in the upload form
+    4. Gets project table meta data and sets the returned value to the projectsList property
+    5. Gets current project listing id in order to connect it to the users that were selected
+    6. updates teacher and project properties in the selectedUser array to be the connection between teacher and student(by mail)
+       and between project and students (by the project listing id)
+    7. FINALLY, updates the updated selected users using the asignProjectToUser() function    
+    */
     this.project.project_file = this.currentFileUpload; // assigned file in project field
     this.db.addProjectToDB(this.project)
     this.db.getUser(this.project.user1mail, this.project.user2mail, this.project.user3mail).then(() => {
-      this.db.setMetaData();
-      setTimeout(() => {
+      this.db.getProjectMetaData().subscribe(val => {
+        this.db.projectsList = val;
         var proj_id = this.db.getProjectID(this.project.project_name);
         this.db.selectedUser[0].project = proj_id;
         this.db.selectedUser[0].teacher = this.project.school_contact_mail;
@@ -95,10 +105,9 @@ export class ProjectUploadScreenComponent implements OnInit {
         this.db.asignProjectToUser(this.db.selectedUser[0].email, 0);
         this.db.asignProjectToUser(this.db.selectedUser[1].email, 1);
         this.db.asignProjectToUser(this.db.selectedUser[2].email, 2);
-        alert("Project with doc id mumber "+proj_id+" has been uploaded");
-      }, 2500)
+        });
     });
-
+    alert(" העבודה נוספה בהצלחה ")
   }
 
   public validateForm() {

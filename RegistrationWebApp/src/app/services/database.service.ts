@@ -13,18 +13,18 @@ export class DatabaseService {
   public user: User; //will hold the data that was collected from a user that wants to register to the website
   public loggedInUserUID: string; //only holds logged in users id
   public loggedInUser: User; // holds logged in user info 
-  selectedUser = [];
+  selectedUser = []; //holds an array with selected users. used by the getUser() function
   public loggedIn: string; //check if this is the right way to do
   listingDoc: AngularFirestoreDocument<User>; //holds FB listing for update operation
-  observableUsers: Observable<User[]>;
-  usersList = [];
+  observableUsers: Observable<User[]>; //A temp variable that returns metadata. used by usersList
+  usersList = []; // holds a list with listing id's and users info of the UsersInfo table
 
   /* project*/
-  public projectCollections;
-  public project: Project;
+  public projectCollections; // holds a connection the firebase ProjectsInfo table
+  public project: Project; // Holds project info that were inserted in the form by the user
   listingProjectDoc: AngularFirestoreDocument<Project>; //holds FB listing for update operation
-  observableProjects: Observable<Project[]>; //
-  projectsList = [];
+  observableProjects: Observable<Project[]>; //A temp variable that returns metadata. used by projectsList
+  projectsList = []; // holds a list with listing id's and projects info of the ProjectInfo table
 
 
   constructor(private afs: AngularFirestore) {
@@ -32,9 +32,9 @@ export class DatabaseService {
     const settings = { timestampsInSnapshots: true };
     afs.app.firestore().settings(settings);
     this.dataCollections = afs.collection<any>('usersInfo');
-    this.loggedIn = 'false';
-    //===================================================//
+    this.loggedIn = 'false'; //represents if user is logged in. has to be STRING !!!
     this.projectCollections = afs.collection<any>('projectsInfo');
+    //===================================================//
   }
 
   //adds all info that was provided through the registration form to user object and ads it to the firebase DB
@@ -47,7 +47,7 @@ export class DatabaseService {
     this.projectCollections.add(JSON.parse(JSON.stringify(project)));
   }
 
-  //updates users info that was found by email. New data is stored in the "loggedInUser" object
+  //Update a UsersInfo listing by a given email. the object that is passed to the update function has to be already with the wanted changes!!! (It writes a new object)
   updateListing(email: string) {
     for (var i = 0; i < this.usersList.length; i++) {
       if (this.usersList[i].email == email) {
@@ -59,7 +59,8 @@ export class DatabaseService {
 
   /* the function finds the listing to update by email, and then,
    updates it's data by selecting the user from selected user
-    by the given user index*/
+    by the given user index.
+    Index is needed to choose from the selectedUser array*/
   asignProjectToUser(email: string, userIndex) {
     for (var i = 0; i < this.usersList.length; i++) {
       if (this.usersList[i].email == email) {
@@ -69,7 +70,7 @@ export class DatabaseService {
     }
   }
 
-  //recive user list with document ids from firebase
+  //This is a help function to setMetaData() it retrives usersInfo table including listing IDs.
   getMetaData() {
     this.observableUsers = this.dataCollections.snapshotChanges().map(actions => { //collects the DB table meta data including all table fields id and users
       return actions.map(a => {
@@ -86,12 +87,9 @@ export class DatabaseService {
     this.getMetaData().subscribe(res => {
       this.usersList = res;
     });
-    this.getProjectMetaData().subscribe(res => {
-      this.projectsList = res;
-    });
   }
 
-  getProjectMetaData() { //collects the DB table meta data including all table fields id and users
+  getProjectMetaData() { //Returns the DB table meta data from firebase including all table fields id and users
     this.observableProjects = this.projectCollections.snapshotChanges().map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as User;
@@ -111,7 +109,8 @@ export class DatabaseService {
       }
     })
   }
-  //returns the currently logged in user by his uid
+  //returns the currently logged in user by his uid and sets the value in loggedInUser property.
+  //in order to use this function - the value of loggedIn has to be true. user cookies if needed
   public getLoggedInUser() {
     return new Promise((resolve, reject) => {
       this.dataCollections.valueChanges().subscribe(collection => {
@@ -126,7 +125,7 @@ export class DatabaseService {
       })
     });
   }
-
+//This function sets in the 'selectedUser' array (first 3 cells) property users that were found by a given email.
   public getUser(email1: string, email2: string, email3: string) { // get user asiggned to project
     return new Promise((resolve, reject) => {
       this.dataCollections.valueChanges().subscribe(collection => {
@@ -146,7 +145,7 @@ export class DatabaseService {
       })
     });
   }
-
+// returns the id listing of project by a given project name
   public getProjectID(pname: string) { //get project ID by Project name
     for (var i = 0; i < this.projectsList.length; i++) {
       if (this.projectsList[i].project_name == pname) {
