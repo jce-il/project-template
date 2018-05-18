@@ -27,7 +27,7 @@
                      </div>
                 </div>
                 <div [formGroup]="projectform">
-                <label class="reg">כתובת דואר אלקטרוני של חבר צוות נוסף</label>
+                <label class="reg">כתובת דואר אלקטרוני של שותף שני</label>
                 <input type="text" id="partner2" [(ngModel)]="project.user2mail" name="partner2" formControlName="partner2"/>
                     <div *ngIf="partner2.invalid && (partner2.dirty)">
                         <div *ngIf="partner2.errors.email && !CheckIfEmptyField(project.user2mail)" class="alert alert-danger">
@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div [formGroup]="projectform">
-                <label class="reg">כתובת דואר אלקטרוני של חבר צוות נוסף</label>
+                <label class="reg">כתובת דואר אלקטרוני של שותף שלישי</label>
                 <input type="text" id="partner3" [(ngModel)]="project.user3mail" name="partner3" formControlName="partner3"/>
                     <div *ngIf="partner3.invalid && (partner3.dirty)">
                         <div *ngIf="partner3.errors.email && !CheckIfEmptyField(project.user3mail)" class="alert alert-danger">

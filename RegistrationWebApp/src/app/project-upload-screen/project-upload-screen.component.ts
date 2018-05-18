@@ -91,23 +91,51 @@ export class ProjectUploadScreenComponent implements OnInit {
     7. FINALLY, updates the updated selected users using the asignProjectToUser() function    
     */
     this.project.project_file = this.currentFileUpload; // assigned file in project field
-    this.db.addProjectToDB(this.project)
-    this.db.getUser(this.project.user1mail, this.project.user2mail, this.project.user3mail).then(() => {
+    this.db.getUser(this.project.user1mail, this.project.user2mail, this.project.user3mail, this.project.school_contact_mail).then(() => {
+      if (this.db.existsUsers[0]==false){
+        alert("המייל שלי' שהוזן אינו קיים במערכת'")
+        this.projectError = true;
+        return;
+      }
+      if ( this.project.school_contact_mail != undefined && this.db.existsUsers[3]==false){
+        alert("כתובת המייל של איש הקשר מטעם בית הספר אינה קיימת במערכת")
+        this.projectError = true;
+        return;
+      }
+      if (this.project.user2mail != undefined && this.db.existsUsers[1]==false){
+        alert("כתובת מייל השותף השני אינה קיימת במערכת")
+        this.projectError = true;
+        return;
+      }
+      if (this.project.user3mail != undefined && this.db.existsUsers[2]==false){
+        alert("כתובת מייל השותף השלישי אינה קיימת במערכת")
+        this.projectError = true;
+        return;
+      }
+      this.db.addProjectToDB(this.project);
       this.db.getProjectMetaData().subscribe(val => {
         this.db.projectsList = val;
         var proj_id = this.db.getProjectID(this.project.project_name);
         this.db.selectedUser[0].project = proj_id;
         this.db.selectedUser[0].teacher = this.project.school_contact_mail;
+        if (this.db.existsUsers[1]){
         this.db.selectedUser[1].project = proj_id;
         this.db.selectedUser[1].teacher = this.project.school_contact_mail;
+        }
+        if (this.db.existsUsers[2]){
         this.db.selectedUser[2].project = proj_id;
         this.db.selectedUser[2].teacher = this.project.school_contact_mail;
+        }
         this.db.asignProjectToUser(this.db.selectedUser[0].email, 0);
+        if (this.db.existsUsers[1]){
         this.db.asignProjectToUser(this.db.selectedUser[1].email, 1);
+        }
+        if (this.db.existsUsers[2]){
         this.db.asignProjectToUser(this.db.selectedUser[2].email, 2);
+        }
+        alert(" העבודה נוספה בהצלחה ")
         });
     });
-    alert(" העבודה נוספה בהצלחה ")
   }
 
   public validateForm() {

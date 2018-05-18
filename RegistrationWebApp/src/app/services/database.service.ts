@@ -14,6 +14,7 @@ export class DatabaseService {
   public loggedInUserUID: string; //only holds logged in users id
   public loggedInUser: User; // holds logged in user info 
   selectedUser = []; //holds an array with selected users. used by the getUser() function
+  existsUsers = []; // holds the project partners - to see if they exist on the server 
   public loggedIn: string; //check if this is the right way to do
   listingDoc: AngularFirestoreDocument<User>; //holds FB listing for update operation
   observableUsers: Observable<User[]>; //A temp variable that returns metadata. used by usersList
@@ -35,6 +36,7 @@ export class DatabaseService {
     this.loggedIn = 'false'; //represents if user is logged in. has to be STRING !!!
     this.projectCollections = afs.collection<any>('projectsInfo');
     //===================================================//
+    this.existsUsers = [false, false, false, false];
   }
 
   //adds all info that was provided through the registration form to user object and ads it to the firebase DB
@@ -126,19 +128,24 @@ export class DatabaseService {
     });
   }
 //This function sets in the 'selectedUser' array (first 3 cells) property users that were found by a given email.
-  public getUser(email1: string, email2: string, email3: string) { // get user asiggned to project
+  public getUser(email1: string, email2: string, email3: string, teacherMail: string) { // get user asiggned to project
     return new Promise((resolve, reject) => {
       this.dataCollections.valueChanges().subscribe(collection => {
 
         for (var i = 0; i < collection.length; i++) { //find participantes email's and puts them in array
+          if (collection[i].email == teacherMail && collection[i].type=='מורה')
+            this.existsUsers[3] = true;
           if (collection[i].email === email1) {
             this.selectedUser[0] = collection[i];
+            this.existsUsers[0] = true;
           }
           else if (collection[i].email === email2) {
             this.selectedUser[1] = collection[i];
+            this.existsUsers[1] = true;
           }
           else if (collection[i].email === email3) {
             this.selectedUser[2] = collection[i];
+            this.existsUsers[2] = true;
           }
         }
         resolve();
