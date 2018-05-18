@@ -135,7 +135,7 @@ export class DatabaseService {
         for (var i = 0; i < collection.length; i++) { //find participantes email's and puts them in array
           if (collection[i].email == teacherMail && collection[i].type=='מורה')
             this.existsUsers[3] = true;
-          if (collection[i].email === email1) {
+          else if (collection[i].email === email1) {
             this.selectedUser[0] = collection[i];
             this.existsUsers[0] = true;
           }

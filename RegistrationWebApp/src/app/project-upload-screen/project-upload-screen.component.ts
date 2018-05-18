@@ -5,6 +5,8 @@ import { UploadFileService } from '../services/upload-file.service';
 import { FormsModule, FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { FileUpload } from '../fileupload';
 import { Project } from '../project';
+import { RouterLink, Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -25,7 +27,7 @@ export class ProjectUploadScreenComponent implements OnInit {
   projectStatus;
 
 
-  constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService) {
+  constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService) {
     this.fields = [
       "מתמטיקה", "מדעי החיים", "כימיה",
       "הנדסה/טכנולוגיה", "היסטוריה",
@@ -41,6 +43,9 @@ export class ProjectUploadScreenComponent implements OnInit {
 
   ngOnInit() {
     this.db.setMetaData();
+    this.db.loggedInUserUID = this.cookieService.get('User uid');
+    this.db.loggedIn = this.cookieService.get('User login status');
+    this.db.getLoggedInUser();
   }
 //Holds the selected file from the form
   selectFile(event) {
@@ -97,17 +102,22 @@ export class ProjectUploadScreenComponent implements OnInit {
         this.projectError = true;
         return;
       }
-      if ( this.project.school_contact_mail != undefined && this.db.existsUsers[3]==false){
+      if (this.db.loggedInUser.email != this.project.user1mail){
+        alert("זה לא המייל שלי")
+        this.projectError = true;
+        return;    
+      }
+      if ( !this.CheckIfEmptyField(this.project.school_contact_mail)&& this.db.existsUsers[3]==false){
         alert("כתובת המייל של איש הקשר מטעם בית הספר אינה קיימת במערכת")
         this.projectError = true;
         return;
       }
-      if (this.project.user2mail != undefined && this.db.existsUsers[1]==false){
+      if (!this.CheckIfEmptyField(this.project.user2mail) && this.db.existsUsers[1]==false){
         alert("כתובת מייל השותף השני אינה קיימת במערכת")
         this.projectError = true;
         return;
       }
-      if (this.project.user3mail != undefined && this.db.existsUsers[2]==false){
+      if ( !this.CheckIfEmptyField(this.project.user3mail) && this.db.existsUsers[2]==false){
         alert("כתובת מייל השותף השלישי אינה קיימת במערכת")
         this.projectError = true;
         return;
@@ -133,8 +143,9 @@ export class ProjectUploadScreenComponent implements OnInit {
         if (this.db.existsUsers[2]){
         this.db.asignProjectToUser(this.db.selectedUser[2].email, 2);
         }
-        alert(" העבודה נוספה בהצלחה ")
         });
+        alert(" העבודה נוספה בהצלחה ");
+        this.router.navigate(['homepage']);
     });
   }
 
