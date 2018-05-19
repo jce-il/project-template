@@ -5,39 +5,53 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <div class="container">
- <div class="row">
-  <div class="process">
-   <div class="process-row nav nav-tabs">
-      <div class="process-step">
-          <button type="button" class="btn btn-info btn-circle" data-toggle="tab" (click)="homePage()"><i class="fa fa-home fa-3x"></i></button>
-          <p>דף הבית</p>
-         </div>
-    <div class="process-step">
-     <button type="button" class="btn btn-default btn-circle" data-toggle="tab" (click)="personalInfo()"><i class="fa fa-user fa-2x"></i></button>
-     <p>פרטים אישים</p>
-    </div>
-    <div class="process-step">
-     <button type="button" class="btn btn-default btn-circle" data-toggle="tab" (click)="MyProject()"><i class="fa fa-file-text-o fa-2x"></i></button>
-     <p>הפרויקט שלי</p>
-    </div>
-    <div class="process-step">
-     <button type="button" class="btn btn-default btn-circle" data-toggle="tab" (click)="msgPage()"><i class="fa fa-envelope-o fa-2x"></i></button>
-     <p>הודעות</p>
-    </div>
-    <div class="process-step">
-     <button type="button" class="btn btn-default btn-circle" data-toggle="tab" ><i class="fa fa-cogs fa-2x"></i></button>
-     <p>אופציה</p>
-    </div>
-    <div class="process-step">
-     <button type="button" class="btn btn-default btn-circle" data-toggle="tab" (click)="contactUs()"><i class="fa fa-phone fa-2x"></i></button>
-     <p>צור קשר</p>
-    </div>
-    <div class="process-step">
-        <button type="button" class="btn btn-default btn-circle" data-toggle="tab" (click)="logOut()"><i class="fa fa-sign-out fa-2x"></i></button>
-        <p>התנתק</p>
-       </div>
-   </div>
-  </div>
+    <div class="row">
+        <div class="process">
+            <div class="process-row nav nav-tabs">
+                <div class="process-step">
+                    <button type="button" class="btn btn-info btn-circle" data-toggle="tab" (click)="homePage()">
+                        <i class="fa fa-home fa-3x"></i>
+                    </button>
+                    <p>דף הבית</p>
+                </div>
+                <div class="process-step">
+                    <button type="button" class="btn btn-default btn-circle" data-toggle="tab" (click)="personalInfo()">
+                        <i class="fa fa-user fa-2x"></i>
+                    </button>
+                    <p>פרטים אישים</p>
+                </div>
+                <div class="process-step">
+                    <button type="button" class="btn btn-default btn-circle" data-toggle="tab" (click)="MyProject()">
+                        <i class="fa fa-file-text-o fa-2x"></i>
+                    </button>
+                    <p>הוסף פרויקט</p>
+                </div>
+                <div class="process-step">
+                    <button type="button" class="btn btn-default btn-circle" data-toggle="tab" (click)="MyProjectView()">
+                        <i class="fa fa-file-text-o fa-2x"></i>
+                    </button>
+                    <p>הפרויקט שלי</p>
+                </div>
+                <div class="process-step">
+                    <button type="button" class="btn btn-default btn-circle" data-toggle="tab" (click)="msgPage()">
+                        <i class="fa fa-envelope-o fa-2x"></i>
+                    </button>
+                    <p>הודעות</p>
+                </div>
+                <div class="process-step">
+                    <button type="button" class="btn btn-default btn-circle" data-toggle="tab" (click)="contactUs()">
+                        <i class="fa fa-phone fa-2x"></i>
+                    </button>
+                    <p>צור קשר</p>
+                </div>
+                <div class="process-step">
+                    <button type="button" class="btn btn-default btn-circle" data-toggle="tab" (click)="logOut()">
+                        <i class="fa fa-sign-out fa-2x"></i>
+                    </button>
+                    <p>התנתק</p>
+                </div>
+            </div>
+        </div>
 
- </div>
+    </div>
 </div>
