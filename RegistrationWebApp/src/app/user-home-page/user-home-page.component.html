@@ -7,40 +7,47 @@
 <div class="header">
     <app-header></app-header>
 </div>
+<div *ngIf="this.db.loggedInUser != null">
+    <div class="container">
+        <div class="name">
+            <strong>שלום {{this.db.loggedInUser.firstName}}</strong>
+        </div>
 
-<div class="container">
         <div class="row" id="userstatus">
-                <legend>סטאטוס הרשמה</legend>
-                        <div class="notice notice-success">
-                            <strong>בעבודה (שם עבודה)</strong> חסר מידע בשדות הבאים:
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </div>
-        
-                        <div class="notice notice-info">
-                            <strong>Notice</strong> notice-info
-                        </div>
+            <legend>סטאטוס הרשמה</legend>
+            <div class="notice notice-success">
+                <strong>בעבודה (שם עבודה)</strong> חסר מידע בשדות הבאים:
+                <li></li>
+                <li></li>
+                <li></li>
             </div>
 
-            <div class="row">
-                    <legend>סטאטוס הודעות</legend>
-                            <div class="notice notice-info">
-                                    <i class="glyphicon glyphicon-comment"><strong>הודעות</strong></i>(מספר) הודעות חדשות
-                            </div>
-                </div>
-        
-            <div class="row">
-                <div class="col-sm-10">
-                    קישורים
-                </div>
+            <div class="notice notice-info">
+                <strong>Notice</strong> notice-info
             </div>
-        
-            <div class="row">
-                <div class="col-sm-10">
-                    מידע על התחרות
-                </div>
+        </div>
+
+        <div class="row">
+            <legend>סטאטוס הודעות</legend>
+            <div class="notice notice-info">
+                <i class="glyphicon glyphicon-comment">
+                    <strong>הודעות</strong>
+                </i>(מספר) הודעות חדשות
             </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-10">
+                קישורים
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-10">
+                מידע על התחרות
+            </div>
+        </div>
+    </div>
 </div>
 
 
