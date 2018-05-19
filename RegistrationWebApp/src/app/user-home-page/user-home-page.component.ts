@@ -18,7 +18,6 @@ export class UserHomePageComponent implements OnInit {
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
     this.db.getLoggedInUser(); // in order to print logged in user info - on init get it
-    console.log(this.db.loggedInUser)
   }
 
 //on update info button click updates logged in users info according to the info that was inserted in the temporary update form

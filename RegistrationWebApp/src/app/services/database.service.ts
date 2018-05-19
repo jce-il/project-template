@@ -19,6 +19,7 @@ export class DatabaseService {
   listingDoc: AngularFirestoreDocument<User>; //holds FB listing for update operation
   observableUsers: Observable<User[]>; //A temp variable that returns metadata. used by usersList
   usersList = []; // holds a list with listing id's and users info of the UsersInfo table
+  updateProject = false;
 
   /* project*/
   public projectCollections; // holds a connection the firebase ProjectsInfo table

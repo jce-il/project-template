@@ -1,8 +1,8 @@
 *{
     position: fixed;
     width: 100%;
-    height: 180px;
-    min-height: 180px;
+    height: 100px;
+    min-height: 100px;
     right: 0;
     margin: 0;
     top: 0;
@@ -17,13 +17,13 @@
 }
 
 .banner {
-    right: 0;
-    top: 2%;
+    right: -55px;
+    top: 1%;
     height: 25%;
     width: 15%;
     z-index: 1;
     font-size: 70px;
-    background-image:url('../../assets/sc.png');
+    background-image:url('../../assets/scr.png');
     background-repeat: no-repeat;
     background-color: transparent;
  }

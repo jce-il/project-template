@@ -45,19 +45,34 @@ export class ProjectUploadScreenComponent implements OnInit {
     this.db.setMetaData();
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
-    this.db.getLoggedInUser();
+    this.db.getLoggedInUser().then(() => {
+      this.db.getProjectMetaData().subscribe((val) => {
+        this.db.projectsList = val;
+        if (this.db.updateProject == true) {
+          for (var i = 0; i < this.db.projectsList.length; i++) {
+            if (this.db.projectsList[i].id == this.db.loggedInUser.project)
+              this.project = this.db.projectsList[i]
+          }
+        }
+      })
+    });
   }
-//Holds the selected file from the form
+  //Holds the selected file from the form
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
   //Uploads the selected file to firebase storage
   upload() {
     const file = this.selectedFiles.item(0);
-    this.selectedFiles = undefined; 
+    this.selectedFiles = undefined;
     this.currentFileUpload = new FileUpload(file);
     this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress);
   }
+public func()
+{
+  alert("clicked")
+}
+
   //collects all the info from the 'add project form' and sets it with all the needed DB connections in the database
   public addProject() {
     if (this.CheckIfEmptyField(this.project.user2mail)) { // 1 participant
@@ -97,27 +112,27 @@ export class ProjectUploadScreenComponent implements OnInit {
     */
     this.project.project_file = this.currentFileUpload; // assigned file in project field
     this.db.getUser(this.project.user1mail, this.project.user2mail, this.project.user3mail, this.project.school_contact_mail).then(() => {
-      if (this.db.existsUsers[0]==false){
+      if (this.db.existsUsers[0] == false) {
         alert("המייל שלי' שהוזן אינו קיים במערכת'")
         this.projectError = true;
         return;
       }
-      if (this.db.loggedInUser.email != this.project.user1mail){
+      if (this.db.loggedInUser.email != this.project.user1mail) {
         alert("זה לא המייל שלי")
         this.projectError = true;
-        return;    
+        return;
       }
-      if ( !this.CheckIfEmptyField(this.project.school_contact_mail)&& this.db.existsUsers[3]==false){
+      if (!this.CheckIfEmptyField(this.project.school_contact_mail) && this.db.existsUsers[3] == false) {
         alert("כתובת המייל של איש הקשר מטעם בית הספר אינה קיימת במערכת")
         this.projectError = true;
         return;
       }
-      if (!this.CheckIfEmptyField(this.project.user2mail) && this.db.existsUsers[1]==false){
+      if (!this.CheckIfEmptyField(this.project.user2mail) && this.db.existsUsers[1] == false) {
         alert("כתובת מייל השותף השני אינה קיימת במערכת")
         this.projectError = true;
         return;
       }
-      if ( !this.CheckIfEmptyField(this.project.user3mail) && this.db.existsUsers[2]==false){
+      if (!this.CheckIfEmptyField(this.project.user3mail) && this.db.existsUsers[2] == false) {
         alert("כתובת מייל השותף השלישי אינה קיימת במערכת")
         this.projectError = true;
         return;
@@ -128,24 +143,24 @@ export class ProjectUploadScreenComponent implements OnInit {
         var proj_id = this.db.getProjectID(this.project.project_name);
         this.db.selectedUser[0].project = proj_id;
         this.db.selectedUser[0].teacher = this.project.school_contact_mail;
-        if (this.db.existsUsers[1]){
-        this.db.selectedUser[1].project = proj_id;
-        this.db.selectedUser[1].teacher = this.project.school_contact_mail;
+        if (this.db.existsUsers[1]) {
+          this.db.selectedUser[1].project = proj_id;
+          this.db.selectedUser[1].teacher = this.project.school_contact_mail;
         }
-        if (this.db.existsUsers[2]){
-        this.db.selectedUser[2].project = proj_id;
-        this.db.selectedUser[2].teacher = this.project.school_contact_mail;
+        if (this.db.existsUsers[2]) {
+          this.db.selectedUser[2].project = proj_id;
+          this.db.selectedUser[2].teacher = this.project.school_contact_mail;
         }
         this.db.asignProjectToUser(this.db.selectedUser[0].email, 0);
-        if (this.db.existsUsers[1]){
-        this.db.asignProjectToUser(this.db.selectedUser[1].email, 1);
+        if (this.db.existsUsers[1]) {
+          this.db.asignProjectToUser(this.db.selectedUser[1].email, 1);
         }
-        if (this.db.existsUsers[2]){
-        this.db.asignProjectToUser(this.db.selectedUser[2].email, 2);
+        if (this.db.existsUsers[2]) {
+          this.db.asignProjectToUser(this.db.selectedUser[2].email, 2);
         }
-        });
-        alert(" העבודה נוספה בהצלחה ");
-        this.router.navigate(['homepage']);
+      });
+      alert(" העבודה נוספה בהצלחה ");
+      this.router.navigate(['homepage']);
     });
   }
 
