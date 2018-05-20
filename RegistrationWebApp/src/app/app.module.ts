@@ -25,6 +25,7 @@ import { HeaderComponent } from './header/header.component';
 import { CookieService } from 'ngx-cookie-service';
 import { MsgScreenComponent } from './msg-screen/msg-screen.component';
 import { ProjectsUpdatePageComponent } from './projects-update-page/projects-update-page.component';
+import { MessageService } from '../app/services/message.service'
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { ProjectsUpdatePageComponent } from './projects-update-page/projects-upd
     AuthService,
     AuthGuardService,
     UploadFileService,
-    CookieService
+    CookieService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

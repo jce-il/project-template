@@ -1,5 +1,5 @@
 import { Project } from './project';
-
+import { Message } from './message';
 export class User {
     constructor(
         public loggedIn: boolean,
@@ -22,6 +22,7 @@ export class User {
         public schoolCity?: string,
         public docId?: string,
         public teacher?: string,
-        public project?: Project
+        public project?: Project,
+        public messages: Message[] = []
     ) { }
 }

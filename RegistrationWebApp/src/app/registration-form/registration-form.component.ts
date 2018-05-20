@@ -6,6 +6,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { RouterLink, Router } from '@angular/router';
 import { FormsModule, FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { Message } from '../message';
 
 
 
@@ -22,6 +23,7 @@ export class RegistrationFormComponent {
   userPasswordValidation: string; // will contain the password verification
   title: string;
   date;
+  msg: Message;
   ngOnInit() {
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
@@ -29,8 +31,11 @@ export class RegistrationFormComponent {
       this.db.setMetaData();
       this.userTypes = ['תלמיד', 'מורה'];
 
-      if (this.db.loggedIn != 'true')
+      if (this.db.loggedIn != 'true'){
         this.user = new User(false, this.userTypes[0]); //deafult type is student
+        this.user.messages[0] = this.msg; //initilaize!!! ignore
+      }
+        
 
       else
         this.user = this.db.loggedInUser;

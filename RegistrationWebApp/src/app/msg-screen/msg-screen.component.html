@@ -14,7 +14,7 @@
         <h2 class="page-header">הודעות</h2>
           <section class="comment-list">
             <!-- First Comment -->
-            <article class="row">
+            <article class="row"   *ngFor= "let item of msgArray">
               <div class="col-md-2 col-sm-2 hidden-xs">
                 <figure class="thumbnail">
                   <figcaption class="text-center">מנהל המערכת</figcaption>
@@ -24,12 +24,12 @@
                 <div class="panel panel-default arrow right">
                   <div class="panel-body">
                     <header class="text-right">
-                      <div class="comment-user"><i class="fa fa-user"></i>רוני</div>
-                      <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014</time>
+                      <div class="comment-user"><i class="fa fa-user"></i>{{item.title}}</div>
+                      <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> {{item.date}}</time>
                     </header>
                     <div class="comment-post">
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                       {{item.content}}
                       </p>
                     </div>
                   </div>

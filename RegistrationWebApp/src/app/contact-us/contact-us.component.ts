@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-
+import { Message } from '../message';
+import { MessageService } from '../services/message.service'
+import { DatabaseService } from '../services/database.service';
 
 @Component({
   selector: 'app-contact-us',
@@ -9,10 +11,14 @@ import { FormsModule, FormGroup, FormControl, FormBuilder, Validators, ReactiveF
 })
 export class ContactUsComponent implements OnInit {
   form: FormGroup;
+  msg: Message;
 
-  constructor(private fb: FormBuilder) {this.createForm();}
+  constructor(private fb: FormBuilder,private msgService: MessageService,public db: DatabaseService) {this.createForm();}
 
   ngOnInit() {
+    this.db.getMetaData().subscribe(res => {
+      this.db.usersList = res;
+    });
   }
 
   createForm() { //this function build the form and check input validation
@@ -33,9 +39,22 @@ export class ContactUsComponent implements OnInit {
       <div>Message: ${message}</div>
     `;//an html string so the admin could view the user's message detailes.
     let formRequest = { name, email, message, date, html };
-    console.log(formRequest);
+    this.msg = new Message(name,message,new Date()); 
+    this.addMsgToUser(email,this.msg);
+   // console.log(formRequest);
     this.form.reset();
   }//NOT FINISHED YET!!!--need to ask rony!
+
+
+
+  addMsgToUser(email: string,msg: Message){
+
+    this.db.getUser(email,"","","").then(() => {
+        this.db.user =this.db.selectedUser[0]; 
+        this.db.user.messages.push(msg);
+        this.db.updateListing(email);
+    })
+}
 }
 
 
