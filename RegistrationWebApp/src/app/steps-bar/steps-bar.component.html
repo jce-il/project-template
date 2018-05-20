@@ -20,7 +20,7 @@
                     </button>
                     <p>פרטים אישים</p>
                 </div>
-                <div class="process-step">
+                <div *ngIf="this.isStudent == true" class="process-step">
                     <button type="button" class="btn btn-default btn-circle" data-toggle="tab" (click)="MyProject()">
                         <i class="fa fa-file-text-o fa-2x"></i>
                     </button>
@@ -30,7 +30,7 @@
                     <button type="button" class="btn btn-default btn-circle" data-toggle="tab" (click)="MyProjectView()">
                         <i class="fa fa-file-text-o fa-2x"></i>
                     </button>
-                    <p>הפרויקט שלי</p>
+                    <p>{{this.myProjectText}}</p>
                 </div>
                 <div class="process-step">
                     <button type="button" class="btn btn-default btn-circle" data-toggle="tab" (click)="msgPage()">

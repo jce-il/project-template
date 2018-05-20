@@ -10,10 +10,22 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./steps-bar.component.css']
 })
 export class StepsBarComponent implements OnInit {
+  isStudent: boolean;
+  myProjectText: string;
 
   constructor(public db: DatabaseService, public auth: AuthService, public router: Router, private cookieService: CookieService) { }
 
   ngOnInit() {
+    this.db.getLoggedInUser().then(() => {
+    if( this.db.loggedInUser.type == 'תלמיד'){
+      this.isStudent = true;
+      this.myProjectText = "הפרויקט שלי"
+    }
+    else{
+      this.isStudent = false;
+      this.myProjectText = "פרויקטי תלמידים"
+    } 
+    })
   }
 
   // on log out button click

@@ -15,7 +15,8 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./projects-update-page.component.css']
 })
 export class ProjectsUpdatePageComponent implements OnInit {
-
+  title: string;
+  isStudent: boolean;
   selectedFiles: FileList;
   currentFileUpload: FileUpload;
   project: Project;
@@ -49,16 +50,34 @@ export class ProjectsUpdatePageComponent implements OnInit {
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
     this.db.getLoggedInUser().then(() => {
+      if( this.db.loggedInUser.type == 'תלמיד'){
+        this.isStudent = true;
+        this.title = "עדכון או צפיה בפרטי פרויקט"
+      }
+      else{
+        this.isStudent = false;
+        this.title = "פרויקטים של תלמידים שלי"
+      }  
       this.db.getProjectMetaData().subscribe((val) => {
         this.db.projectsList = val;
-
-        for (var i = 0; i < this.db.projectsList.length; i++) {
-          if (this.db.projectsList[i].id == this.db.loggedInUser.project) {
-            this.project = this.db.projectsList[i];
-            this.user_projects[1] = this.project.project_name;
-            this.userFile = this.project.project_file;
+        var j=1;
+      //  if (this.isStudent){
+          for (var i = 0; i < this.db.projectsList.length; i++) {
+            if (this.db.projectsList[i].id == this.db.loggedInUser.project) {
+              this.project = this.db.projectsList[i];
+              this.user_projects[j++] = this.project.project_name;
+              this.userFile = this.project.project_file;
+            }
           }
-        }
+      //}
+      // else{
+      //   for (var i = 0; i < this.db.projectsList.length; i++) {
+      //     if (this.db.projectsList[i].school_contact_mail == this.db.loggedInUser.email){
+      //       this.user_projects[j++] = this.db.projectsList[i].project_name;
+      //     }
+      //   }
+
+      // }
       })
     });
   }
@@ -75,7 +94,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
     this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress);
   }
   //collects all the info from the 'add project form' and sets it with all the needed DB connections in the database
-  public addProject() {
+  public addProject(){
     if (this.CheckIfEmptyField(this.project.user2mail)) { // 1 participant
       this.projectform.get('partner2').clearValidators();
       this.projectform.get('partner2').updateValueAndValidity(); //clear error
