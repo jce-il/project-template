@@ -19,7 +19,6 @@ export class DatabaseService {
   listingDoc: AngularFirestoreDocument<User>; //holds FB listing for update operation
   observableUsers: Observable<User[]>; //A temp variable that returns metadata. used by usersList
   usersList = []; // holds a list with listing id's and users info of the UsersInfo table
-  updateProject = false;
 
   /* project*/
   public projectCollections; // holds a connection the firebase ProjectsInfo table
@@ -56,6 +55,15 @@ export class DatabaseService {
       if (this.usersList[i].email == email) {
         this.listingDoc = this.dataCollections.doc(`${this.usersList[i].id}`); //takes the listing that will be updated by the doc.id (listing's id)
         this.listingDoc.update(JSON.parse(JSON.stringify(this.user)));
+      }
+    }
+  }
+//project name should be unique !!!!!!!
+  updateProjectListing(project_name: string) {
+    for (var i = 0; i < this.usersList.length; i++) {
+      if (this.projectsList[i].project_name == project_name) {
+        this.listingDoc = this.projectCollections.doc(`${this.projectsList[i].id}`); //takes the listing that will be updated by the doc.id (listing's id)
+        this.listingDoc.update(JSON.parse(JSON.stringify(this.project)));
       }
     }
   }

@@ -21,6 +21,7 @@ export class LoginScreenComponent implements OnInit {
     'email': '',
     'password': '',
   };
+  signInVal = 'כניסה'
   constructor(public auth: AuthService, public fb: FormBuilder, public router: Router, public db: DatabaseService, private cookieService: CookieService) { }
 
   ngOnInit() {
@@ -30,14 +31,17 @@ export class LoginScreenComponent implements OnInit {
   }
 
   signIn() { //enables the sign in button function
+    this.signInVal = 'מתחבר...'
     this.auth.signIn(this.userForm.value['email'], this.userForm.value['password']) //using the auth service
       .then((res) => {
         this.cookieService.set('User uid', res.uid);
         this.cookieService.set('User login status', 'true');
         this.router.navigate(['homepage'])
       })
-      .catch((err) =>
+      .catch((err) =>{
+        this.signInVal = 'כניסה'
         this.logInError = true
+      }
       );
   }
 

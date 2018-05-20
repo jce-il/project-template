@@ -10,11 +10,11 @@ import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
-  selector: 'app-project-upload-screen',
-  templateUrl: './project-upload-screen.component.html',
-  styleUrls: ['./project-upload-screen.component.css']
+  selector: 'app-projects-update-page',
+  templateUrl: './projects-update-page.component.html',
+  styleUrls: ['./projects-update-page.component.css']
 })
-export class ProjectUploadScreenComponent implements OnInit {
+export class ProjectsUpdatePageComponent implements OnInit {
 
   selectedFiles: FileList;
   currentFileUpload: FileUpload;
@@ -25,6 +25,9 @@ export class ProjectUploadScreenComponent implements OnInit {
   fields;
   projectField: string; // if the student is selected "another" field of research, we will use this
   projectStatus;
+  user_projects = ['מתוך רשימה']; // for drop down list
+  selectedWork = 'מתוך רשימה'; //for drop down list
+  userFile : FileUpload;
 
 
   constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService) {
@@ -45,20 +48,32 @@ export class ProjectUploadScreenComponent implements OnInit {
     this.db.setMetaData();
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
-    this.db.getLoggedInUser();
+    this.db.getLoggedInUser().then(() => {
+      this.db.getProjectMetaData().subscribe((val) => {
+        this.db.projectsList = val;
+
+        for (var i = 0; i < this.db.projectsList.length; i++) {
+          if (this.db.projectsList[i].id == this.db.loggedInUser.project) {
+            this.project = this.db.projectsList[i];
+            this.user_projects[1] = this.project.project_name;
+            this.userFile = this.project.project_file;
+          }
+        }
+      })
+    });
   }
   //Holds the selected file from the form
   selectFile(event) {
     this.selectedFiles = event.target.files;
   }
-  //Uploads the selected file to firebase storage
+  //Uploads the selected file to firebase storage and deletes the previous one
   upload() {
+    this.uploadService.deleteFileUpload(this.userFile);
     const file = this.selectedFiles.item(0);
     this.selectedFiles = undefined;
     this.currentFileUpload = new FileUpload(file);
     this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress);
   }
-
   //collects all the info from the 'add project form' and sets it with all the needed DB connections in the database
   public addProject() {
     if (this.CheckIfEmptyField(this.project.user2mail)) { // 1 participant
@@ -123,29 +138,9 @@ export class ProjectUploadScreenComponent implements OnInit {
         this.projectError = true;
         return;
       }
-      this.db.addProjectToDB(this.project);
-      this.db.getProjectMetaData().subscribe(val => {
-        this.db.projectsList = val;
-        var proj_id = this.db.getProjectID(this.project.project_name);
-        this.db.selectedUser[0].project = proj_id;
-        this.db.selectedUser[0].teacher = this.project.school_contact_mail;
-        if (this.db.existsUsers[1]) {
-          this.db.selectedUser[1].project = proj_id;
-          this.db.selectedUser[1].teacher = this.project.school_contact_mail;
-        }
-        if (this.db.existsUsers[2]) {
-          this.db.selectedUser[2].project = proj_id;
-          this.db.selectedUser[2].teacher = this.project.school_contact_mail;
-        }
-        this.db.asignProjectToUser(this.db.selectedUser[0].email, 0);
-        if (this.db.existsUsers[1]) {
-          this.db.asignProjectToUser(this.db.selectedUser[1].email, 1);
-        }
-        if (this.db.existsUsers[2]) {
-          this.db.asignProjectToUser(this.db.selectedUser[2].email, 2);
-        }
-      });
-      alert(" העבודה נוספה בהצלחה ");
+      this.db.project = this.project;
+      this.db.updateProjectListing(this.project.project_name);
+      alert(" העבודה עודכנה בהצלחה ");
       this.router.navigate(['homepage']);
     });
   }
@@ -215,6 +210,5 @@ export class ProjectUploadScreenComponent implements OnInit {
     else
       return false;
   }
-
 
 }

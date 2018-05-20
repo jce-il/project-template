@@ -1,0 +1,225 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<div class="header">
+  <app-header></app-header>
+</div>
+
+<div class="container">
+  <h2 class="well">עדכון או צפיה בפרטי פרוייקט</h2>
+  <div class="row">
+    <div class="col-sm-4 form-group">
+      <label>בחר עבודה</label>
+      <div>שימו לב שכרגע לא ניתן לשנות כתובות מייל ולא ניתן לשנות שם עבודה</div>
+      <select class="user-type" id="selectedWork"[(ngModel)]="selectedWork" name="selectedWork">
+        <option *ngFor="let type of user_projects" [value]="type">{{type}}</option>
+      </select>
+    </div>
+  </div>
+  <div *ngIf="selectedWork!='מתוך רשימה'">
+    <form>
+      <div class="row">
+        <div class="col-sm-10">
+          <div>
+            <legend>דואר אלקטרוני של חברי הצוות</legend>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 form-group">
+          <div [formGroup]="projectform">
+            <label class="req">כתובת דואר אלקטרוני שלי*</label>
+            <input type="text" disabled id="partner1" required [(ngModel)]="project.user1mail" name="partner1" formControlName="partner1" />
+            <div *ngIf="partner1.invalid && (partner1.dirty)">
+              <div *ngIf="partner1.errors.email && !CheckIfEmptyField(project.user1mail)" class="alert alert-danger">
+                נא להזין כתובת דואר אלקטרוני תקינה
+              </div>
+            </div>
+          </div>
+          <div [formGroup]="projectform">
+            <label class="reg">כתובת דואר אלקטרוני של שותף שני</label>
+            <input type="text" disabled id="partner2" [(ngModel)]="project.user2mail" name="partner2" formControlName="partner2" />
+            <div *ngIf="partner2.invalid && (partner2.dirty)">
+              <div *ngIf="partner2.errors.email && !CheckIfEmptyField(project.user2mail)" class="alert alert-danger">
+                נא להזין כתובת דואר אלקטרוני תקינה
+              </div>
+            </div>
+          </div>
+          <div [formGroup]="projectform">
+            <label class="reg">כתובת דואר אלקטרוני של שותף שלישי</label>
+            <input type="text" disabled id="partner3" [(ngModel)]="project.user3mail" name="partner3" formControlName="partner3" />
+            <div *ngIf="partner3.invalid && (partner3.dirty)">
+              <div *ngIf="partner3.errors.email && !CheckIfEmptyField(project.user3mail)" class="alert alert-danger">
+                נא להזין כתובת דואר אלקטרוני תקינה
+              </div>
+            </div>
+          </div>
+          <div [formGroup]="projectform">
+            <label class="req">שם העבודה*</label>
+            <input type="text" disabled id="projectname" required [(ngModel)]="project.project_name" name="projectname" formControlName="projectname"
+            />
+          </div>
+          <div [formGroup]="projectform">
+            <label class="reg">דואר אלקטרוני איש קשר מטעם בית הספר</label>
+            <input type="email" disabled id="email_school" [(ngModel)]="project.school_contact_mail" name="email_school" formControlName="email_school"
+            />
+            <div *ngIf="email_school.invalid && (email_school.dirty)">
+              <div *ngIf="email_school.errors.email && !CheckIfEmptyField(project.school_contact_mail)" class="alert alert-danger">
+                נא להזין כתובת דואר אלקטרוני תקינה
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10">
+          <legend>אודות העבודה</legend>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 form-group">
+          <div [formGroup]="projectform">
+            <label class="req">התחום אליו משתייכת העבודה*</label>
+            <select class="user-type" id="project_field" required [(ngModel)]="project.project_field" name="project_field" formControlName="project_field">
+              <option *ngFor="let type of fields" [value]="type">{{type}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 form-group">
+          <div [formGroup]="projectform" *ngIf="project.project_field == 'אחר'">
+            <label class="req">תחום מחקר אחר (פרט)*</label>
+            <input type="text" [(ngModel)]="this.projectField" formControlName="other" />
+          </div>
+          <label class="reg">מוסד אקדמי בו התבצעה העבודה במידה וקיים</label>
+          <input type="text" id="location" [(ngModel)]="project.location" name="location" />
+          <label class="req">סוג העבודה המוגשת*</label>
+          <select id="type" required [(ngModel)]="project.type" name="type">
+            <option>מחקרית</option>
+            <option>עבודה טכנולוגית</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 form-group">
+          <label class="req">סטאטוס העבודה*</label>
+          <select class="user-type" id="status" required [(ngModel)]="project.status" name="status">
+            <option *ngFor="let type of projectStatus" [value]="type">{{type}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 form-group">
+          <label class="reg">שאלת מחקר/מטרת הפרוייקט</label>
+          <textarea rows="6" cols="80" id="target" [(ngModel)]="project.target" name="target"></textarea>
+          <label class="reg">רקע</label>
+          <textarea rows="6" cols="80" id="background" [(ngModel)]="project.background" name="background"></textarea>
+          <label class="reg">תיאור קצר</label>
+          <textarea rows="6" cols="80" id="description" [(ngModel)]="project.description" name="description"></textarea>
+          <label class="reg">היקף</label>
+          <textarea rows="6" cols="80" id="scope" [(ngModel)]="project.scope" name="scope"></textarea>
+          <label class="reg">חדשנות</label>
+          <textarea rows="6" cols="80" id="inovetion" [(ngModel)]="project.inovetion" name="inovetion"></textarea>
+          <label class="reg">יתרונות/תרומה</label>
+          <textarea rows="6" cols="80" id="advantages" [(ngModel)]="project.advantages" name="advantages"></textarea>
+          <label class="reg">נקודת מבט אישית</label>
+          <textarea rows="6" cols="80" id="retrospective" [(ngModel)]="project.retrospective" name="retrospective"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+          <div class="input-group image-preview">
+            <div class="file" *ngIf="this.project.project_file != undefined">
+              <div>במערכת טעון המסמך:
+                <br>
+                <a href={{this.project.project_file.url}}>{{this.project.project_file.name}}</a>
+              </div>
+            </div>
+            <div class="btn btn-default image-preview-input">
+              <input type="file" (change)="selectFile($event)" required name="fileupload" />
+              <span class="glyphicon glyphicon-folder-open"></span>
+              <span class="image-preview-input-title">בחר קובץ אחר</span>
+            </div>
+            <div class="file" *ngIf="this.selectedFiles != null">{{this.selectedFiles.item(0).name}}</div>
+            <div>
+              <button type="button" class="btn btn-labeled btn-primary" [disabled]="!selectedFiles" (click)="upload()">
+                <span class="btn-label">
+                  <i class="glyphicon glyphicon-upload"></i>
+                </span>העלה קובץ חדש</button>
+            </div>
+            <div *ngIf="currentFileUpload" class="progress">
+              <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 15%" attr.aria-valuenow="{{progress.percentage}}"
+                aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+                {{progress.percentage}}%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10">
+          <legend>מנחים ויועצים</legend>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 form-group">
+          <h4>מנחה ראשון</h4>
+          <label>תואר</label>
+          <input type="text" id="city" />
+          <label>שם מלא</label>
+          <input type="text" id="city" />
+          <label>מוסד</label>
+          <input type="text" id="city" />
+          <label>תפקיד/תחום עיסוק</label>
+          <input type="text" id="city" />
+          <label>טלפון</label>
+          <input type="text" id="city" />
+          <label>דואר אלקטרוני</label>
+          <input type="email" id="city" />
+        </div>
+        <div class="col-sm-4 form-group">
+          <h4>מנחה שני</h4>
+          <label>תואר</label>
+          <input type="text" id="city" />
+          <label>שם מלא</label>
+          <input type="text" id="city" />
+          <label>מוסד</label>
+          <input type="text" id="city" />
+          <label>תפקיד/תחום עיסוק</label>
+          <input type="text" id="city" />
+          <label>טלפון</label>
+          <input type="text" id="city" />
+          <label>דואר אלקטרוני</label>
+          <input type="email" id="city" />
+        </div>
+        <div class="col-sm-4 form-group">
+          <h4>מנחה שלישי</h4>
+          <label>תואר</label>
+          <input type="text" id="city" />
+          <label>שם מלא</label>
+          <input type="text" id="city" />
+          <label>מוסד</label>
+          <input type="text" id="city" />
+          <label>תפקיד/תחום עיסוק</label>
+          <input type="text" id="city" />
+          <label>טלפון</label>
+          <input type="text" id="city" />
+          <label>דואר אלקטרוני</label>
+          <input type="email" id="city" />
+        </div>
+      </div>
+      <div class="row">
+        <button class="btn btn-primary btn-default" id="save" (click)="addProject()" [disabled]="progress.percentage != 100">עדכן ושלח מחדש</button>
+      </div>
+      <div class="col-sm-6 form-group hideError" [hidden]="!projectError">
+        יש למלא את כל שדות החובה כנדרש
+      </div>
+      <br>
+      <br>
+    </form>
+  </div>
+</div>
+<div class="footer">
+  <app-footer></app-footer>
+</div>

@@ -38,13 +38,11 @@ export class StepsBarComponent implements OnInit {
   }
   // on My Project info button click
   public MyProject() {
-    this.db.updateProject = false;
     this.router.navigate(['projectUpload']);
   }
 
   public MyProjectView() {
-    this.db.updateProject = true;
-    this.router.navigate(['projectUpload']);
+    this.router.navigate(['viewproject']);
   }
 
     // on message info button click
