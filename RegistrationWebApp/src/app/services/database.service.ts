@@ -60,7 +60,7 @@ export class DatabaseService {
   }
 //project name should be unique !!!!!!!
   updateProjectListing(project_name: string) {
-    for (var i = 0; i < this.usersList.length; i++) {
+    for (var i = 0; i < this.projectsList.length; i++) {
       if (this.projectsList[i].project_name == project_name) {
         this.listingDoc = this.projectCollections.doc(`${this.projectsList[i].id}`); //takes the listing that will be updated by the doc.id (listing's id)
         this.listingDoc.update(JSON.parse(JSON.stringify(this.project)));
