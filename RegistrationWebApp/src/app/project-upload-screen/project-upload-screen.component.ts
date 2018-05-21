@@ -45,7 +45,9 @@ export class ProjectUploadScreenComponent implements OnInit {
     this.db.setMetaData();
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
-    this.db.getLoggedInUser();
+    this.db.getLoggedInUser().then(()=>{
+      this.project.user1mail = this.db.loggedInUser.email;
+    });
   }
   //Holds the selected file from the form
   selectFile(event) {

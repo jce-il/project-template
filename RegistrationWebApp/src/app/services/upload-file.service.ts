@@ -12,6 +12,8 @@ export class UploadFileService {
   constructor(private db: AngularFireDatabase) { }
 
   pushFileToStorage(fileUpload: FileUpload, progress: { percentage: number }) {
+
+    return new Promise((resolve, reject) => {
     const storageRef = firebase.storage().ref();
     const uploadTask = storageRef.child(`${this.basePath}/${fileUpload.file.name}`).put(fileUpload.file);
 
@@ -30,8 +32,10 @@ export class UploadFileService {
         fileUpload.url = uploadTask.snapshot.downloadURL;
         fileUpload.name = fileUpload.file.name;
         this.saveFileData(fileUpload);
+        resolve();
       }
     );
+  });
   }
 
   private saveFileData(fileUpload: FileUpload) {

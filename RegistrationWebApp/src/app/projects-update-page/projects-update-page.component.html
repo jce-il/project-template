@@ -10,11 +10,40 @@
   <h2 class="well">{{this.title}}</h2>
   <div class="row">
     <div class="col-sm-4 form-group">
-      <label>בחר עבודה</label>
-      <div>שימו לב שכרגע לא ניתן לשנות כתובות מייל ולא ניתן לשנות שם עבודה</div>
-      <select class="user-type" id="selectedWork"[(ngModel)]="selectedWork" name="selectedWork">
+      <legend>בחר עבודה</legend>
+      <select class="user-type" id="selectedWork" [(ngModel)]="selectedWork" name="selectedWork">
         <option *ngFor="let type of user_projects" [value]="type">{{type}}</option>
       </select>
+    </div>
+  </div>
+  <div class="row" *ngIf="!isStudent">
+    <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+      <legend>העלאת המלצה</legend>
+      <div class="input-group image-preview">
+        <div class="file" *ngIf="this.project.project_file != undefined">
+          <div>במערכת טעון המסמך:
+            <br>
+            <a href={{this.project.project_file.url}}>{{this.project.project_file.name}}</a>
+          </div>
+        </div>
+        <div class="btn btn-default image-preview-input">
+          <input type="file" (change)="selectRecommendationFile($event)" required name="fileupload" />
+          <span class="glyphicon glyphicon-folder-open"></span>
+          <span class="image-preview-input-title">בחר קובץ</span>
+        </div>
+        <div class="file" *ngIf="this.selected_recommendation_files != null">{{this.selected_recommendation_files.item(0).name}}</div>
+        <div>
+          <button type="button" class="btn btn-labeled btn-primary" [disabled]="!selected_recommendation_files" (click)="recommendationUpload()">
+            <span class="btn-label">
+              <i class="glyphicon glyphicon-upload"></i>
+            </span>שלח</button>
+        </div>
+        <div *ngIf="current_recommendation_FileUpload" class="progress">
+          <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 15%" attr.aria-valuenow="{{progress.percentage}}"
+            aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+            {{progress.percentage}}%</div>
+        </div>
+      </div>
     </div>
   </div>
   <div *ngIf="selectedWork!='מתוך רשימה'">
@@ -30,7 +59,8 @@
         <div class="col-sm-4 form-group">
           <div [formGroup]="projectform">
             <label class="req">כתובת דואר אלקטרוני שלי*</label>
-            <input type="text" disabled id="partner1" required [(ngModel)]="project.user1mail" name="partner1" formControlName="partner1" />
+            <input type="text" disabled id="partner1" required [(ngModel)]="project.user1mail" name="partner1" formControlName="partner1"
+            />
             <div *ngIf="partner1.invalid && (partner1.dirty)">
               <div *ngIf="partner1.errors.email && !CheckIfEmptyField(project.user1mail)" class="alert alert-danger">
                 נא להזין כתובת דואר אלקטרוני תקינה

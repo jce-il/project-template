@@ -18,7 +18,8 @@ export class Project {
         public inovetion?: string,
         public advantages?: string,
         public retrospective?: string,
-        public project_file?: FileUpload
+        public project_file?: FileUpload,
+        public recommendation_file?: FileUpload
     ) { }
 
 }
