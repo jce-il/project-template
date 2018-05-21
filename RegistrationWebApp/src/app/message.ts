@@ -1,6 +1,6 @@
 export class Message {
 
-    constructor(public title?: string,
+    constructor(public subj?: string,
                 public content?: string, 
                 public date?: Date){}
 }

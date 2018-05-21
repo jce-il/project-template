@@ -23,7 +23,7 @@ export class RegistrationFormComponent {
   userPasswordValidation: string; // will contain the password verification
   title: string;
   date;
-  msg: Message;
+  msg: Message = new Message;
   ngOnInit() {
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
@@ -33,6 +33,9 @@ export class RegistrationFormComponent {
 
       if (this.db.loggedIn != 'true'){
         this.user = new User(false, this.userTypes[0]); //deafult type is student
+        this.msg.subj="ברוכים הבאים לאתר ההרשמה";
+        this.msg.date= new Date();
+        this.msg.content = "שימו לב להודעות המופיעות באיזור זה."
         this.user.messages[0] = this.msg; //initilaize!!! ignore
       }
         
