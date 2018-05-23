@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Subject } from 'rxjs/Subject';
 import { DatabaseService } from '../services/database.service';
 import { Message } from '../message';
 import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
@@ -11,28 +9,22 @@ export class MessageService {
 
 
   constructor(public db: DatabaseService) {
-   
+    this.db.getMetaData().subscribe(res => {
+      this.db.usersList = res;
+    });
    }
 
+   addMsgToUser(email: string,msg: Message){
+
+    this.db.getUser(email,"","","").then(() => {
+        this.db.user =this.db.selectedUser[0]; 
+        this.db.user.messages.push(msg);
+        this.db.updateListing(email);
+    })
+    .catch(err =>{
+      alert("כתובת דואר אלקטרוני שהזנת אינה במערכת");// error message
+    })
+}
  
 }
  
-       
-
-  /*
-
-  sendMessage(message: string) {
-    this.subject.next({ text: message });
-}
-
-  clearMessage() {
-      this.subject.next();
-  }
-
-  getMessage(): Observable<any> {
-      return this.subject.asObservable();
-  }
-*/
-
-
-

@@ -13,18 +13,17 @@ export class MsgScreenComponent implements OnInit {
   constructor(public db: DatabaseService) { }
 
   ngOnInit() {
-
     this.db.getLoggedInUser().then(() => {
       this.downloadMsgs();
     });
-    
   }
 
   downloadMsgs()
   {
-    for(var i = 0;i<this.db.loggedInUser.messages.length;i++)
+    for(var i = 0,j=this.db.loggedInUser.messages.length-1;
+      i<this.db.loggedInUser.messages.length;i++,j--)
     {
-      this.msgArray[i] = this.db.loggedInUser.messages[i];
+      this.msgArray[i] = this.db.loggedInUser.messages[j];
     }
   }
 

@@ -16,9 +16,6 @@ export class ContactUsComponent implements OnInit {
   constructor(private fb: FormBuilder,private msgService: MessageService,public db: DatabaseService) {this.createForm();}
 
   ngOnInit() {
-    this.db.getMetaData().subscribe(res => {
-      this.db.usersList = res;
-    });
   }
 
   createForm() { //this function build the form and check input validation
@@ -40,21 +37,12 @@ export class ContactUsComponent implements OnInit {
     `;//an html string so the admin could view the user's message detailes.
     let formRequest = { name, email, message, date, html };
     this.msg = new Message(name,message,new Date()); 
-    this.addMsgToUser(email,this.msg);
+    this.msgService.addMsgToUser(email,this.msg);
    // console.log(formRequest);
     this.form.reset();
   }//NOT FINISHED YET!!!--need to ask rony!
 
 
-
-  addMsgToUser(email: string,msg: Message){
-
-    this.db.getUser(email,"","","").then(() => {
-        this.db.user =this.db.selectedUser[0]; 
-        this.db.user.messages.push(msg);
-        this.db.updateListing(email);
-    })
-}
 }
 
 
