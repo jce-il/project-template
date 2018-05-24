@@ -29,23 +29,24 @@ export class UserHomePageComponent implements OnInit {
         if (this.db.projectsList[i].id == this.db.loggedInUser.project)
           this.userProject = this.db.projectsList[i];
       }
-      if (this.userProject.location == undefined || this.userProject.location == '')
-        this.emptyFields.push('מוסד אקדמי בו התבצעה העבודה')
-      if (this.userProject.advantages == undefined || this.userProject.advantages == '')
-        this.emptyFields.push('יתרונות/תרומה')
-      if (this.userProject.background == undefined || this.userProject.background == '')
-        this.emptyFields.push('רקע')
-      if (this.userProject.description == undefined || this.userProject.description == '')
-        this.emptyFields.push('תיאור קצר')
-      if (this.userProject.inovetion == undefined || this.userProject.inovetion == '')
-        this.emptyFields.push('חדשנות')
-      if (this.userProject.retrospective == undefined || this.userProject.retrospective == '')
-        this.emptyFields.push('נקודת מבט אישית')
-      if (this.userProject.scope == undefined || this.userProject.scope == '')
-        this.emptyFields.push('היקף')
-      if (this.userProject.target == undefined || this.userProject.target == '')
-        this.emptyFields.push('שאלת מחקר/מטרת הפרויקט')
-
+      if (this.userProject != undefined) {
+        if (this.userProject.location == undefined || this.userProject.location == '')
+          this.emptyFields.push('מוסד אקדמי בו התבצעה העבודה')
+        if (this.userProject.advantages == undefined || this.userProject.advantages == '')
+          this.emptyFields.push('יתרונות/תרומה')
+        if (this.userProject.background == undefined || this.userProject.background == '')
+          this.emptyFields.push('רקע')
+        if (this.userProject.description == undefined || this.userProject.description == '')
+          this.emptyFields.push('תיאור קצר')
+        if (this.userProject.inovetion == undefined || this.userProject.inovetion == '')
+          this.emptyFields.push('חדשנות')
+        if (this.userProject.retrospective == undefined || this.userProject.retrospective == '')
+          this.emptyFields.push('נקודת מבט אישית')
+        if (this.userProject.scope == undefined || this.userProject.scope == '')
+          this.emptyFields.push('היקף')
+        if (this.userProject.target == undefined || this.userProject.target == '')
+          this.emptyFields.push('שאלת מחקר/מטרת הפרויקט')
+      }
     })
   }
 

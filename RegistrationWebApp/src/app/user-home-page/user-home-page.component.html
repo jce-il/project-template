@@ -18,10 +18,12 @@
             <div class="notice notice-info">
                 <strong>קיימת עבודה במערכת</strong>
             </div>
-            <div class="notice notice-success">
-                <strong>שים לב - בטופס הגשת הפרוייקט חסרים הפרטים הבאים:</strong>
-                <div *ngFor="let i of emptyFields">
-                    <li>{{i}}</li>
+            <div *ngIf="this.userProject">
+                <div class="notice notice-success">
+                    <strong>שים לב - בטופס הגשת הפרוייקט חסרים הפרטים הבאים:</strong>
+                    <div *ngFor="let i of emptyFields">
+                        <li>{{i}}</li>
+                    </div>
                 </div>
             </div>
         </div>
