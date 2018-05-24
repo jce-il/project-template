@@ -9,6 +9,7 @@ import { ProjectUploadScreenComponent } from '../project-upload-screen/project-u
 import { MsgScreenComponent } from '../msg-screen/msg-screen.component';
 import { AuthGuardService } from './auth-guard.service'
 import { ProjectsUpdatePageComponent } from '../projects-update-page/projects-update-page.component';
+import { TableComponent } from '../table/table.component'
 //routing links to navigate through the web-app
 const appRouets: Routes = [
   { path: '', redirectTo: '/loginScreen', pathMatch: 'full' },
@@ -19,7 +20,8 @@ const appRouets: Routes = [
   { path: 'contactUs', component: ContactUsComponent},
   { path: 'projectUpload', component: ProjectUploadScreenComponent},
   { path: 'msgpage', component: MsgScreenComponent},
-  { path: 'viewproject', component: ProjectsUpdatePageComponent}
+  { path: 'viewproject', component: ProjectsUpdatePageComponent},
+  { path: 'tablePage', component: TableComponent}
 ]
 
 @NgModule({

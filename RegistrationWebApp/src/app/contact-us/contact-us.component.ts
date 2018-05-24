@@ -4,6 +4,7 @@ import { Message } from '../message';
 import { MessageService } from '../services/message.service'
 import { DatabaseService } from '../services/database.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-contact-us',
@@ -17,7 +18,7 @@ export class ContactUsComponent implements OnInit {
   today;
 
   constructor(private fb: FormBuilder,private msgService: MessageService,private cookieService: CookieService,
-    public db: DatabaseService) {this.createForm();}
+    public db: DatabaseService, public router: Router) {this.createForm();}
 
   ngOnInit() {
     this.db.loggedInUserUID = this.cookieService.get('User uid');
@@ -49,6 +50,13 @@ export class ContactUsComponent implements OnInit {
    // console.log(formRequest);
     this.form.reset();
   }//NOT FINISHED YET!!!--need to ask rony!
+
+
+  kaki(){
+      this.msgService.setCurrentTable("teacher",true);
+     // console.log(this.msgService.currentTable);
+      this.router.navigate(['tablePage']);
+  }
 
 
 }

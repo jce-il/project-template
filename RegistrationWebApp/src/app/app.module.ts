@@ -25,7 +25,8 @@ import { HeaderComponent } from './header/header.component';
 import { CookieService } from 'ngx-cookie-service';
 import { MsgScreenComponent } from './msg-screen/msg-screen.component';
 import { ProjectsUpdatePageComponent } from './projects-update-page/projects-update-page.component';
-import { MessageService } from '../app/services/message.service'
+import { MessageService } from '../app/services/message.service';
+import { TableComponent } from './table/table.component'
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { MessageService } from '../app/services/message.service'
     StepsBarComponent,
     HeaderComponent,
     MsgScreenComponent,
-    ProjectsUpdatePageComponent
+    ProjectsUpdatePageComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
