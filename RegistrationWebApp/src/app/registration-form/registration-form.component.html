@@ -165,15 +165,15 @@
                 <div class="col-sm-4">
                     <div [formGroup]="userform">
                         <label class="req">תעודת זהות *</label>
-                        <input class="user-gender" id="id" required [(ngModel)]="user.id" name="id" formControlName="id">
-                        <div *ngIf="id.invalid && (id.dirty) && !CheckIfEmptyField(user.id)" class="alert alert-danger">
-                                <div *ngIf="id.errors.pattern && !CheckIfEmptyField(user.id)">
+                        <input class="user-gender" id="userid" required [(ngModel)]="user.userid" name="userid" formControlName="userid">
+                        <div *ngIf="userid.invalid && (userid.dirty) && !CheckIfEmptyField(user.userid)" class="alert alert-danger">
+                                <div *ngIf="userid.errors.pattern && !CheckIfEmptyField(user.userid)">
                                     נא להזין תעודת זהות תקינה  
                                 </div>
-                                <div *ngIf="(id.errors.minlength) &&  !CheckIfEmptyField(user.id)">
+                                <div *ngIf="(userid.errors.minlength) &&  !CheckIfEmptyField(user.userid)">
                                     המספר קצר מדי
                                 </div>
-                                <div *ngIf="(id.errors.maxlength) && !CheckIfEmptyField(user.id)">
+                                <div *ngIf="(userid.errors.maxlength) && !CheckIfEmptyField(user.userid)">
                                     המספר ארוך מדי
                                 </div>
                             </div>

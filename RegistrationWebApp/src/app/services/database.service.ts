@@ -36,7 +36,7 @@ export class DatabaseService {
     this.loggedIn = 'false'; //represents if user is logged in. has to be STRING !!!
     this.projectCollections = afs.collection<any>('projectsInfo');
     //===================================================//
-    this.existsUsers = [false, false, false, false];
+    this.existsUsers = [false, false, false];
   }
 
   //adds all info that was provided through the registration form to user object and ads it to the firebase DB
@@ -52,7 +52,9 @@ export class DatabaseService {
   //Update a UsersInfo listing by a given email. the object that is passed to the update function has to be already with the wanted changes!!! (It writes a new object)
   updateListing(email: string) {
     for (var i = 0; i < this.usersList.length; i++) {
+      console.log(this.usersList[i].id)
       if (this.usersList[i].email == email) {
+       
         this.listingDoc = this.dataCollections.doc(`${this.usersList[i].id}`); //takes the listing that will be updated by the doc.id (listing's id)
         this.listingDoc.update(JSON.parse(JSON.stringify(this.user)));
       }
@@ -137,14 +139,12 @@ export class DatabaseService {
     });
   }
 //This function sets in the 'selectedUser' array (first 3 cells) property users that were found by a given email.
-  public getUser(email1: string, email2: string, email3: string, teacherMail: string) { // get user asiggned to project
+  public getUser(email1: string, email2: string, email3: string) { // get user asiggned to project
     return new Promise((resolve, reject) => {
       this.dataCollections.valueChanges().subscribe(collection => {
 
         for (var i = 0; i < collection.length; i++) { //find participantes email's and puts them in array
-          if (collection[i].email == teacherMail && collection[i].type=='מורה')
-            this.existsUsers[3] = true;
-          else if (collection[i].email === email1) {
+          if (collection[i].email === email1) {
             this.selectedUser[0] = collection[i];
             this.existsUsers[0] = true;
           }

@@ -7,7 +7,7 @@ import { FileUpload } from '../fileupload';
 @Injectable()
 export class UploadFileService {
 
-  private basePath = '/uploads';
+  public basePath;
 
   constructor(private db: AngularFireDatabase) { }
 

@@ -27,6 +27,7 @@ import { MsgScreenComponent } from './msg-screen/msg-screen.component';
 import { ProjectsUpdatePageComponent } from './projects-update-page/projects-update-page.component';
 import { MessageService } from '../app/services/message.service';
 import { TableComponent } from './table/table.component'
+import { CheckersPageComponent } from './checkers-page/checkers-page.component'
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { TableComponent } from './table/table.component'
     HeaderComponent,
     MsgScreenComponent,
     ProjectsUpdatePageComponent,
-    TableComponent
+    TableComponent,
+    CheckersPageComponent
   ],
   imports: [
     BrowserModule,

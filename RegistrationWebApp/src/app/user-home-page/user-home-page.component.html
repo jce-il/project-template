@@ -15,15 +15,16 @@
 
         <div class="row" id="userstatus">
             <legend>סטאטוס הרשמה</legend>
-            <div class="notice notice-success">
-                <strong>בעבודה (שם עבודה)</strong> חסר מידע בשדות הבאים:
-                <li></li>
-                <li></li>
-                <li></li>
-            </div>
-
             <div class="notice notice-info">
-                <strong>Notice</strong> notice-info
+                <strong>קיימת עבודה במערכת</strong>
+            </div>
+            <div *ngIf="this.userProject">
+                <div class="notice notice-success">
+                    <strong>שים לב - בטופס הגשת הפרוייקט חסרים הפרטים הבאים:</strong>
+                    <div *ngFor="let i of emptyFields">
+                        <li>{{i}}</li>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -37,8 +38,11 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-10">
-                קישורים
+            <legend>קישורים</legend>
+            <div class="notice notice-info">
+                <a href="http://www.mada.org.il/young">הדף הראשי של התחרות</a>
+                <br>
+                <a href="http://yharshama.mada.org.il/young-recommendation-2016.doc">הורדת טופס המלצה</a>
             </div>
         </div>
 

@@ -52,16 +52,16 @@
 }
 
 .notice-success {
-    border-color: #80D651;
+    border-color: rgb(255, 0, 0);
 }
 .notice-success>strong {
-    color: #80D651;
+    color: rgb(255, 0, 0);
 }
 .notice-info {
-    border-color: #45ABCD;
+    border-color: rgb(4, 0, 235);
 }
 .notice-info>strong {
-    color: #45ABCD;
+    color: rgb(4, 0, 235);
 }
 
 i strong{
