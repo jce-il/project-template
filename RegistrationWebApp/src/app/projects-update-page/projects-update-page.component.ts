@@ -69,6 +69,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
             this.project = this.db.projectsList[i];
             this.user_projects[j++] = this.project.project_name;
             this.userFile = this.project.project_file;
+            this.uploadService.basePath = this.project.project_name;
           }
         }
         //}

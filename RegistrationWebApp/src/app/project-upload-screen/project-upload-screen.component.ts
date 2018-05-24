@@ -55,6 +55,7 @@ export class ProjectUploadScreenComponent implements OnInit {
   }
   //Uploads the selected file to firebase storage
   upload() {
+    this.uploadService.basePath = this.project.project_name;
     const file = this.selectedFiles.item(0);
     this.selectedFiles = undefined;
     this.currentFileUpload = new FileUpload(file);
