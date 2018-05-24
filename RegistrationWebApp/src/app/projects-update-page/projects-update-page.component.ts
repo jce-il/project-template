@@ -121,10 +121,6 @@ export class ProjectsUpdatePageComponent implements OnInit {
       this.projectform.get('partner3').clearValidators();
       this.projectform.get('partner3').updateValueAndValidity(); // clear error
     }
-    if (this.CheckIfEmptyField(this.project.school_contact_mail)) { // no theacher
-      this.projectform.get('email_school').clearValidators();
-      this.projectform.get('email_school').updateValueAndValidity(); //clear error
-    }
     if (this.project.project_field != "אחר") { //project_field != other
       this.projectform.get('other').clearValidators();
       this.projectform.get('other').updateValueAndValidity(); //clear error
@@ -149,7 +145,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
     7. FINALLY, updates the updated selected users using the asignProjectToUser() function    
     */
     this.project.project_file = this.currentFileUpload; // assigned file in project field
-    this.db.getUser(this.project.user1mail, this.project.user2mail, this.project.user3mail, this.project.school_contact_mail).then(() => {
+    this.db.getUser(this.project.user1mail, this.project.user2mail, this.project.user3mail).then(() => {
       if (this.db.existsUsers[0] == false) {
         alert("המייל שלי' שהוזן אינו קיים במערכת'")
         this.projectError = true;
@@ -157,11 +153,6 @@ export class ProjectsUpdatePageComponent implements OnInit {
       }
       if (this.db.loggedInUser.email != this.project.user1mail) {
         alert("זה לא המייל שלי")
-        this.projectError = true;
-        return;
-      }
-      if (!this.CheckIfEmptyField(this.project.school_contact_mail) && this.db.existsUsers[3] == false) {
-        alert("כתובת המייל של איש הקשר מטעם בית הספר אינה קיימת במערכת")
         this.projectError = true;
         return;
       }

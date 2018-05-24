@@ -1,4 +1,5 @@
 import { FileUpload } from './fileupload';
+import { Mentor } from './mentor';
 
 export class Project {
     constructor(
@@ -19,7 +20,8 @@ export class Project {
         public advantages?: string,
         public retrospective?: string,
         public project_file?: FileUpload,
-        public recommendation_file?: FileUpload
+        public recommendation_file?: FileUpload,
+        public mentors: Mentor[] = []
     ) { }
 
 }

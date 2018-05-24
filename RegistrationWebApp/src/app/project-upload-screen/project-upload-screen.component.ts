@@ -26,7 +26,6 @@ export class ProjectUploadScreenComponent implements OnInit {
   projectField: string; // if the student is selected "another" field of research, we will use this
   projectStatus;
 
-
   constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService) {
     this.fields = [
       "מתמטיקה", "מדעי החיים", "כימיה",
@@ -48,6 +47,7 @@ export class ProjectUploadScreenComponent implements OnInit {
     this.db.getLoggedInUser().then(()=>{
       this.project.user1mail = this.db.loggedInUser.email;
     });
+    this.project.mentors = new Array();
   }
   //Holds the selected file from the form
   selectFile(event) {
@@ -70,10 +70,6 @@ export class ProjectUploadScreenComponent implements OnInit {
     if (this.CheckIfEmptyField(this.project.user3mail)) {//2 participants
       this.projectform.get('partner3').clearValidators();
       this.projectform.get('partner3').updateValueAndValidity(); // clear error
-    }
-    if (this.CheckIfEmptyField(this.project.school_contact_mail)) { // no theacher
-      this.projectform.get('email_school').clearValidators();
-      this.projectform.get('email_school').updateValueAndValidity(); //clear error
     }
     if (this.project.project_field != "אחר") { //project_field != other
       this.projectform.get('other').clearValidators();
@@ -99,7 +95,7 @@ export class ProjectUploadScreenComponent implements OnInit {
     7. FINALLY, updates the updated selected users using the asignProjectToUser() function    
     */
     this.project.project_file = this.currentFileUpload; // assigned file in project field
-    this.db.getUser(this.project.user1mail, this.project.user2mail, this.project.user3mail, this.project.school_contact_mail).then(() => {
+    this.db.getUser(this.project.user1mail, this.project.user2mail, this.project.user3mail).then(() => {
       if (this.db.existsUsers[0] == false) {
         alert("המייל שלי' שהוזן אינו קיים במערכת'")
         this.projectError = true;
@@ -107,11 +103,6 @@ export class ProjectUploadScreenComponent implements OnInit {
       }
       if (this.db.loggedInUser.email != this.project.user1mail) {
         alert("זה לא המייל שלי")
-        this.projectError = true;
-        return;
-      }
-      if (!this.CheckIfEmptyField(this.project.school_contact_mail) && this.db.existsUsers[3] == false) {
-        alert("כתובת המייל של איש הקשר מטעם בית הספר אינה קיימת במערכת")
         this.projectError = true;
         return;
       }
@@ -130,14 +121,11 @@ export class ProjectUploadScreenComponent implements OnInit {
         this.db.projectsList = val;
         var proj_id = this.db.getProjectID(this.project.project_name);
         this.db.selectedUser[0].project = proj_id;
-        this.db.selectedUser[0].teacher = this.project.school_contact_mail;
         if (this.db.existsUsers[1]) {
           this.db.selectedUser[1].project = proj_id;
-          this.db.selectedUser[1].teacher = this.project.school_contact_mail;
         }
         if (this.db.existsUsers[2]) {
           this.db.selectedUser[2].project = proj_id;
-          this.db.selectedUser[2].teacher = this.project.school_contact_mail;
         }
         this.db.asignProjectToUser(this.db.selectedUser[0].email, 0);
         if (this.db.existsUsers[1]) {
@@ -174,7 +162,7 @@ export class ProjectUploadScreenComponent implements OnInit {
       ]),
       'email_school': new FormControl(this.project.user3mail, [
         // must be in email format.
-        //Validators.required,
+        Validators.required,
         Validators.email
       ]),
       'project_field': new FormControl(this.project.user3mail, [

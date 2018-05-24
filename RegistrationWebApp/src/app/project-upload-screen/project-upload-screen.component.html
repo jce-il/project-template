@@ -49,7 +49,7 @@
                     <input type="text" id="projectname" required [(ngModel)]="project.project_name" name="projectname" formControlName="projectname"/>
                 </div>
                 <div [formGroup]="projectform">
-                <label class="reg">דואר אלקטרוני איש קשר מטעם בית הספר</label>
+                <label class="req">דואר אלקטרוני איש קשר מטעם בית הספר*</label>
                 <input type="email" id="email_school" [(ngModel)]="project.school_contact_mail" name="email_school" formControlName="email_school"/>
                 <div *ngIf="email_school.invalid && (email_school.dirty)">
                         <div *ngIf="email_school.errors.email && !CheckIfEmptyField(project.school_contact_mail)" class="alert alert-danger">
@@ -193,7 +193,7 @@
         </div>
     </div>
       <div class="row">
-        <button class="btn btn-primary btn-default" id="save" (click)="addProject()" [disabled]="progress.percentage != 100">שלח פרוייקט לתחרות</button>
+        <button class="btn btn-primary btn-default" id="save" (click)="addProject()">שלח פרוייקט לתחרות</button>
       </div>
       <div class="col-sm-6 form-group hideError" [hidden]="!projectError">
         יש למלא את כל שדות החובה כנדרש
