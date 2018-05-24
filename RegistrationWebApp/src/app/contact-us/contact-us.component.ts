@@ -3,6 +3,7 @@ import { FormsModule, FormGroup, FormControl, FormBuilder, Validators, ReactiveF
 import { Message } from '../message';
 import { MessageService } from '../services/message.service'
 import { DatabaseService } from '../services/database.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-contact-us',
@@ -13,9 +14,12 @@ export class ContactUsComponent implements OnInit {
   form: FormGroup;
   msg: Message;
 
-  constructor(private fb: FormBuilder,private msgService: MessageService,public db: DatabaseService) {this.createForm();}
+  constructor(private fb: FormBuilder,private msgService: MessageService,private cookieService: CookieService,
+    public db: DatabaseService) {this.createForm();}
 
   ngOnInit() {
+    this.db.loggedInUserUID = this.cookieService.get('User uid');
+    this.db.loggedIn = this.cookieService.get('User login status');
   }
 
   createForm() { //this function build the form and check input validation

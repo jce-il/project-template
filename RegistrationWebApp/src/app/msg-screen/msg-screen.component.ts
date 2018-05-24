@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../services/database.service';
 import { Message } from '../message';
+import { User } from '../user';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-msg-screen',
@@ -10,13 +12,18 @@ import { Message } from '../message';
 export class MsgScreenComponent implements OnInit {
 
   msgArray: Message[] = new Array();
-  constructor(public db: DatabaseService) { }
 
   ngOnInit() {
-    this.db.getLoggedInUser().then(() => {
+    this.db.loggedInUserUID = this.cookieService.get('User uid');
+    this.db.loggedIn = this.cookieService.get('User login status');
+    this.db.getLoggedInUser().then(()=> {
       this.downloadMsgs();
-    });
+    })
   }
+
+  constructor(public db: DatabaseService,private cookieService: CookieService) { }
+
+ 
 
   downloadMsgs()
   {
