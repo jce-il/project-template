@@ -144,8 +144,8 @@ export class RegistrationFormComponent {
         //gender is required
         Validators.required
       ]),
-      'id': new FormControl("", [
-        //gender is required
+      'userid': new FormControl("", [
+        //id is required
         Validators.required,
         Validators.pattern("[0-9-]*"),
         Validators.minLength(8),
@@ -185,10 +185,15 @@ export class RegistrationFormComponent {
     this.userform.get('password').updateValueAndValidity(); //clear validator
     this.userform.get('confimpassword').clearValidators();
     this.userform.get('confimpassword').updateValueAndValidity(); //clear validator
-    this.db.user = this.user; //update current user data of the service !!!
-    this.db.updateListing(this.user.email);
-    alert("הפרטים עודכנו בהצלחה")
-    this.router.navigate(['homepage']);
+    if (this.userform.valid) { // no validate errors
+        this.db.user = this.user; //update current user data of the service !!!
+        this.db.updateListing(this.user.email);
+        alert("הפרטים עודכנו בהצלחה")
+        this.router.navigate(['homepage']);
+    }
+    else { // validate error
+      this.signUpError = true;
+    }
   }
 
 
@@ -203,7 +208,7 @@ export class RegistrationFormComponent {
   get confimpassword() { return this.userform.get('confimpassword'); }
   get birthday() { return this.userform.get('birthday'); }
   get gender() { return this.userform.get('gender'); }
-  get id() { return this.userform.get('id'); }
+  get userid() { return this.userform.get('userid'); }
 
 }
 
