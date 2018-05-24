@@ -143,6 +143,13 @@ export class RegistrationFormComponent {
       'gender': new FormControl("", [
         //gender is required
         Validators.required
+      ]),
+      'id': new FormControl("", [
+        //gender is required
+        Validators.required,
+        Validators.pattern("[0-9-]*"),
+        Validators.minLength(8),
+        Validators.maxLength(10)
       ])
     });
   }
@@ -196,5 +203,7 @@ export class RegistrationFormComponent {
   get confimpassword() { return this.userform.get('confimpassword'); }
   get birthday() { return this.userform.get('birthday'); }
   get gender() { return this.userform.get('gender'); }
+  get id() { return this.userform.get('id'); }
+
 }
 

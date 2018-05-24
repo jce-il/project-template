@@ -162,6 +162,23 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col-sm-4">
+                    <div [formGroup]="userform">
+                        <label class="req">תעודת זהות *</label>
+                        <input class="user-gender" id="id" required [(ngModel)]="user.id" name="id" formControlName="id">
+                        <div *ngIf="id.invalid && (id.dirty) && !CheckIfEmptyField(user.id)" class="alert alert-danger">
+                                <div *ngIf="id.errors.pattern && !CheckIfEmptyField(user.id)">
+                                    נא להזין תעודת זהות תקינה  
+                                </div>
+                                <div *ngIf="(id.errors.minlength) &&  !CheckIfEmptyField(user.id)">
+                                    המספר קצר מדי
+                                </div>
+                                <div *ngIf="(id.errors.maxlength) && !CheckIfEmptyField(user.id)">
+                                    המספר ארוך מדי
+                                </div>
+                            </div>
+                    </div>
+                </div>
                 <div class="col-sm-1">
                     <div class="gander" [formGroup]="userform">
                         <label class="req">מין *</label>
