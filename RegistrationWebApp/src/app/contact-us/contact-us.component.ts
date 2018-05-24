@@ -13,6 +13,8 @@ import { CookieService } from 'ngx-cookie-service';
 export class ContactUsComponent implements OnInit {
   form: FormGroup;
   msg: Message;
+  date: Date = new Date();
+  today;
 
   constructor(private fb: FormBuilder,private msgService: MessageService,private cookieService: CookieService,
     public db: DatabaseService) {this.createForm();}
@@ -40,7 +42,9 @@ export class ContactUsComponent implements OnInit {
       <div>Message: ${message}</div>
     `;//an html string so the admin could view the user's message detailes.
     let formRequest = { name, email, message, date, html };
-    this.msg = new Message(name,message,new Date()); 
+    this.today = this.date.getDate().toString()+"/"+(this.date.getMonth()+1).toString()+"/"+this.date.getFullYear().toString();
+    
+    this.msg = new Message(name,message,this.today); 
     this.msgService.addMsgToUser(email,this.msg);
    // console.log(formRequest);
     this.form.reset();
