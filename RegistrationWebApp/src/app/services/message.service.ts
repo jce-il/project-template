@@ -20,12 +20,8 @@ export class MessageService {
    }
 
    addMsgToUser(email: string,msg: Message){
-<<<<<<< HEAD
-    this.db.getUser(email,"","","").then(() => {
-=======
 
     this.db.getUser(email,"","").then(() => {
->>>>>>> 076a0682186195740caa12dbc3320de23798f7b5
         this.db.user =this.db.selectedUser[0]; 
         this.db.user.messages.push(msg);
         this.db.updateListing(email);

@@ -15,6 +15,7 @@ export class UserHomePageComponent implements OnInit {
 
   userProject: Project;
   emptyFields = [];
+  workExists = 'עליך לצרף עבודה למערכת'
 
   constructor(public db: DatabaseService, public auth: AuthService, public router: Router, public cookieService: CookieService) { }
 
@@ -30,6 +31,7 @@ export class UserHomePageComponent implements OnInit {
           this.userProject = this.db.projectsList[i];
       }
       if (this.userProject != undefined) {
+        this.workExists = 'קיימת עבודה במערכת'
         if (this.userProject.location == undefined || this.userProject.location == '')
           this.emptyFields.push('מוסד אקדמי בו התבצעה העבודה')
         if (this.userProject.advantages == undefined || this.userProject.advantages == '')
