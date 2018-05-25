@@ -31,7 +31,6 @@ export class ProjectsUpdatePageComponent implements OnInit {
   user_projects = ['מתוך רשימה']; // for drop down list
   selectedWork = 'מתוך רשימה'; //for drop down list
   userFile: FileUpload;
-  isChecked = true;
 
 
   constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService) {
@@ -64,7 +63,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
       this.db.getProjectMetaData().subscribe((val) => {
         this.db.projectsList = val;
         var j = 1;
-        //  if (this.isStudent){
+          if (this.isStudent){
         for (var i = 0; i < this.db.projectsList.length; i++) {
           if (this.db.projectsList[i].id == this.db.loggedInUser.project) {
             this.project = this.db.projectsList[i];
@@ -73,15 +72,15 @@ export class ProjectsUpdatePageComponent implements OnInit {
             this.uploadService.basePath = this.project.project_name;
           }
         }
-        //}
-        // else{
-        //   for (var i = 0; i < this.db.projectsList.length; i++) {
-        //     if (this.db.projectsList[i].school_contact_mail == this.db.loggedInUser.email){
-        //       this.user_projects[j++] = this.db.projectsList[i].project_name;
-        //     }
-        //   }
+      }
+        else{
+           for (var i = 0; i < this.db.projectsList.length; i++) {
+             if (this.db.projectsList[i].school_contact_mail == this.db.loggedInUser.email){
+               this.user_projects[j++] = this.db.projectsList[i].project_name;
+             }
+           }
 
-        // }
+         }
       })
     });
   }

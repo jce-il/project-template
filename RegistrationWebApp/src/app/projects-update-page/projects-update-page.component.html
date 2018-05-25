@@ -69,7 +69,7 @@
           </div>
           <div [formGroup]="projectform">
             <label class="reg">כתובת דואר אלקטרוני של שותף שני</label>
-            <input type="text" disabled id="partner2" [(ngModel)]="project.user2mail" name="partner2" formControlName="partner2" />
+            <input type="text" id="partner2" [(ngModel)]="project.user2mail" name="partner2" formControlName="partner2" />
             <div *ngIf="partner2.invalid && (partner2.dirty)">
               <div *ngIf="partner2.errors.email && !CheckIfEmptyField(project.user2mail)" class="alert alert-danger">
                 נא להזין כתובת דואר אלקטרוני תקינה
@@ -78,7 +78,7 @@
           </div>
           <div [formGroup]="projectform">
             <label class="reg">כתובת דואר אלקטרוני של שותף שלישי</label>
-            <input type="text" disabled id="partner3" [(ngModel)]="project.user3mail" name="partner3" formControlName="partner3" />
+            <input type="text" id="partner3" [(ngModel)]="project.user3mail" name="partner3" formControlName="partner3" />
             <div *ngIf="partner3.invalid && (partner3.dirty)">
               <div *ngIf="partner3.errors.email && !CheckIfEmptyField(project.user3mail)" class="alert alert-danger">
                 נא להזין כתובת דואר אלקטרוני תקינה
@@ -87,12 +87,12 @@
           </div>
           <div [formGroup]="projectform">
             <label class="req">שם העבודה*</label>
-            <input type="text" disabled id="projectname" required [(ngModel)]="project.project_name" name="projectname" formControlName="projectname"
+            <input type="text" id="projectname" required [(ngModel)]="project.project_name" name="projectname" formControlName="projectname"
             />
           </div>
           <div [formGroup]="projectform">
             <label class="reg">דואר אלקטרוני איש קשר מטעם בית הספר</label>
-            <input type="email" disabled id="email_school" [(ngModel)]="project.school_contact_mail" name="email_school" formControlName="email_school"
+            <input type="email" id="email_school" [(ngModel)]="project.school_contact_mail" name="email_school" formControlName="email_school"
             />
             <div *ngIf="email_school.invalid && (email_school.dirty)">
               <div *ngIf="email_school.errors.email && !CheckIfEmptyField(project.school_contact_mail)" class="alert alert-danger">
