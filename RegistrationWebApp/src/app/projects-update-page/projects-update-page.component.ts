@@ -31,6 +31,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
   user_projects = ['מתוך רשימה']; // for drop down list
   selectedWork = 'מתוך רשימה'; //for drop down list
   userFile: FileUpload;
+  isChecked = true;
 
 
   constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService) {

@@ -7,6 +7,7 @@ import { FileUpload } from '../fileupload';
 import { Project } from '../project';
 import { RouterLink, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { Mentor } from '../mentor';
 
 
 @Component({
@@ -25,7 +26,6 @@ export class ProjectUploadScreenComponent implements OnInit {
   fields;
   projectField: string; // if the student is selected "another" field of research, we will use this
   projectStatus;
-
   constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService) {
     this.fields = [
       "מתמטיקה", "מדעי החיים", "כימיה",
@@ -38,6 +38,10 @@ export class ProjectUploadScreenComponent implements OnInit {
     this.project = new Project();
     this.validateForm();
     this.projectError = false; // default- no registration form errors
+    this.project.mentor1= new Mentor();
+    this.project.mentor2= new Mentor();
+    this.project.mentor3= new Mentor();
+    this.project.isMentors = true;
   }
 
   ngOnInit() {
@@ -47,7 +51,6 @@ export class ProjectUploadScreenComponent implements OnInit {
     this.db.getLoggedInUser().then(()=>{
       this.project.user1mail = this.db.loggedInUser.email;
     });
-    this.project.mentors = new Array();
   }
   //Holds the selected file from the form
   selectFile(event) {
@@ -206,6 +209,4 @@ export class ProjectUploadScreenComponent implements OnInit {
     else
       return false;
   }
-
-
 }

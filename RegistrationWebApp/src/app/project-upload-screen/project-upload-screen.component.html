@@ -143,53 +143,55 @@
     <div class="row">
         <div class="col-sm-10">
             <legend>מנחים ויועצים</legend>
+            <label>אין לי מנחים</label>
+            <input type="checkbox" checked [(ngModel)]="this.project.isMentors" [ngModelOptions]="{standalone: true}"/>
         </div>
     </div>
-    <div class="row">
+    <div *ngIf="this.project.isMentors==false" class="row">
         <div class="col-sm-4 form-group">
-            <h4>מנחה ראשון</h4>
+            <h4 class="req">מנחה ראשון*</h4>
             <label>תואר</label>
-            <input type="text" id="city"/>
+            <input type="text" [(ngModel)]="this.project.mentor1.degree" [ngModelOptions]="{standalone: true}"/>
             <label>שם מלא</label>
-            <input type="text" id="city"/>
+            <input type="text" [(ngModel)]="this.project.mentor1.name" [ngModelOptions]="{standalone: true}"/>
             <label>מוסד</label>
-            <input type="text" id="city"/>
+            <input type="text" [(ngModel)]="this.project.mentor1.facility" [ngModelOptions]="{standalone: true}"/>
             <label>תפקיד/תחום עיסוק</label>
-            <input type="text" id="city"/>
+            <input type="text" [(ngModel)]="this.project.mentor1.role" [ngModelOptions]="{standalone: true}"/>
             <label>טלפון</label>
-            <input type="text" id="city"/>
+            <input type="text" [(ngModel)]="this.project.mentor1.phone" [ngModelOptions]="{standalone: true}"/>
             <label>דואר אלקטרוני</label>
-            <input type="email" id="city"/>
+            <input type="email" [(ngModel)]="this.project.mentor1.email" [ngModelOptions]="{standalone: true}"/>
         </div>
         <div class="col-sm-4 form-group">
             <h4>מנחה שני</h4>
             <label>תואר</label>
-            <input type="text" id="city"/>
+            <input type="text" [(ngModel)]="this.project.mentor2.degree" [ngModelOptions]="{standalone: true}"/>
             <label>שם מלא</label>
-            <input type="text" id="city"/>
+            <input type="text" [(ngModel)]="this.project.mentor2.name" [ngModelOptions]="{standalone: true}"/>
             <label>מוסד</label>
-            <input type="text" id="city"/>
+            <input type="text" [(ngModel)]="this.project.mentor2.facility" [ngModelOptions]="{standalone: true}"/>
             <label>תפקיד/תחום עיסוק</label>
-            <input type="text" id="city"/>
+            <input type="text" [(ngModel)]="this.project.mentor2.role" [ngModelOptions]="{standalone: true}"/>
             <label>טלפון</label>
-            <input type="text" id="city"/>
+            <input type="text" [(ngModel)]="this.project.mentor2.phone" [ngModelOptions]="{standalone: true}"/>
             <label>דואר אלקטרוני</label>
-            <input type="email" id="city"/>
+            <input type="email" [(ngModel)]="this.project.mentor2.email" [ngModelOptions]="{standalone: true}"/>
         </div>
         <div class="col-sm-4 form-group">
             <h4>מנחה שלישי</h4>
             <label>תואר</label>
-            <input type="text" id="city"/>
+            <input type="text" [(ngModel)]="this.project.mentor3.degree" [ngModelOptions]="{standalone: true}"/>
             <label>שם מלא</label>
-            <input type="text" id="city"/>
+            <input type="text" [(ngModel)]="this.project.mentor3.name" [ngModelOptions]="{standalone: true}"/>
             <label>מוסד</label>
-            <input type="text" id="city"/>
+            <input type="text" [(ngModel)]="this.project.mentor3.facility" [ngModelOptions]="{standalone: true}"/>
             <label>תפקיד/תחום עיסוק</label>
-            <input type="text" id="city"/>
+            <input type="text" [(ngModel)]="this.project.mentor3.role" [ngModelOptions]="{standalone: true}"/>
             <label>טלפון</label>
-            <input type="text" id="city"/>
+            <input type="text" [(ngModel)]="this.project.mentor3.phone" [ngModelOptions]="{standalone: true}"/>
             <label>דואר אלקטרוני</label>
-            <input type="email" id="city"/>
+            <input type="email" [(ngModel)]="this.project.mentor3.email" [ngModelOptions]="{standalone: true}"/>
         </div>
     </div>
       <div class="row">
