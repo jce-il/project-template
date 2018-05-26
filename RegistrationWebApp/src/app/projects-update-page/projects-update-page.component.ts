@@ -104,7 +104,8 @@ export class ProjectsUpdatePageComponent implements OnInit {
   }
   //Uploads the selected file to firebase storage and deletes the previous one
   upload() {
-    this.uploadService.deleteFileUpload(this.userFile);
+    if(this.userFile != undefined)
+      this.uploadService.deleteFileUpload(this.userFile);
     const file = this.selectedFiles.item(0);
     this.selectedFiles = undefined;
     this.currentFileUpload = new FileUpload(file);
