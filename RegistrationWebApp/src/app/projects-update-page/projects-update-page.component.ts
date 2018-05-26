@@ -7,6 +7,7 @@ import { FileUpload } from '../fileupload';
 import { Project } from '../project';
 import { RouterLink, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { User } from 'firebase';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
   projectStatus;
   user_projects = ['מתוך רשימה']; // for drop down list
   selectedWork = 'מתוך רשימה'; //for drop down list
+  user_project_objects = [];
   userFile: FileUpload;
 
 
@@ -63,27 +65,39 @@ export class ProjectsUpdatePageComponent implements OnInit {
       this.db.getProjectMetaData().subscribe((val) => {
         this.db.projectsList = val;
         var j = 1;
-          if (this.isStudent){
-        for (var i = 0; i < this.db.projectsList.length; i++) {
-          if (this.db.projectsList[i].id == this.db.loggedInUser.project) {
-            this.project = this.db.projectsList[i];
-            this.user_projects[j++] = this.project.project_name;
-            this.userFile = this.project.project_file;
-            this.uploadService.basePath = this.project.project_name;
+        if (this.isStudent) {
+          for (var i = 0; i < this.db.projectsList.length; i++) {
+            if (this.db.projectsList[i].id == this.db.loggedInUser.project) {
+              this.project = this.db.projectsList[i];
+              this.user_projects[j++] = this.project.project_name;
+              this.userFile = this.project.project_file;
+              this.uploadService.basePath = this.project.project_name;
+            }
           }
         }
-      }
-        else{
-           for (var i = 0; i < this.db.projectsList.length; i++) {
-             if (this.db.projectsList[i].school_contact_mail == this.db.loggedInUser.email){
-               this.user_projects[j++] = this.db.projectsList[i].project_name;
-             }
-           }
-
-         }
+        else {
+          for (var i = 0; i < this.db.projectsList.length; i++) {
+            if (this.db.projectsList[i].school_contact_mail == this.db.loggedInUser.email) {
+              this.user_projects[j++] = this.db.projectsList[i].project_name;
+              this.user_project_objects.push(this.db.projectsList[i]);
+            }
+          }
+          for (var i = 0; i < this.user_project_objects.length; i++) {
+            if (this.selectedWork == this.user_project_objects[i].project_name)
+              this.project = this.user_project_objects[i];
+          }
+        }
       })
     });
   }
+
+  onChangeObj() {
+    for (var i = 0; i < this.user_project_objects.length; i++) {
+      if (this.selectedWork == this.user_project_objects[i].project_name)
+        this.project = this.user_project_objects[i];
+    }
+  }
+
   //Holds the selected file from the form
   selectFile(event) {
     this.selectedFiles = event.target.files;
@@ -108,7 +122,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
     this.uploadService.pushFileToStorage(this.current_recommendation_FileUpload, this.progress).then(() => {
       this.project.recommendation_file = this.current_recommendation_FileUpload;
       this.db.project = this.project;
-      this.db.updateProjectListing('12345');
+      this.db.updateProjectListing(this.project.project_name);
     })
   }
 
@@ -152,7 +166,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
         this.projectError = true;
         return;
       }
-      if (this.db.loggedInUser.email != this.project.user1mail) {
+      if (this.db.loggedInUser.email != this.project.user1mail && this.db.loggedInUser.type == 'תלמיד') {
         alert("זה לא המייל שלי")
         this.projectError = true;
         return;

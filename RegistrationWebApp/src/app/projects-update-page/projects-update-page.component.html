@@ -11,37 +11,39 @@
   <div class="row">
     <div class="col-sm-4 form-group">
       <legend>בחר עבודה</legend>
-      <select class="user-type" id="selectedWork" [(ngModel)]="selectedWork" name="selectedWork">
+      <select class="user-type" id="selectedWork" [(ngModel)]="selectedWork" (ngModelChange)="onChangeObj($event)" name="selectedWork">
         <option *ngFor="let type of user_projects" [value]="type">{{type}}</option>
       </select>
     </div>
   </div>
   <div class="row" *ngIf="!isStudent">
     <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-      <legend>העלאת המלצה</legend>
-      <div class="input-group image-preview">
-        <div class="file" *ngIf="this.project.project_file != undefined">
-          <div>במערכת טעון המסמך:
-            <br>
-            <a href={{this.project.project_file.url}}>{{this.project.project_file.name}}</a>
+      <div *ngIf="this.selectedWork != 'מתוך רשימה'">
+        <legend>העלאת המלצה</legend>
+        <div class="input-group image-preview">
+          <div class="file" *ngIf="this.project.recommendation_file != undefined">
+            <div>במערכת טעון המסמך:
+              <br>
+              <a href={{this.project.recommendation_file.url}}>{{this.project.recommendation_file.name}}</a>
+            </div>
           </div>
-        </div>
-        <div class="btn btn-default image-preview-input">
-          <input type="file" (change)="selectRecommendationFile($event)" required name="fileupload" />
-          <span class="glyphicon glyphicon-folder-open"></span>
-          <span class="image-preview-input-title">בחר קובץ</span>
-        </div>
-        <div class="file" *ngIf="this.selected_recommendation_files != null">{{this.selected_recommendation_files.item(0).name}}</div>
-        <div>
-          <button type="button" class="btn btn-labeled btn-primary" [disabled]="!selected_recommendation_files" (click)="recommendationUpload()">
-            <span class="btn-label">
-              <i class="glyphicon glyphicon-upload"></i>
-            </span>שלח</button>
-        </div>
-        <div *ngIf="current_recommendation_FileUpload" class="progress">
-          <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 15%" attr.aria-valuenow="{{progress.percentage}}"
-            aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
-            {{progress.percentage}}%</div>
+          <div class="btn btn-default image-preview-input">
+            <input type="file" (change)="selectRecommendationFile($event)" required name="fileupload" />
+            <span class="glyphicon glyphicon-folder-open"></span>
+            <span class="image-preview-input-title">בחר קובץ</span>
+          </div>
+          <div class="file" *ngIf="this.selected_recommendation_files != null">{{this.selected_recommendation_files.item(0).name}}</div>
+          <div>
+            <button type="button" class="btn btn-labeled btn-primary" [disabled]="!selected_recommendation_files" (click)="recommendationUpload()">
+              <span class="btn-label">
+                <i class="glyphicon glyphicon-upload"></i>
+              </span>שלח</button>
+          </div>
+          <div *ngIf="current_recommendation_FileUpload" class="progress">
+            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 15%" attr.aria-valuenow="{{progress.percentage}}"
+              aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+              {{progress.percentage}}%</div>
+          </div>
         </div>
       </div>
     </div>
@@ -188,66 +190,67 @@
         </div>
       </div>
       <div class="row">
-          <div class="col-sm-10">
-              <legend>מנחים ויועצים</legend>
-              <label>אין לי מנחים</label>
-              <input type="checkbox" checked [(ngModel)]="this.project.isMentors" [ngModelOptions]="{standalone: true}"/>
-          </div>
+        <div class="col-sm-10">
+          <legend>מנחים ויועצים</legend>
+          <label>אין לי מנחים</label>
+          <input type="checkbox" checked [(ngModel)]="this.project.isMentors" [ngModelOptions]="{standalone: true}" />
+        </div>
       </div>
       <div *ngIf="this.project.isMentors!=true" class="row">
-          <div class="col-sm-4 form-group">
-              <h4 class="req">מנחה ראשון*</h4>
-              <label>תואר</label>
-              <input type="text" [(ngModel)]="this.project.mentor1.degree" [ngModelOptions]="{standalone: true}"/>
-              <label>שם מלא</label>
-              <input type="text" [(ngModel)]="this.project.mentor1.name" [ngModelOptions]="{standalone: true}"/>
-              <label>מוסד</label>
-              <input type="text" [(ngModel)]="this.project.mentor1.facility" [ngModelOptions]="{standalone: true}"/>
-              <label>תפקיד/תחום עיסוק</label>
-              <input type="text" [(ngModel)]="this.project.mentor1.role" [ngModelOptions]="{standalone: true}"/>
-              <label>טלפון</label>
-              <input type="text" [(ngModel)]="this.project.mentor1.phone" [ngModelOptions]="{standalone: true}"/>
-              <label>דואר אלקטרוני</label>
-              <input type="email" [(ngModel)]="this.project.mentor1.email" [ngModelOptions]="{standalone: true}"/>
-          </div>
-          <div class="col-sm-4 form-group">
-              <h4>מנחה שני</h4>
-              <label>תואר</label>
-              <input type="text" [(ngModel)]="this.project.mentor2.degree" [ngModelOptions]="{standalone: true}"/>
-              <label>שם מלא</label>
-              <input type="text" [(ngModel)]="this.project.mentor2.name" [ngModelOptions]="{standalone: true}"/>
-              <label>מוסד</label>
-              <input type="text" [(ngModel)]="this.project.mentor2.facility" [ngModelOptions]="{standalone: true}"/>
-              <label>תפקיד/תחום עיסוק</label>
-              <input type="text" [(ngModel)]="this.project.mentor2.role" [ngModelOptions]="{standalone: true}"/>
-              <label>טלפון</label>
-              <input type="text" [(ngModel)]="this.project.mentor2.phone" [ngModelOptions]="{standalone: true}"/>
-              <label>דואר אלקטרוני</label>
-              <input type="email" [(ngModel)]="this.project.mentor2.email" [ngModelOptions]="{standalone: true}"/>
-          </div>
-          <div class="col-sm-4 form-group">
-              <h4>מנחה שלישי</h4>
-              <label>תואר</label>
-              <input type="text" [(ngModel)]="this.project.mentor3.degree" [ngModelOptions]="{standalone: true}"/>
-              <label>שם מלא</label>
-              <input type="text" [(ngModel)]="this.project.mentor3.name" [ngModelOptions]="{standalone: true}"/>
-              <label>מוסד</label>
-              <input type="text" [(ngModel)]="this.project.mentor3.facility" [ngModelOptions]="{standalone: true}"/>
-              <label>תפקיד/תחום עיסוק</label>
-              <input type="text" [(ngModel)]="this.project.mentor3.role" [ngModelOptions]="{standalone: true}"/>
-              <label>טלפון</label>
-              <input type="text" [(ngModel)]="this.project.mentor3.phone" [ngModelOptions]="{standalone: true}"/>
-              <label>דואר אלקטרוני</label>
-              <input type="email" [(ngModel)]="this.project.mentor3.email" [ngModelOptions]="{standalone: true}"/>
-          </div>
-      </div>
-        <div class="row">
-          <button class="btn btn-primary btn-default" id="save" (click)="addProject()">שלח פרוייקט לתחרות</button>
+        <div class="col-sm-4 form-group">
+          <h4 class="req">מנחה ראשון*</h4>
+          <label>תואר</label>
+          <input type="text" [(ngModel)]="this.project.mentor1.degree" [ngModelOptions]="{standalone: true}" />
+          <label>שם מלא</label>
+          <input type="text" [(ngModel)]="this.project.mentor1.name" [ngModelOptions]="{standalone: true}" />
+          <label>מוסד</label>
+          <input type="text" [(ngModel)]="this.project.mentor1.facility" [ngModelOptions]="{standalone: true}" />
+          <label>תפקיד/תחום עיסוק</label>
+          <input type="text" [(ngModel)]="this.project.mentor1.role" [ngModelOptions]="{standalone: true}" />
+          <label>טלפון</label>
+          <input type="text" [(ngModel)]="this.project.mentor1.phone" [ngModelOptions]="{standalone: true}" />
+          <label>דואר אלקטרוני</label>
+          <input type="email" [(ngModel)]="this.project.mentor1.email" [ngModelOptions]="{standalone: true}" />
         </div>
-        <div class="col-sm-6 form-group hideError" [hidden]="!projectError">
-          יש למלא את כל שדות החובה כנדרש
+        <div class="col-sm-4 form-group">
+          <h4>מנחה שני</h4>
+          <label>תואר</label>
+          <input type="text" [(ngModel)]="this.project.mentor2.degree" [ngModelOptions]="{standalone: true}" />
+          <label>שם מלא</label>
+          <input type="text" [(ngModel)]="this.project.mentor2.name" [ngModelOptions]="{standalone: true}" />
+          <label>מוסד</label>
+          <input type="text" [(ngModel)]="this.project.mentor2.facility" [ngModelOptions]="{standalone: true}" />
+          <label>תפקיד/תחום עיסוק</label>
+          <input type="text" [(ngModel)]="this.project.mentor2.role" [ngModelOptions]="{standalone: true}" />
+          <label>טלפון</label>
+          <input type="text" [(ngModel)]="this.project.mentor2.phone" [ngModelOptions]="{standalone: true}" />
+          <label>דואר אלקטרוני</label>
+          <input type="email" [(ngModel)]="this.project.mentor2.email" [ngModelOptions]="{standalone: true}" />
+        </div>
+        <div class="col-sm-4 form-group">
+          <h4>מנחה שלישי</h4>
+          <label>תואר</label>
+          <input type="text" [(ngModel)]="this.project.mentor3.degree" [ngModelOptions]="{standalone: true}" />
+          <label>שם מלא</label>
+          <input type="text" [(ngModel)]="this.project.mentor3.name" [ngModelOptions]="{standalone: true}" />
+          <label>מוסד</label>
+          <input type="text" [(ngModel)]="this.project.mentor3.facility" [ngModelOptions]="{standalone: true}" />
+          <label>תפקיד/תחום עיסוק</label>
+          <input type="text" [(ngModel)]="this.project.mentor3.role" [ngModelOptions]="{standalone: true}" />
+          <label>טלפון</label>
+          <input type="text" [(ngModel)]="this.project.mentor3.phone" [ngModelOptions]="{standalone: true}" />
+          <label>דואר אלקטרוני</label>
+          <input type="email" [(ngModel)]="this.project.mentor3.email" [ngModelOptions]="{standalone: true}" />
+        </div>
       </div>
-        <br><br>
+      <div class="row">
+        <button class="btn btn-primary btn-default" id="save" (click)="addProject()">שלח פרוייקט לתחרות</button>
+      </div>
+      <div class="col-sm-6 form-group hideError" [hidden]="!projectError">
+        יש למלא את כל שדות החובה כנדרש
+      </div>
+      <br>
+      <br>
     </form>
   </div>
 </div>
