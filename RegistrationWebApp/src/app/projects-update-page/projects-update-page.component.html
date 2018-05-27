@@ -62,7 +62,7 @@
       <div class="row">
         <div class="col-sm-4 form-group">
           <div [formGroup]="projectform">
-            <label class="req">כתובת דואר אלקטרוני שלי*</label>
+            <label class="req">כתובת דואר אלקטרוני של שותף ראשון*</label>
             <input type="text" disabled id="partner1" required [(ngModel)]="project.user1mail" name="partner1" formControlName="partner1"
             />
             <div *ngIf="partner1.invalid && (partner1.dirty)">

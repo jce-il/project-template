@@ -167,11 +167,6 @@ export class ProjectsUpdatePageComponent implements OnInit {
         this.projectError = true;
         return;
       }
-      if (this.db.loggedInUser.email != this.project.user1mail && this.db.loggedInUser.type == 'תלמיד') {
-        alert("זה לא המייל שלי")
-        this.projectError = true;
-        return;
-      }
       if (!this.CheckIfEmptyField(this.project.user2mail) && this.db.existsUsers[1] == false) {
         alert("כתובת מייל השותף השני אינה קיימת במערכת")
         this.projectError = true;
