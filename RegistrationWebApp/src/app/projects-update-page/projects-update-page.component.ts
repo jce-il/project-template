@@ -82,10 +82,10 @@ export class ProjectsUpdatePageComponent implements OnInit {
               this.user_project_objects.push(this.db.projectsList[i]);
             }
           }
-          for (var i = 0; i < this.user_project_objects.length; i++) {
-            if (this.selectedWork == this.user_project_objects[i].project_name)
-              this.project = this.user_project_objects[i];
-          }
+          // for (var i = 0; i < this.user_project_objects.length; i++) {
+          //   if (this.selectedWork == this.user_project_objects[i].project_name)
+          //     this.project = this.user_project_objects[i];
+          // }
         }
       })
     });
@@ -184,6 +184,23 @@ export class ProjectsUpdatePageComponent implements OnInit {
       }
       this.db.project = this.project;
       this.db.updateProjectListing(this.project.project_name);
+      this.db.getProjectMetaData().subscribe(val => {
+        this.db.projectsList = val;
+        var proj_id = this.db.getProjectID(this.project.project_name);
+        if (this.db.existsUsers[1]) {
+          this.db.selectedUser[1].project = proj_id;
+        }
+        if (this.db.existsUsers[2]) {
+          this.db.selectedUser[2].project = proj_id;
+        }
+        this.db.asignProjectToUser(this.db.selectedUser[0].email, 0);
+        if (this.db.existsUsers[1]) {
+          this.db.asignProjectToUser(this.db.selectedUser[1].email, 1);
+        }
+        if (this.db.existsUsers[2]) {
+          this.db.asignProjectToUser(this.db.selectedUser[2].email, 2);
+        }
+      });
       alert(" העבודה עודכנה בהצלחה ");
       this.router.navigate(['homepage']);
     });

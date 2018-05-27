@@ -36,7 +36,19 @@ export class LoginScreenComponent implements OnInit {
       .then((res) => {
         this.cookieService.set('User uid', res.uid);
         this.cookieService.set('User login status', 'true');
-        this.router.navigate(['homepage'])
+        this.db.loggedInUserUID = res.uid
+        this.db.loggedIn = 'true';
+        this.db.getLoggedInUser().then(()=>{
+          console.log(this.db.loggedInUser)
+
+          if (this.db.loggedInUser.type == 'בודק'){
+
+          console.log('bodek')
+          this.router.navigate(['checker']);
+        }
+          else
+          this.router.navigate(['homepage'])
+        })
       })
       .catch((err) =>{
         this.signInVal = 'כניסה'
