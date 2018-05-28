@@ -29,7 +29,7 @@ export class RegistrationFormComponent {
     this.db.loggedIn = this.cookieService.get('User login status');
     this.db.getLoggedInUser().then(() => {
       this.db.setMetaData();
-      this.userTypes = ['תלמיד', 'מורה'];
+      this.userTypes = ['תלמיד', 'מורה', 'בודק', 'מנהל'];
 
       if (this.db.loggedIn != 'true'){
         this.user = new User(false, this.userTypes[0]); //deafult type is student

@@ -21,7 +21,10 @@ export class Project {
         public retrospective?: string,
         public project_file?: FileUpload,
         public recommendation_file?: FileUpload,
-        public mentors: Mentor[] = []
+        public mentor1?: Mentor,
+        public mentor2?: Mentor,
+        public mentor3?: Mentor,
+        public isMentors?: boolean
     ) { }
 
 }

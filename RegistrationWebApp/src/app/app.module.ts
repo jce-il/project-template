@@ -27,7 +27,8 @@ import { MsgScreenComponent } from './msg-screen/msg-screen.component';
 import { ProjectsUpdatePageComponent } from './projects-update-page/projects-update-page.component';
 import { MessageService } from '../app/services/message.service';
 import { TableComponent } from './table/table.component'
-import { CheckersPageComponent } from './checkers-page/checkers-page.component'
+import { CheckersPageComponent } from './checkers-page/checkers-page.component';
+import { ManagerHomePageComponent } from './manager-home-page/manager-home-page.component'
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { CheckersPageComponent } from './checkers-page/checkers-page.component'
     MsgScreenComponent,
     ProjectsUpdatePageComponent,
     TableComponent,
-    CheckersPageComponent
+    CheckersPageComponent,
+    ManagerHomePageComponent
   ],
   imports: [
     BrowserModule,
