@@ -71,7 +71,9 @@ export class ProjectUploadScreenComponent implements OnInit {
     const file = this.selectedFiles.item(0);
     this.selectedFiles = undefined;
     this.currentFileUpload = new FileUpload(file);
-    this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress);
+    this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress).then(()=>{
+      this.file_project_selected = false;
+    });
   }
 
   //collects all the info from the 'add project form' and sets it with all the needed DB connections in the database
