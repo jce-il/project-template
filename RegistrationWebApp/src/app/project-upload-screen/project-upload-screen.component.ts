@@ -51,10 +51,7 @@ export class ProjectUploadScreenComponent implements OnInit {
     this.db.loggedIn = this.cookieService.get('User login status');
     this.db.getLoggedInUser().then(()=>{
       this.project.user1mail = this.db.loggedInUser.email;
-      var obj = this.db.loggedInUser;
-      for(var propt in obj){
-        console.log(propt + ': ' + obj[propt]);
-        }
+      this.project.submission = false;
     });
   }
   //Holds the selected file from the form
@@ -270,4 +267,5 @@ export class ProjectUploadScreenComponent implements OnInit {
     else
       return false;
   }
+
 }
