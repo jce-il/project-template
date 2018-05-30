@@ -26,6 +26,7 @@ export class ProjectUploadScreenComponent implements OnInit {
   fields;
   projectField: string; // if the student is selected "another" field of research, we will use this
   projectStatus;
+  file_project_selected = false;
   constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService) {
     this.fields = [
       "מתמטיקה", "מדעי החיים", "כימיה",
@@ -55,7 +56,14 @@ export class ProjectUploadScreenComponent implements OnInit {
   //Holds the selected file from the form
   selectFile(event) {
     this.selectedFiles = event.target.files;
+    this.file_project_selected = true;
   }
+
+  cancelSelectFile(){
+    this.selectedFiles = null;
+    this.file_project_selected = false;
+  }
+
   //Uploads the selected file to firebase storage
   upload() {
     this.uploadService.basePath = this.project.project_name;
