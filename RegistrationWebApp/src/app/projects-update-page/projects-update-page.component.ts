@@ -94,7 +94,10 @@ export class ProjectsUpdatePageComponent implements OnInit {
   onChangeObj() {
     for (var i = 0; i < this.user_project_objects.length; i++) {
       if (this.selectedWork == this.user_project_objects[i].project_name)
+      {
         this.project = this.user_project_objects[i];
+        this.uploadService.basePath = this.project.project_name;
+      }
     }
   }
 
