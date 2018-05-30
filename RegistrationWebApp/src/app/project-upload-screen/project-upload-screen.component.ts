@@ -92,23 +92,29 @@ export class ProjectUploadScreenComponent implements OnInit {
     }
 
     if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor1.email)){
-        this.projectform.get('mailmentor1').clearValidators();
-        this.projectform.get('mailmentor1').updateValueAndValidity(); //clear error
-        this.projectform.get('phonementor1').clearValidators();
-        this.projectform.get('phonementor1').updateValueAndValidity(); //clear error
-      }
-      if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor2.email)){
-        this.projectform.get('mailmentor2').clearValidators();
-        this.projectform.get('mailmentor2').updateValueAndValidity(); //clear error
-        this.projectform.get('phonementor2').clearValidators();
-        this.projectform.get('phonementor2').updateValueAndValidity(); //clear error
-      }
-      if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor3.email)){
-        this.projectform.get('mailmentor3').clearValidators();
-        this.projectform.get('mailmentor3').updateValueAndValidity(); //clear error
-        this.projectform.get('phonementor3').clearValidators();
-        this.projectform.get('phonementor3').updateValueAndValidity(); //clear error
-      }
+      this.projectform.get('mailmentor1').clearValidators();
+      this.projectform.get('mailmentor1').updateValueAndValidity(); //clear error
+    }
+    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor1.phone)){
+      this.projectform.get('phonementor1').clearValidators();
+      this.projectform.get('phonementor1').updateValueAndValidity(); //clear error
+    }
+    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor2.email)){
+      this.projectform.get('mailmentor2').clearValidators();
+      this.projectform.get('mailmentor2').updateValueAndValidity(); //clear error
+    }
+    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor2.phone)){
+      this.projectform.get('phonementor2').clearValidators();
+      this.projectform.get('phonementor2').updateValueAndValidity(); //clear error
+    }
+    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor3.email)){
+      this.projectform.get('mailmentor3').clearValidators();
+      this.projectform.get('mailmentor3').updateValueAndValidity(); //clear error
+    }
+    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor3.phone)){
+      this.projectform.get('phonementor3').clearValidators();
+      this.projectform.get('phonementor3').updateValueAndValidity(); //clear error
+    }
 
     if (!this.projectform.valid) { // validate errors
       this.projectError = true; // form error
