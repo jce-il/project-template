@@ -164,6 +164,26 @@ export class ProjectsUpdatePageComponent implements OnInit {
     else {
       this.project.project_field = this.projectField;
     }
+
+    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor1.email)){
+      this.projectform.get('mailmentor1').clearValidators();
+      this.projectform.get('mailmentor1').updateValueAndValidity(); //clear error
+      this.projectform.get('phonementor1').clearValidators();
+      this.projectform.get('phonementor1').updateValueAndValidity(); //clear error
+    }
+    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor2.email)){
+      this.projectform.get('mailmentor2').clearValidators();
+      this.projectform.get('mailmentor2').updateValueAndValidity(); //clear error
+      this.projectform.get('phonementor2').clearValidators();
+      this.projectform.get('phonementor2').updateValueAndValidity(); //clear error
+    }
+    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor3.email)){
+      this.projectform.get('mailmentor3').clearValidators();
+      this.projectform.get('mailmentor3').updateValueAndValidity(); //clear error
+      this.projectform.get('phonementor3').clearValidators();
+      this.projectform.get('phonementor3').updateValueAndValidity(); //clear error
+    }
+    
     if (!this.projectform.valid) { // validate errors
       this.projectError = true; // form error
       console.log(this.projectform); //show errors
@@ -254,6 +274,36 @@ export class ProjectsUpdatePageComponent implements OnInit {
         //projectname is required.
         Validators.required
       ]),
+      'mailmentor1': new FormControl(this.projectField, [
+        //projectname is required.
+        Validators.email
+      ]),
+      'mailmentor2': new FormControl(this.projectField, [
+        //projectname is required.
+        Validators.email
+      ]),
+      'mailmentor3': new FormControl(this.projectField, [
+        //projectname is required.
+        Validators.email
+      ]),
+      'phonementor1': new FormControl(this.projectField, [
+        //phone number is required, must be 9-13 digits (only numbers).
+        Validators.pattern("0[0-9-]*"),
+        Validators.minLength(9),
+        Validators.maxLength(13)
+      ]),
+      'phonementor2': new FormControl(this.projectField, [
+        //phone number is required, must be 9-13 digits (only numbers).
+        Validators.pattern("0[0-9-]*"),
+        Validators.minLength(9),
+        Validators.maxLength(13)
+      ]),
+      'phonementor3': new FormControl(this.projectField, [
+        //phone number is required, must be 9-13 digits (only numbers).
+        Validators.pattern("0[0-9-]*"),
+        Validators.minLength(9),
+        Validators.maxLength(13)
+      ]),
     });
   }
 
@@ -265,18 +315,12 @@ export class ProjectsUpdatePageComponent implements OnInit {
   get email_school() { return this.projectform.get('email_school'); }
   get project_field() { return this.projectform.get('project_field'); }
   get other() { return this.projectform.get('other'); }
-
-  // get location() { return this.projectform.get('location'); }
-  // get type() { return this.projectform.get('type'); }
-  // get status() { return this.projectform.get('status'); }
-  // get fileupload() { return this.projectform.get('fileupload'); }
-  // get target() { return this.projectform.get('target'); }
-  // get background() { return this.projectform.get('background'); }
-  // get description() { return this.projectform.get('description'); }
-  // get scope() { return this.projectform.get('scope'); }
-  // get inovetion() { return this.projectform.get('inovetion'); }
-  // get advantages() { return this.projectform.get('advantages'); }
-  // get retrospective() { return this.projectform.get('retrospective'); }
+  get mailmentor1() { return this.projectform.get('mailmentor1'); }
+  get phonementor1() { return this.projectform.get('phonementor1'); }
+  get mailmentor2() { return this.projectform.get('mailmentor2'); }
+  get phonementor2() { return this.projectform.get('phonementor2'); }
+  get mailmentor3() { return this.projectform.get('mailmentor3'); }
+  get phonementor3() { return this.projectform.get('phonementor3'); }
 
 
   //check if a field is empty
