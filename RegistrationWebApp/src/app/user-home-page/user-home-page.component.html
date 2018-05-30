@@ -28,6 +28,16 @@
                 </div>
             </div>
         </div>
+        <div *ngIf="this.db.loggedInUser.type == 'מורה'">
+            <div class="row" id="userstatus">
+                <legend>עבודות של התלמידים שלי</legend>
+                <div class="notice notice-success">
+                    <div *ngFor="let i of user_projects">
+                        <li>{{i}} - {{missing_details}}</li>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <legend>סטאטוס הודעות</legend>
             <div class="notice notice-info">
