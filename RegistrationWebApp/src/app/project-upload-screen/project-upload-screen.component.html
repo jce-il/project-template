@@ -160,10 +160,31 @@
             <input type="text" [(ngModel)]="this.project.mentor1.facility" [ngModelOptions]="{standalone: true}"/>
             <label>תפקיד/תחום עיסוק</label>
             <input type="text" [(ngModel)]="this.project.mentor1.role" [ngModelOptions]="{standalone: true}"/>
-            <label>טלפון</label>
-            <input type="text" [(ngModel)]="this.project.mentor1.phone" [ngModelOptions]="{standalone: true}"/>
-            <label>דואר אלקטרוני</label>
-            <input type="email" [(ngModel)]="this.project.mentor1.email" [ngModelOptions]="{standalone: true}"/>
+            <div [formGroup]="projectform">
+                <label>טלפון</label>
+                <input type="text" [(ngModel)]="this.project.mentor1.phone" formControlName="phonementor1"/>
+                <div *ngIf="phonementor1.invalid && (phonementor1.dirty) && !CheckIfEmptyField(this.project.mentor1.phone)" class="alert alert-danger">
+
+                <div *ngIf="  !CheckIfEmptyField(this.project.mentor1.phone) && phonementor1.errors.pattern">
+                    נא להזין מספר טלפון תקין
+                </div>
+                <div *ngIf=" !CheckIfEmptyField(this.project.mentor1.phone) && (phonementor1.errors.minlength)">
+                    המספר קצר מדי
+                </div>
+                <div *ngIf="!CheckIfEmptyField(this.project.mentor1.phone)  && (phonementor1.errors.maxlength)">
+                    המספר ארוך מדי
+                </div>
+                </div>
+            </div>
+            <div [formGroup]="projectform">
+                <label>דואר אלקטרוני</label>
+                <input type="email" [(ngModel)]="this.project.mentor1.email" formControlName="mailmentor1"/>
+                <div *ngIf="mailmentor1.invalid && (mailmentor1.dirty)">
+                    <div *ngIf="mailmentor1.errors.email && !CheckIfEmptyField(this.project.mentor1.email)" class="alert alert-danger">
+                        נא להזין כתובת דואר אלקטרוני תקינה
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-sm-4 form-group">
             <h4>מנחה שני</h4>
@@ -175,10 +196,31 @@
             <input type="text" [(ngModel)]="this.project.mentor2.facility" [ngModelOptions]="{standalone: true}"/>
             <label>תפקיד/תחום עיסוק</label>
             <input type="text" [(ngModel)]="this.project.mentor2.role" [ngModelOptions]="{standalone: true}"/>
-            <label>טלפון</label>
-            <input type="text" [(ngModel)]="this.project.mentor2.phone" [ngModelOptions]="{standalone: true}"/>
-            <label>דואר אלקטרוני</label>
-            <input type="email" [(ngModel)]="this.project.mentor2.email" [ngModelOptions]="{standalone: true}"/>
+            <div [formGroup]="projectform">
+                <label>טלפון</label>
+                <input type="text" [(ngModel)]="this.project.mentor2.phone" formControlName="phonementor2"/>
+                <div *ngIf="phonementor2.invalid && (phonementor2.dirty) && !CheckIfEmptyField(this.project.mentor2.phone)" class="alert alert-danger">
+
+                <div *ngIf="!CheckIfEmptyField(this.project.mentor2.phone) && phonementor2.errors.pattern">
+                    נא להזין מספר טלפון תקין
+                </div>
+                <div *ngIf=" !CheckIfEmptyField(this.project.mentor2.phone) && (phonementor2.errors.minlength)">
+                    המספר קצר מדי
+                </div>
+                <div *ngIf=" !CheckIfEmptyField(this.project.mentor2.phone) && (phonementor2.errors.maxlength)">
+                    המספר ארוך מדי
+                </div>
+                </div>
+            </div>
+            <div [formGroup]="projectform">
+                <label>דואר אלקטרוני</label>
+                <input type="email" [(ngModel)]="this.project.mentor2.email" formControlName="mailmentor2"/>
+                <div *ngIf="mailmentor2.invalid && (mailmentor2.dirty)">
+                    <div *ngIf="mailmentor2.errors.email && !CheckIfEmptyField(this.project.mentor2.email)" class="alert alert-danger">
+                        נא להזין כתובת דואר אלקטרוני תקינה
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-sm-4 form-group">
             <h4>מנחה שלישי</h4>
@@ -190,10 +232,30 @@
             <input type="text" [(ngModel)]="this.project.mentor3.facility" [ngModelOptions]="{standalone: true}"/>
             <label>תפקיד/תחום עיסוק</label>
             <input type="text" [(ngModel)]="this.project.mentor3.role" [ngModelOptions]="{standalone: true}"/>
-            <label>טלפון</label>
-            <input type="text" [(ngModel)]="this.project.mentor3.phone" [ngModelOptions]="{standalone: true}"/>
-            <label>דואר אלקטרוני</label>
-            <input type="email" [(ngModel)]="this.project.mentor3.email" [ngModelOptions]="{standalone: true}"/>
+            <div [formGroup]="projectform">
+                <label>טלפון</label>
+                <input type="text" [(ngModel)]="this.project.mentor3.phone" formControlName="phonementor3"/>
+                <div *ngIf="phonementor3.invalid && (phonementor3.dirty) && !CheckIfEmptyField(this.project.mentor3.phone)" class="alert alert-danger">
+                <div *ngIf=" !CheckIfEmptyField(this.project.mentor3.phone) && phonementor3.errors.pattern">
+                    נא להזין מספר טלפון תקין
+                </div>
+                <div *ngIf=" !CheckIfEmptyField(this.project.mentor3.phone) && (phonementor3.errors.minlength)">
+                    המספר קצר מדי
+                </div>
+                <div *ngIf=" !CheckIfEmptyField(this.project.mentor3.phone)  && (phonementor3.errors.maxlength)">
+                    המספר ארוך מדי
+                </div>
+                </div>
+            </div>
+            <div [formGroup]="projectform">
+                <label>דואר אלקטרוני</label>
+                <input type="email" [(ngModel)]="this.project.mentor3.email"  formControlName="mailmentor3"/>
+                <div *ngIf="mailmentor3.invalid && (mailmentor3.dirty)">
+                    <div *ngIf="mailmentor3.errors.email && !CheckIfEmptyField(this.project.mentor3.email)" class="alert alert-danger">
+                        נא להזין כתובת דואר אלקטרוני תקינה
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
       <div class="row">
