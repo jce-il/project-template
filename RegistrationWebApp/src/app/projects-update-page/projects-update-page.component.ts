@@ -33,6 +33,8 @@ export class ProjectsUpdatePageComponent implements OnInit {
   selectedWork = 'מתוך רשימה'; //for drop down list
   user_project_objects = [];
   userFile: FileUpload;
+  recommendation_selected = false;
+  file_project_selected = false;
 
 
   constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService) {
@@ -104,6 +106,17 @@ export class ProjectsUpdatePageComponent implements OnInit {
   //Holds the selected file from the form
   selectFile(event) {
     this.selectedFiles = event.target.files;
+    this.file_project_selected = true;
+  }
+
+  cancelSelectFile(){
+    this.selectedFiles = null;
+    this.file_project_selected = false;
+  }
+
+  cancelSelectedRecommendation(){
+    this.selected_recommendation_files = null;
+    this.recommendation_selected = false;
   }
   //Uploads the selected file to firebase storage and deletes the previous one
   upload() {
@@ -112,11 +125,14 @@ export class ProjectsUpdatePageComponent implements OnInit {
     const file = this.selectedFiles.item(0);
     this.selectedFiles = undefined;
     this.currentFileUpload = new FileUpload(file);
-    this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress);
+    this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress).then(()=>{
+      this.file_project_selected = false;
+    })
   }
 
   selectRecommendationFile(event) {
     this.selected_recommendation_files = event.target.files;
+    this.recommendation_selected = true;
   }
 
   recommendationUpload() {
@@ -127,6 +143,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
       this.project.recommendation_file = this.current_recommendation_FileUpload;
       this.db.project = this.project;
       this.db.updateProjectListing(this.project.project_name);
+      this.recommendation_selected = false;
     })
   }
 

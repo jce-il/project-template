@@ -37,7 +37,10 @@
             <button type="button" class="btn btn-labeled btn-primary" [disabled]="!selected_recommendation_files" (click)="recommendationUpload()">
               <span class="btn-label">
                 <i class="glyphicon glyphicon-upload"></i>
-              </span>שלח</button>
+              </span>העלה המלצה</button>
+            <button type="button" class="btn btn-labeled btn-primary" [hidden]="this.selected_recommendation_files == null" (click)="cancelSelectedRecommendation()">
+              <span class="btn-label">
+              </span>בטל בחירה</button>
           </div>
           <div *ngIf="current_recommendation_FileUpload" class="progress">
             <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 15%" attr.aria-valuenow="{{progress.percentage}}"
@@ -54,7 +57,7 @@
         <div class="col-sm-10">
           <div>
             <legend>דואר אלקטרוני של חברי הצוות
-              <h5 class = "req">שים לב - על חברי הצוות להיות רשומים במערכת. במידה ולא, ניתן יהיה לצרפם בהמשך</h5>
+              <h5 class="req">שים לב - על חברי הצוות להיות רשומים במערכת. במידה ולא, ניתן יהיה לצרפם בהמשך</h5>
             </legend>
           </div>
         </div>
@@ -182,6 +185,9 @@
                 <span class="btn-label">
                   <i class="glyphicon glyphicon-upload"></i>
                 </span>העלה קובץ חדש</button>
+              <button type="button" class="btn btn-labeled btn-primary" [hidden]="this.selectedFiles == null" (click)="cancelSelectFile()">
+                <span class="btn-label">
+                </span>בטל בחירה</button>
             </div>
             <div *ngIf="currentFileUpload" class="progress">
               <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 15%" attr.aria-valuenow="{{progress.percentage}}"
@@ -246,10 +252,14 @@
         </div>
       </div>
       <div class="row">
-        <button class="btn btn-primary btn-default" id="save" (click)="addProject()">שלח פרוייקט לתחרות</button>
+        <button class="btn btn-primary btn-default" id="save" [disabled]="this.file_project_selected || this.recommendation_selected"
+          (click)="addProject()">שלח פרוייקט לתחרות</button>
       </div>
       <div class="col-sm-6 form-group hideError" [hidden]="!projectError">
         יש למלא את כל שדות החובה כנדרש
+      </div>
+      <div class="col-sm-6 form-group hideError" [hidden]="this.selectedFiles == null && this.selected_recommendation_files == null">
+        שים לב ! ישנם קבצים הממתינים להעלאה
       </div>
       <br>
       <br>
