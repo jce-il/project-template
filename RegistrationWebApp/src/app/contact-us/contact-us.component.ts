@@ -51,10 +51,10 @@ export class ContactUsComponent implements OnInit {
   }//NOT FINISHED YET!!!--need to ask rony!
 
 
-  kaki(){
+  /*kaki(){
       this.router.navigate(['tablePage']);
   }
-
+*/
 
 }
 
