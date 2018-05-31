@@ -71,6 +71,9 @@ legend,.form-group{
     font-size: 14px;
  }
 
+ input{
+     font-size: 14px;
+ }
 
  .container{
     min-width: 700px;
