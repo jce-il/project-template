@@ -8,6 +8,7 @@ import { Project } from '../project';
 import { RouterLink, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Mentor } from '../mentor';
+import * as $ from "jquery"
 
 
 @Component({
@@ -125,6 +126,7 @@ export class ProjectUploadScreenComponent implements OnInit {
       return;
     }
     this.projectError = false;
+    this.checkSubmission();
     /*This part to the following:
     1. Gets the selected file to upload from the form anf sets in into the project_file property in the project object
     2. Collects all inserted info that was inserted into the form and then uploads the project to FB using addProjectToDB() func
@@ -270,4 +272,14 @@ export class ProjectUploadScreenComponent implements OnInit {
       return false;
   }
 
+  public checkSubmission(){
+    var data_fields = $(".data");
+    for ( var i = 0 ; i < 11 ; i++){
+      if (this.CheckIfEmptyField(data_fields[i].value)){
+        this.project.submission = false;
+        return;
+        }
+    }
+    this.project.submission = true;
+  }
 }
