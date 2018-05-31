@@ -37,6 +37,8 @@ export class ProjectsUpdatePageComponent implements OnInit {
   userFile: FileUpload;
   recommendation_selected = false;
   file_project_selected = false;
+  researchStatus;
+  modelStatus;
 
 
   constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService) {
@@ -48,6 +50,20 @@ export class ProjectsUpdatePageComponent implements OnInit {
       "עוד לא סיימתי את העבודה המעשית ואין לי תוצאות",
       "עוד לא סיימתי את העבודה המעשית אך יש לי תוצאות חלקיות",
       "סיימתי את כל העבודה המעשית ואני בכתיבת העבודה"];
+      this.researchStatus = [
+        "לא התחלתי ניסויים",
+        "התחלתי",
+        "יש תוצאות",
+        "יש אנליזה של תוצאות"
+      ];
+      this.modelStatus = [
+        "אין",
+        "לא התחלתי תכנון",
+        "יש תכנון",
+        "יש דגם ראשוני",
+        "יש דגם עובד",
+        "יש מוצר סופי"
+      ];
     this.project = new Project();
     this.validateForm();
     this.projectError = false; // default- no registration form errors

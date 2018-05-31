@@ -137,7 +137,16 @@
           <option>מחקרית</option>
           <option>עבודה טכנולוגית</option>
         </select>
-
+          <div *ngIf="project.type == 'עבודה טכנולוגית'">
+              <label class = "reg">סטטוס מחקר</label>
+              <select id="restatus" [(ngModel)] = "project.researchStatus" name="researchStatus">
+                <option *ngFor="let type of researchStatus" [value]="type">{{type}}</option>
+              </select>
+              <label class = "reg">סטטוס דגם</label>
+              <select id="mostatus" [(ngModel)] = "project.modelStatus" name="modelStatus">
+                <option *ngFor="let type of modelStatus" [value]="type">{{type}}</option>
+              </select>
+          </div>
         </div>
       </div>
       <div class="row">
@@ -152,13 +161,17 @@
         <div class="col-sm-4 form-group">
           <label class="reg">שאלת מחקר/מטרת הפרוייקט</label>
           <textarea class="data" rows="6" cols="80" id="target" [(ngModel)]="project.target" name="target"></textarea>
-          <label class="reg">רקע</label>
+          <label class="reg" >רקע (הבסיס המדעי / טכנולוגי לעבודה)</label>
           <textarea class="data" rows="6" cols="80" id="background" [(ngModel)]="project.background" name="background"></textarea>
-          <label class="reg">תיאור קצר</label>
+          <label class="reg">מוצרים דומים הקיימים בשוק</label>
+          <textarea class="data" rows="6" cols="80" id="background" [(ngModel)]="project.products" name="background"></textarea>
+          <label class="reg">תיאור קצר: תאר בקצרה את המוצר, דרך פעולתו, כיצד משיג את מטרתו וכיצד החלטתם על פתרון זה</label>
           <textarea class="data" rows="6" cols="80" id="description" [(ngModel)]="project.description" name="description"></textarea>
-          <label class="reg">היקף</label>
+          <label class="reg">היקף: תיאור היקף הפרויקט (למשל- שעות עבודה, מספר דגמים)</label>
           <textarea class="data" rows="6" cols="80" id="scope" [(ngModel)]="project.scope" name="scope"></textarea>
-          <label class="reg">חדשנות</label>
+          <label class="reg">הערכת זמן הנדרש לסיום</label>
+          <textarea class="data" rows="6" cols="80" id="finishTime" [(ngModel)]="project.finishTime" name="finishTime"></textarea>
+          <label class="reg">חדשנות: מהו הצד החדשני/ מקורי בפרוייקט? כיצד הוא שונה מפתרונות קיימים?</label>
           <textarea class="data" rows="6" cols="80" id="inovetion" [(ngModel)]="project.inovetion" name="inovetion"></textarea>
           <label class="reg">יתרונות/תרומה</label>
           <textarea class="data" rows="6" cols="80" id="advantages" [(ngModel)]="project.advantages" name="advantages"></textarea>

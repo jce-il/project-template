@@ -27,6 +27,8 @@ export class ProjectUploadScreenComponent implements OnInit {
   fields;
   projectField: string; // if the student is selected "another" field of research, we will use this
   projectStatus;
+  researchStatus;
+  modelStatus;
   file_project_selected = false;
   constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService) {
     this.fields = [
@@ -37,6 +39,20 @@ export class ProjectUploadScreenComponent implements OnInit {
       "עוד לא סיימתי את העבודה המעשית ואין לי תוצאות",
       "עוד לא סיימתי את העבודה המעשית אך יש לי תוצאות חלקיות",
       "סיימתי את כל העבודה המעשית ואני בכתיבת העבודה"];
+      this.researchStatus = [
+        "לא התחלתי ניסויים",
+        "התחלתי",
+        "יש תוצאות",
+        "יש אנליזה של תוצאות"
+      ];
+      this.modelStatus = [
+        "אין",
+        "לא התחלתי תכנון",
+        "יש תכנון",
+        "יש דגם ראשוני",
+        "יש דגם עובד",
+        "יש מוצר סופי"
+      ];
     this.project = new Project();
     this.validateForm();
     this.projectError = false; // default- no registration form errors
@@ -280,7 +296,7 @@ export class ProjectUploadScreenComponent implements OnInit {
   // set submission attribute to the project.
   public checkSubmission(){
     var data_fields = $(".data");
-    for ( var i = 0 ; i < 11 ; i++){
+    for ( var i = 0 ; i < 13 ; i++){
       if (this.CheckIfEmptyField(data_fields[i].value)){
         this.project.submission = false;
         return;
