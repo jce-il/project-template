@@ -8,33 +8,33 @@
         <app-header></app-header>
     </div>
 
-<div class="container">
-    <div class="name">
-        <strong>שלום (שם הבודק)</strong>
-    </div>
+<div *ngIf="this.db.loggedInUser != null">
+        <div class="container">
+                <div class="name">
+                    <strong>שלום {{this.db.loggedInUser.firstName}}</strong>
+                </div>
+            
+                <div class="row">
+                    <legend><strong>סטאטוס עבודות</strong></legend>
+                    <div class="notice notice-success">
+                            <i class="glyphicon glyphicon-duplicate">
+                            <strong>עבודות</strong></i><br>
+                                (מספר) עבודות שלא נבדקו
+                    </div>
+                </div>
+            
+                <div class="row">
+                    <legend><strong>סטאטוס הודעות</strong></legend>
+                    <div class="notice notice-info">
+                        <i class="glyphicon glyphicon-comment">
+                            <strong>הודעות</strong></i><br>
+                            (מספר) הודעות חדשות
+                    </div>
+                </div>
+                
+            </div>
 
-    <div class="row">
-        <legend><strong>סטאטוס עבודות</strong></legend>
-        <div class="notice notice-success">
-                <i class="glyphicon glyphicon-duplicate">
-                <strong>עבודות</strong></i><br>
-                    (מספר) עבודות שלא נבדקו
-        </div>
-    </div>
-
-    <div class="row">
-        <legend><strong>סטאטוס הודעות</strong></legend>
-        <div class="notice notice-info">
-            <i class="glyphicon glyphicon-comment">
-                <strong>הודעות</strong></i><br>
-                (מספר) הודעות חדשות
-        </div>
-    </div>
-    
 </div>
-
-
-
 
 <div class="page-footer">
     <app-footer></app-footer>

@@ -45,6 +45,9 @@ export class StepsBarComponent implements OnInit {
 
   // on home page button click
   public homePage() {
+    if(this.db.loggedInUser.type=='בודק')
+      this.router.navigate(['checker']);
+    else
     this.router.navigate(['homepage'])
   }
   // on personal info button click
