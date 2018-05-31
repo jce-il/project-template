@@ -8,7 +8,9 @@ import { Project } from '../project';
 import { RouterLink, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from 'firebase';
-
+import * as $ from "jquery"
+import { forEach } from '@firebase/util';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-projects-update-page',
@@ -196,6 +198,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
       return;
     }
     this.projectError = false;
+    this.checkSubmission();
     /*This part to the following:
     1. Gets the selected file to upload from the form anf sets in into the project_file property in the project object
     2. Collects all inserted info that was inserted into the form and then uploads the project to FB using addProjectToDB() func
@@ -335,6 +338,17 @@ export class ProjectsUpdatePageComponent implements OnInit {
       return true; // field is empty
     else
       return false;
+  }
+
+  public checkSubmission(){
+    var data_fields = $(".data");
+    for ( var i = 0 ; i < 11 ; i++){
+      if (this.CheckIfEmptyField(data_fields[i].value)){
+        this.project.submission = false;
+        return;
+        }
+    }
+    this.project.submission = true;
   }
 
 }
