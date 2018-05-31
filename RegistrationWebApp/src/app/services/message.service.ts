@@ -6,8 +6,8 @@ import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firesto
 @Injectable()
 export class MessageService {
  
-  public currentTable = [{name:"teacher",flg:false},{name:"checker",flg:false}];
-  public routName:string;
+ // public currentTable = [{name:"מורה",flg:false},{name:"בודק",flg:false}];
+  //public routName:string;
   constructor(public db: DatabaseService) {
     this.db.getMetaData().subscribe(res => {
       this.db.usersList = res;
@@ -30,21 +30,21 @@ export class MessageService {
     })
 }
     
-    getCurrentTable(){
+    /*getCurrentTable(){
       this.currentTable.forEach(element => {
         if(element.flg==true){
             this.routName = element.name
       }
     });
-    }
+    }*/
 
-    setCurrentTable(name:string,flg:boolean){
+   /* setCurrentTable(name:string,flg:boolean){
       this.currentTable.forEach(element => {
         if(element.name==name){
             element.flg=true;
       }
     });
-    }
+    }*/
 
 
 }

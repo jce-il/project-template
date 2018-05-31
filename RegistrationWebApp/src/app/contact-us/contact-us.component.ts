@@ -47,14 +47,11 @@ export class ContactUsComponent implements OnInit {
     
     this.msg = new Message(name,message,this.today); 
     this.msgService.addMsgToUser(email,this.msg);
-   // console.log(formRequest);
     this.form.reset();
   }//NOT FINISHED YET!!!--need to ask rony!
 
 
   kaki(){
-      this.msgService.setCurrentTable("teacher",true);
-     // console.log(this.msgService.currentTable);
       this.router.navigate(['tablePage']);
   }
 

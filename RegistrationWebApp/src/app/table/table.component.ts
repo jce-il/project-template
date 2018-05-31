@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService } from '../services/message.service';
 import { DatabaseService } from '../services/database.service';
 import {Pipe} from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
@@ -34,7 +33,7 @@ export class  TableComponent implements OnInit {
   progress: { percentage: number } = { percentage: 0 };
 
 
-  constructor(private msgService: MessageService,public db: DatabaseService,private cookieService: CookieService,
+  constructor(public db: DatabaseService,private cookieService: CookieService,
     public uploadService: UploadFileService,private elementRef: ElementRef,private renderer: Renderer,private route: ActivatedRoute,
   private router: Router) {}
 
@@ -45,10 +44,9 @@ export class  TableComponent implements OnInit {
   this.db.getLoggedInUser().then(() => {
     this.db.getProjectMetaData().subscribe((val) => {
         this.db.projectsList = val;
-        this.msgService.getCurrentTable();
-        switch(this.msgService.routName)
+        switch(this.db.loggedInUser.type)
         {
-          case "teacher":
+          case "מורה":
           {
             this.handleTeacher();
             $(document).ready(function(){
@@ -61,9 +59,8 @@ export class  TableComponent implements OnInit {
           });
             break;
           }
-          case "checker":
+          case "בודק":
           {
-            this.msgService.setCurrentTable("checker",false);
             this.handleTeacher();
             break;
           }
