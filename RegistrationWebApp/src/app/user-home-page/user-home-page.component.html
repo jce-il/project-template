@@ -32,8 +32,8 @@
             <div class="row" id="userstatus">
                 <legend>עבודות של התלמידים שלי</legend>
                 <div class="notice notice-success">
-                    <div *ngFor="let i of user_projects">
-                        <li>{{i}} - {{missing_details}}</li>
+                    <div *ngFor="let i of user_projects; let k = index">
+                        <li>{{i}} - {{missing_details[k]}}</li>
                     </div>
                 </div>
             </div>
@@ -51,6 +51,10 @@
             <legend><strong>קישורים</strong></legend>
             <div class="notice notice-info">
                 <a href="http://www.mada.org.il/young">הדף הראשי של התחרות</a>
+                <br>
+                <a href="https://student.societyforscience.org/intel-isef">אתר התחרות בארה"ב</a>
+                <br>
+                <a href="https://ec.europa.eu/research/eucys/index.cfm?pg=home">אתר התחרות באירופה</a>
                 <br>
                 <div *ngIf="this.db.loggedInUser.type =='מורה'">
                     <a href="http://yharshama.mada.org.il/young-recommendation-2016.doc">הורדת טופס המלצה</a>

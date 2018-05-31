@@ -129,14 +129,15 @@
           <div [formGroup]="projectform" *ngIf="project.project_field == 'אחר'">
             <label class="req">תחום מחקר אחר (פרט)*</label>
             <input type="text" [(ngModel)]="this.projectField" formControlName="other" />
-          <label class="reg">מוסד אקדמי בו התבצעה העבודה במידה וקיים</label>
-          <input class="data" type="text" id="location" [(ngModel)]="project.location" name="location" />
-          <label class="req">סוג העבודה המוגשת*</label>
-          <select id="type" required [(ngModel)]="project.type" name="type" >
-            <option>מחקרית</option>
-            <option>עבודה טכנולוגית</option>
-          </select>
         </div>
+        <label class="reg">מוסד אקדמי בו התבצעה העבודה במידה וקיים</label>
+        <input class="data" type="text" id="location" [(ngModel)]="project.location" name="location" />
+        <label class="req">סוג העבודה המוגשת*</label>
+        <select id="type" required [(ngModel)]="project.type" name="type" >
+          <option>מחקרית</option>
+          <option>עבודה טכנולוגית</option>
+        </select>
+
         </div>
       </div>
       <div class="row">

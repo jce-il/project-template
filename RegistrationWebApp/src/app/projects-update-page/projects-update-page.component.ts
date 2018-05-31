@@ -348,6 +348,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
       return false;
   }
 
+  // set submission attribute to the project.
   public checkSubmission(){
     var data_fields = $(".data");
     for ( var i = 0 ; i < 11 ; i++){

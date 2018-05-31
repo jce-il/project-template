@@ -84,14 +84,14 @@
                 <div [formGroup]="projectform" *ngIf="project.project_field == 'אחר'">
                     <label class="req">תחום מחקר אחר (פרט)*</label>
                     <input type="text" [(ngModel)]="this.projectField" formControlName="other" />
-                <label class="reg">מוסד אקדמי בו התבצעה העבודה במידה וקיים</label>
-                <input type="text" id="location" [(ngModel)]="project.location" name="location" />
-                <label class="req">סוג העבודה המוגשת*</label>
-                <select id="type" required [(ngModel)]="project.type" name="type" formControlName="type">
-                    <option>מחקרית</option>
-                    <option>עבודה טכנולוגית</option>
-                </select>
             </div>
+            <label class="reg">מוסד אקדמי בו התבצעה העבודה במידה וקיים</label>
+            <input class="data" type="text" id="location" [(ngModel)]="project.location" name="location" />
+            <label class="req">סוג העבודה המוגשת*</label>
+            <select id="type" [(ngModel)]="project.type" name="type">
+                <option>מחקרית</option>
+                <option>עבודה טכנולוגית</option>
+            </select>
             </div>
         </div>
         <div class="row">
@@ -105,19 +105,19 @@
         <div class="row">
             <div class="col-sm-4 form-group">
                 <label class="reg">שאלת מחקר/מטרת הפרוייקט</label>
-                <textarea rows="6" cols="80" id="target" [(ngModel)]="project.target" name="target"></textarea>
+                <textarea class="data" rows="6" cols="80" id="target" [(ngModel)]="project.target" name="target"></textarea>
                 <label class="reg">רקע</label>
-                <textarea rows="6" cols="80" id="background" [(ngModel)]="project.background" name="background"></textarea>
+                <textarea class="data" rows="6" cols="80" id="background" [(ngModel)]="project.background" name="background"></textarea>
                 <label class="reg">תיאור קצר</label>
-                <textarea rows="6" cols="80" id="description" [(ngModel)]="project.description" name="description"></textarea>
+                <textarea class="data" rows="6" cols="80" id="description" [(ngModel)]="project.description" name="description"></textarea>
                 <label class="reg">היקף</label>
-                <textarea rows="6" cols="80" id="scope" [(ngModel)]="project.scope" name="scope"></textarea>
+                <textarea class="data" rows="6" cols="80" id="scope" [(ngModel)]="project.scope" name="scope"></textarea>
                 <label class="reg">חדשנות</label>
-                <textarea rows="6" cols="80" id="inovetion" [(ngModel)]="project.inovetion" name="inovetion"></textarea>
+                <textarea class="data" rows="6" cols="80" id="inovetion" [(ngModel)]="project.inovetion" name="inovetion"></textarea>
                 <label class="reg">יתרונות/תרומה</label>
-                <textarea rows="6" cols="80" id="advantages" [(ngModel)]="project.advantages" name="advantages"></textarea>
+                <textarea class="data" rows="6" cols="80" id="advantages" [(ngModel)]="project.advantages" name="advantages"></textarea>
                 <label class="reg">נקודת מבט אישית</label>
-                <textarea rows="6" cols="80" id="retrospective" [(ngModel)]="project.retrospective" name="retrospective"></textarea>
+                <textarea class="data" rows="6" cols="80" id="retrospective" [(ngModel)]="project.retrospective" name="retrospective"></textarea>
             </div>
         </div>
         <div class="row">
@@ -159,14 +159,14 @@
                 <label>תואר</label>
                 <input type="text" [(ngModel)]="this.project.mentor1.degree" [ngModelOptions]="{standalone: true}" />
                 <label>שם מלא</label>
-                <input type="text" [(ngModel)]="this.project.mentor1.name" [ngModelOptions]="{standalone: true}" />
+                <input class="data" type="text" [(ngModel)]="this.project.mentor1.name" [ngModelOptions]="{standalone: true}" />
                 <label>מוסד</label>
                 <input type="text" [(ngModel)]="this.project.mentor1.facility" [ngModelOptions]="{standalone: true}" />
                 <label>תפקיד/תחום עיסוק</label>
                 <input type="text" [(ngModel)]="this.project.mentor1.role" [ngModelOptions]="{standalone: true}" />
                 <div [formGroup]="projectform">
                     <label>טלפון</label>
-                    <input type="text" [(ngModel)]="this.project.mentor1.phone" formControlName="phonementor1" />
+                    <input class="data" type="text" [(ngModel)]="this.project.mentor1.phone" formControlName="phonementor1" />
                     <div *ngIf="phonementor1.invalid && (phonementor1.dirty) && !CheckIfEmptyField(this.project.mentor1.phone)" class="alert alert-danger">
 
                         <div *ngIf="  !CheckIfEmptyField(this.project.mentor1.phone) && phonementor1.errors.pattern">
@@ -182,7 +182,7 @@
                 </div>
                 <div [formGroup]="projectform">
                     <label>דואר אלקטרוני</label>
-                    <input type="email" [(ngModel)]="this.project.mentor1.email" formControlName="mailmentor1" />
+                    <input class="data" type="email" [(ngModel)]="this.project.mentor1.email" formControlName="mailmentor1" />
                     <div *ngIf="mailmentor1.invalid && (mailmentor1.dirty)">
                         <div *ngIf="mailmentor1.errors.email && !CheckIfEmptyField(this.project.mentor1.email)" class="alert alert-danger">
                             נא להזין כתובת דואר אלקטרוני תקינה
