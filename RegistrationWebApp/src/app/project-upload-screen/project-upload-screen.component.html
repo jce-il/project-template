@@ -84,20 +84,20 @@
                 <div [formGroup]="projectform" *ngIf="project.project_field == 'אחר'">
                     <label class="req">תחום מחקר אחר (פרט)*</label>
                     <input type="text" [(ngModel)]="this.projectField" formControlName="other" />
-                </div>
                 <label class="reg">מוסד אקדמי בו התבצעה העבודה במידה וקיים</label>
                 <input type="text" id="location" [(ngModel)]="project.location" name="location" />
                 <label class="req">סוג העבודה המוגשת*</label>
-                <select id="type" required [(ngModel)]="project.type" name="type">
+                <select id="type" required [(ngModel)]="project.type" name="type" formControlName="type">
                     <option>מחקרית</option>
                     <option>עבודה טכנולוגית</option>
                 </select>
             </div>
+            </div>
         </div>
         <div class="row">
-            <div class="col-sm-4 form-group">
+            <div  [formGroup]="projectform" class="col-sm-4 form-group">
                 <label class="req">סטאטוס העבודה*</label>
-                <select class="user-type" id="status" required [(ngModel)]="project.status" name="status">
+                <select class="user-type" id="status" required [(ngModel)]="project.status" name="status" formControlName="status">
                     <option *ngFor="let type of projectStatus" [value]="type">{{type}}</option>
                 </select>
             </div>

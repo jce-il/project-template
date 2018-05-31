@@ -313,6 +313,14 @@ export class ProjectsUpdatePageComponent implements OnInit {
         Validators.minLength(9),
         Validators.maxLength(13)
       ]),
+      'status': new FormControl(this.projectField, [
+        //status project is required.
+        Validators.required
+      ]),
+      // 'typeo': new FormControl(this.projectField, [
+      //   //type project is required.
+      //   Validators.required
+      // ]),
     });
   }
 
@@ -330,7 +338,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
   get phonementor2() { return this.projectform.get('phonementor2'); }
   get mailmentor3() { return this.projectform.get('mailmentor3'); }
   get phonementor3() { return this.projectform.get('phonementor3'); }
-
+  get status() {return this.projectform.get('status');  }
 
   //check if a field is empty
   public CheckIfEmptyField(field: string) {
