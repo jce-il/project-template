@@ -39,6 +39,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
   file_project_selected = false;
   researchStatus;
   modelStatus;
+  routerId;
 
 
   constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService,private route: ActivatedRoute) {
@@ -71,8 +72,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      let userId = params['id'];
-      console.log(userId);
+      this.routerId = params['id'];
     });
     this.db.setMetaData();
     this.db.loggedInUserUID = this.cookieService.get('User uid');
@@ -106,10 +106,10 @@ export class ProjectsUpdatePageComponent implements OnInit {
               this.user_project_objects.push(this.db.projectsList[i]);
             }
           }
-          // for (var i = 0; i < this.user_project_objects.length; i++) {
-          //   if (this.selectedWork == this.user_project_objects[i].project_name)
-          //     this.project = this.user_project_objects[i];
-          // }
+        }
+        if (this.routerId!=undefined){
+        this.selectedWork = this.routerId;
+        this.onChangeObj();
         }
       })
     });
