@@ -43,7 +43,14 @@
             <div class="notice notice-info">
                 <i class="glyphicon glyphicon-comment">
                     <strong>הודעות</strong>
-                </i> {{msg_counter}} הודעות חדשות
+                </i>
+                <div *ngIf="this.msg_counter>0">
+                    <strong>{{msg_counter}} הודעות חדשות</strong>
+                </div>
+                <div *ngIf="this.msg_counter==0">
+                    אין הודעות חדשות
+                </div>
+                
             </div>
         </div>
 
