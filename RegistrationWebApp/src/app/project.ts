@@ -26,7 +26,11 @@ export class Project {
         public mentor3?: Mentor,
         public isMentors?: boolean,
         public submission?: boolean,
-        public check? : string
+        public check? : string,
+        public researchStatus? : string,
+        public modelStatus? : string,
+        public products? : string,
+        public finishTime? : string
     ) { }
 
 }

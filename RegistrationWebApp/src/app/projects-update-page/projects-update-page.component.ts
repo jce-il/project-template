@@ -367,7 +367,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
   // set submission attribute to the project.
   public checkSubmission(){
     var data_fields = $(".data");
-    for ( var i = 0 ; i < 11 ; i++){
+    for ( var i = 0 ; i < 13 ; i++){
       if (this.CheckIfEmptyField(data_fields[i].value)){
         this.project.submission = false;
         return;
