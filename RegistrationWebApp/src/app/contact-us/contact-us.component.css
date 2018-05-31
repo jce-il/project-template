@@ -1,6 +1,6 @@
 
 .well{
-    background-color: rgba(214, 221, 228, 0.822);
+    background: radial-gradient(ellipse at center, rgba(123, 173, 218, 0.9) 0%,rgba(204,204,204,1) 100%);
     box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.75);
     border-radius: 5px 5px 5px 5px;
     border-color: transparent;
