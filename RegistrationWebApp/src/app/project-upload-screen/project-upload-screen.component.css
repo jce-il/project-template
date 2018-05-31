@@ -43,7 +43,7 @@ button{
     height: 40px;
 }
 
-.well{ border-radius: 15px; position: relative; background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);}
+.well{ border-radius: 15px; position: relative; background: radial-gradient(ellipse at center, rgba(207, 234, 255, 0.959) 0%,rgba(229,229,229,1) 100%);}
 
 .hideError{font-size: 20px; color: rgb(253, 0, 0); text-align: center}
 
