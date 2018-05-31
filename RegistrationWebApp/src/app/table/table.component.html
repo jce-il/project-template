@@ -21,7 +21,7 @@
                             </div>
                             <div class="file" *ngIf="this.selected_recommendation_files != null">{{this.selected_recommendation_files.item(0).name}}</div>
                             <div>
-                            <button type="button" class="btn btn-labeled btn-primary" [disabled]="!selected_recommendation_files" (click)="recommendationUpload()">
+                            <button type="button" id="send" class="btn btn-labeled btn-primary" [disabled]="!selected_recommendation_files" (click)="recommendationUpload()">
                                 <span class="btn-label">
                                 <i class="glyphicon glyphicon-upload"></i>
                                 </span>שלח</button>
@@ -34,6 +34,7 @@
                 </div>
         </div>
     </div>
+    
 
 
 <div class="footer">

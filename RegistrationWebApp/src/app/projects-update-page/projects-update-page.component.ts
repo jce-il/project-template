@@ -5,7 +5,7 @@ import { UploadFileService } from '../services/upload-file.service';
 import { FormsModule, FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { FileUpload } from '../fileupload';
 import { Project } from '../project';
-import { RouterLink, Router } from '@angular/router';
+import { RouterLink, Router,ActivatedRoute, Params } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from 'firebase';
 import * as $ from "jquery"
@@ -41,7 +41,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
   modelStatus;
 
 
-  constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService) {
+  constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService,private route: ActivatedRoute) {
     this.fields = [
       "מתמטיקה", "מדעי החיים", "כימיה",
       "הנדסה/טכנולוגיה", "היסטוריה",
@@ -70,6 +70,10 @@ export class ProjectsUpdatePageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.route.params.subscribe((params: Params) => {
+      let userId = params['id'];
+      console.log(userId);
+    });
     this.db.setMetaData();
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
