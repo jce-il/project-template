@@ -31,7 +31,7 @@
 	right: 5%;
 	position:absolute;
 	content:" ";
-	width:1200px;
+	width: 1200px;
 	height:3px;
 	background-color:rgb(196, 146, 90);
 }
@@ -61,4 +61,47 @@ p{
 	font-size:12px;
 	border-radius:50%;
 	box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.75);
+}
+
+/*checker*/
+
+.checker .process-row:before{
+	top: 32%;
+	right: 20%;
+	position:absolute;
+	content:" ";
+	width: 620px;
+	height:3px;
+	background-color:rgb(196, 146, 90);
+}
+
+.checker .process-step{
+	display:table-cell;
+	text-align:center;
+	position:relative;
+	top: 0;
+	right: 0;
+}
+
+.checker p{
+	color: black;
+	text-align: center;
+	margin: 4px 0 0 0;
+	width: 135px;
+	font-size: 18px;
+	font-weight: bolder;
+}
+
+.checker .process{
+	display:table;
+	position:relative;
+	top: 8px;
+	margin-top: 8px;
+	right: 0;
+	float: right;
+}
+
+.checker .container{
+	float: right;
+	margin-right: 80px;
 }

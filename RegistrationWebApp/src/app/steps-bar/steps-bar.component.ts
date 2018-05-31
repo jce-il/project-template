@@ -11,6 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class StepsBarComponent implements OnInit {
   isStudent: boolean;
+  isChecker: boolean;
   myProjectText: string;
 
   constructor(public db: DatabaseService, public auth: AuthService, public router: Router, private cookieService: CookieService) { }
@@ -24,7 +25,14 @@ export class StepsBarComponent implements OnInit {
     else{
       this.isStudent = false;
       this.myProjectText = "פרויקטי תלמידים"
-    } 
+    }
+    
+    if(this.db.loggedInUser.type == 'בודק'){
+      this.isChecker = true;
+    }
+    else{
+      this.isChecker = false;
+    }
     })
   }
 
