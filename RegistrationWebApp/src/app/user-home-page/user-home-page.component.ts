@@ -18,6 +18,8 @@ export class UserHomePageComponent implements OnInit {
   workExists = 'עליך לצרף עבודה למערכת'
   user_projects = [];
   missing_details =[];
+  missing_file = [];
+  missing_recommendation = [];
 
   constructor(public db: DatabaseService, public auth: AuthService, public router: Router, public cookieService: CookieService) { }
 
@@ -59,14 +61,23 @@ export class UserHomePageComponent implements OnInit {
         if (this.userProject.mentor1.email == undefined || this.userProject.mentor1.email == '')
           this.emptyFields.push('מייל מנחה')
       }
-      var j=0, k=0;
+      var j=0, k=0, f=0, r=0;
       for (var i = 0; i < this.db.projectsList.length; i++) {
         if (this.db.projectsList[i].school_contact_mail == this.db.loggedInUser.email) {
           this.user_projects[j++] = this.db.projectsList[i].project_name;
           if (this.db.projectsList[i].submission == false)
             this.missing_details[k++]= 'חסרים פרטים'
           else if (this.db.projectsList[i].submission == true)
-            this.missing_details[k++]= 'אין חוסרים בפרויקט זה'
+            this.missing_details[k++]= 'כל הפרטים מלאים'
+            if (this.db.projectsList[i].project_file == undefined)
+            this.missing_file[f++]= 'חסר קובץ'
+          else if (this.db.projectsList[i].project_file != undefined)
+            this.missing_file[f++]= 'הועלה קובץ'
+          if (this.db.projectsList[i].recommendation_file == undefined)
+            this.missing_recommendation[r++]= 'חסר המלצה'
+          else if (this.db.projectsList[i].recommendation_file != undefined)
+            this.missing_recommendation[r++]= 'הועלה קובץ המלצה'
+            //recommendation_file
         }
       }
     })
