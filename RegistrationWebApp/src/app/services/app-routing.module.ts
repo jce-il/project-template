@@ -11,6 +11,7 @@ import { AuthGuardService } from './auth-guard.service'
 import { ProjectsUpdatePageComponent } from '../projects-update-page/projects-update-page.component';
 import { TableComponent } from '../table/table.component'
 import { CheckersPageComponent } from '../checkers-page/checkers-page.component';
+import { ManagerHomePageComponent } from '../manager-home-page/manager-home-page.component';
 
 //routing links to navigate through the web-app
 const appRouets: Routes = [
@@ -24,7 +25,8 @@ const appRouets: Routes = [
   { path: 'msgpage', component: MsgScreenComponent},
   { path: 'viewproject', component: ProjectsUpdatePageComponent},
   { path: 'tablePage', component: TableComponent},
-  {path: 'checker', component: CheckersPageComponent}
+  {path: 'checker', component: CheckersPageComponent},
+  {path: 'manager', component: ManagerHomePageComponent}
 ]
 
 @NgModule({

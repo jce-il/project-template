@@ -39,12 +39,11 @@ export class LoginScreenComponent implements OnInit {
         this.db.loggedInUserUID = res.uid
         this.db.loggedIn = 'true';
         this.db.getLoggedInUser().then(()=>{
-          console.log(this.db.loggedInUser)
-
           if (this.db.loggedInUser.type == 'בודק'){
-
-          console.log('bodek')
           this.router.navigate(['checker']);
+        }
+        else if (this.db.loggedInUser.type == 'מנהל'){
+          this.router.navigate(['manager'])
         }
           else
           this.router.navigate(['homepage'])
