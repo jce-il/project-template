@@ -8,7 +8,9 @@ import { Project } from '../project';
 import { RouterLink, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from 'firebase';
-
+import * as $ from "jquery"
+import { forEach } from '@firebase/util';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-projects-update-page',
@@ -33,6 +35,8 @@ export class ProjectsUpdatePageComponent implements OnInit {
   selectedWork = 'מתוך רשימה'; //for drop down list
   user_project_objects = [];
   userFile: FileUpload;
+  recommendation_selected = false;
+  file_project_selected = false;
 
 
   constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService) {
@@ -104,6 +108,17 @@ export class ProjectsUpdatePageComponent implements OnInit {
   //Holds the selected file from the form
   selectFile(event) {
     this.selectedFiles = event.target.files;
+    this.file_project_selected = true;
+  }
+
+  cancelSelectFile(){
+    this.selectedFiles = null;
+    this.file_project_selected = false;
+  }
+
+  cancelSelectedRecommendation(){
+    this.selected_recommendation_files = null;
+    this.recommendation_selected = false;
   }
   //Uploads the selected file to firebase storage and deletes the previous one
   upload() {
@@ -112,11 +127,14 @@ export class ProjectsUpdatePageComponent implements OnInit {
     const file = this.selectedFiles.item(0);
     this.selectedFiles = undefined;
     this.currentFileUpload = new FileUpload(file);
-    this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress);
+    this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress).then(()=>{
+      this.file_project_selected = false;
+    })
   }
 
   selectRecommendationFile(event) {
     this.selected_recommendation_files = event.target.files;
+    this.recommendation_selected = true;
   }
 
   recommendationUpload() {
@@ -127,6 +145,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
       this.project.recommendation_file = this.current_recommendation_FileUpload;
       this.db.project = this.project;
       this.db.updateProjectListing(this.project.project_name);
+      this.recommendation_selected = false;
     })
   }
 
@@ -147,12 +166,39 @@ export class ProjectsUpdatePageComponent implements OnInit {
     else {
       this.project.project_field = this.projectField;
     }
+
+    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor1.email)){
+      this.projectform.get('mailmentor1').clearValidators();
+      this.projectform.get('mailmentor1').updateValueAndValidity(); //clear error
+    }
+    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor1.phone)){
+      this.projectform.get('phonementor1').clearValidators();
+      this.projectform.get('phonementor1').updateValueAndValidity(); //clear error
+    }
+    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor2.email)){
+      this.projectform.get('mailmentor2').clearValidators();
+      this.projectform.get('mailmentor2').updateValueAndValidity(); //clear error
+    }
+    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor2.phone)){
+      this.projectform.get('phonementor2').clearValidators();
+      this.projectform.get('phonementor2').updateValueAndValidity(); //clear error
+    }
+    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor3.email)){
+      this.projectform.get('mailmentor3').clearValidators();
+      this.projectform.get('mailmentor3').updateValueAndValidity(); //clear error
+    }
+    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor3.phone)){
+      this.projectform.get('phonementor3').clearValidators();
+      this.projectform.get('phonementor3').updateValueAndValidity(); //clear error
+    }
+
     if (!this.projectform.valid) { // validate errors
       this.projectError = true; // form error
       console.log(this.projectform); //show errors
       return;
     }
     this.projectError = false;
+    this.checkSubmission();
     /*This part to the following:
     1. Gets the selected file to upload from the form anf sets in into the project_file property in the project object
     2. Collects all inserted info that was inserted into the form and then uploads the project to FB using addProjectToDB() func
@@ -237,6 +283,44 @@ export class ProjectsUpdatePageComponent implements OnInit {
         //projectname is required.
         Validators.required
       ]),
+      'mailmentor1': new FormControl(this.projectField, [
+        //projectname is required.
+        Validators.email
+      ]),
+      'mailmentor2': new FormControl(this.projectField, [
+        //projectname is required.
+        Validators.email
+      ]),
+      'mailmentor3': new FormControl(this.projectField, [
+        //projectname is required.
+        Validators.email
+      ]),
+      'phonementor1': new FormControl(this.projectField, [
+        //phone number is required, must be 9-13 digits (only numbers).
+        Validators.pattern("0[0-9-]*"),
+        Validators.minLength(9),
+        Validators.maxLength(13)
+      ]),
+      'phonementor2': new FormControl(this.projectField, [
+        //phone number is required, must be 9-13 digits (only numbers).
+        Validators.pattern("0[0-9-]*"),
+        Validators.minLength(9),
+        Validators.maxLength(13)
+      ]),
+      'phonementor3': new FormControl(this.projectField, [
+        //phone number is required, must be 9-13 digits (only numbers).
+        Validators.pattern("0[0-9-]*"),
+        Validators.minLength(9),
+        Validators.maxLength(13)
+      ]),
+      'status': new FormControl(this.projectField, [
+        //status project is required.
+        Validators.required
+      ]),
+      // 'typeo': new FormControl(this.projectField, [
+      //   //type project is required.
+      //   Validators.required
+      // ]),
     });
   }
 
@@ -248,19 +332,13 @@ export class ProjectsUpdatePageComponent implements OnInit {
   get email_school() { return this.projectform.get('email_school'); }
   get project_field() { return this.projectform.get('project_field'); }
   get other() { return this.projectform.get('other'); }
-
-  // get location() { return this.projectform.get('location'); }
-  // get type() { return this.projectform.get('type'); }
-  // get status() { return this.projectform.get('status'); }
-  // get fileupload() { return this.projectform.get('fileupload'); }
-  // get target() { return this.projectform.get('target'); }
-  // get background() { return this.projectform.get('background'); }
-  // get description() { return this.projectform.get('description'); }
-  // get scope() { return this.projectform.get('scope'); }
-  // get inovetion() { return this.projectform.get('inovetion'); }
-  // get advantages() { return this.projectform.get('advantages'); }
-  // get retrospective() { return this.projectform.get('retrospective'); }
-
+  get mailmentor1() { return this.projectform.get('mailmentor1'); }
+  get phonementor1() { return this.projectform.get('phonementor1'); }
+  get mailmentor2() { return this.projectform.get('mailmentor2'); }
+  get phonementor2() { return this.projectform.get('phonementor2'); }
+  get mailmentor3() { return this.projectform.get('mailmentor3'); }
+  get phonementor3() { return this.projectform.get('phonementor3'); }
+  get status() {return this.projectform.get('status');  }
 
   //check if a field is empty
   public CheckIfEmptyField(field: string) {
@@ -268,6 +346,17 @@ export class ProjectsUpdatePageComponent implements OnInit {
       return true; // field is empty
     else
       return false;
+  }
+
+  public checkSubmission(){
+    var data_fields = $(".data");
+    for ( var i = 0 ; i < 11 ; i++){
+      if (this.CheckIfEmptyField(data_fields[i].value)){
+        this.project.submission = false;
+        return;
+        }
+    }
+    this.project.submission = true;
   }
 
 }

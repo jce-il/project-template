@@ -18,7 +18,7 @@ p:last-child { margin: 0px; }
 h3{ font-family: 'Shuneet', serif; font-size:55px; color:  rgb(204, 231, 173); float: left; position: relative; left: -260px; text-shadow: 10px 14px 10px rgb(24, 32, 19); }
 
 .card-section { direction: rtl; position: relative; top:200px; right: 15%; }
-.card-block {text-align: right; padding-top: 30px; padding-bottom: 5%; padding-right: 5%; border-radius: 15px;background: radial-gradient(ellipse at center, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.5); opacity: 0.99;  width: 50%;}
+.card-block {text-align: right; padding-top: 30px; padding-bottom: 5%; padding-right: 5%; border-radius: 15px;background: radial-gradient(ellipse at center, rgba(123, 173, 218, 0.9) 0%,rgba(204,204,204,1) 100%); box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.5); opacity: 0.99;  width: 50%;}
 .section-title { direction: rtl; margin-bottom: 80px;}
 .section-title legend{ margin-bottom: 20px; width: 500px; font-size: 30px; font-weight: bolder;}
 .form-group{ margin-right: 10%; width: 200px; font-size: 16px;}
@@ -71,6 +71,9 @@ legend,.form-group{
     font-size: 14px;
  }
 
+ input{
+     font-size: 14px;
+ }
 
  .container{
     min-width: 700px;

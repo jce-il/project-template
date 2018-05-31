@@ -16,6 +16,8 @@ export class UserHomePageComponent implements OnInit {
   userProject: Project;
   emptyFields = [];
   workExists = 'עליך לצרף עבודה למערכת'
+  user_projects = [];
+  missing_details = 'חסרים פרטים';
 
   constructor(public db: DatabaseService, public auth: AuthService, public router: Router, public cookieService: CookieService) { }
 
@@ -48,6 +50,13 @@ export class UserHomePageComponent implements OnInit {
           this.emptyFields.push('היקף')
         if (this.userProject.target == undefined || this.userProject.target == '')
           this.emptyFields.push('שאלת מחקר/מטרת הפרויקט')
+      }
+      var j=0;
+      for (var i = 0; i < this.db.projectsList.length; i++) {
+        if (this.db.projectsList[i].school_contact_mail == this.db.loggedInUser.email) {
+          this.user_projects[j++] = this.db.projectsList[i].project_name;
+          //this.user_project_objects.push(this.db.projectsList[i]);
+        }
       }
     })
   }

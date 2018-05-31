@@ -12,7 +12,7 @@
             <div class="col-sm-10">
                 <div>
                     <legend>דואר אלקטרוני של חברי הצוות
-                        <h5 class = "req">שים לב - על חברי הצוות להיות רשומים במערכת. במידה ולא, ניתן יהיה לצרפם בהמשך</h5>
+                        <h5 class="req">שים לב - על חברי הצוות להיות רשומים במערכת. במידה ולא, ניתן יהיה לצרפם בהמשך</h5>
                     </legend>
                 </div>
             </div>
@@ -21,16 +21,17 @@
             <div class="col-sm-4 form-group">
                 <div [formGroup]="projectform">
                     <label class="req">כתובת דואר אלקטרוני שלי*</label>
-                    <input type="text" disabled id="partner1" required [(ngModel)]="project.user1mail" name="partner1" formControlName="partner1"/>
+                    <input type="text" disabled id="partner1" required [(ngModel)]="project.user1mail" name="partner1" formControlName="partner1"
+                    />
                     <div *ngIf="partner1.invalid && (partner1.dirty)">
                         <div *ngIf="partner1.errors.email && !CheckIfEmptyField(project.user1mail)" class="alert alert-danger">
                             נא להזין כתובת דואר אלקטרוני תקינה
                         </div>
-                     </div>
+                    </div>
                 </div>
                 <div [formGroup]="projectform">
-                <label class="reg">כתובת דואר אלקטרוני של שותף שני</label>
-                <input type="text" id="partner2" [(ngModel)]="project.user2mail" name="partner2" formControlName="partner2"/>
+                    <label class="reg">כתובת דואר אלקטרוני של שותף שני</label>
+                    <input type="text" id="partner2" [(ngModel)]="project.user2mail" name="partner2" formControlName="partner2" />
                     <div *ngIf="partner2.invalid && (partner2.dirty)">
                         <div *ngIf="partner2.errors.email && !CheckIfEmptyField(project.user2mail)" class="alert alert-danger">
                             נא להזין כתובת דואר אלקטרוני תקינה
@@ -38,8 +39,8 @@
                     </div>
                 </div>
                 <div [formGroup]="projectform">
-                <label class="reg">כתובת דואר אלקטרוני של שותף שלישי</label>
-                <input type="text" id="partner3" [(ngModel)]="project.user3mail" name="partner3" formControlName="partner3"/>
+                    <label class="reg">כתובת דואר אלקטרוני של שותף שלישי</label>
+                    <input type="text" id="partner3" [(ngModel)]="project.user3mail" name="partner3" formControlName="partner3" />
                     <div *ngIf="partner3.invalid && (partner3.dirty)">
                         <div *ngIf="partner3.errors.email && !CheckIfEmptyField(project.user3mail)" class="alert alert-danger">
                             נא להזין כתובת דואר אלקטרוני תקינה
@@ -48,16 +49,18 @@
                 </div>
                 <div [formGroup]="projectform">
                     <label class="req">שם העבודה*</label>
-                    <input type="text" id="projectname" required [(ngModel)]="project.project_name" name="projectname" formControlName="projectname"/>
+                    <input type="text" id="projectname" required [(ngModel)]="project.project_name" name="projectname" formControlName="projectname"
+                    />
                 </div>
                 <div [formGroup]="projectform">
-                <label class="req">דואר אלקטרוני איש קשר מטעם בית הספר*</label>
-                <input type="email" id="email_school" [(ngModel)]="project.school_contact_mail" name="email_school" formControlName="email_school"/>
-                <div *ngIf="email_school.invalid && (email_school.dirty)">
+                    <label class="req">דואר אלקטרוני איש קשר מטעם בית הספר*</label>
+                    <input type="email" id="email_school" [(ngModel)]="project.school_contact_mail" name="email_school" formControlName="email_school"
+                    />
+                    <div *ngIf="email_school.invalid && (email_school.dirty)">
                         <div *ngIf="email_school.errors.email && !CheckIfEmptyField(project.school_contact_mail)" class="alert alert-danger">
                             נא להזין כתובת דואר אלקטרוני תקינה
                         </div>
-                </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -66,7 +69,7 @@
                 <legend>אודות העבודה</legend>
             </div>
         </div>
-          <div class="row">
+        <div class="row">
             <div class="col-sm-4 form-group">
                 <div [formGroup]="projectform">
                     <label class="req">התחום אליו משתייכת העבודה*</label>
@@ -77,132 +80,200 @@
             </div>
         </div>
         <div class="row">
-          <div class="col-sm-4 form-group">
-            <div [formGroup]="projectform" *ngIf="project.project_field == 'אחר'" >
-                <label class="req">תחום מחקר אחר (פרט)*</label>
-                <input type="text"  [(ngModel)]="this.projectField" formControlName="other"/>
-              </div>
-              <label class="reg">מוסד אקדמי בו התבצעה העבודה במידה וקיים</label>
-              <input type="text" id="location" [(ngModel)]="project.location" name="location"/>
-              <label class="req">סוג העבודה המוגשת*</label>
-            <select id="type" required [(ngModel)]="project.type" name="type"> 
-              <option>מחקרית</option>
-              <option>עבודה טכנולוגית</option>
-            </select >
+            <div class="col-sm-4 form-group">
+                <div [formGroup]="projectform" *ngIf="project.project_field == 'אחר'">
+                    <label class="req">תחום מחקר אחר (פרט)*</label>
+                    <input type="text" [(ngModel)]="this.projectField" formControlName="other" />
+                <label class="reg">מוסד אקדמי בו התבצעה העבודה במידה וקיים</label>
+                <input type="text" id="location" [(ngModel)]="project.location" name="location" />
+                <label class="req">סוג העבודה המוגשת*</label>
+                <select id="type" required [(ngModel)]="project.type" name="type" formControlName="type">
+                    <option>מחקרית</option>
+                    <option>עבודה טכנולוגית</option>
+                </select>
             </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4 form-group">
-            <label class="req">סטאטוס העבודה*</label>
-            <select class="user-type" id="status" required [(ngModel)]="project.status" name="status">
-                <option *ngFor="let type of projectStatus" [value]="type">{{type}}</option>
-            </select>
-        </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-4 form-group">
-          <label class="reg">שאלת מחקר/מטרת הפרוייקט</label>
-          <textarea rows="6" cols="80" id="target" [(ngModel)]="project.target" name="target"></textarea>
-          <label class="reg">רקע</label>
-          <textarea rows="6" cols="80" id="background" [(ngModel)]="project.background" name="background"></textarea>
-          <label class="reg">תיאור קצר</label>
-          <textarea rows="6" cols="80" id="description" [(ngModel)]="project.description" name="description"></textarea>
-          <label class="reg">היקף</label>
-          <textarea rows="6" cols="80" id="scope" [(ngModel)]="project.scope" name="scope"></textarea>
-          <label class="reg">חדשנות</label>
-          <textarea rows="6" cols="80" id="inovetion" [(ngModel)]="project.inovetion" name="inovetion"></textarea>
-          <label class="reg">יתרונות/תרומה</label>
-          <textarea rows="6" cols="80" id="advantages" [(ngModel)]="project.advantages" name="advantages"></textarea>
-          <label class="reg">נקודת מבט אישית</label>
-          <textarea rows="6" cols="80" id="retrospective" [(ngModel)]="project.retrospective" name="retrospective"></textarea>
-      </div>
-  </div>
-    <div class="row">    
-        <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">  
-            <div class="input-group image-preview">
-                  <div class="btn btn-default image-preview-input">
-                      <input type="file" (change)="selectFile($event)" required name="fileupload"/>
-                      <span class="glyphicon glyphicon-folder-open"></span>
-                      <span class="image-preview-input-title">בחר קובץ</span>
-                  </div>
-                  <div class="file" *ngIf="this.selectedFiles != null">{{this.selectedFiles.item(0).name}}</div>
-                  <div>
-                      <button type="button" class="btn btn-labeled btn-primary" [disabled]="!selectedFiles" (click)="upload()">
-                      <span class="btn-label">
-                        <i class="glyphicon glyphicon-upload"></i>
-                      </span>Upload</button>
-                  </div>
-                  <div *ngIf="currentFileUpload" class="progress">
-                      <div class="progress-bar progress-bar-striped"
-                          role="progressbar" style="width: 15%" attr.aria-valuenow="{{progress.percentage}}"
-                          aria-valuemin="0" aria-valuemax="100"
-                          [ngStyle]="{width:progress.percentage+'%'}">
-                          {{progress.percentage}}%</div>
-                  </div> 
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-10">
-            <legend>מנחים ויועצים</legend>
-            <label>אין לי מנחים</label>
-            <input type="checkbox" checked [(ngModel)]="this.project.isMentors" [ngModelOptions]="{standalone: true}"/>
+        <div class="row">
+            <div  [formGroup]="projectform" class="col-sm-4 form-group">
+                <label class="req">סטאטוס העבודה*</label>
+                <select class="user-type" id="status" required [(ngModel)]="project.status" name="status" formControlName="status">
+                    <option *ngFor="let type of projectStatus" [value]="type">{{type}}</option>
+                </select>
+            </div>
         </div>
-    </div>
-    <div *ngIf="this.project.isMentors==false" class="row">
-        <div class="col-sm-4 form-group">
-            <h4 class="req">מנחה ראשון*</h4>
-            <label>תואר</label>
-            <input type="text" [(ngModel)]="this.project.mentor1.degree" [ngModelOptions]="{standalone: true}"/>
-            <label>שם מלא</label>
-            <input type="text" [(ngModel)]="this.project.mentor1.name" [ngModelOptions]="{standalone: true}"/>
-            <label>מוסד</label>
-            <input type="text" [(ngModel)]="this.project.mentor1.facility" [ngModelOptions]="{standalone: true}"/>
-            <label>תפקיד/תחום עיסוק</label>
-            <input type="text" [(ngModel)]="this.project.mentor1.role" [ngModelOptions]="{standalone: true}"/>
-            <label>טלפון</label>
-            <input type="text" [(ngModel)]="this.project.mentor1.phone" [ngModelOptions]="{standalone: true}"/>
-            <label>דואר אלקטרוני</label>
-            <input type="email" [(ngModel)]="this.project.mentor1.email" [ngModelOptions]="{standalone: true}"/>
+        <div class="row">
+            <div class="col-sm-4 form-group">
+                <label class="reg">שאלת מחקר/מטרת הפרוייקט</label>
+                <textarea rows="6" cols="80" id="target" [(ngModel)]="project.target" name="target"></textarea>
+                <label class="reg">רקע</label>
+                <textarea rows="6" cols="80" id="background" [(ngModel)]="project.background" name="background"></textarea>
+                <label class="reg">תיאור קצר</label>
+                <textarea rows="6" cols="80" id="description" [(ngModel)]="project.description" name="description"></textarea>
+                <label class="reg">היקף</label>
+                <textarea rows="6" cols="80" id="scope" [(ngModel)]="project.scope" name="scope"></textarea>
+                <label class="reg">חדשנות</label>
+                <textarea rows="6" cols="80" id="inovetion" [(ngModel)]="project.inovetion" name="inovetion"></textarea>
+                <label class="reg">יתרונות/תרומה</label>
+                <textarea rows="6" cols="80" id="advantages" [(ngModel)]="project.advantages" name="advantages"></textarea>
+                <label class="reg">נקודת מבט אישית</label>
+                <textarea rows="6" cols="80" id="retrospective" [(ngModel)]="project.retrospective" name="retrospective"></textarea>
+            </div>
         </div>
-        <div class="col-sm-4 form-group">
-            <h4>מנחה שני</h4>
-            <label>תואר</label>
-            <input type="text" [(ngModel)]="this.project.mentor2.degree" [ngModelOptions]="{standalone: true}"/>
-            <label>שם מלא</label>
-            <input type="text" [(ngModel)]="this.project.mentor2.name" [ngModelOptions]="{standalone: true}"/>
-            <label>מוסד</label>
-            <input type="text" [(ngModel)]="this.project.mentor2.facility" [ngModelOptions]="{standalone: true}"/>
-            <label>תפקיד/תחום עיסוק</label>
-            <input type="text" [(ngModel)]="this.project.mentor2.role" [ngModelOptions]="{standalone: true}"/>
-            <label>טלפון</label>
-            <input type="text" [(ngModel)]="this.project.mentor2.phone" [ngModelOptions]="{standalone: true}"/>
-            <label>דואר אלקטרוני</label>
-            <input type="email" [(ngModel)]="this.project.mentor2.email" [ngModelOptions]="{standalone: true}"/>
+        <div class="row">
+            <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                <div class="input-group image-preview">
+                    <div class="btn btn-default image-preview-input">
+                        <input type="file" (change)="selectFile($event)" required name="fileupload" />
+                        <span class="glyphicon glyphicon-folder-open"></span>
+                        <span class="image-preview-input-title">בחר קובץ</span>
+                    </div>
+                    <div class="file" *ngIf="this.selectedFiles != null">{{this.selectedFiles.item(0).name}}</div>
+                    <div>
+                        <button type="button" class="btn btn-labeled btn-primary" [disabled]="!selectedFiles" (click)="upload()">
+                            <span class="btn-label">
+                                <i class="glyphicon glyphicon-upload"></i>
+                            </span>העלה קובץ</button>
+                        <button type="button" class="btn btn-labeled btn-primary" [hidden]="this.selectedFiles == null" (click)="cancelSelectFile()">
+                            <span class="btn-label">
+                            </span>בטל בחירה</button>
+                    </div>
+                    <div *ngIf="currentFileUpload" class="progress">
+                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 15%" attr.aria-valuenow="{{progress.percentage}}"
+                            aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+                            {{progress.percentage}}%</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-4 form-group">
-            <h4>מנחה שלישי</h4>
-            <label>תואר</label>
-            <input type="text" [(ngModel)]="this.project.mentor3.degree" [ngModelOptions]="{standalone: true}"/>
-            <label>שם מלא</label>
-            <input type="text" [(ngModel)]="this.project.mentor3.name" [ngModelOptions]="{standalone: true}"/>
-            <label>מוסד</label>
-            <input type="text" [(ngModel)]="this.project.mentor3.facility" [ngModelOptions]="{standalone: true}"/>
-            <label>תפקיד/תחום עיסוק</label>
-            <input type="text" [(ngModel)]="this.project.mentor3.role" [ngModelOptions]="{standalone: true}"/>
-            <label>טלפון</label>
-            <input type="text" [(ngModel)]="this.project.mentor3.phone" [ngModelOptions]="{standalone: true}"/>
-            <label>דואר אלקטרוני</label>
-            <input type="email" [(ngModel)]="this.project.mentor3.email" [ngModelOptions]="{standalone: true}"/>
+        <div class="row">
+            <div class="col-sm-10">
+                <legend>מנחים ויועצים</legend>
+                <label>אין לי מנחים</label>
+                <input type="checkbox" checked [(ngModel)]="this.project.isMentors" [ngModelOptions]="{standalone: true}" />
+            </div>
         </div>
-    </div>
-      <div class="row">
-        <button class="btn btn-primary btn-default" id="save" (click)="addProject()">שלח פרוייקט לתחרות</button>
-      </div>
-      <div class="col-sm-6 form-group hideError" [hidden]="!projectError">
-        יש למלא את כל שדות החובה כנדרש
-    </div>
-      <br><br>
+        <div *ngIf="this.project.isMentors==false" class="row">
+            <div class="col-sm-4 form-group">
+                <h4 class="req">מנחה ראשון*</h4>
+                <label>תואר</label>
+                <input type="text" [(ngModel)]="this.project.mentor1.degree" [ngModelOptions]="{standalone: true}" />
+                <label>שם מלא</label>
+                <input type="text" [(ngModel)]="this.project.mentor1.name" [ngModelOptions]="{standalone: true}" />
+                <label>מוסד</label>
+                <input type="text" [(ngModel)]="this.project.mentor1.facility" [ngModelOptions]="{standalone: true}" />
+                <label>תפקיד/תחום עיסוק</label>
+                <input type="text" [(ngModel)]="this.project.mentor1.role" [ngModelOptions]="{standalone: true}" />
+                <div [formGroup]="projectform">
+                    <label>טלפון</label>
+                    <input type="text" [(ngModel)]="this.project.mentor1.phone" formControlName="phonementor1" />
+                    <div *ngIf="phonementor1.invalid && (phonementor1.dirty) && !CheckIfEmptyField(this.project.mentor1.phone)" class="alert alert-danger">
+
+                        <div *ngIf="  !CheckIfEmptyField(this.project.mentor1.phone) && phonementor1.errors.pattern">
+                            נא להזין מספר טלפון תקין
+                        </div>
+                        <div *ngIf=" !CheckIfEmptyField(this.project.mentor1.phone) && (phonementor1.errors.minlength)">
+                            המספר קצר מדי
+                        </div>
+                        <div *ngIf="!CheckIfEmptyField(this.project.mentor1.phone)  && (phonementor1.errors.maxlength)">
+                            המספר ארוך מדי
+                        </div>
+                    </div>
+                </div>
+                <div [formGroup]="projectform">
+                    <label>דואר אלקטרוני</label>
+                    <input type="email" [(ngModel)]="this.project.mentor1.email" formControlName="mailmentor1" />
+                    <div *ngIf="mailmentor1.invalid && (mailmentor1.dirty)">
+                        <div *ngIf="mailmentor1.errors.email && !CheckIfEmptyField(this.project.mentor1.email)" class="alert alert-danger">
+                            נא להזין כתובת דואר אלקטרוני תקינה
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <h4>מנחה שני</h4>
+                <label>תואר</label>
+                <input type="text" [(ngModel)]="this.project.mentor2.degree" [ngModelOptions]="{standalone: true}" />
+                <label>שם מלא</label>
+                <input type="text" [(ngModel)]="this.project.mentor2.name" [ngModelOptions]="{standalone: true}" />
+                <label>מוסד</label>
+                <input type="text" [(ngModel)]="this.project.mentor2.facility" [ngModelOptions]="{standalone: true}" />
+                <label>תפקיד/תחום עיסוק</label>
+                <input type="text" [(ngModel)]="this.project.mentor2.role" [ngModelOptions]="{standalone: true}" />
+                <div [formGroup]="projectform">
+                    <label>טלפון</label>
+                    <input type="text" [(ngModel)]="this.project.mentor2.phone" formControlName="phonementor2" />
+                    <div *ngIf="phonementor2.invalid && (phonementor2.dirty) && !CheckIfEmptyField(this.project.mentor2.phone)" class="alert alert-danger">
+
+                        <div *ngIf="!CheckIfEmptyField(this.project.mentor2.phone) && phonementor2.errors.pattern">
+                            נא להזין מספר טלפון תקין
+                        </div>
+                        <div *ngIf=" !CheckIfEmptyField(this.project.mentor2.phone) && (phonementor2.errors.minlength)">
+                            המספר קצר מדי
+                        </div>
+                        <div *ngIf=" !CheckIfEmptyField(this.project.mentor2.phone) && (phonementor2.errors.maxlength)">
+                            המספר ארוך מדי
+                        </div>
+                    </div>
+                </div>
+                <div [formGroup]="projectform">
+                    <label>דואר אלקטרוני</label>
+                    <input type="email" [(ngModel)]="this.project.mentor2.email" formControlName="mailmentor2" />
+                    <div *ngIf="mailmentor2.invalid && (mailmentor2.dirty)">
+                        <div *ngIf="mailmentor2.errors.email && !CheckIfEmptyField(this.project.mentor2.email)" class="alert alert-danger">
+                            נא להזין כתובת דואר אלקטרוני תקינה
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <h4>מנחה שלישי</h4>
+                <label>תואר</label>
+                <input type="text" [(ngModel)]="this.project.mentor3.degree" [ngModelOptions]="{standalone: true}" />
+                <label>שם מלא</label>
+                <input type="text" [(ngModel)]="this.project.mentor3.name" [ngModelOptions]="{standalone: true}" />
+                <label>מוסד</label>
+                <input type="text" [(ngModel)]="this.project.mentor3.facility" [ngModelOptions]="{standalone: true}" />
+                <label>תפקיד/תחום עיסוק</label>
+                <input type="text" [(ngModel)]="this.project.mentor3.role" [ngModelOptions]="{standalone: true}" />
+                <div [formGroup]="projectform">
+                    <label>טלפון</label>
+                    <input type="text" [(ngModel)]="this.project.mentor3.phone" formControlName="phonementor3" />
+                    <div *ngIf="phonementor3.invalid && (phonementor3.dirty) && !CheckIfEmptyField(this.project.mentor3.phone)" class="alert alert-danger">
+                        <div *ngIf=" !CheckIfEmptyField(this.project.mentor3.phone) && phonementor3.errors.pattern">
+                            נא להזין מספר טלפון תקין
+                        </div>
+                        <div *ngIf=" !CheckIfEmptyField(this.project.mentor3.phone) && (phonementor3.errors.minlength)">
+                            המספר קצר מדי
+                        </div>
+                        <div *ngIf=" !CheckIfEmptyField(this.project.mentor3.phone)  && (phonementor3.errors.maxlength)">
+                            המספר ארוך מדי
+                        </div>
+                    </div>
+                </div>
+                <div [formGroup]="projectform">
+                    <label>דואר אלקטרוני</label>
+                    <input type="email" [(ngModel)]="this.project.mentor3.email" formControlName="mailmentor3" />
+                    <div *ngIf="mailmentor3.invalid && (mailmentor3.dirty)">
+                        <div *ngIf="mailmentor3.errors.email && !CheckIfEmptyField(this.project.mentor3.email)" class="alert alert-danger">
+                            נא להזין כתובת דואר אלקטרוני תקינה
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button class="btn btn-primary btn-default" id="save" [disabled]="this.file_project_selected"
+                (click)="addProject()">שלח פרוייקט לתחרות</button>
+        </div>
+        <div class="col-sm-6 form-group hideError" [hidden]="!projectError">
+            יש למלא את כל שדות החובה כנדרש
+        </div>
+        <div class="col-sm-6 form-group hideError" [hidden]="this.selectedFiles == null && this.selected_recommendation_files == null">
+            שים לב ! ישנו קובץ הממתין להעלאה
+        </div>
+        <br>
+        <br>
     </form>
 </div>
 
