@@ -20,6 +20,8 @@ export class UserHomePageComponent implements OnInit {
   missing_details =[];
   missing_file = [];
   missing_recommendation = [];
+  msg_counter=0;
+  date: Date;
 
   constructor(public db: DatabaseService, public auth: AuthService, public router: Router, public cookieService: CookieService) { }
 
@@ -79,6 +81,19 @@ export class UserHomePageComponent implements OnInit {
             this.missing_recommendation[r++]= 'הועלה קובץ המלצה'
             //recommendation_file
         }
+      }
+
+      this.date = new Date();
+    this.date.setDate(this.date.getDate()-3);
+
+      for(var i=this.db.loggedInUser.messages.length-1;
+      i>=0; i--){
+        var str_date = this.db.loggedInUser.messages[i].date.toString();
+        var tmp_str = str_date.split("/");
+        var tmp_date: Date = new Date(parseInt(tmp_str[2]), parseInt(tmp_str[1]), parseInt(tmp_str[0]),0,0,0,0);
+
+        if(tmp_date>=this.date)
+          this.msg_counter++;
       }
     })
   }
