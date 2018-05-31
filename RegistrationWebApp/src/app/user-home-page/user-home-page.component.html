@@ -32,8 +32,8 @@
             <div class="row" id="userstatus">
                 <legend>עבודות של התלמידים שלי</legend>
                 <div class="notice notice-success">
-                    <div *ngFor="let i of user_projects">
-                        <li>{{i}} - {{missing_details}}</li>
+                    <div *ngFor="let i of user_projects; let k = index">
+                        <li>{{i}} - {{missing_details[k]}}</li>
                     </div>
                 </div>
             </div>

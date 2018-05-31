@@ -17,7 +17,7 @@ export class UserHomePageComponent implements OnInit {
   emptyFields = [];
   workExists = 'עליך לצרף עבודה למערכת'
   user_projects = [];
-  missing_details = 'חסרים פרטים';
+  missing_details =[];
 
   constructor(public db: DatabaseService, public auth: AuthService, public router: Router, public cookieService: CookieService) { }
 
@@ -50,12 +50,21 @@ export class UserHomePageComponent implements OnInit {
           this.emptyFields.push('היקף')
         if (this.userProject.target == undefined || this.userProject.target == '')
           this.emptyFields.push('שאלת מחקר/מטרת הפרויקט')
+        if (this.userProject.mentor1.name == undefined || this.userProject.mentor1.name == '')
+          this.emptyFields.push('שם מנחה')
+        if (this.userProject.mentor1.phone == undefined || this.userProject.mentor1.phone == '')
+          this.emptyFields.push('טלפון מנחה')
+        if (this.userProject.mentor1.email == undefined || this.userProject.mentor1.email == '')
+          this.emptyFields.push('מייל מנחה')
       }
-      var j=0;
+      var j=0, k=0;
       for (var i = 0; i < this.db.projectsList.length; i++) {
         if (this.db.projectsList[i].school_contact_mail == this.db.loggedInUser.email) {
           this.user_projects[j++] = this.db.projectsList[i].project_name;
-          //this.user_project_objects.push(this.db.projectsList[i]);
+          if (this.db.projectsList[i].submission == false)
+            this.missing_details[k++]= 'חסרים פרטים'
+          else if (this.db.projectsList[i].submission == true)
+            this.missing_details[k++]= 'אין חוסרים בפרויקט זה'
         }
       }
     })

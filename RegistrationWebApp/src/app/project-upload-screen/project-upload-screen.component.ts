@@ -250,10 +250,6 @@ export class ProjectUploadScreenComponent implements OnInit {
         //status project is required.
         Validators.required
       ]),
-      'type': new FormControl(this.projectField, [
-        //type project is required.
-        Validators.required
-      ]),
     });
   }
 
@@ -272,8 +268,6 @@ export class ProjectUploadScreenComponent implements OnInit {
   get mailmentor3() { return this.projectform.get('mailmentor3'); }
   get phonementor3() { return this.projectform.get('phonementor3'); }
   get status() {return this.projectform.get('status');  }
-  get type() {return this.projectform.get('type');  }
-
   //check if a field is empty
   public CheckIfEmptyField(field: string) {
     if (field == undefined || field == '')
