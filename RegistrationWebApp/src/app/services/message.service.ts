@@ -15,7 +15,6 @@ export class MessageService {
 
     this.db.getProjectMetaData().subscribe(res => {
       this.db.projectsList=res;
-     // console.log(this.db.projectsList);
     });
    }
 
@@ -34,9 +33,7 @@ export class MessageService {
     getCurrentTable(){
       this.currentTable.forEach(element => {
         if(element.flg==true){
-         // console.log(typeof(element.name));
             this.routName = element.name
-            //return element.name;
       }
     });
     }

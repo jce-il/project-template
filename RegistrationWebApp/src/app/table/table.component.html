@@ -1,3 +1,41 @@
-<p>
-  table works!
-</p>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<meta charset="utf-8" />
+<div class="container" dir="rtl">
+    <h2 class="well">{{title}}</h2>
+    <div class="widget-content"></div>
+</div>
+
+<div class="window">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">הוספת המלצה</h4>
+            </div>
+                <div class="modal-body">
+                            <div class="btn btn-default image-preview-input">
+                            <input type="file" (change)="selectRecommendationFile($event)" required name="fileupload" />
+                            <span class="glyphicon glyphicon-folder-open"></span>
+                            <span class="image-preview-input-title">בחר קובץ</span>
+                            </div>
+                            <div class="file" *ngIf="this.selected_recommendation_files != null">{{this.selected_recommendation_files.item(0).name}}</div>
+                            <div>
+                            <button type="button" class="btn btn-labeled btn-primary" [disabled]="!selected_recommendation_files" (click)="recommendationUpload()">
+                                <span class="btn-label">
+                                <i class="glyphicon glyphicon-upload"></i>
+                                </span>שלח</button>
+                            </div>
+                            <button type="button" class="btn btn-labeled" id="close" >בטל</button>
+                            <div *ngIf="current_recommendation_FileUpload" class="progress">
+                            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 15%" attr.aria-valuenow="{{progress.percentage}}"
+                                aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+                                {{progress.percentage}}%</div></div>
+                </div>
+        </div>
+    </div>
+
+
+<div class="footer">
+    <app-footer></app-footer>
+</div>

@@ -29,7 +29,7 @@ import { MessageService } from '../app/services/message.service';
 import { TableComponent } from './table/table.component'
 import { CheckersPageComponent } from './checkers-page/checkers-page.component';
 import { ManagerHomePageComponent } from './manager-home-page/manager-home-page.component'
-
+import { SanitizeHtmlPipe } from '../app/sanitizing';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,8 @@ import { ManagerHomePageComponent } from './manager-home-page/manager-home-page.
     ProjectsUpdatePageComponent,
     TableComponent,
     CheckersPageComponent,
-    ManagerHomePageComponent
+    ManagerHomePageComponent,
+    SanitizeHtmlPipe
   ],
   imports: [
     BrowserModule,
