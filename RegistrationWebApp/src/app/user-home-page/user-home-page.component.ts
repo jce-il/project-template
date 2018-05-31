@@ -34,6 +34,8 @@ export class UserHomePageComponent implements OnInit {
       }
       if (this.userProject != undefined) {
         this.workExists = 'קיימת עבודה במערכת'
+        if (this.userProject.project_file == undefined)
+        this.emptyFields.push('עדיין לא הועלה קובץ פרויקט')
         if (this.userProject.location == undefined || this.userProject.location == '')
           this.emptyFields.push('מוסד אקדמי בו התבצעה העבודה')
         if (this.userProject.advantages == undefined || this.userProject.advantages == '')
