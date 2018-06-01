@@ -30,6 +30,7 @@ import { TableComponent } from './table/table.component'
 import { CheckersPageComponent } from './checkers-page/checkers-page.component';
 import { ManagerHomePageComponent } from './manager-home-page/manager-home-page.component'
 import { SanitizeHtmlPipe } from '../app/sanitizing';
+import { ExcelService } from './services/excel.service';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { SanitizeHtmlPipe } from '../app/sanitizing';
     AuthGuardService,
     UploadFileService,
     CookieService,
-    MessageService
+    MessageService,
+    ExcelService
   ],
   bootstrap: [AppComponent]
 })
