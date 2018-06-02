@@ -28,7 +28,7 @@ We're trying to use the best tools and practices in order to produce a quality e
 | Documnetation | [Wiki](https://github.com/Itay-Hefetz/ScientistsCompetition/wiki) |
 
 ## Please visit our [live application](https://scientistscompetitionv1.firebaseapp.com/loginScreen)
-- Our application after the first iteration 
+- Our application after third iteration 
 
 
 ## Disclaimer
