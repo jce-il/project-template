@@ -11,7 +11,7 @@
   <div class="row">
     <div class="col-sm-4 form-group">
       <legend>בחר עבודה</legend>
-      <select class="user-type" id="selectedWork" [(ngModel)]="selectedWork" (ngModelChange)="onChangeObj($event)" name="selectedWork">
+      <select class="user-type" id="selectedWork" [(ngModel)]="selectedWork" (ngModelChange)="onChangeObj()" name="selectedWork">
         <option *ngFor="let type of user_projects" [value]="type">{{type}}</option>
       </select>
     </div>
