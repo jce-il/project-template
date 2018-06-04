@@ -48,6 +48,7 @@ export class  TableComponent implements OnInit {
         {
           case "מורה":
           {
+            this.title = "פרויקטים של תלמידים שלי";
             this.handleTeacher();
             $(document).ready(function(){
               $(".load button").click(function() {
@@ -61,7 +62,8 @@ export class  TableComponent implements OnInit {
           }
           case "בודק":
           {
-            this.handleTeacher();
+            this.title="פרוייקטים לבדיקה";
+            //this.handleChecker();
             break;
           }
         }
@@ -70,7 +72,6 @@ export class  TableComponent implements OnInit {
   }
 
   handleTeacher(){
-    this.title = "פרויקטים של תלמידים שלי";
     this.obj = "<table class='table table-striped table-bordered'><thead><tr><th>שם פרוייקט</th><th>סטאטוס</th><th>הוספת המלצה</th><th>פריט עבודה נוכחי</th></tr></thead><tbody>";
     for (var i = 0; i < this.db.projectsList.length; i++) {
       if (this.db.projectsList[i].school_contact_mail == this.db.loggedInUser.email) {
@@ -116,4 +117,16 @@ recommendationUpload() {
     });
   })
 }
+
+  handleChecker(){
+    
+  }
+
+
+
+
+
+
+
+
 }

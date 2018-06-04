@@ -61,7 +61,10 @@ export class StepsBarComponent implements OnInit {
   }
   // on My Project info button click
   public MyProject() {
-    this.router.navigate(['projectUpload']);
+    if(this.db.loggedInUser.type=='בודק')
+          this.router.navigate(['tablePage']);
+    else
+          this.router.navigate(['projectUpload']);
   }
 
   public MyProjectView() {
