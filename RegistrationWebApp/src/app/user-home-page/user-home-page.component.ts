@@ -4,6 +4,8 @@ import { AuthService } from '../services/auth.service';
 import { RouterLink, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Project } from '../project';
+import * as $ from 'jquery';
+import { HtmlParser } from '@angular/compiler';
 
 ``
 @Component({
@@ -22,10 +24,12 @@ export class UserHomePageComponent implements OnInit {
   missing_recommendation = [];
   msg_counter=0;
   date: Date;
+  
 
   constructor(public db: DatabaseService, public auth: AuthService, public router: Router, public cookieService: CookieService) { }
 
   ngOnInit() {
+    this.days();
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
     this.db.getLoggedInUser(); // in order to print logged in user info - on init get it
@@ -104,7 +108,49 @@ export class UserHomePageComponent implements OnInit {
     alert("Data updated!");
   }
 
+public days(){
+  var countDownDate = new Date('Jul 12, 2018 00:00:00').getTime();
+  var x = setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor ((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);  
 
+  $("#jours").html(days);
+  $("#heures").html(hours);
+  $("#minutes").html(minutes);
+  $("#secondes").html(seconds);
+  
+  // On stylise les éléments
+  $("#jours").css("background-color",'rgba(126,85,39,0.2)');
+  $("#heures").css("background-color",'rgba(126,85,39,0.2)');
+  $("#minutes").css("background-color",'rgba(126,85,39,0.2)');
+  $("#secondes").css("background-color",'rgba(126,85,39,0.2)');
+  
+ $("jours").css("color", 'rgb(126,85,39)');
+ $("heures").css("color",'rgb(126,85,39)');
+ $("minutes").css("color",'rgb(126,85,39)');
+  $("secondes").css("color",'rgb(126,85,39)');
+  
+  $("jours").css("font-weight",'bold');
+  $("heures").css("font-weight",'bold');
+  $("minutes").css("font-weight",'bold');
+  $("secondes").css("font-weight",'bold');
+
+  if (distance < 0) {
+    clearInterval(x);
+    $("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+
+
+var date = new Date();
+var annee = date.getFullYear();
+
+$('annee').innerHTML = annee;
+}
 
 
   //alo
