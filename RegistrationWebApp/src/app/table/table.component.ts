@@ -11,7 +11,6 @@ import * as $ from 'jquery';
 import { ActivatedRoute,Router } from '@angular/router';
 import { FormsModule, FormGroup, FormControl, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
-
 @Pipe({
 	name: 'safe'
 })
@@ -20,7 +19,6 @@ import { FormsModule, FormGroup, FormControl, FormBuilder, ReactiveFormsModule }
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
 })
-
 
 export class  TableComponent implements OnInit {
 
@@ -33,7 +31,7 @@ export class  TableComponent implements OnInit {
   project: Project;
   progress: { percentage: number } = { percentage: 0 };
   inputCheckerList:string;
-
+  flg: boolean = false;
 
   constructor(public db: DatabaseService,private cookieService: CookieService,
     public uploadService: UploadFileService,private elementRef: ElementRef,private renderer: Renderer,private route: ActivatedRoute,
@@ -72,7 +70,7 @@ export class  TableComponent implements OnInit {
           case "מנהל":
           {
               this.title="פרוייקטים בתחרות";
-              this.db.getCheckers();
+              if(!this.flg){this.db.getCheckers()};
               this.handleMaster();
             $("button").click(res => {
               var TableLine =res.currentTarget.name;
@@ -85,11 +83,11 @@ export class  TableComponent implements OnInit {
                 this.db.projectsList[TableLine].checkerMail = str;
                 this.db.project = this.db.projectsList[TableLine];
                 this.db.updateProjectListing(this.db.projectsList[TableLine].project_name);
+                this.flg = true;
               }
             });
             break;
           }
-
         }
     })
   })
