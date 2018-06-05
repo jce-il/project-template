@@ -19,7 +19,14 @@
   <div class="row" *ngIf="!isStudent">
     <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
       <div *ngIf="this.selectedWork != 'מתוך רשימה'">
-        <legend>העלאת המלצה</legend>
+          <div *ngIf = "this.db.loggedInUser.type == 'בודק'">
+              <legend>בדיקה
+                <h5 class="req">יש להזין בשדה זה את התרשמותך מפרויקט זה</h5>
+              </legend>
+              <label class="reg">חוות הדעת שלי:</label>
+              <textarea class="data" rows="6" cols="80" id="check" [(ngModel)]="project.check" name="check"></textarea>
+            </div>
+        <legend>המלצה</legend>
         <div class="input-group image-preview">
           <div class="file" *ngIf="this.project.recommendation_file != undefined">
             <div>במערכת טעון המסמך:
@@ -27,18 +34,18 @@
               <a href={{this.project.recommendation_file.url}}>{{this.project.recommendation_file.name}}</a>
             </div>
           </div>
-          <div class="btn btn-default image-preview-input">
+          <div *ngIf="this.db.loggedInUser.type == 'מורה'" class="btn btn-default image-preview-input">
             <input type="file" (change)="selectRecommendationFile($event)" required name="fileupload" />
             <span class="glyphicon glyphicon-folder-open"></span>
             <span class="image-preview-input-title">בחר קובץ</span>
           </div>
           <div class="file" *ngIf="this.selected_recommendation_files != null">{{this.selected_recommendation_files.item(0).name}}</div>
           <div>
-            <button type="button" class="btn btn-labeled btn-primary" [disabled]="!selected_recommendation_files" (click)="recommendationUpload()">
+            <button *ngIf="this.db.loggedInUser.type == 'מורה'" type="button" class="btn btn-labeled btn-primary" [disabled]="!selected_recommendation_files" (click)="recommendationUpload()">
               <span class="btn-label">
                 <i class="glyphicon glyphicon-upload"></i>
               </span>העלה המלצה</button>
-            <button type="button" class="btn btn-labeled btn-primary" [hidden]="this.selected_recommendation_files == null" (click)="cancelSelectedRecommendation()">
+            <button *ngIf="this.db.loggedInUser.type == 'מורה'" type="button" class="btn btn-labeled btn-primary" [hidden]="this.selected_recommendation_files == null" (click)="cancelSelectedRecommendation()">
               <span class="btn-label">
               </span>בטל בחירה</button>
           </div>
