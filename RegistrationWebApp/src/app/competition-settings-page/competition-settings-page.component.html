@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <legend>
+      פתח תחרות חדשה
+    </legend>
+    <div class="col-sm-20">
+      שם התחרות
+      <input type="text" [(ngModel)]="comp_settings.name" name="name" />
+    </div>
+  </div>
+
+  <div class="row">
+    <legend>
+      תאריך התחלה
+    </legend>
+  </div>
+  <div class="row">
+    <div class="col-sm-20">
+      יום
+      <input type="text" [(ngModel)]="comp_settings.start_day" name="start_day" size="4" />
+    </div>
+    <div class="col-sm-20">
+      חודש
+      <input type="text" [(ngModel)]="comp_settings.start_month" name="start_month" size="4" />
+    </div>
+    <div class="col-sm-20">
+      שנה
+      <input type="text" [(ngModel)]="comp_settings.start_year" name="start_year" size="4" />
+    </div>
+  </div>
+  <div class="row">
+    <legend>
+      תאריך סיום
+    </legend>
+  </div>
+  <div class="row">
+    <div class="col-sm-20">
+      יום
+      <input type="text" [(ngModel)]="comp_settings.end_day" name="end_day" size="4" />
+    </div>
+    <div class="col-sm-20">
+      חודש
+      <input type="text" [(ngModel)]="comp_settings.end_month" name="end_month" size="4" />
+    </div>
+    <div class="col-sm-20">
+      שנה
+      <input type="text" [(ngModel)]="comp_settings.end_year" name="end_year" size="4" />
+    </div>
+  </div>
+  <div class="row">
+    <button (click)="setSettings()">פתח תחרות חדשה</button>
+  </div>
