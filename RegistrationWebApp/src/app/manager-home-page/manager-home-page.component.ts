@@ -50,6 +50,7 @@ export class ManagerHomePageComponent implements OnInit {
   {
     this.cookieService.set('managerLoggedIn', 'false');
     this.cookieService.set('User login status', 'false');
+    this.cookieService.set('mode', 'no-manager');
     this.db.loggedIn = 'false';
     this.auth.LogOut();
   }
