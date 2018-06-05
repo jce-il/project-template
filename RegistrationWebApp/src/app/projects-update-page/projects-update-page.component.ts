@@ -40,9 +40,11 @@ export class ProjectsUpdatePageComponent implements OnInit {
   researchStatus;
   modelStatus;
   routerId;
+  send: string
 
 
   constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService,private route: ActivatedRoute) {
+    this.send = "שלח פרוייקט לתחרות";
     this.fields = [
       "מתמטיקה", "מדעי החיים", "כימיה",
       "הנדסה/טכנולוגיה", "היסטוריה",
@@ -88,6 +90,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
           this.title = "פרויקטים של תלמידים שלי"
         else if (this.db.loggedInUser.type=="בודק")
         this.title = "פרוייקטים לבדיקה"
+        this.send = "שלח בדיקה"
       }
       this.db.getProjectMetaData().subscribe((val) => {
         this.db.projectsList = val;

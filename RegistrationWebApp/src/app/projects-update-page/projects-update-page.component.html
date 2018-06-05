@@ -195,18 +195,18 @@
                 <a href={{this.project.project_file.url}}>{{this.project.project_file.name}}</a>
               </div>
             </div>
-            <div class="btn btn-default image-preview-input">
+            <div *ngIf="this.db.loggedInUser.type != 'בודק'" class="btn btn-default image-preview-input">
               <input type="file" [readonly]="this.db.loggedInUser.type == 'בודק'" (change)="selectFile($event)" required name="fileupload" />
               <span class="glyphicon glyphicon-folder-open"></span>
               <span class="image-preview-input-title">בחר קובץ אחר</span>
             </div>
             <div class="file" *ngIf="this.selectedFiles != null">{{this.selectedFiles.item(0).name}}</div>
             <div>
-              <button type="button" class="btn btn-labeled btn-primary" [disabled]="!selectedFiles" (click)="upload()">
+              <button *ngIf="this.db.loggedInUser.type != 'בודק'" type="button" class="btn btn-labeled btn-primary" [disabled]="!selectedFiles" (click)="upload()">
                 <span class="btn-label">
                   <i class="glyphicon glyphicon-upload"></i>
                 </span>העלה קובץ חדש</button>
-              <button type="button" class="btn btn-labeled btn-primary" [hidden]="this.selectedFiles == null" (click)="cancelSelectFile()">
+              <button *ngIf="this.db.loggedInUser.type != 'בודק'" type="button" class="btn btn-labeled btn-primary" [hidden]="this.selectedFiles == null" (click)="cancelSelectFile()">
                 <span class="btn-label">
                 </span>בטל בחירה</button>
             </div>
@@ -336,7 +336,7 @@
     </div>
       <div class="row">
         <button class="btn btn-primary btn-default" id="save" [disabled]="this.file_project_selected || this.recommendation_selected"
-          (click)="addProject()">שלח פרוייקט לתחרות</button>
+          (click)="addProject()">{{this.send}}</button>
       </div>
       <div class="col-sm-6 form-group hideError" [hidden]="!projectError">
         יש למלא את כל שדות החובה כנדרש
