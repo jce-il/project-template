@@ -39,6 +39,7 @@ export class StepsBarComponent implements OnInit {
   // on log out button click
   public logOut() {
     this.cookieService.set('User login status', 'false');
+    this.cookieService.set('mode', 'alo')
     this.auth.LogOut();
     this.db.loggedIn = 'false';
   }

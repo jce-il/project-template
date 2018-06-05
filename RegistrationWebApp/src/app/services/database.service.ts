@@ -56,7 +56,6 @@ export class DatabaseService {
   //Update a UsersInfo listing by a given email. the object that is passed to the update function has to be already with the wanted changes!!! (It writes a new object)
   updateListing(email: string) {
     for (var i = 0; i < this.usersList.length; i++) {
-      console.log(this.usersList[i].id)
       if (this.usersList[i].email == email) {
 
         this.listingDoc = this.dataCollections.doc(`${this.usersList[i].id}`); //takes the listing that will be updated by the doc.id (listing's id)
