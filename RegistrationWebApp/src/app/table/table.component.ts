@@ -66,6 +66,13 @@ export class  TableComponent implements OnInit {
             //this.handleChecker();
             break;
           }
+          case "מנהל":
+          {
+            this.title="פרוייקטים בתחרות";
+            this.handleMaster();
+            break;
+          }
+
         }
     })
   })
@@ -119,6 +126,10 @@ recommendationUpload() {
 }
 
   handleChecker(){
+    
+  }
+
+  handleMaster(){
     
   }
 
