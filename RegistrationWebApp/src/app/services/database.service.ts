@@ -19,6 +19,7 @@ export class DatabaseService {
   listingDoc: AngularFirestoreDocument<User>; //holds FB listing for update operation
   observableUsers: Observable<User[]>; //A temp variable that returns metadata. used by usersList
   usersList = []; // holds a list with listing id's and users info of the UsersInfo table
+  checkersList = [];// holds a list with all the current checkers.
 
   /* project*/
   public projectCollections; // holds a connection the firebase ProjectsInfo table
@@ -170,4 +171,13 @@ export class DatabaseService {
     }
     return 'not found';
   }
+
+public getCheckers(){
+  for(var i=0;i<this.usersList.length;i++){
+    if(this.usersList[i].type== "בודק")
+          this.checkersList.push(this.usersList[i]);
+  }
+}
+
+
 }
