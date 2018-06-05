@@ -70,3 +70,113 @@ legend{
 i strong{
     margin-right: 10px; 
 }
+
+html {
+    font-family: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+    font-size: 62.5%; /* 1rem vaut 10px */
+}
+
+body {
+    font-size: 1.4rem; /* 1.4 rem vaut 14px */
+    height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  color: rgb(245,245,245);
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+}
+
+.counterDown {
+  margin: auto;
+}
+
+.counterDown h1 {
+  font-size: 4rem;
+}
+
+hr {
+  background-color: rgba(255,255,255, 0.8);
+}
+
+#demo {
+  display: flex;
+  flex-direction: row;
+  font-size: 1.6rem;
+}
+
+#jours {
+  font-family: "Roboto Mono", sans-serif;
+  font-size: 4rem;
+  height: 10rem;
+  margin-right: 1rem;
+  width: 8rem;
+}
+
+#heures {
+  font-family: "Roboto Mono", sans-serif;
+  font-size: 4rem;
+  height: 10rem;
+  margin-right: 1rem;
+  width: 8rem;
+}
+
+#minutes {
+  font-family: "Roboto Mono", sans-serif;
+  font-size: 4rem;
+  height: 10rem;
+  margin-right: 1rem;
+  width: 8rem;
+}
+
+#secondes {
+  font-family: "Roboto Mono", sans-serif;
+  font-size: 4rem;
+  height: 10rem;
+  margin: auto;
+  width: 8rem;
+}
+
+#infos {
+  color: rgba(126,85,39,1);
+  display: flex;
+  flex-direction: row;
+  font-size: 1.6rem;
+}
+
+.infos-jours {
+  font-family: "Roboto Mono", sans-serif;
+  margin-right: 1rem;
+  margin-top: -3rem;
+  width: 8rem;
+}
+
+.infos-heures {
+  font-family: "Roboto Mono", sans-serif;
+  margin-right: 1rem;
+  margin-top: -3rem;
+  width: 8rem;
+}
+
+.infos-minutes {
+  font-family: "Roboto Mono", sans-serif;
+  margin-right: 1rem;
+  margin-top: -3rem;
+  width: 8rem;
+}
+
+.infos-secondes {
+  font-family: "Roboto Mono", sans-serif;
+  margin: auto;
+  margin-top: -3rem;
+  width: 8rem;
+}

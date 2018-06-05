@@ -24,7 +24,7 @@ import { ActivatedRoute,Router } from '@angular/router';
 export class  TableComponent implements OnInit {
 
   projectNames: string[] = new Array();
-  obj:string ;
+  obj:string = undefined;
   Recommendation: string;
   title: string;
   selected_recommendation_files: FileList;
