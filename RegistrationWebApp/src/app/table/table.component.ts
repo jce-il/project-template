@@ -199,7 +199,7 @@ createCheckersInputList(){
     this.obj= "<table class='table table-striped table-bordered'><thead><tr><th>שם משתמש</th><th>סוג</th><th>תעודת זהות</th><th>כתובת דואל אלקטרוני</th>"+
     "<th>סיסמא</th><th>טלפון</th></tr></thead><tbody>";
     for(var i=0;i<this.db.usersList.length;i++){
-      var str = this.router.parseUrl('/registrationForm;id='+this.db.usersList[i].email+'');
+      var str = this.router.parseUrl('/registrationForm;email='+this.db.usersList[i].email+'');
       this.obj+="<tr><td><a href="+str+">"+this.db.usersList[i].firstName+" "+this.db.usersList[i].lastName+"</a></td>"+
                 "<td>"+this.db.usersList[i].type+"</td>"+
                 "<td>"+this.db.usersList[i].userid+"</td>"+

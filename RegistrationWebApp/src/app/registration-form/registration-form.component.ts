@@ -3,7 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from '../services/database.service';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { RouterLink, Router } from '@angular/router';
+import { RouterLink, Router,ActivatedRoute, Params } from '@angular/router';
 import { FormsModule, FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { Message } from '../message';
@@ -24,16 +24,24 @@ export class RegistrationFormComponent {
   userPasswordValidation: string; // will contain the password verification
   title: string;
   date;
+  routerMail;
   manager_mode;
   msg: Message = new Message;
+
+  constructor(public db: DatabaseService, public auth: AuthService, public router: Router, private cookieService: CookieService, private route: ActivatedRoute) { }
+
   ngOnInit() {
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
     this.manager_mode = this.cookieService.get('mode');
+    this.route.params.subscribe((params: Params) => {
+      this.routerMail = params['email'];
+    });
     this.db.getLoggedInUser().then(() => {
       this.db.setMetaData();
       this.userTypes = ['תלמיד', 'מורה'];
       this.managerTypes = ['תלמיד', 'מורה', 'בודק', 'מנהל'];
+      this.user = new User(false, this.userTypes[0]); //deafult type is student
 
       if (this.db.loggedIn != 'true' || this.manager_mode=='new'){
         this.user = new User(false, this.userTypes[0]); //deafult type is student
@@ -42,7 +50,12 @@ export class RegistrationFormComponent {
         this.msg.content = "שימו לב להודעות המופיעות באיזור זה."
         this.user.messages[0] = this.msg; //initilaize!!! ignore
       }
-        
+
+      else if (this.manager_mode=='updateUser'){
+        this.db.getUser(this.routerMail,'','').then(() =>{
+          this.user = this.db.selectedUser[0];
+        })
+      }
       else
         this.user = this.db.loggedInUser;
 
@@ -53,16 +66,15 @@ export class RegistrationFormComponent {
         this.title = "טופס הרשמה לתחרות מדענים צעירים " + this.date.getFullYear();
       else if  (this.manager_mode=='new')
           this.title = "יצירת משתמש חדש";
-
+      else if (this.manager_mode=='updateUser')
+        this.title = 'עדכון פרטי משתמש'
       else
         this.title = "טופס עדכון פרטים";
 
-      this.validateForm()
+        this.validateForm()
     })
     //delay in order to wait for the getLoggedInUser function to recive the data
   }
-  constructor(public db: DatabaseService, public auth: AuthService, public router: Router, private cookieService: CookieService) { }
-
 
   // on register user button click adds new user to Database according to the data that was collected from the registration form
   public registerUser() {
