@@ -32,7 +32,6 @@ export class  TableComponent implements OnInit {
   current_recommendation_FileUpload: FileUpload;
   project: Project;
   progress: { percentage: number } = { percentage: 0 };
-  checkersList = [];
   inputCheckerList:string;
 
 
@@ -41,7 +40,7 @@ export class  TableComponent implements OnInit {
   private router: Router) {}
 
   ngOnInit() {
-    $(".window").hide();
+  $(".window").hide();
   this.db.loggedInUserUID = this.cookieService.get('User uid');
   this.db.loggedIn = this.cookieService.get('User login status');
   this.db.setMetaData();
@@ -72,9 +71,22 @@ export class  TableComponent implements OnInit {
           }
           case "מנהל":
           {
-            this.title="פרוייקטים בתחרות";
-            this.db.getCheckers();
-            this.handleMaster();
+              this.title="פרוייקטים בתחרות";
+              this.db.getCheckers();
+              this.handleMaster();
+            $("button").click(res => {
+              var TableLine =res.currentTarget.name;
+              if($("input[id="+TableLine+"]").val()==""){
+                alert("errorrr");
+              }
+              else{
+                var selected = $("input[id="+TableLine+"]").val();
+                var str = selected.slice(selected.indexOf("-")+1,selected.length);
+                this.db.projectsList[TableLine].checkerMail = str;
+                this.db.project = this.db.projectsList[TableLine];
+                this.db.updateProjectListing(this.db.projectsList[TableLine].project_name);
+              }
+            });
             break;
           }
 
@@ -149,19 +161,25 @@ recommendationUpload() {
       if(this.db.projectsList[i].project_file==null){
         this.obj+="<td>לא קיים פריט עבודה במערכת</td>"
       }
-      else{this.obj+="<td><a href="+this.db.projectsList[i].project_file.url+">"+this.db.projectsList[i].recommendation_file.name+"</a></td>"}            
-      this.obj+="<td id="+i+">"+this.inputCheckerList+"</td></tr>";
+      else{this.obj+="<td><a href="+this.db.projectsList[i].project_file.url+">"+this.db.projectsList[i].project_file.name+"</a></td>"}
+      if(this.db.projectsList[i].checkerMail != undefined){
+        this.obj+="<td><form><input list='chekers' id="+i+"></form><datalist id='chekers'>"+this.inputCheckerList+"<div>הבודק הנוכחי הינו:    "+this.db.projectsList[i].checkerMail+"</div></td>";
+        this.obj+="<td><button type='button' name="+i+" class='btn btn-labeled btn-primary'>שייך</button></td></tr>"
+      }
+      else{
+        this.obj+="<td><form><input list='chekers' id="+i+"></form><datalist id='chekers'>"+this.inputCheckerList+"</td>";
+        this.obj+="<td><button type='button' name="+i+" class='btn btn-labeled btn-primary'>שייך</button></td></tr>"
+      }            
+
     }
     this.obj+="</tbody></table>" ; 
     $(".widget-content").html(this.obj);
-    $("td").click(function(){
-        console.log($("input").val());
-    })
+
   }
 
 
 createCheckersInputList(){
-  this.inputCheckerList="<form><input list='chekers'></form><datalist id='chekers'>";
+  this.inputCheckerList = "";
   for(var i=0;i<this.db.checkersList.length;i++){
     this.inputCheckerList+="<option>"+this.db.checkersList[i].firstName+" "+this.db.checkersList[i].lastName+"-"+this.db.checkersList[i].email+"</option>";
   }
@@ -170,14 +188,3 @@ createCheckersInputList(){
 
 
 }
-
-/*
-<div class="kaki">
-    <form>
-          <input name="color" id="color" list="colors"> 
-    </form>
-    <datalist id="colors" *ngFor="let c of checkersList"> 
-        <option>{{c.name}}</option> 
-     </datalist>
-</div>
-*/

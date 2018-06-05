@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Project } from '../project';
 import { ExportUser } from '../export-user';
 import { ExportProject } from '../export-project';
+import { CompetitionSettings } from '../competition-settings';
 
 @Injectable()
 export class DatabaseService {
@@ -31,15 +32,21 @@ export class DatabaseService {
   observableProjects: Observable<Project[]>; //A temp variable that returns metadata. used by projectsList
   projectsList = []; // holds a list with listing id's and projects info of the ProjectInfo table
 
+  public settingsCollection;
+  settingsDoc: AngularFirestoreDocument<CompetitionSettings>; //holds FB listing for update operation
+  observableSettings: Observable<CompetitionSettings[]>; //A temp variable that returns metadata. used by usersList
+  competition_settings_db = [];
+  competition_settings : CompetitionSettings;
 
   constructor(private afs: AngularFirestore) {
     //==========Connection to firebase table============//
     const settings = { timestampsInSnapshots: true };
     afs.app.firestore().settings(settings);
     this.dataCollections = afs.collection<any>('usersInfo');
-    this.loggedIn = 'false'; //represents if user is logged in. has to be STRING !!!
     this.projectCollections = afs.collection<any>('projectsInfo');
+    this.settingsCollection = afs.collection<any>('CompetitionSettings');
     //===================================================//
+    this.loggedIn = 'false'; //represents if user is logged in. has to be STRING !!!
     this.existsUsers = [false, false, false];
   }
 
@@ -51,6 +58,26 @@ export class DatabaseService {
   //adds all info that was provided through the project-upload form to project object and ads it to the firebase DB
   public addProjectToDB(project: Project) {
     this.projectCollections.add(JSON.parse(JSON.stringify(project)));
+  }
+
+  public addCompetitionSettingsToDB(settings: CompetitionSettings) {
+    this.settingsCollection.add(JSON.parse(JSON.stringify(settings)));
+  }
+
+  getSettingsMetaData() { //Returns the DB table meta data from firebase including all table fields id and users
+    this.observableSettings = this.settingsCollection.snapshotChanges().map(actions => {
+      return actions.map(a => {
+        const data = a.payload.doc.data() as CompetitionSettings;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    });
+    return this.observableSettings;
+  }
+
+  updateSettingsListing() {
+    this.settingsDoc = this.settingsCollection.doc(`${this.competition_settings_db[0].id}`); //takes the listing that will be updated by the doc.id (listing's id)
+    this.settingsDoc.update(JSON.parse(JSON.stringify(this.competition_settings)));
   }
 
   //Update a UsersInfo listing by a given email. the object that is passed to the update function has to be already with the wanted changes!!! (It writes a new object)
@@ -182,60 +209,60 @@ export class DatabaseService {
   }
 
   exportUsers() {
-    for(var i = 0 ; i < this.usersList.length ; i++)
-      {
-        this.user_exp[i] = new ExportUser();
-        this.user_exp[i].Another_Phone_Number = this.usersList[i].anotherPhone;
-        this.user_exp[i].Appartment = this.usersList[i].appartment;
-        this.user_exp[i].Birthday = this.usersList[i].birthday;
-        this.user_exp[i].City = this.usersList[i].city;
-        this.user_exp[i].Email = this.usersList[i].email;
-        this.user_exp[i].English_First_name = this.usersList[i].engFname;
-        this.user_exp[i].English_Last_Name = this.usersList[i].engLname;
-        this.user_exp[i].First_name = this.usersList[i].firstName;
-        this.user_exp[i].Gender = this.usersList[i].gender;
-        this.user_exp[i].Last_name = this.usersList[i].lastName;
-        this.user_exp[i].Phone_number = this.usersList[i].phone;
-        this.user_exp[i].School_city = this.usersList[i].schoolCity;
-        this.user_exp[i].School_name = this.usersList[i].schoolName;
-        this.user_exp[i].Street = this.usersList[i].street;
-        this.user_exp[i].User_id = this.usersList[i].userid;
-        this.user_exp[i].User_type = this.usersList[i].type;
-        this.user_exp[i].Password = this.usersList[i].password;
-      }
+    for (var i = 0; i < this.usersList.length; i++) {
+      this.user_exp[i] = new ExportUser();
+      this.user_exp[i].Another_Phone_Number = this.usersList[i].anotherPhone;
+      this.user_exp[i].Appartment = this.usersList[i].appartment;
+      this.user_exp[i].Birthday = this.usersList[i].birthday;
+      this.user_exp[i].City = this.usersList[i].city;
+      this.user_exp[i].Email = this.usersList[i].email;
+      this.user_exp[i].English_First_name = this.usersList[i].engFname;
+      this.user_exp[i].English_Last_Name = this.usersList[i].engLname;
+      this.user_exp[i].First_name = this.usersList[i].firstName;
+      this.user_exp[i].Gender = this.usersList[i].gender;
+      this.user_exp[i].Last_name = this.usersList[i].lastName;
+      this.user_exp[i].Phone_number = this.usersList[i].phone;
+      this.user_exp[i].School_city = this.usersList[i].schoolCity;
+      this.user_exp[i].School_name = this.usersList[i].schoolName;
+      this.user_exp[i].Street = this.usersList[i].street;
+      this.user_exp[i].User_id = this.usersList[i].userid;
+      this.user_exp[i].User_type = this.usersList[i].type;
+      this.user_exp[i].Password = this.usersList[i].password;
+    }
   }
 
-  exportProjects(){
-    for(var i = 0 ; i < this.projectsList.length ; i++)
-      {
-        this.proj_exp[i] = new ExportProject();
-        this.proj_exp[i].Advantages = this.projectsList[i].advantages;
-        this.proj_exp[i].Background = this.projectsList[i].background;
-        this.proj_exp[i].Checker_comments = this.projectsList[i].check;
-        this.proj_exp[i].Checkers_email = this.projectsList[i].checkerMail;
-        this.proj_exp[i].Description = this.projectsList[i].description;
-        this.proj_exp[i].Facility = this.projectsList[i].location;
-        this.proj_exp[i].Field = this.projectsList[i].project_field;
-        this.proj_exp[i].First_student_email = this.projectsList[i].user1mail;
-        this.proj_exp[i].Inovetion = this.projectsList[i].inovetion;
-        this.proj_exp[i].mentor1 = this.projectsList[i].mentor1;
-        this.proj_exp[i].mentor2 = this.projectsList[i].mentor2;
-        this.proj_exp[i].mentor3 = this.projectsList[i].mentor3;
-        this.proj_exp[i].Model_status = this.projectsList[i].modelStatus;
-        this.proj_exp[i].Products = this.projectsList[i].products;
-        this.proj_exp[i].Project_name = this.projectsList[i].project_name;
-        this.proj_exp[i].Research_status = this.projectsList[i].researchStatus;
-        this.proj_exp[i].Retrospective = this.projectsList[i].retrospective;
-        this.proj_exp[i].School_representative_email = this.projectsList[i].school_contact_mail;
-        this.proj_exp[i].Scope = this.projectsList[i].scope;
-        this.proj_exp[i].Second_student_email = this.projectsList[i].user2mail;
-        this.proj_exp[i].Status = this.projectsList[i].status;
-        this.proj_exp[i].target = this.projectsList[i].target;
-        this.proj_exp[i].Third_student_email = this.projectsList[i].user3mail;
-        this.proj_exp[i].Type = this.projectsList[i].type;
-      }
+  exportProjects() {
+    for (var i = 0; i < this.projectsList.length; i++) {
+      this.proj_exp[i] = new ExportProject();
+      this.proj_exp[i].Advantages = this.projectsList[i].advantages;
+      this.proj_exp[i].Background = this.projectsList[i].background;
+      this.proj_exp[i].Checker_comments = this.projectsList[i].check;
+      this.proj_exp[i].Checkers_email = this.projectsList[i].checkerMail;
+      this.proj_exp[i].Description = this.projectsList[i].description;
+      this.proj_exp[i].Facility = this.projectsList[i].location;
+      this.proj_exp[i].Field = this.projectsList[i].project_field;
+      this.proj_exp[i].First_student_email = this.projectsList[i].user1mail;
+      this.proj_exp[i].Inovetion = this.projectsList[i].inovetion;
+      this.proj_exp[i].mentor1 = this.projectsList[i].mentor1;
+      this.proj_exp[i].mentor2 = this.projectsList[i].mentor2;
+      this.proj_exp[i].mentor3 = this.projectsList[i].mentor3;
+      this.proj_exp[i].Model_status = this.projectsList[i].modelStatus;
+      this.proj_exp[i].Products = this.projectsList[i].products;
+      this.proj_exp[i].Project_name = this.projectsList[i].project_name;
+      this.proj_exp[i].Research_status = this.projectsList[i].researchStatus;
+      this.proj_exp[i].Retrospective = this.projectsList[i].retrospective;
+      this.proj_exp[i].School_representative_email = this.projectsList[i].school_contact_mail;
+      this.proj_exp[i].Scope = this.projectsList[i].scope;
+      this.proj_exp[i].Second_student_email = this.projectsList[i].user2mail;
+      this.proj_exp[i].Status = this.projectsList[i].status;
+      this.proj_exp[i].target = this.projectsList[i].target;
+      this.proj_exp[i].Third_student_email = this.projectsList[i].user3mail;
+      this.proj_exp[i].Type = this.projectsList[i].type;
+    }
 
   }
+
+
 
 }
 
