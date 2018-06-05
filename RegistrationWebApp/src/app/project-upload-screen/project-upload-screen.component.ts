@@ -30,6 +30,11 @@ export class ProjectUploadScreenComponent implements OnInit {
   researchStatus;
   modelStatus;
   file_project_selected = false;
+  competition_open = 'undefined';
+  curr_day;
+  curr_month;
+  curr_year;
+
   constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService) {
     this.fields = [
       "מתמטיקה", "מדעי החיים", "כימיה",
@@ -39,26 +44,30 @@ export class ProjectUploadScreenComponent implements OnInit {
       "עוד לא סיימתי את העבודה המעשית ואין לי תוצאות",
       "עוד לא סיימתי את העבודה המעשית אך יש לי תוצאות חלקיות",
       "סיימתי את כל העבודה המעשית ואני בכתיבת העבודה"];
-      this.researchStatus = [
-        "לא התחלתי ניסויים",
-        "התחלתי",
-        "יש תוצאות",
-        "יש אנליזה של תוצאות"
-      ];
-      this.modelStatus = [
-        "אין",
-        "לא התחלתי תכנון",
-        "יש תכנון",
-        "יש דגם ראשוני",
-        "יש דגם עובד",
-        "יש מוצר סופי"
-      ];
+    this.researchStatus = [
+      "לא התחלתי ניסויים",
+      "התחלתי",
+      "יש תוצאות",
+      "יש אנליזה של תוצאות"
+    ];
+    this.modelStatus = [
+      "אין",
+      "לא התחלתי תכנון",
+      "יש תכנון",
+      "יש דגם ראשוני",
+      "יש דגם עובד",
+      "יש מוצר סופי"
+    ];
     this.project = new Project();
+    this.project.date = new Date();
+    this.curr_day = this.project.date.getDay();
+    this.curr_month = this.project.date.getMonth() + 1;
+    this.curr_year = this.project.date.getFullYear();
     this.validateForm();
     this.projectError = false; // default- no registration form errors
-    this.project.mentor1= new Mentor();
-    this.project.mentor2= new Mentor();
-    this.project.mentor3= new Mentor();
+    this.project.mentor1 = new Mentor();
+    this.project.mentor2 = new Mentor();
+    this.project.mentor3 = new Mentor();
     this.project.isMentors = true;
   }
 
@@ -66,18 +75,34 @@ export class ProjectUploadScreenComponent implements OnInit {
     this.db.setMetaData();
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
-    this.db.getLoggedInUser().then(()=>{
+    this.db.getLoggedInUser().then(() => {
       this.project.user1mail = this.db.loggedInUser.email;
       this.project.submission = false;
     });
+
+    this.db.getSettingsMetaData().subscribe((res) => {
+      this.db.competition_settings_db = res;
+      var s_year = this.db.competition_settings_db[0].start_year;
+      var s_month = this.db.competition_settings_db[0].start_month;
+      var s_day = this.db.competition_settings_db[0].start_day;
+      var e_year = this.db.competition_settings_db[0].end_year;
+      var e_month = this.db.competition_settings_db[0].end_month;
+      var e_day = this.db.competition_settings_db[0].end_day;
+      console.log(this.curr_month)
+      if ((this.curr_year >= s_year && this.curr_year <= e_year) && (this.curr_month >= s_month && this.curr_month <= e_month) && (this.curr_day >= s_day && this.curr_day <= e_day))
+        this.competition_open = 'true';
+      else
+        this.competition_open = 'false';
+    })
   }
+
   //Holds the selected file from the form
   selectFile(event) {
     this.selectedFiles = event.target.files;
     this.file_project_selected = true;
   }
 
-  cancelSelectFile(){
+  cancelSelectFile() {
     this.selectedFiles = null;
     this.file_project_selected = false;
   }
@@ -88,7 +113,7 @@ export class ProjectUploadScreenComponent implements OnInit {
     const file = this.selectedFiles.item(0);
     this.selectedFiles = undefined;
     this.currentFileUpload = new FileUpload(file);
-    this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress).then(()=>{
+    this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress).then(() => {
       this.file_project_selected = false;
     });
   }
@@ -111,27 +136,27 @@ export class ProjectUploadScreenComponent implements OnInit {
       this.project.project_field = this.projectField;
     }
 
-    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor1.email)){
+    if (this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor1.email)) {
       this.projectform.get('mailmentor1').clearValidators();
       this.projectform.get('mailmentor1').updateValueAndValidity(); //clear error
     }
-    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor1.phone)){
+    if (this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor1.phone)) {
       this.projectform.get('phonementor1').clearValidators();
       this.projectform.get('phonementor1').updateValueAndValidity(); //clear error
     }
-    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor2.email)){
+    if (this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor2.email)) {
       this.projectform.get('mailmentor2').clearValidators();
       this.projectform.get('mailmentor2').updateValueAndValidity(); //clear error
     }
-    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor2.phone)){
+    if (this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor2.phone)) {
       this.projectform.get('phonementor2').clearValidators();
       this.projectform.get('phonementor2').updateValueAndValidity(); //clear error
     }
-    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor3.email)){
+    if (this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor3.email)) {
       this.projectform.get('mailmentor3').clearValidators();
       this.projectform.get('mailmentor3').updateValueAndValidity(); //clear error
     }
-    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor3.phone)){
+    if (this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor3.phone)) {
       this.projectform.get('phonementor3').clearValidators();
       this.projectform.get('phonementor3').updateValueAndValidity(); //clear error
     }
@@ -283,7 +308,7 @@ export class ProjectUploadScreenComponent implements OnInit {
   get phonementor2() { return this.projectform.get('phonementor2'); }
   get mailmentor3() { return this.projectform.get('mailmentor3'); }
   get phonementor3() { return this.projectform.get('phonementor3'); }
-  get status() {return this.projectform.get('status');  }
+  get status() { return this.projectform.get('status'); }
   //check if a field is empty
   public CheckIfEmptyField(field: string) {
     if (field == undefined || field == '')
@@ -294,13 +319,13 @@ export class ProjectUploadScreenComponent implements OnInit {
 
 
   // set submission attribute to the project.
-  public checkSubmission(){
+  public checkSubmission() {
     var data_fields = $(".data");
-    for ( var i = 0 ; i < 13 ; i++){
-      if (this.CheckIfEmptyField(data_fields[i].value)){
+    for (var i = 0; i < 13; i++) {
+      if (this.CheckIfEmptyField(data_fields[i].value)) {
         this.project.submission = false;
         return;
-        }
+      }
     }
     this.project.submission = true;
   }
