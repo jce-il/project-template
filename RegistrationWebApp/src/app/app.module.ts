@@ -31,6 +31,7 @@ import { CheckersPageComponent } from './checkers-page/checkers-page.component';
 import { ManagerHomePageComponent } from './manager-home-page/manager-home-page.component'
 import { SanitizeHtmlPipe } from '../app/sanitizing';
 import { ExcelService } from './services/excel.service';
+import { CompetitionSettingsPageComponent } from './competition-settings-page/competition-settings-page.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ExcelService } from './services/excel.service';
     TableComponent,
     CheckersPageComponent,
     ManagerHomePageComponent,
-    SanitizeHtmlPipe
+    SanitizeHtmlPipe,
+    CompetitionSettingsPageComponent
   ],
   imports: [
     BrowserModule,

@@ -17,21 +17,25 @@ import { Message } from '../message';
 })
 export class RegistrationFormComponent {
   userTypes; //array of user types
+  managerTypes;// array of advanced user types
   user: User; // User Object - Contains all fields. Will be uploaded as a Jason object to server
   userform: FormGroup; // tracks the value and validity state of a group of FormControl
   signUpError: boolean; //if true -> there is an error in the registration form
   userPasswordValidation: string; // will contain the password verification
   title: string;
   date;
+  manager_mode;
   msg: Message = new Message;
   ngOnInit() {
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
+    this.manager_mode = this.cookieService.get('mode');
     this.db.getLoggedInUser().then(() => {
       this.db.setMetaData();
-      this.userTypes = ['תלמיד', 'מורה', 'בודק', 'מנהל'];
+      this.userTypes = ['תלמיד', 'מורה'];
+      this.managerTypes = ['תלמיד', 'מורה', 'בודק', 'מנהל'];
 
-      if (this.db.loggedIn != 'true'){
+      if (this.db.loggedIn != 'true' || this.manager_mode=='new'){
         this.user = new User(false, this.userTypes[0]); //deafult type is student
         this.msg.subj="ברוכים הבאים לאתר ההרשמה";
         this.msg.date= new Date();
@@ -39,7 +43,6 @@ export class RegistrationFormComponent {
         this.user.messages[0] = this.msg; //initilaize!!! ignore
       }
         
-
       else
         this.user = this.db.loggedInUser;
 
@@ -48,6 +51,8 @@ export class RegistrationFormComponent {
 
       if (this.db.loggedIn != 'true')
         this.title = "טופס הרשמה לתחרות מדענים צעירים " + this.date.getFullYear();
+      else if  (this.manager_mode=='new')
+          this.title = "יצירת משתמש חדש";
 
       else
         this.title = "טופס עדכון פרטים";
@@ -61,7 +66,7 @@ export class RegistrationFormComponent {
 
   // on register user button click adds new user to Database according to the data that was collected from the registration form
   public registerUser() {
-    if (this.user.type === 'מורה') { // in case its teacher--> birthday is not required
+    if (this.user.type != 'תלמיד') { // in case its teacher--> birthday is not required
       this.userform.get('birthday').clearValidators();
       this.userform.get('birthday').updateValueAndValidity(); //now teacher can register
     }
@@ -177,7 +182,7 @@ export class RegistrationFormComponent {
     return false;
   }
   public updateInfo() {
-    if (this.user.type === 'מורה') { // in case its teacher--> birthday is not required
+    if (this.user.type != 'תלמיד') { // in case its teacher--> birthday is not required
       this.userform.get('birthday').clearValidators();
       this.userform.get('birthday').updateValueAndValidity(); //now teacher can register
     }
