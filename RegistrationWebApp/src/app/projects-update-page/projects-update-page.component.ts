@@ -84,7 +84,10 @@ export class ProjectsUpdatePageComponent implements OnInit {
       }
       else {
         this.isStudent = false;
-        this.title = "פרויקטים של תלמידים שלי"
+        if (this.db.loggedInUser.type == 'מורה')
+          this.title = "פרויקטים של תלמידים שלי"
+        else if (this.db.loggedInUser.type=="בודק")
+        this.title = "פרוייקטים לבדיקה"
       }
       this.db.getProjectMetaData().subscribe((val) => {
         this.db.projectsList = val;
@@ -100,12 +103,22 @@ export class ProjectsUpdatePageComponent implements OnInit {
           }
         }
         else {
+          if (this.db.loggedInUser.type == 'מורה'){
           for (var i = 0; i < this.db.projectsList.length; i++) {
             if (this.db.projectsList[i].school_contact_mail == this.db.loggedInUser.email) {
               this.user_projects[j++] = this.db.projectsList[i].project_name;
               this.user_project_objects.push(this.db.projectsList[i]);
             }
           }
+        }
+        else if (this.db.loggedInUser.type == 'בודק'){
+          for (var i = 0; i < this.db.projectsList.length; i++) {
+            if (this.db.projectsList[i].checkerMail == this.db.loggedInUser.email) {
+              this.user_projects[j++] = this.db.projectsList[i].project_name;
+              this.user_project_objects.push(this.db.projectsList[i]);
+            }
+          } 
+        }
         }
         if (this.routerId!=undefined){
         this.selectedWork = this.routerId;
