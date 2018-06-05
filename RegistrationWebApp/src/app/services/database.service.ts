@@ -3,7 +3,8 @@ import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firesto
 import { User } from '../user';
 import { Observable } from 'rxjs/Observable';
 import { Project } from '../project';
-
+import { ExportUser } from '../export-user';
+import { ExportProject } from '../export-project';
 
 @Injectable()
 export class DatabaseService {
@@ -20,6 +21,8 @@ export class DatabaseService {
   observableUsers: Observable<User[]>; //A temp variable that returns metadata. used by usersList
   usersList = []; // holds a list with listing id's and users info of the UsersInfo table
   checkersList = [];// holds a list with all the current checkers.
+  user_exp = [];
+  proj_exp = [];
 
   /* project*/
   public projectCollections; // holds a connection the firebase ProjectsInfo table
@@ -55,13 +58,13 @@ export class DatabaseService {
     for (var i = 0; i < this.usersList.length; i++) {
       console.log(this.usersList[i].id)
       if (this.usersList[i].email == email) {
-       
+
         this.listingDoc = this.dataCollections.doc(`${this.usersList[i].id}`); //takes the listing that will be updated by the doc.id (listing's id)
         this.listingDoc.update(JSON.parse(JSON.stringify(this.user)));
       }
     }
   }
-//project name should be unique !!!!!!!
+  //project name should be unique !!!!!!!
   updateProjectListing(project_name: string) {
     for (var i = 0; i < this.projectsList.length; i++) {
       if (this.projectsList[i].project_name == project_name) {
@@ -139,7 +142,7 @@ export class DatabaseService {
       })
     });
   }
-//This function sets in the 'selectedUser' array (first 3 cells) property users that were found by a given email.
+  //This function sets in the 'selectedUser' array (first 3 cells) property users that were found by a given email.
   public getUser(email1: string, email2: string, email3: string) { // get user asiggned to project
     return new Promise((resolve, reject) => {
       this.dataCollections.valueChanges().subscribe(collection => {
@@ -162,7 +165,7 @@ export class DatabaseService {
       })
     });
   }
-// returns the id listing of project by a given project name
+  // returns the id listing of project by a given project name
   public getProjectID(pname: string) { //get project ID by Project name
     for (var i = 0; i < this.projectsList.length; i++) {
       if (this.projectsList[i].project_name == pname) {
@@ -172,12 +175,68 @@ export class DatabaseService {
     return 'not found';
   }
 
-public getCheckers(){
-  for(var i=0;i<this.usersList.length;i++){
-    if(this.usersList[i].type== "בודק")
-          this.checkersList.push(this.usersList[i]);
+  public getCheckers() {
+    for (var i = 0; i < this.usersList.length; i++) {
+      if (this.usersList[i].type == "בודק")
+        this.checkersList.push(this.usersList[i]);
+    }
   }
+
+  exportUsers() {
+    for(var i = 0 ; i < this.usersList.length ; i++)
+      {
+        this.user_exp[i] = new ExportUser();
+        this.user_exp[i].Another_Phone_Number = this.usersList[i].anotherPhone;
+        this.user_exp[i].Appartment = this.usersList[i].appartment;
+        this.user_exp[i].Birthday = this.usersList[i].birthday;
+        this.user_exp[i].City = this.usersList[i].city;
+        this.user_exp[i].Email = this.usersList[i].email;
+        this.user_exp[i].English_First_name = this.usersList[i].engFname;
+        this.user_exp[i].English_Last_Name = this.usersList[i].engLname;
+        this.user_exp[i].First_name = this.usersList[i].firstName;
+        this.user_exp[i].Gender = this.usersList[i].gender;
+        this.user_exp[i].Last_name = this.usersList[i].lastName;
+        this.user_exp[i].Phone_number = this.usersList[i].phone;
+        this.user_exp[i].School_city = this.usersList[i].schoolCity;
+        this.user_exp[i].School_name = this.usersList[i].schoolName;
+        this.user_exp[i].Street = this.usersList[i].street;
+        this.user_exp[i].User_id = this.usersList[i].userid;
+        this.user_exp[i].User_type = this.usersList[i].type;
+        this.user_exp[i].Password = this.usersList[i].password;
+      }
+  }
+
+  exportProjects(){
+    for(var i = 0 ; i < this.projectsList.length ; i++)
+      {
+        this.proj_exp[i] = new ExportProject();
+        this.proj_exp[i].Advantages = this.projectsList[i].advantages;
+        this.proj_exp[i].Background = this.projectsList[i].background;
+        this.proj_exp[i].Checker_comments = this.projectsList[i].check;
+        this.proj_exp[i].Checkers_email = this.projectsList[i].checkerMail;
+        this.proj_exp[i].Description = this.projectsList[i].description;
+        this.proj_exp[i].Facility = this.projectsList[i].location;
+        this.proj_exp[i].Field = this.projectsList[i].project_field;
+        this.proj_exp[i].First_student_email = this.projectsList[i].user1mail;
+        this.proj_exp[i].Inovetion = this.projectsList[i].inovetion;
+        this.proj_exp[i].mentor1 = this.projectsList[i].mentor1;
+        this.proj_exp[i].mentor2 = this.projectsList[i].mentor2;
+        this.proj_exp[i].mentor3 = this.projectsList[i].mentor3;
+        this.proj_exp[i].Model_status = this.projectsList[i].modelStatus;
+        this.proj_exp[i].Products = this.projectsList[i].products;
+        this.proj_exp[i].Project_name = this.projectsList[i].project_name;
+        this.proj_exp[i].Research_status = this.projectsList[i].researchStatus;
+        this.proj_exp[i].Retrospective = this.projectsList[i].retrospective;
+        this.proj_exp[i].School_representative_email = this.projectsList[i].school_contact_mail;
+        this.proj_exp[i].Scope = this.projectsList[i].scope;
+        this.proj_exp[i].Second_student_email = this.projectsList[i].user2mail;
+        this.proj_exp[i].Status = this.projectsList[i].status;
+        this.proj_exp[i].target = this.projectsList[i].target;
+        this.proj_exp[i].Third_student_email = this.projectsList[i].user3mail;
+        this.proj_exp[i].Type = this.projectsList[i].type;
+      }
+
+  }
+
 }
 
-
-}
