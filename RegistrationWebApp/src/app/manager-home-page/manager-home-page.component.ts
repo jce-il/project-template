@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ExcelService } from '../services/excel.service';
 import { DatabaseService } from '../services/database.service';
+import { RouterLink, Router } from '@angular/router';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { DatabaseService } from '../services/database.service';
 })
 export class ManagerHomePageComponent implements OnInit {
 
-  constructor(public excelService: ExcelService, public db: DatabaseService) { }
+  constructor(public excelService: ExcelService, public db: DatabaseService, public router: Router) { }
 
   ngOnInit() {
   }
@@ -28,6 +29,10 @@ export class ManagerHomePageComponent implements OnInit {
       this.excelService.exportAsExcelFile(JSON.parse(JSON.stringify(this.db.projectsList)), 'projects');
     })
   }
+
+  projectesTable(){
+    this.router.navigate(['tablePage']);
+}
 
 }
 
