@@ -26,9 +26,12 @@ export class LoginScreenComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    if(this.cookieService.get('managerLoggedIn') == 'true')
+    console.log(this.cookieService.get('managerLoggedIn'))
+    if (this.cookieService.get('managerLoggedIn') == 'true')
       this.router.navigate(['manager']);
-    else if(this.cookieService.get('User login status') == 'true')
+    else if (this.cookieService.get('checkerLoggedIn') == 'true')
+      this.router.navigate(['checker']);
+    else if (this.cookieService.get('User login status') == 'true')
       this.router.navigate(['homepage']);
   }
 
@@ -40,19 +43,20 @@ export class LoginScreenComponent implements OnInit {
         this.cookieService.set('User login status', 'true');
         this.db.loggedInUserUID = res.uid
         this.db.loggedIn = 'true';
-        this.db.getLoggedInUser().then(()=>{
-          if (this.db.loggedInUser.type == 'בודק'){
-          this.router.navigate(['checker']);
-        }
-        else if (this.db.loggedInUser.type == 'מנהל'){
-          this.cookieService.set('managerLoggedIn', 'true');
-          this.router.navigate(['manager'])
-        }
+        this.db.getLoggedInUser().then(() => {
+          if (this.db.loggedInUser.type == 'בודק') {
+            this.cookieService.set('checkerLoggedIn', 'true');
+            this.router.navigate(['checker']);
+          }
+          else if (this.db.loggedInUser.type == 'מנהל') {
+            this.cookieService.set('managerLoggedIn', 'true');
+            this.router.navigate(['manager'])
+          }
           else
-          this.router.navigate(['homepage'])
+            this.router.navigate(['homepage'])
         })
       })
-      .catch((err) =>{
+      .catch((err) => {
         this.signInVal = 'כניסה'
         this.logInError = true
       }
