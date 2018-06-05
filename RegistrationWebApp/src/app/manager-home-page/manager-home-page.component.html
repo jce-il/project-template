@@ -2,6 +2,7 @@
 <button class="btn btn-primary btn-default" id="save"(click)="logOut()">התנתק</button>
 <button class="btn btn-primary btn-default" id="save"(click)="exportUsersToExcel()">יצא טבלת משתמשים לקובץ אקסל</button>
 <button class="btn btn-primary btn-default" id="save"(click)="exportProjectsToExcel()">יצא טבלת פרוייקטים לקובץ אקסל</button>
+<button class="btn btn-primary btn-default" id="save"(click)="openCompetition()">פתח תחרות</button>
 </div>
 
   
@@ -11,4 +12,6 @@
 
 <button type="button" class="btn btn-labeled btn-primary" (click)="projectesTable(1)">טבלת פרוייקטים</button>
 <button type="button" class="btn btn-labeled btn-primary" (click)="projectesTable(2)">טבלת משתמשים</button>
-<app-competition-settings-page></app-competition-settings-page>
+<div *ngIf = "showSetComp">
+        <app-competition-settings-page></app-competition-settings-page>
+</div>

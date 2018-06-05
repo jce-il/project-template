@@ -15,6 +15,8 @@ export class ManagerHomePageComponent implements OnInit {
 
   user_exp = [];
   proj_exp = [];
+  showSetComp = false;
+  show_count = 0;
   constructor(public auth: AuthService, public excelService: ExcelService, public db: DatabaseService, public router: Router, private cookieService: CookieService) { }
 
   ngOnInit() {
@@ -23,10 +25,10 @@ export class ManagerHomePageComponent implements OnInit {
       this.db.projectsList = res;
     })
   }
-/**
- * Creates an object with relevant fields for excel output
- * and then exports it to excel in xls format
- */
+  /**
+   * Creates an object with relevant fields for excel output
+   * and then exports it to excel in xls format
+   */
   exportUsersToExcel() {
     this.db.exportUsers();
     this.excelService.exportAsExcelFile(JSON.parse(JSON.stringify(this.db.user_exp)), 'users');
@@ -38,20 +40,27 @@ export class ManagerHomePageComponent implements OnInit {
   }
 
   projectesTable(userName) {
-    this.router.navigate(['/tablePage'],{ queryParams: { page: userName } });
+    this.router.navigate(['/tablePage'], { queryParams: { page: userName } });
   }
 
-  public go_to_reg(status){
+  public go_to_reg(status) {
     this.cookieService.set('mode', status);
     this.router.navigate(['registrationForm']);
   }
-  public logOut()
-  {
+  public logOut() {
     this.cookieService.set('managerLoggedIn', 'false');
     this.cookieService.set('User login status', 'false');
     this.cookieService.set('mode', 'no-manager');
     this.db.loggedIn = 'false';
     this.auth.LogOut();
+  }
+
+  openCompetition() {
+    if (this.show_count % 2 == 0)
+      this.showSetComp = true;
+    else
+      this.showSetComp = false;
+    this.show_count++;
   }
 }
 
