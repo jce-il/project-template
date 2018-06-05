@@ -37,7 +37,8 @@ export class ManagerHomePageComponent implements OnInit {
   }
 
   projectesTable() {
-    this.router.navigate(['tablePage']);
+    var userName = '1'
+    this.router.navigate(['/tablePage'],{ queryParams: { page: userName } });
   }
 
   public go_to_reg(status){

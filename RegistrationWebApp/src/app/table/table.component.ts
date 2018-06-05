@@ -32,6 +32,8 @@ export class  TableComponent implements OnInit {
   progress: { percentage: number } = { percentage: 0 };
   inputCheckerList:string;
   flg: boolean = false;
+  MasterCurrentIf;
+  page;
 
   constructor(public db: DatabaseService,private cookieService: CookieService,
     public uploadService: UploadFileService,private elementRef: ElementRef,private renderer: Renderer,private route: ActivatedRoute,
@@ -39,6 +41,9 @@ export class  TableComponent implements OnInit {
 
   ngOnInit() {
   $(".window").hide();
+  this.route.queryParams.subscribe(params => {
+      this.page = +params['page'];
+    });
   this.db.loggedInUserUID = this.cookieService.get('User uid');
   this.db.loggedIn = this.cookieService.get('User login status');
   this.db.setMetaData();
@@ -69,6 +74,7 @@ export class  TableComponent implements OnInit {
           }
           case "מנהל":
           {
+            if(this.page==1){
               this.title="פרוייקטים בתחרות";
               if(!this.flg){this.db.getCheckers()};
               this.handleMaster();
@@ -86,6 +92,7 @@ export class  TableComponent implements OnInit {
                 this.flg = true;
               }
             });
+            }
             break;
           }
         }
