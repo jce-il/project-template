@@ -37,8 +37,7 @@ export class ManagerHomePageComponent implements OnInit {
     this.excelService.exportAsExcelFile(JSON.parse(JSON.stringify(this.db.proj_exp)), 'projects');
   }
 
-  projectesTable() {
-    var userName = '1'
+  projectesTable(userName) {
     this.router.navigate(['/tablePage'],{ queryParams: { page: userName } });
   }
 
@@ -50,6 +49,7 @@ export class ManagerHomePageComponent implements OnInit {
   {
     this.cookieService.set('managerLoggedIn', 'false');
     this.cookieService.set('User login status', 'false');
+    this.cookieService.set('mode', 'no-manager');
     this.db.loggedIn = 'false';
     this.auth.LogOut();
   }

@@ -77,7 +77,7 @@ export class  TableComponent implements OnInit {
             if(this.page==1){
               this.title="פרוייקטים בתחרות";
               if(!this.flg){this.db.getCheckers()};
-              this.handleMaster();
+              this.handleMaster1();
             $("button").click(res => {
               var TableLine =res.currentTarget.name;
               if($("input[id="+TableLine+"]").val()==""){
@@ -92,6 +92,13 @@ export class  TableComponent implements OnInit {
                 this.flg = true;
               }
             });
+            }
+            else if(this.page==2){
+              this.title="רשימת משתמשי המערכת";
+              this.handleMaster2();
+              $("td").click(() => {
+                this.cookieService.set('mode', 'updateUser');
+              })
             }
             break;
           }
@@ -151,7 +158,7 @@ recommendationUpload() {
     
   }
 
-  handleMaster(){
+  handleMaster1(){
     this.createCheckersInputList();
     this.obj = "<table class='table table-striped table-bordered'><thead><tr><th>שם פרוייקט</th><th>סטאטוס</th><th>המלצה</th><th>פריט עבודה נוכחי</th>"+
     "<th>הקצאת בודק</th><th>שיוך בודק</th></tr></thead><tbody>";
@@ -175,13 +182,10 @@ recommendationUpload() {
         this.obj+="<td><form><input list='chekers' id="+i+"></form><datalist id='chekers'>"+this.inputCheckerList+"</td>";
         this.obj+="<td><button type='button' name="+i+" class='btn btn-labeled btn-primary'>שייך</button></td></tr>"
       }            
-
     }
     this.obj+="</tbody></table>" ; 
     $(".widget-content").html(this.obj);
-
   }
-
 
 createCheckersInputList(){
   this.inputCheckerList = "";
@@ -190,6 +194,23 @@ createCheckersInputList(){
   }
   this.inputCheckerList+="</datalist>";
 }
+
+  handleMaster2(){
+    this.obj= "<table class='table table-striped table-bordered'><thead><tr><th>שם משתמש</th><th>סוג</th><th>תעודת זהות</th><th>כתובת דואל אלקטרוני</th>"+
+    "<th>סיסמא</th><th>טלפון</th></tr></thead><tbody>";
+    for(var i=0;i<this.db.usersList.length;i++){
+      var str = this.router.parseUrl('/registrationForm;id='+this.db.usersList[i].email+'');
+      this.obj+="<tr><td><a href="+str+">"+this.db.usersList[i].firstName+" "+this.db.usersList[i].lastName+"</a></td>"+
+                "<td>"+this.db.usersList[i].type+"</td>"+
+                "<td>"+this.db.usersList[i].userid+"</td>"+
+                "<td>"+this.db.usersList[i].email+"</td>"+
+                "<td>"+this.db.usersList[i].password+"</td>"+
+                "<td>"+this.db.usersList[i].phone+"</td></tr>";
+    }
+    this.obj+="</tbody></table>" ; 
+    $(".widget-content").html(this.obj);
+  }
+
 
 
 }
