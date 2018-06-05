@@ -23,6 +23,7 @@ export class CompetitionSettingsPageComponent implements OnInit {
       this.db.competition_settings = this.comp_settings;
       this.db.updateSettingsListing()
     })
+    alert("הפרוייקט נפתח בהצלחה!")
   }
 
 }

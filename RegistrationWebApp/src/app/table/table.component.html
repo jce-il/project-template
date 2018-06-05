@@ -8,6 +8,7 @@
 </div>
 <div class="container" dir="rtl" *ngIf="this.db.loggedInUser != null">
     <h2 class="well">{{title}}</h2>
+    <input type="text" id="myInput" (keyup)="search()" placeholder="חפש לפי שם.." title="Type in a name">
     <div class="widget-content"></div>
 </div>
 

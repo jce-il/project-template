@@ -32,7 +32,6 @@ export class  TableComponent implements OnInit {
   progress: { percentage: number } = { percentage: 0 };
   inputCheckerList:string;
   flg: boolean = false;
-  MasterCurrentIf;
   page;
 
   constructor(public db: DatabaseService,private cookieService: CookieService,
@@ -196,7 +195,7 @@ createCheckersInputList(){
 }
 
   handleMaster2(){
-    this.obj= "<table class='table table-striped table-bordered'><thead><tr><th>שם משתמש</th><th>סוג</th><th>תעודת זהות</th><th>כתובת דואל אלקטרוני</th>"+
+    this.obj= "<table class='table table-striped table-bordered' id='myTable'><thead><tr><th>שם משתמש</th><th>סוג</th><th>תעודת זהות</th><th>כתובת דואל אלקטרוני</th>"+
     "<th>סיסמא</th><th>טלפון</th></tr></thead><tbody>";
     for(var i=0;i<this.db.usersList.length;i++){
       var str = this.router.parseUrl('/registrationForm;email='+this.db.usersList[i].email+'');
@@ -209,8 +208,25 @@ createCheckersInputList(){
     }
     this.obj+="</tbody></table>" ; 
     $(".widget-content").html(this.obj);
+
   }
 
-
+     search() {
+      var input, filter, table, tr, td, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0];
+        if (td) {
+          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }       
+      }
+    }
 
 }
