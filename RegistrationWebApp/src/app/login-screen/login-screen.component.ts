@@ -26,7 +26,9 @@ export class LoginScreenComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    if(this.cookieService.get('User login status') == 'true')
+    if(this.cookieService.get('managerLoggedIn') == 'true')
+      this.router.navigate(['manager']);
+    else if(this.cookieService.get('User login status') == 'true')
       this.router.navigate(['homepage']);
   }
 
@@ -43,6 +45,7 @@ export class LoginScreenComponent implements OnInit {
           this.router.navigate(['checker']);
         }
         else if (this.db.loggedInUser.type == 'מנהל'){
+          this.cookieService.set('managerLoggedIn', 'true');
           this.router.navigate(['manager'])
         }
           else
