@@ -3,6 +3,7 @@ import { ExcelService } from '../services/excel.service';
 import { DatabaseService } from '../services/database.service';
 import { RouterLink, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class ManagerHomePageComponent implements OnInit {
 
   user_exp = [];
   proj_exp = [];
-  constructor(public excelService: ExcelService, public db: DatabaseService, public router: Router, private cookieService: CookieService) { }
+  constructor(public auth: AuthService, public excelService: ExcelService, public db: DatabaseService, public router: Router, private cookieService: CookieService) { }
 
   ngOnInit() {
     this.db.setMetaData();
@@ -45,5 +46,13 @@ export class ManagerHomePageComponent implements OnInit {
     this.cookieService.set('mode', status);
     this.router.navigate(['registrationForm']);
   }
+  public logOut()
+  {
+    this.cookieService.set('managerLoggedIn', 'false');
+    this.cookieService.set('User login status', 'false');
+    this.db.loggedIn = 'false';
+    this.auth.LogOut();
+  }
 }
+
 
