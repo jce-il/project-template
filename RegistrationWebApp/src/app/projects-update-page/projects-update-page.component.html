@@ -5,208 +5,53 @@
 <div class="header">
   <app-header></app-header>
 </div>
-
-<div class="container">
-  <h2 class="well">{{this.title}}</h2>
-  <div class="row">
-    <div class="col-sm-4 form-group">
-      <legend>בחר עבודה</legend>
-      <select class="user-type" id="selectedWork" [(ngModel)]="selectedWork" (ngModelChange)="onChangeObj()" name="selectedWork">
-        <option *ngFor="let type of user_projects" [value]="type">{{type}}</option>
-      </select>
-    </div>
-  </div>
-  <div class="row" *ngIf="!isStudent">
-    <div class="col-xs-12 col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-2">
-      <div *ngIf="this.selectedWork != 'מתוך רשימה'">
-          <div *ngIf = "this.db.loggedInUser.type == 'בודק'">
-                <h4 class="req">שים לב! <br> יש להזין את הבדיקה בשדה המיועד לכך בתחתית דף זה</h4>
-            </div>
-        <legend>המלצה</legend>
-        <div class="input-group image-preview">
-          <div class="file" *ngIf="this.project.recommendation_file != undefined">
-            <div>במערכת טעון המסמך:
-              <br>
-              <a href={{this.project.recommendation_file.url}}>{{this.project.recommendation_file.name}}</a>
-            </div>
-          </div>
-          <div *ngIf="this.db.loggedInUser.type == 'מורה'" class="btn btn-default image-preview-input">
-            <input type="file" (change)="selectRecommendationFile($event)" required name="fileupload" />
-            <span class="glyphicon glyphicon-folder-open"></span>
-            <span class="image-preview-input-title">בחר קובץ</span>
-          </div>
-          <div class="file" *ngIf="this.selected_recommendation_files != null">{{this.selected_recommendation_files.item(0).name}}</div>
-          <div>
-            <button *ngIf="this.db.loggedInUser.type == 'מורה'" type="button" class="btn btn-labeled btn-primary" [disabled]="!selected_recommendation_files" (click)="recommendationUpload()">
-              <span class="btn-label">
-                <i class="glyphicon glyphicon-upload"></i>
-              </span>העלה המלצה</button>
-            <button *ngIf="this.db.loggedInUser.type == 'מורה'" type="button" class="btn btn-labeled btn-primary" [hidden]="this.selected_recommendation_files == null" (click)="cancelSelectedRecommendation()">
-              <span class="btn-label">
-              </span>בטל בחירה</button>
-          </div>
-          <div *ngIf="current_recommendation_FileUpload" class="progress">
-            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 15%" attr.aria-valuenow="{{progress.percentage}}"
-              aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
-              {{progress.percentage}}%</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div *ngIf="selectedWork!='מתוך רשימה'">
-    <form>
-      <div class="row">
-        <div class="col-sm-10">
-          <div>
-            <legend>דואר אלקטרוני של חברי הצוות
-              <h5 class="req">שים לב - על חברי הצוות להיות רשומים במערכת. במידה ולא, ניתן יהיה לצרפם בהמשך</h5>
-            </legend>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4 form-group">
-          <div [formGroup]="projectform">
-            <label class="req">כתובת דואר אלקטרוני של שותף ראשון*</label>
-            <input type="text" class="input" disabled id="partner1" required [(ngModel)]="project.user1mail" name="partner1" formControlName="partner1"
-            />
-            <div *ngIf="partner1.invalid && (partner1.dirty)">
-              <div *ngIf="partner1.errors.email && !CheckIfEmptyField(project.user1mail)" class="alert alert-danger">
-                נא להזין כתובת דואר אלקטרוני תקינה
-              </div>
-            </div>
-          </div>
-          <div [formGroup]="projectform">
-            <label class="reg">כתובת דואר אלקטרוני של שותף שני</label>
-            <input type="text" [readonly]="this.db.loggedInUser.type == 'בודק'" id="partner2" [(ngModel)]="project.user2mail" name="partner2" formControlName="partner2" />
-            <div *ngIf="partner2.invalid && (partner2.dirty)">
-              <div *ngIf="partner2.errors.email && !CheckIfEmptyField(project.user2mail)" class="alert alert-danger">
-                נא להזין כתובת דואר אלקטרוני תקינה
-              </div>
-            </div>
-          </div>
-          <div [formGroup]="projectform">
-            <label class="reg">כתובת דואר אלקטרוני של שותף שלישי</label>
-            <input type="text" [readonly]="this.db.loggedInUser.type == 'בודק'" id="partner3" [(ngModel)]="project.user3mail" name="partner3" formControlName="partner3" />
-            <div *ngIf="partner3.invalid && (partner3.dirty)">
-              <div *ngIf="partner3.errors.email && !CheckIfEmptyField(project.user3mail)" class="alert alert-danger">
-                נא להזין כתובת דואר אלקטרוני תקינה
-              </div>
-            </div>
-          </div>
-          <div [formGroup]="projectform">
-            <label class="req">שם העבודה*</label>
-            <input type="text" [readonly]="this.db.loggedInUser.type == 'בודק'" id="projectname" required [(ngModel)]="project.project_name" name="projectname" formControlName="projectname"
-            />
-          </div>
-          <div [formGroup]="projectform">
-            <label class="req">דואר אלקטרוני איש קשר מטעם בית הספר*</label>
-            <input type="email" [readonly]="this.db.loggedInUser.type == 'בודק'" id="email_school" [(ngModel)]="project.school_contact_mail" name="email_school" formControlName="email_school"
-            />
-            <div *ngIf="email_school.invalid && (email_school.dirty)">
-              <div *ngIf="email_school.errors.email && !CheckIfEmptyField(project.school_contact_mail)" class="alert alert-danger">
-                נא להזין כתובת דואר אלקטרוני תקינה
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-10">
-          <legend>אודות העבודה</legend>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4 form-group">
-          <div [formGroup]="projectform">
-            <label class="req">התחום אליו משתייכת העבודה*</label>
-            <select class="user-type" id="project_field" required [(ngModel)]="project.project_field" name="project_field" formControlName="project_field">
-              <option  *ngFor="let type of fields" [value]="type">{{type}}</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4 form-group">
-          <div [formGroup]="projectform" *ngIf="project.project_field == 'אחר'">
-            <label class="req">תחום מחקר אחר (פרט)*</label>
-            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.projectField" formControlName="other" />
-        </div>
-        <label class="reg">מוסד אקדמי בו התבצעה העבודה במידה וקיים</label>
-        <input [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" type="text" id="location" [(ngModel)]="project.location" name="location" />
-        <label class="req">סוג העבודה המוגשת*</label>
-        <select id="type" required [(ngModel)]="project.type" name="type" >
-          <option>מחקרית</option>
-          <option>עבודה טכנולוגית</option>
+<div *ngIf="this.db.loggedInUser == undefined">
+  <div class="loader"></div>
+</div>
+<div *ngIf="this.db.loggedInUser">
+  <div class="container">
+    <h2 class="well">{{this.title}}</h2>
+    <div class="row">
+      <div *ngIf = "this.db.loggedInUser.type != 'תלמיד'"class="col-sm-4 form-group">
+        <legend>בחר עבודה</legend>
+        <select class="user-type" id="selectedWork" [(ngModel)]="selectedWork" (ngModelChange)="onChangeObj()" name="selectedWork">
+          <option *ngFor="let type of user_projects" [value]="type">{{type}}</option>
         </select>
-          <div *ngIf="project.type == 'עבודה טכנולוגית'">
-              <label class = "reg">סטטוס מחקר</label>
-              <select id="restatus" [(ngModel)] = "project.researchStatus" name="researchStatus">
-                <option *ngFor="let type of researchStatus" [value]="type">{{type}}</option>
-              </select>
-              <label class = "reg">סטטוס דגם</label>
-              <select id="mostatus" [(ngModel)] = "project.modelStatus" name="modelStatus">
-                <option *ngFor="let type of modelStatus" [value]="type">{{type}}</option>
-              </select>
+      </div>
+    </div>
+    <div class="row" *ngIf="!isStudent">
+      <div class="col-xs-12 col-md-8 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div *ngIf="this.selectedWork != 'מתוך רשימה'">
+          <div *ngIf="this.db.loggedInUser.type == 'בודק'">
+            <h4 class="req">שים לב!
+              <br> יש להזין את הבדיקה בשדה המיועד לכך בתחתית דף זה</h4>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div [formGroup]="projectform" class="col-sm-4 form-group">
-          <label class="req">סטאטוס העבודה*</label>
-          <select class="user-type" id="status" required [(ngModel)]="project.status" name="status" formControlName="status">
-            <option *ngFor="let type of projectStatus" [value]="type">{{type}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-9 form-group">
-          <label class="reg">שאלת מחקר/מטרת הפרוייקט</label>
-          <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" rows="6" cols="80" id="target" [(ngModel)]="project.target" name="target"></textarea>
-          <label class="reg" >רקע (הבסיס המדעי / טכנולוגי לעבודה)</label>
-          <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" rows="6" cols="80" id="background" [(ngModel)]="project.background" name="background"></textarea>
-          <label class="reg">מוצרים דומים הקיימים בשוק</label>
-          <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" rows="6" cols="80" id="background" [(ngModel)]="project.products" name="background"></textarea>
-          <label class="reg">תיאור קצר: תאר בקצרה את המוצר, דרך פעולתו, כיצד משיג את מטרתו וכיצד החלטתם על פתרון זה</label>
-          <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" rows="6" cols="80" id="description" [(ngModel)]="project.description" name="description"></textarea>
-          <label class="reg">היקף: תיאור היקף הפרויקט (למשל- שעות עבודה, מספר דגמים)</label>
-          <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" rows="6" cols="80" id="scope" [(ngModel)]="project.scope" name="scope"></textarea>
-          <label class="reg">הערכת זמן הנדרש לסיום</label>
-          <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" rows="6" cols="80" id="finishTime" [(ngModel)]="project.finishTime" name="finishTime"></textarea>
-          <label class="reg">חדשנות: מהו הצד החדשני/ מקורי בפרוייקט? כיצד הוא שונה מפתרונות קיימים?</label>
-          <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" rows="6" cols="80" id="inovetion" [(ngModel)]="project.inovetion" name="inovetion"></textarea>
-          <label class="reg">יתרונות/תרומה</label>
-          <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" rows="6" cols="80" id="advantages" [(ngModel)]="project.advantages" name="advantages"></textarea>
-          <label class="reg">נקודת מבט אישית</label>
-          <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" rows="6" cols="80" id="retrospective" [(ngModel)]="project.retrospective" name="retrospective"></textarea>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+          <legend>המלצה</legend>
           <div class="input-group image-preview">
-            <div class="file" *ngIf="this.project.project_file != undefined">
+            <div class="file" *ngIf="this.project.recommendation_file != undefined">
               <div>במערכת טעון המסמך:
                 <br>
-                <a href={{this.project.project_file.url}}>{{this.project.project_file.name}}</a>
+                <a href={{this.project.recommendation_file.url}}>{{this.project.recommendation_file.name}}</a>
               </div>
             </div>
-            <div *ngIf="this.db.loggedInUser.type != 'בודק'" class="btn btn-default image-preview-input">
-              <input type="file" [readonly]="this.db.loggedInUser.type == 'בודק'" (change)="selectFile($event)" required name="fileupload" />
+            <div *ngIf="this.db.loggedInUser.type == 'מורה'" class="btn btn-default image-preview-input">
+              <input type="file" (change)="selectRecommendationFile($event)" required name="fileupload" />
               <span class="glyphicon glyphicon-folder-open"></span>
-              <span class="image-preview-input-title">בחר קובץ אחר</span>
+              <span class="image-preview-input-title">בחר קובץ</span>
             </div>
-            <div class="file" *ngIf="this.selectedFiles != null">{{this.selectedFiles.item(0).name}}</div>
+            <div class="file" *ngIf="this.selected_recommendation_files != null">{{this.selected_recommendation_files.item(0).name}}</div>
             <div>
-              <button *ngIf="this.db.loggedInUser.type != 'בודק'" type="button" class="btn btn-labeled btn-primary" [disabled]="!selectedFiles" (click)="upload()">
+              <button *ngIf="this.db.loggedInUser.type == 'מורה'" type="button" class="btn btn-labeled btn-primary" [disabled]="!selected_recommendation_files"
+                (click)="recommendationUpload()">
                 <span class="btn-label">
                   <i class="glyphicon glyphicon-upload"></i>
-                </span>העלה קובץ חדש</button>
-              <button *ngIf="this.db.loggedInUser.type != 'בודק'" type="button" class="btn btn-labeled btn-primary" [hidden]="this.selectedFiles == null" (click)="cancelSelectFile()">
+                </span>העלה המלצה</button>
+              <button *ngIf="this.db.loggedInUser.type == 'מורה'" type="button" class="btn btn-labeled btn-primary" [hidden]="this.selected_recommendation_files == null"
+                (click)="cancelSelectedRecommendation()">
                 <span class="btn-label">
                 </span>בטל בחירה</button>
             </div>
-            <div *ngIf="currentFileUpload" class="progress">
+            <div *ngIf="current_recommendation_FileUpload" class="progress">
               <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 15%" attr.aria-valuenow="{{progress.percentage}}"
                 aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
                 {{progress.percentage}}%</div>
@@ -214,143 +59,339 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-10">
-          <legend>מנחים ויועצים</legend>
-          <label>אין לי מנחים</label>
-          <input type="checkbox" checked [(ngModel)]="this.project.isMentors" [ngModelOptions]="{standalone: true}" />
+    </div>
+    <div *ngIf="selectedWork!='מתוך רשימה' || this.db.loggedInUser.type == 'תלמיד'">
+      <form>
+        <div class="row">
+          <div class="col-sm-10">
+            <div>
+              <legend>דואר אלקטרוני של חברי הצוות
+                <h5 class="req">שים לב - על חברי הצוות להיות רשומים במערכת. במידה ולא, ניתן יהיה לצרפם בהמשך</h5>
+              </legend>
+            </div>
+          </div>
         </div>
-      </div>
-      <div *ngIf="this.project.isMentors==false" class="row">
-        <div class="col-sm-4 form-group">
+        <div class="row">
+          <div class="col-sm-4 form-group">
+            <div [formGroup]="projectform">
+              <label class="req">כתובת דואר אלקטרוני של שותף ראשון*</label>
+              <input type="text" class="input" disabled id="partner1" required [(ngModel)]="project.user1mail" name="partner1" formControlName="partner1"
+              />
+              <div *ngIf="partner1.invalid && (partner1.dirty)">
+                <div *ngIf="partner1.errors.email && !CheckIfEmptyField(project.user1mail)" class="alert alert-danger">
+                  נא להזין כתובת דואר אלקטרוני תקינה
+                </div>
+              </div>
+            </div>
+            <div [formGroup]="projectform">
+              <label class="reg">כתובת דואר אלקטרוני של שותף שני</label>
+              <input type="text" [readonly]="this.db.loggedInUser.type == 'בודק'" id="partner2" [(ngModel)]="project.user2mail" name="partner2"
+                formControlName="partner2" />
+              <div *ngIf="partner2.invalid && (partner2.dirty)">
+                <div *ngIf="partner2.errors.email && !CheckIfEmptyField(project.user2mail)" class="alert alert-danger">
+                  נא להזין כתובת דואר אלקטרוני תקינה
+                </div>
+              </div>
+            </div>
+            <div [formGroup]="projectform">
+              <label class="reg">כתובת דואר אלקטרוני של שותף שלישי</label>
+              <input type="text" [readonly]="this.db.loggedInUser.type == 'בודק'" id="partner3" [(ngModel)]="project.user3mail" name="partner3"
+                formControlName="partner3" />
+              <div *ngIf="partner3.invalid && (partner3.dirty)">
+                <div *ngIf="partner3.errors.email && !CheckIfEmptyField(project.user3mail)" class="alert alert-danger">
+                  נא להזין כתובת דואר אלקטרוני תקינה
+                </div>
+              </div>
+            </div>
+            <div [formGroup]="projectform">
+              <label class="req">שם העבודה*</label>
+              <input type="text" [readonly]="this.db.loggedInUser.type == 'בודק'" id="projectname" required [(ngModel)]="project.project_name"
+                name="projectname" formControlName="projectname" />
+            </div>
+            <div [formGroup]="projectform">
+              <label class="req">דואר אלקטרוני איש קשר מטעם בית הספר*</label>
+              <input type="email" [readonly]="this.db.loggedInUser.type == 'בודק'" id="email_school" [(ngModel)]="project.school_contact_mail"
+                name="email_school" formControlName="email_school" />
+              <div *ngIf="email_school.invalid && (email_school.dirty)">
+                <div *ngIf="email_school.errors.email && !CheckIfEmptyField(project.school_contact_mail)" class="alert alert-danger">
+                  נא להזין כתובת דואר אלקטרוני תקינה
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-10">
+            <legend>אודות העבודה</legend>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 form-group">
+            <div [formGroup]="projectform">
+              <label class="req">התחום אליו משתייכת העבודה*</label>
+              <select class="user-type" id="project_field" required [(ngModel)]="project.project_field" name="project_field" formControlName="project_field">
+                <option *ngFor="let type of fields" [value]="type">{{type}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4 form-group">
+            <div [formGroup]="projectform" *ngIf="project.project_field == 'אחר'">
+              <label class="req">תחום מחקר אחר (פרט)*</label>
+              <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.projectField" formControlName="other"
+              />
+            </div>
+            <label class="reg">מוסד אקדמי בו התבצעה העבודה במידה וקיים</label>
+            <input [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" type="text" id="location" [(ngModel)]="project.location"
+              name="location" />
+            <label class="req">סוג העבודה המוגשת*</label>
+            <select id="type" required [(ngModel)]="project.type" name="type">
+              <option>מחקרית</option>
+              <option>עבודה טכנולוגית</option>
+            </select>
+            <div *ngIf="project.type == 'עבודה טכנולוגית'">
+              <label class="reg">סטטוס מחקר</label>
+              <select id="restatus" [(ngModel)]="project.researchStatus" name="researchStatus">
+                <option *ngFor="let type of researchStatus" [value]="type">{{type}}</option>
+              </select>
+              <label class="reg">סטטוס דגם</label>
+              <select id="mostatus" [(ngModel)]="project.modelStatus" name="modelStatus">
+                <option *ngFor="let type of modelStatus" [value]="type">{{type}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div [formGroup]="projectform" class="col-sm-4 form-group">
+            <label class="req">סטאטוס העבודה*</label>
+            <select class="user-type" id="status" required [(ngModel)]="project.status" name="status" formControlName="status">
+              <option *ngFor="let type of projectStatus" [value]="type">{{type}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9 form-group">
+            <label class="reg">שאלת מחקר/מטרת הפרוייקט</label>
+            <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" rows="6" cols="80" id="target" [(ngModel)]="project.target"
+              name="target"></textarea>
+            <label class="reg">רקע (הבסיס המדעי / טכנולוגי לעבודה)</label>
+            <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" rows="6" cols="80" id="background" [(ngModel)]="project.background"
+              name="background"></textarea>
+            <label class="reg">מוצרים דומים הקיימים בשוק</label>
+            <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" rows="6" cols="80" id="background" [(ngModel)]="project.products"
+              name="background"></textarea>
+            <label class="reg">תיאור קצר: תאר בקצרה את המוצר, דרך פעולתו, כיצד משיג את מטרתו וכיצד החלטתם על פתרון זה</label>
+            <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" rows="6" cols="80" id="description" [(ngModel)]="project.description"
+              name="description"></textarea>
+            <label class="reg">היקף: תיאור היקף הפרויקט (למשל- שעות עבודה, מספר דגמים)</label>
+            <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" rows="6" cols="80" id="scope" [(ngModel)]="project.scope"
+              name="scope"></textarea>
+            <label class="reg">הערכת זמן הנדרש לסיום</label>
+            <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" rows="6" cols="80" id="finishTime" [(ngModel)]="project.finishTime"
+              name="finishTime"></textarea>
+            <label class="reg">חדשנות: מהו הצד החדשני/ מקורי בפרוייקט? כיצד הוא שונה מפתרונות קיימים?</label>
+            <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" rows="6" cols="80" id="inovetion" [(ngModel)]="project.inovetion"
+              name="inovetion"></textarea>
+            <label class="reg">יתרונות/תרומה</label>
+            <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" rows="6" cols="80" id="advantages" [(ngModel)]="project.advantages"
+              name="advantages"></textarea>
+            <label class="reg">נקודת מבט אישית</label>
+            <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" rows="6" cols="80" id="retrospective" [(ngModel)]="project.retrospective"
+              name="retrospective"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="input-group image-preview">
+              <div class="file" *ngIf="this.project.project_file != undefined">
+                <div>במערכת טעון המסמך:
+                  <br>
+                  <a href={{this.project.project_file.url}}>{{this.project.project_file.name}}</a>
+                </div>
+              </div>
+              <div *ngIf="this.db.loggedInUser.type != 'בודק'" class="btn btn-default image-preview-input">
+                <input type="file" [readonly]="this.db.loggedInUser.type == 'בודק'" (change)="selectFile($event)" required name="fileupload"
+                />
+                <span class="glyphicon glyphicon-folder-open"></span>
+                <span class="image-preview-input-title">בחר קובץ אחר</span>
+              </div>
+              <div class="file" *ngIf="this.selectedFiles != null">{{this.selectedFiles.item(0).name}}</div>
+              <div>
+                <button *ngIf="this.db.loggedInUser.type != 'בודק'" type="button" class="btn btn-labeled btn-primary" [disabled]="!selectedFiles"
+                  (click)="upload()">
+                  <span class="btn-label">
+                    <i class="glyphicon glyphicon-upload"></i>
+                  </span>העלה קובץ חדש</button>
+                <button *ngIf="this.db.loggedInUser.type != 'בודק'" type="button" class="btn btn-labeled btn-primary" [hidden]="this.selectedFiles == null"
+                  (click)="cancelSelectFile()">
+                  <span class="btn-label">
+                  </span>בטל בחירה</button>
+              </div>
+              <div *ngIf="currentFileUpload" class="progress">
+                <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 15%" attr.aria-valuenow="{{progress.percentage}}"
+                  aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+                  {{progress.percentage}}%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-10">
+            <legend>מנחים ויועצים</legend>
+            <label>אין לי מנחים</label>
+            <input type="checkbox" checked [(ngModel)]="this.project.isMentors" [ngModelOptions]="{standalone: true}" />
+          </div>
+        </div>
+        <div *ngIf="this.project.isMentors==false" class="row">
+          <div class="col-sm-4 form-group">
             <h4 class="req">מנחה ראשון*</h4>
             <label>תואר</label>
-            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor1.degree" [ngModelOptions]="{standalone: true}"/>
+            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor1.degree" [ngModelOptions]="{standalone: true}"
+            />
             <label>שם מלא</label>
-            <input [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" type="text" [(ngModel)]="this.project.mentor1.name" [ngModelOptions]="{standalone: true}"/>
+            <input [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" type="text" [(ngModel)]="this.project.mentor1.name"
+              [ngModelOptions]="{standalone: true}" />
             <label>מוסד</label>
-            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor1.facility" [ngModelOptions]="{standalone: true}"/>
+            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor1.facility" [ngModelOptions]="{standalone: true}"
+            />
             <label>תפקיד/תחום עיסוק</label>
-            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor1.role" [ngModelOptions]="{standalone: true}"/>
+            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor1.role" [ngModelOptions]="{standalone: true}"
+            />
             <div [formGroup]="projectform">
-                <label>טלפון</label>
-                <input [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" type="text" [(ngModel)]="this.project.mentor1.phone" formControlName="phonementor1"/>
-                <div *ngIf="phonementor1.invalid && (phonementor1.dirty) && !CheckIfEmptyField(this.project.mentor1.phone)" class="alert alert-danger">
+              <label>טלפון</label>
+              <input [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" type="text" [(ngModel)]="this.project.mentor1.phone"
+                formControlName="phonementor1" />
+              <div *ngIf="phonementor1.invalid && (phonementor1.dirty) && !CheckIfEmptyField(this.project.mentor1.phone)" class="alert alert-danger">
 
                 <div *ngIf="  !CheckIfEmptyField(this.project.mentor1.phone) && phonementor1.errors.pattern">
-                    נא להזין מספר טלפון תקין
+                  נא להזין מספר טלפון תקין
                 </div>
                 <div *ngIf=" !CheckIfEmptyField(this.project.mentor1.phone) && (phonementor1.errors.minlength)">
-                    המספר קצר מדי
+                  המספר קצר מדי
                 </div>
                 <div *ngIf="!CheckIfEmptyField(this.project.mentor1.phone)  && (phonementor1.errors.maxlength)">
-                    המספר ארוך מדי
+                  המספר ארוך מדי
                 </div>
-                </div>
+              </div>
             </div>
             <div [formGroup]="projectform">
-                <label>דואר אלקטרוני</label>
-                <input [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" type="email" [(ngModel)]="this.project.mentor1.email" formControlName="mailmentor1"/>
-                <div *ngIf="mailmentor1.invalid && (mailmentor1.dirty)">
-                    <div *ngIf="mailmentor1.errors.email && !CheckIfEmptyField(this.project.mentor1.email)" class="alert alert-danger">
-                        נא להזין כתובת דואר אלקטרוני תקינה
-                    </div>
+              <label>דואר אלקטרוני</label>
+              <input [readonly]="this.db.loggedInUser.type == 'בודק'" class="data" type="email" [(ngModel)]="this.project.mentor1.email"
+                formControlName="mailmentor1" />
+              <div *ngIf="mailmentor1.invalid && (mailmentor1.dirty)">
+                <div *ngIf="mailmentor1.errors.email && !CheckIfEmptyField(this.project.mentor1.email)" class="alert alert-danger">
+                  נא להזין כתובת דואר אלקטרוני תקינה
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="col-sm-4 form-group">
+          </div>
+          <div class="col-sm-4 form-group">
             <h4>מנחה שני</h4>
             <label>תואר</label>
-            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor2.degree" [ngModelOptions]="{standalone: true}"/>
+            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor2.degree" [ngModelOptions]="{standalone: true}"
+            />
             <label>שם מלא</label>
-            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor2.name" [ngModelOptions]="{standalone: true}"/>
+            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor2.name" [ngModelOptions]="{standalone: true}"
+            />
             <label>מוסד</label>
-            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor2.facility" [ngModelOptions]="{standalone: true}"/>
+            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor2.facility" [ngModelOptions]="{standalone: true}"
+            />
             <label>תפקיד/תחום עיסוק</label>
-            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor2.role" [ngModelOptions]="{standalone: true}"/>
+            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor2.role" [ngModelOptions]="{standalone: true}"
+            />
             <div [formGroup]="projectform">
-                <label>טלפון</label>
-                <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor2.phone" formControlName="phonementor2"/>
-                <div *ngIf="phonementor2.invalid && (phonementor2.dirty) && !CheckIfEmptyField(this.project.mentor2.phone)" class="alert alert-danger">
+              <label>טלפון</label>
+              <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor2.phone" formControlName="phonementor2"
+              />
+              <div *ngIf="phonementor2.invalid && (phonementor2.dirty) && !CheckIfEmptyField(this.project.mentor2.phone)" class="alert alert-danger">
 
                 <div *ngIf="!CheckIfEmptyField(this.project.mentor2.phone) && phonementor2.errors.pattern">
-                    נא להזין מספר טלפון תקין
+                  נא להזין מספר טלפון תקין
                 </div>
                 <div *ngIf=" !CheckIfEmptyField(this.project.mentor2.phone) && (phonementor2.errors.minlength)">
-                    המספר קצר מדי
+                  המספר קצר מדי
                 </div>
                 <div *ngIf=" !CheckIfEmptyField(this.project.mentor2.phone) && (phonementor2.errors.maxlength)">
-                    המספר ארוך מדי
+                  המספר ארוך מדי
                 </div>
-                </div>
+              </div>
             </div>
             <div [formGroup]="projectform">
-                <label>דואר אלקטרוני</label>
-                <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="email" [(ngModel)]="this.project.mentor2.email" formControlName="mailmentor2"/>
-                <div *ngIf="mailmentor2.invalid && (mailmentor2.dirty)">
-                    <div *ngIf="mailmentor2.errors.email && !CheckIfEmptyField(this.project.mentor2.email)" class="alert alert-danger">
-                        נא להזין כתובת דואר אלקטרוני תקינה
-                    </div>
+              <label>דואר אלקטרוני</label>
+              <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="email" [(ngModel)]="this.project.mentor2.email" formControlName="mailmentor2"
+              />
+              <div *ngIf="mailmentor2.invalid && (mailmentor2.dirty)">
+                <div *ngIf="mailmentor2.errors.email && !CheckIfEmptyField(this.project.mentor2.email)" class="alert alert-danger">
+                  נא להזין כתובת דואר אלקטרוני תקינה
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="col-sm-4 form-group">
+          </div>
+          <div class="col-sm-4 form-group">
             <h4>מנחה שלישי</h4>
             <label>תואר</label>
-            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor3.degree" [ngModelOptions]="{standalone: true}"/>
+            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor3.degree" [ngModelOptions]="{standalone: true}"
+            />
             <label>שם מלא</label>
-            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor3.name" [ngModelOptions]="{standalone: true}"/>
+            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor3.name" [ngModelOptions]="{standalone: true}"
+            />
             <label>מוסד</label>
-            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor3.facility" [ngModelOptions]="{standalone: true}"/>
+            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor3.facility" [ngModelOptions]="{standalone: true}"
+            />
             <label>תפקיד/תחום עיסוק</label>
-            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor3.role" [ngModelOptions]="{standalone: true}"/>
+            <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor3.role" [ngModelOptions]="{standalone: true}"
+            />
             <div [formGroup]="projectform">
-                <label>טלפון</label>
-                <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor3.phone" formControlName="phonementor3"/>
-                <div *ngIf="phonementor3.invalid && (phonementor3.dirty) && !CheckIfEmptyField(this.project.mentor3.phone)" class="alert alert-danger">
+              <label>טלפון</label>
+              <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="text" [(ngModel)]="this.project.mentor3.phone" formControlName="phonementor3"
+              />
+              <div *ngIf="phonementor3.invalid && (phonementor3.dirty) && !CheckIfEmptyField(this.project.mentor3.phone)" class="alert alert-danger">
                 <div *ngIf=" !CheckIfEmptyField(this.project.mentor3.phone) && phonementor3.errors.pattern">
-                    נא להזין מספר טלפון תקין
+                  נא להזין מספר טלפון תקין
                 </div>
                 <div *ngIf=" !CheckIfEmptyField(this.project.mentor3.phone) && (phonementor3.errors.minlength)">
-                    המספר קצר מדי
+                  המספר קצר מדי
                 </div>
                 <div *ngIf=" !CheckIfEmptyField(this.project.mentor3.phone)  && (phonementor3.errors.maxlength)">
-                    המספר ארוך מדי
+                  המספר ארוך מדי
                 </div>
-                </div>
+              </div>
             </div>
 
             <div [formGroup]="projectform">
-                <label>דואר אלקטרוני</label>
-                <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="email" [(ngModel)]="this.project.mentor3.email"  formControlName="mailmentor3"/>
-                <div *ngIf="mailmentor3.invalid && (mailmentor3.dirty)">
-                    <div *ngIf="mailmentor3.errors.email && !CheckIfEmptyField(this.project.mentor3.email)" class="alert alert-danger">
-                        נא להזין כתובת דואר אלקטרוני תקינה
-                    </div>
+              <label>דואר אלקטרוני</label>
+              <input [readonly]="this.db.loggedInUser.type == 'בודק'" type="email" [(ngModel)]="this.project.mentor3.email" formControlName="mailmentor3"
+              />
+              <div *ngIf="mailmentor3.invalid && (mailmentor3.dirty)">
+                <div *ngIf="mailmentor3.errors.email && !CheckIfEmptyField(this.project.mentor3.email)" class="alert alert-danger">
+                  נא להזין כתובת דואר אלקטרוני תקינה
                 </div>
+              </div>
             </div>
+          </div>
         </div>
+        <div *ngIf="this.db.loggedInUser.type == 'בודק' || this.db.loggedInUser.type == 'מנהל'">
+          <legend>בדיקה
+            <h5 class="req">יש להזין בשדה זה את התרשמותך מפרויקט זה</h5>
+          </legend>
+          <label class="reg">חוות הדעת שלי:</label>
+          <textarea class="data" rows="6" cols="80" id="check" [(ngModel)]="project.check" name="check"></textarea>
+        </div>
+        <div class="row">
+          <button class="btn btn-primary btn-default" id="save" [disabled]="this.file_project_selected || this.recommendation_selected"
+            (click)="addProject()">{{this.send}}</button>
+        </div>
+        <div class="col-sm-6 form-group hideError" [hidden]="!projectError">
+          יש למלא את כל שדות החובה כנדרש
+        </div>
+        <div class="col-sm-6 form-group hideError" [hidden]="this.selectedFiles == null && this.selected_recommendation_files == null">
+          שים לב ! ישנם קבצים הממתינים להעלאה
+        </div>
+        <br>
+        <br>
+      </form>
     </div>
-    <div *ngIf = "this.db.loggedInUser.type == 'בודק' || this.db.loggedInUser.type == 'מנהל'">
-      <legend>בדיקה
-        <h5 class="req">יש להזין בשדה זה את התרשמותך מפרויקט זה</h5>
-      </legend>
-      <label class="reg">חוות הדעת שלי:</label>
-      <textarea class="data" rows="6" cols="80" id="check" [(ngModel)]="project.check" name="check"></textarea>
-    </div>
-      <div class="row">
-        <button class="btn btn-primary btn-default" id="save" [disabled]="this.file_project_selected || this.recommendation_selected"
-          (click)="addProject()">{{this.send}}</button>
-      </div>
-      <div class="col-sm-6 form-group hideError" [hidden]="!projectError">
-        יש למלא את כל שדות החובה כנדרש
-      </div>
-      <div class="col-sm-6 form-group hideError" [hidden]="this.selectedFiles == null && this.selected_recommendation_files == null">
-        שים לב ! ישנם קבצים הממתינים להעלאה
-      </div>
-      <br>
-      <br>
-    </form>
   </div>
 </div>
 <div class="footer">
