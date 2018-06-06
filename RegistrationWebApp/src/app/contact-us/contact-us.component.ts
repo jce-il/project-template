@@ -16,6 +16,7 @@ export class ContactUsComponent implements OnInit {
   msg: Message;
   date: Date = new Date();
   today;
+  manager_emails = [];
 
   constructor(private fb: FormBuilder,private msgService: MessageService,private cookieService: CookieService,
     public db: DatabaseService, public router: Router) {this.createForm();}
@@ -23,12 +24,20 @@ export class ContactUsComponent implements OnInit {
   ngOnInit() {
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
+    this.db.getMetaData().subscribe((res)=>{
+      this.db.usersList = res;
+      var j=0;
+      for(var i = 0 ; i < this.db.usersList.length ; i++)
+      {
+        if(this.db.usersList[i].type =='מנהל')
+          this.manager_emails[j++] = this.db.usersList[i].email;
+      }
+    });
   }
 
   createForm() { //this function build the form and check input validation
     this.form = this.fb.group({
       name: ['', Validators.required],
-      email: ['', [Validators.required,Validators.email]],
       message: ['', Validators.required],
     });
   }
@@ -46,7 +55,7 @@ export class ContactUsComponent implements OnInit {
     this.today = this.date.getDate().toString()+"/"+(this.date.getMonth()+1).toString()+"/"+this.date.getFullYear().toString();
     
     this.msg = new Message(name,message,this.today); 
-    this.msgService.addMsgToUser(email,this.msg);
+    this.msgService.addMsgToUser(this.manager_emails,this.msg);
     this.form.reset();
   }//NOT FINISHED YET!!!--need to ask rony!
 
