@@ -20,6 +20,7 @@ export class ManagerHomePageComponent implements OnInit {
   constructor(public auth: AuthService, public excelService: ExcelService, public db: DatabaseService, public router: Router, private cookieService: CookieService) { }
 
   ngOnInit() {
+    this.cookieService.set('User login status', 'true');
     this.db.setMetaData();
     this.db.getProjectMetaData().subscribe((res) => {
       this.db.projectsList = res;

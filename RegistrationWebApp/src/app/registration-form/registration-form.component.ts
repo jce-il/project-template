@@ -102,6 +102,8 @@ export class RegistrationFormComponent {
           //successfully registered:
           this.user.uid = res.uid; // sets the uid value in the attribute
           this.db.addUserToDB(this.user); // add user to database
+          if(this.db.loggedIn == 'true' && this.db.loggedInUser.type == 'מנהל')
+              this.router.navigate(['manager']);
           this.router.navigate(['loginScreen'])// go to the login screen
         })
     }
@@ -199,7 +201,7 @@ export class RegistrationFormComponent {
       this.userform.get('birthday').updateValueAndValidity(); //now can updtae
     }
     this.userform.get('email').clearValidators();
-    this.userform.get('email').updateValueAndValidity(); //now teacher can register
+    this.userform.get('email').updateValueAndValidity(); //clear validator
     this.userform.get('password').clearValidators();
     this.userform.get('password').updateValueAndValidity(); //clear validator
     this.userform.get('confimpassword').clearValidators();
@@ -208,10 +210,12 @@ export class RegistrationFormComponent {
         this.db.user = this.user; //update current user data of the service !!!
         this.db.updateListing(this.user.email);
         alert("הפרטים עודכנו בהצלחה")
-        this.router.navigate(['homepage']);
+        if(this.db.loggedInUser.type == 'מנהל')
+          this.router.navigate(['manager']);
+        else
+          this.router.navigate(['homepage']);
     }
     else { // validate error
-      console.log(this.userform)
       this.signUpError = true;
     }
   }

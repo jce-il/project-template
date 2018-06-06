@@ -26,7 +26,6 @@ export class LoginScreenComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-    console.log(this.cookieService.get('managerLoggedIn'))
     if (this.cookieService.get('managerLoggedIn') == 'true')
       this.router.navigate(['manager']);
     else if (this.cookieService.get('checkerLoggedIn') == 'true')
