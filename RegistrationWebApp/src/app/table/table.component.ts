@@ -60,6 +60,11 @@ export class  TableComponent implements OnInit {
               $(".load button").click(function() {
                 $(".window").attr('id', this.id).show().fadeIn( 400 );
               });
+              $(".load button").bind('click', function (event) {
+                $('.modal-content').css('left',event.pageX);      // <<< use pageX and pageY
+                $('.modal-content').css('top',event.pageY);
+                $('.modal-content').css('display','inline');     
+                });
               $("#close").click(function(){
                 $(".window").hide();
               })
