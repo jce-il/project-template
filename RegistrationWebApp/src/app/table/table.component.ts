@@ -33,6 +33,7 @@ export class  TableComponent implements OnInit {
   inputCheckerList:string;
   flg: boolean = false;
   page;
+  team:string;
 
   constructor(public db: DatabaseService,private cookieService: CookieService,
     public uploadService: UploadFileService,private elementRef: ElementRef,private renderer: Renderer,private route: ActivatedRoute,
@@ -68,7 +69,7 @@ export class  TableComponent implements OnInit {
           case "בודק":
           {
             this.title="פרוייקטים לבדיקה";
-            //this.handleChecker();
+          //  this.handleChecker();
             break;
           }
           case "מנהל":
@@ -107,7 +108,7 @@ export class  TableComponent implements OnInit {
   }
 
   handleTeacher(){
-    this.obj = "<table class='table table-striped table-bordered id='myTable'><thead><tr><th>שם פרוייקט</th><th>סטאטוס</th><th>הוספת המלצה</th><th>פריט עבודה נוכחי</th></tr></thead><tbody>";
+    this.obj = "<table class='table table-striped table-bordered' id='myTable'><thead><tr><th>שם פרוייקט</th><th>סטאטוס</th><th>הוספת המלצה</th><th>פריט עבודה נוכחי</th></tr></thead><tbody>";
     for (var i = 0; i < this.db.projectsList.length; i++) {
       if (this.db.projectsList[i].school_contact_mail == this.db.loggedInUser.email) {
         var str = this.router.parseUrl('/viewproject;id='+this.db.projectsList[i].project_name+'');
@@ -153,18 +154,26 @@ recommendationUpload() {
   })
 }
 
-  handleChecker(){
+
+handleChecker(){
     
-  }
+}
+ 
 
   handleMaster1(){
     this.createCheckersInputList();
-    this.obj = "<table class='table table-striped table-bordered id='myTable'><thead><tr><th>שם פרוייקט</th><th>סטאטוס</th><th>המלצה</th><th>פריט עבודה נוכחי</th>"+
-    "<th>הקצאת בודק</th><th>שיוך בודק</th></tr></thead><tbody>";
+    this.obj = "<table class='table table-striped table-bordered' id='myTable'><thead><tr><th>שם פרוייקט</th><th>תאריך יצירה</th><th>סוג העבודה</th><th>תחום</th><th>חברי צוות</th>"+
+    "<th>איש הקשר</th><th>המלצה</th><th>פריט עבודה נוכחי</th><th>הקצאת בודק</th><th>שיוך בודק</th></tr></thead><tbody>";
     for (var i = 0; i < this.db.projectsList.length; i++) {
+      this.createTeam(i);
       var str = this.router.parseUrl('/viewproject;id='+this.db.projectsList[i].project_name+'');
-      this.obj+="<tr><td><a href="+str+">"+this.db.projectsList[i].project_name+"</a></td>"
-                +"<td>"+this.db.projectsList[i].status+"</td>";
+      this.obj+="<tr><td><a href="+str+">"+this.db.projectsList[i].project_name+"</a></td>";
+      var date=new Date(this.db.projectsList[i].date);
+      this.obj+="<td>"+date.getDate().toString()+"/"+(date.getMonth()+1).toString()+"/"+date.getFullYear().toString()+"</td>"+
+                "<td>"+this.db.projectsList[i].type+"</td>"+
+                "<td>"+this.db.projectsList[i].project_field+"</td>"+
+                "<td>"+this.team+"</td>"+
+                "<td>"+this.db.projectsList[i].school_contact_mail+"</td>";
       if(this.db.projectsList[i].recommendation_file==null){
         this.obj+="<td>לא קיים פריט עבודה במערכת</td>"
       }
@@ -180,11 +189,21 @@ recommendationUpload() {
       else{
         this.obj+="<td><form><input list='chekers' id="+i+"></form><datalist id='chekers'>"+this.inputCheckerList+"</td>";
         this.obj+="<td><button type='button' name="+i+" class='btn btn-labeled btn-primary'>שייך</button></td></tr>"
-      }            
+      }           
     }
     this.obj+="</tbody></table>" ; 
     $(".widget-content").html(this.obj);
   }
+
+createTeam(index){
+  this.team="";
+  if(this.db.projectsList[index].user1mail!=undefined)
+      this.team+=this.db.projectsList[index].user1mail+"    ";
+  if(this.db.projectsList[index].user2mail!=undefined)
+      this.team+=this.db.projectsList[index].user2mail+"    ";
+  if(this.db.projectsList[index].user3mail!=undefined)
+      this.team+=this.db.projectsList[index].user3mail+"    ";
+}
 
 createCheckersInputList(){
   this.inputCheckerList = "";
@@ -212,21 +231,25 @@ createCheckersInputList(){
   }
 
      search() {
-      var input, filter, table, tr, td, i;
+      var input, filter, table,i,j,tableColCount;
       input = document.getElementById("myInput");
-      filter = input.value.toUpperCase();
+      filter = input.value;
       table = document.getElementById("myTable");
-      tr = table.getElementsByTagName("tr");
-      for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[0];
-        if (td) {
-          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-          } else {
-            tr[i].style.display = "none";
+      for (i = 0; i < table.rows.length; i++) {//Loop through table rows
+          var rowData = '';
+          if (i == 0) {//Get column count from header row
+             tableColCount = table.rows.item(i).cells.length;
+             continue;
+          }       
+          for (j = 0; j < tableColCount; j++) { //Process data rows. (rowIndex >= 1)
+              rowData += table.rows.item(i).cells.item(j).textContent;
           }
-        }       
+          if (rowData.indexOf(filter) == -1) //If search term is not found in row data
+              table.rows.item(i).style.display = 'none';
+          else//then hide the row, else show
+              table.rows.item(i).style.display = "";
       }
-    }
+     }
+
 
 }
