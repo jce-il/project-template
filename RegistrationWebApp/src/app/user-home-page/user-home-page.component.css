@@ -88,7 +88,7 @@ body {
   display: flex;
   color: rgb(245,245,245);
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100px;
 }
 
 .main-content {
@@ -97,16 +97,16 @@ body {
 }
 
 .counterDown {
-  margin: auto;
+  margin: 0 0 10px 35px;
 }
 
-.counterDown h1 {
-  font-size: 4rem;
+.counterDown legend {
+  font-size: 20px;
+  margin: 0 15px 15px 0;
+  text-align: right;
+  font-weight: bolder;
 }
 
-hr {
-  background-color: rgba(255,255,255, 0.8);
-}
 
 #demo {
   display: flex;
@@ -147,7 +147,7 @@ hr {
 }
 
 #infos {
-  color: rgba(126,85,39,1);
+  color: rgb(112, 76, 34);
   display: flex;
   flex-direction: row;
   font-size: 1.6rem;
@@ -180,3 +180,4 @@ hr {
   margin-top: -3rem;
   width: 8rem;
 }
+

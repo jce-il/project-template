@@ -12,9 +12,32 @@
 </div>
 <div *ngIf="this.db.loggedInUser != null">
     <div class="container">
-        <div class="name">
-            <strong>שלום {{this.db.loggedInUser.firstName}}</strong>
+       
+            <div class="name">
+                <strong>שלום {{this.db.loggedInUser.firstName}}</strong>
+            </div>
+            <div class="row info">
+                <div class="wrapper">
+                  <div class="main-content">
+                    <div class="counterDown text-center">
+                        <legend><strong>נותרו עוד</strong></legend>
+                      <div id="demo">
+                        <div id="secondes" class="text-center"></div>
+                        <div id="minutes" class="text-center"></div>
+                        <div id="heures" class="text-center"></div>
+                        <div id="jours" class="text-center"></div>
+                      </div>
+                      <div id="infos">
+                        <div class="infos-secondes">שניות</div>
+                          <div class="infos-minutes">דקות</div>
+                          <div class="infos-heures">שעות</div>
+                          <div class="infos-jours">ימים</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
         </div>
+
         <div *ngIf="this.db.loggedInUser.type == 'תלמיד'">
             <div class="row" id="userstatus">
                 <legend><strong>סטאטוס הרשמה</strong></legend>
@@ -90,28 +113,7 @@
 
 
 
-<body>
-  <div class="wrapper">
-    <div class="main-content">
-      <div class="counterDown text-center">
-        <h1>נותרו עוד</h1>
-        <hr>
-        <div id="demo">
-          <div id="jours" class="text-center"></div>
-          <div id="heures" class="text-center"></div>
-          <div id="minutes" class="text-center"></div>
-          <div id="secondes" class="text-center"></div>
-        </div>
-        <div id="infos">
-            <div class="infos-jours">Jours</div>
-            <div class="infos-heures">Heures</div>
-            <div class="infos-minutes">Minutes</div>
-            <div class="infos-secondes">Secondes</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </body>
+
 
 <div class="page-footer">
     <app-footer></app-footer>
