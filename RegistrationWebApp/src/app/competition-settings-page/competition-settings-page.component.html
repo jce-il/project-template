@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="this.comp_settings != undefined" class="container">
   <div class="row">
     <legend>
       פתח תחרות חדשה
@@ -15,18 +15,8 @@
     </legend>
   </div>
   <div class="row">
-    <div class="col-sm-20">
-      יום
-      <input type="text" [(ngModel)]="comp_settings.start_day" name="start_day" size="4" />
-    </div>
-    <div class="col-sm-20">
-      חודש
-      <input type="text" [(ngModel)]="comp_settings.start_month" name="start_month" size="4" />
-    </div>
-    <div class="col-sm-20">
-      שנה
-      <input type="text" [(ngModel)]="comp_settings.start_year" name="start_year" size="4" />
-    </div>
+    <input type="date" name="input" ng-model="example.value" placeholder="yyyy-mm-dd" min="1990-01-01" max="2050-12-31" id="birthday"
+      [(ngModel)]="comp_settings.start_date" />
   </div>
   <div class="row">
     <legend>
@@ -34,18 +24,8 @@
     </legend>
   </div>
   <div class="row">
-    <div class="col-sm-20">
-      יום
-      <input type="text" [(ngModel)]="comp_settings.end_day" name="end_day" size="4" />
-    </div>
-    <div class="col-sm-20">
-      חודש
-      <input type="text" [(ngModel)]="comp_settings.end_month" name="end_month" size="4" />
-    </div>
-    <div class="col-sm-20">
-      שנה
-      <input type="text" [(ngModel)]="comp_settings.end_year" name="end_year" size="4" />
-    </div>
+    <input type="date" name="input" ng-model="example.value" placeholder="yyyy-mm-dd" min="1990-01-01" max="2050-12-31" id="birthday"
+      [(ngModel)]="comp_settings.end_date" />
   </div>
   <div class="row">
     <button (click)="setSettings()">פתח תחרות חדשה</button>
