@@ -79,14 +79,9 @@ html {
     font-size: 62.5%; /* 1rem vaut 10px */
 }
 
-body {
-    font-size: 1.4rem; /* 1.4 rem vaut 14px */
-    height: 100%;
-}
-
 .wrapper {
   display: flex;
-  color: rgb(245,245,245);
+  color: rgb(168, 124, 42);
   flex-direction: column;
   min-height: 100px;
 }
@@ -101,83 +96,82 @@ body {
 }
 
 .counterDown legend {
-  font-size: 20px;
-  margin: 0 15px 15px 0;
+  width: 180px;
+  font-size: 18px;
+  margin: 0 10px 5px 0;
   text-align: right;
   font-weight: bolder;
+  color: rgb(83, 71, 54);
 }
 
 
 #demo {
   display: flex;
   flex-direction: row;
-  font-size: 1.6rem;
+  font-size: 20px;
 }
 
 #jours {
   font-family: "Roboto Mono", sans-serif;
-  font-size: 4rem;
-  height: 10rem;
-  margin-right: 1rem;
-  width: 8rem;
+  font-size: 22px;
+  height: 50px;
+  margin-right: 10px;
+  width: 50px;
 }
 
-#heures {
+#heures{
   font-family: "Roboto Mono", sans-serif;
-  font-size: 4rem;
-  height: 10rem;
-  margin-right: 1rem;
-  width: 8rem;
+  font-size: 22px;
+  height: 50px;
+  margin-right: 10px;
+  width: 50px;
 }
 
 #minutes {
   font-family: "Roboto Mono", sans-serif;
-  font-size: 4rem;
-  height: 10rem;
-  margin-right: 1rem;
-  width: 8rem;
+  font-size: 22px;
+  height: 50px;
+  margin-right: 10px;
+  width: 50px;
 }
 
 #secondes {
   font-family: "Roboto Mono", sans-serif;
-  font-size: 4rem;
-  height: 10rem;
-  margin: auto;
-  width: 8rem;
+  font-size: 22px;
+  height: 50px;
+  margin: 0 100px 0 40px;
+  width: 50px;
 }
 
 #infos {
-  color: rgb(112, 76, 34);
+  color: rgb(94, 80, 65);
   display: flex;
   flex-direction: row;
-  font-size: 1.6rem;
+  font-size: 16px;
 }
 
 .infos-jours {
   font-family: "Roboto Mono", sans-serif;
-  margin-right: 1rem;
-  margin-top: -3rem;
-  width: 8rem;
+  margin-top: -24px;
+  margin-left: 6px;
 }
 
 .infos-heures {
   font-family: "Roboto Mono", sans-serif;
-  margin-right: 1rem;
-  margin-top: -3rem;
-  width: 8rem;
+  margin-top: -24px;
+  margin-right: 1px;
 }
 
 .infos-minutes {
   font-family: "Roboto Mono", sans-serif;
-  margin-right: 1rem;
-  margin-top: -3rem;
-  width: 8rem;
+  margin-top: -24px;
+  margin-right: 6px;
 }
 
-.infos-secondes {
-  font-family: "Roboto Mono", sans-serif;
-  margin: auto;
-  margin-top: -3rem;
-  width: 8rem;
+.info{
+  margin-top: 120px;
+  width: 190px;
+  margin-right: 210px;
+  background-color: rgba(255, 250, 245, 0.747);
+  height: 85px;
 }
-

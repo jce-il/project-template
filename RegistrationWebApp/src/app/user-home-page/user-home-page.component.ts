@@ -116,28 +116,23 @@ public days(){
   var days = Math.floor(distance / (1000 * 60 * 60 * 24));
   var hours = Math.floor ((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);  
 
   $("#jours").html(days);
   $("#heures").html(hours);
   $("#minutes").html(minutes);
-  $("#secondes").html(seconds);
   
   // On stylise les éléments
   $("#jours").css("background-color",'rgba(126,85,39,0.2)');
   $("#heures").css("background-color",'rgba(126,85,39,0.2)');
   $("#minutes").css("background-color",'rgba(126,85,39,0.2)');
-  $("#secondes").css("background-color",'rgba(126,85,39,0.2)');
   
  $("jours").css("color", 'rgb(126,85,39)');
  $("heures").css("color",'rgb(126,85,39)');
  $("minutes").css("color",'rgb(126,85,39)');
-  $("secondes").css("color",'rgb(126,85,39)');
   
   $("jours").css("font-weight",'bold');
   $("heures").css("font-weight",'bold');
   $("minutes").css("font-weight",'bold');
-  $("secondes").css("font-weight",'bold');
 
   if (distance < 0) {
     clearInterval(x);
