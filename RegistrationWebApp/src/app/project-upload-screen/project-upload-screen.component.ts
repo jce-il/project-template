@@ -31,9 +31,7 @@ export class ProjectUploadScreenComponent implements OnInit {
   modelStatus;
   file_project_selected = false;
   competition_open = 'undefined';
-  curr_day;
-  curr_month;
-  curr_year;
+
 
   constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService) {
     this.fields = [
@@ -60,9 +58,6 @@ export class ProjectUploadScreenComponent implements OnInit {
     ];
     this.project = new Project();
     this.project.date = new Date();
-    this.curr_day = this.project.date.getDay();
-    this.curr_month = this.project.date.getMonth() + 1;
-    this.curr_year = this.project.date.getFullYear();
     this.validateForm();
     this.projectError = false; // default- no registration form errors
     this.project.mentor1 = new Mentor();
@@ -82,18 +77,24 @@ export class ProjectUploadScreenComponent implements OnInit {
 
     this.db.getSettingsMetaData().subscribe((res) => {
       this.db.competition_settings_db = res;
-      var s_year = this.db.competition_settings_db[0].start_year;
-      var s_month = this.db.competition_settings_db[0].start_month;
-      var s_day = this.db.competition_settings_db[0].start_day;
-      var e_year = this.db.competition_settings_db[0].end_year;
-      var e_month = this.db.competition_settings_db[0].end_month;
-      var e_day = this.db.competition_settings_db[0].end_day;
-      console.log(this.curr_month)
-      if ((this.curr_year >= s_year && this.curr_year <= e_year) && (this.curr_month >= s_month && this.curr_month <= e_month) && (this.curr_day >= s_day && this.curr_day <= e_day))
+
+      if(this.dateWithin(this.db.competition_settings_db[0].start_date,this.db.competition_settings_db[0].end_date,this.project.date))
         this.competition_open = 'true';
       else
         this.competition_open = 'false';
+     
     })
+  }
+
+  dateWithin(StartDate, EndDate, CheckDate) {
+    var b, e, c;
+    b = Date.parse(StartDate);
+    e = Date.parse(EndDate);
+    c = Date.parse(CheckDate);
+    if ((c <= e && c >= b)) {
+      return true;
+    }
+    return false;
   }
 
   //Holds the selected file from the form
