@@ -196,8 +196,10 @@ export class RegistrationFormComponent {
   public updateInfo() {
     if (this.user.type != 'תלמיד') { // in case its teacher--> birthday is not required
       this.userform.get('birthday').clearValidators();
-      this.userform.get('birthday').updateValueAndValidity(); //now teacher can register
+      this.userform.get('birthday').updateValueAndValidity(); //now can updtae
     }
+    this.userform.get('email').clearValidators();
+    this.userform.get('email').updateValueAndValidity(); //now teacher can register
     this.userform.get('password').clearValidators();
     this.userform.get('password').updateValueAndValidity(); //clear validator
     this.userform.get('confimpassword').clearValidators();
@@ -209,6 +211,7 @@ export class RegistrationFormComponent {
         this.router.navigate(['homepage']);
     }
     else { // validate error
+      console.log(this.userform)
       this.signUpError = true;
     }
   }
