@@ -107,7 +107,7 @@ export class  TableComponent implements OnInit {
   }
 
   handleTeacher(){
-    this.obj = "<table class='table table-striped table-bordered'><thead><tr><th>שם פרוייקט</th><th>סטאטוס</th><th>הוספת המלצה</th><th>פריט עבודה נוכחי</th></tr></thead><tbody>";
+    this.obj = "<table class='table table-striped table-bordered id='myTable'><thead><tr><th>שם פרוייקט</th><th>סטאטוס</th><th>הוספת המלצה</th><th>פריט עבודה נוכחי</th></tr></thead><tbody>";
     for (var i = 0; i < this.db.projectsList.length; i++) {
       if (this.db.projectsList[i].school_contact_mail == this.db.loggedInUser.email) {
         var str = this.router.parseUrl('/viewproject;id='+this.db.projectsList[i].project_name+'');
@@ -159,7 +159,7 @@ recommendationUpload() {
 
   handleMaster1(){
     this.createCheckersInputList();
-    this.obj = "<table class='table table-striped table-bordered'><thead><tr><th>שם פרוייקט</th><th>סטאטוס</th><th>המלצה</th><th>פריט עבודה נוכחי</th>"+
+    this.obj = "<table class='table table-striped table-bordered id='myTable'><thead><tr><th>שם פרוייקט</th><th>סטאטוס</th><th>המלצה</th><th>פריט עבודה נוכחי</th>"+
     "<th>הקצאת בודק</th><th>שיוך בודק</th></tr></thead><tbody>";
     for (var i = 0; i < this.db.projectsList.length; i++) {
       var str = this.router.parseUrl('/viewproject;id='+this.db.projectsList[i].project_name+'');
