@@ -76,17 +76,11 @@
                 <br>
                 <a href="https://ec.europa.eu/research/eucys/index.cfm?pg=home">אתר התחרות באירופה</a>
                 <br>
+                <a href="https://www.mada.org.il/young/about">אודות התחרות</a>
+                <br>
                 <div *ngIf="this.db.loggedInUser.type =='מורה'">
                     <a href="http://yharshama.mada.org.il/young-recommendation-2016.doc">הורדת טופס המלצה</a>
                 </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-10">
-                מידע על התחרות
-                <br>
-                <a href="https://www.mada.org.il/young/about">אודות התחרות</a>
             </div>
         </div>
     </div>
@@ -96,7 +90,7 @@
                 <div class="main-content">
                     <div class="counterDown text-center">
                         <legend>
-                            <strong>נותרו עוד</strong>
+                            <strong>לסגירת ההרשמה נותרו</strong>
                         </legend>
                         <div id="demo">
                             <div id="minutes" class="text-center"></div>
@@ -104,9 +98,10 @@
                             <div id="jours" class="text-center"></div>
                         </div>
                         <div id="infos">
-                            <div class="infos-minutes">דקות</div>
-                            <div class="infos-heures">שעות</div>
                             <div class="infos-jours">ימים</div>
+                            <div class="infos-heures">שעות</div>
+                            <div class="infos-minutes">דקות</div>
+
                         </div>
                     </div>
                 </div>
