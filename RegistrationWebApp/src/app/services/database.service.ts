@@ -84,7 +84,6 @@ export class DatabaseService {
   updateListing(email: string) {
     for (var i = 0; i < this.usersList.length; i++) {
       if (this.usersList[i].email == email) {
-
         this.listingDoc = this.dataCollections.doc(`${this.usersList[i].id}`); //takes the listing that will be updated by the doc.id (listing's id)
         this.listingDoc.update(JSON.parse(JSON.stringify(this.user)));
       }
