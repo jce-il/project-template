@@ -24,6 +24,7 @@ export class ContactUsComponent implements OnInit {
   ngOnInit() {
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
+    this.db.getLoggedInUser();
     this.db.getMetaData().subscribe((res)=>{
       this.db.usersList = res;
       var j=0;
@@ -55,6 +56,9 @@ export class ContactUsComponent implements OnInit {
     this.today = this.date.getDate().toString()+"/"+(this.date.getMonth()+1).toString()+"/"+this.date.getFullYear().toString();
     
     this.msg = new Message(name,message,this.today); 
+    this.msg.email = this.db.loggedInUser.email;
+    this.msg.name = this.db.loggedInUser.firstName;
+    this.msg.last_name = this.db.loggedInUser.lastName;
     this.msgService.addMsgToUser(this.manager_emails,this.msg);
     this.form.reset();
   }//NOT FINISHED YET!!!--need to ask rony!
