@@ -72,6 +72,8 @@ export class StepsBarComponent implements OnInit {
   public MyProjectView() {
     if(this.db.loggedInUser.type=='מורה')
          this.router.navigate(['tablePage']);
+    else if(this.db.loggedInUser.type=='בודק')
+          this.router.navigate(['tablePage']);
     else
          this.router.navigate(['viewproject']);
   }

@@ -57,6 +57,7 @@ export class ProjectUploadScreenComponent implements OnInit {
       "יש מוצר סופי"
     ];
     this.project = new Project();
+    this.project.inCompetition = false;
     this.project.date = new Date();
     this.validateForm();
     this.projectError = false; // default- no registration form errors

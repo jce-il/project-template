@@ -32,7 +32,10 @@ export class Project {
         public researchStatus? : string,
         public modelStatus? : string,
         public products? : string,
-        public finishTime? : string
+        public finishTime? : string,
+        public inCompetition? : boolean
+
+
     ) { }
 
 }

@@ -12,7 +12,6 @@
     }
     
     :host /deep/ .table {
-    width: 100%;
     margin-bottom: 40px;
     background-color: transparent;
     border-collapse: collapse;
@@ -79,6 +78,7 @@
     vertical-align: middle;
     border-color: inherit;
     }
+
     
     :host /deep/ .widget .widget-header h3 {
     top: 2px;
@@ -108,13 +108,13 @@
 :host /deep/ h3{font-weight: bolder; font-family: 'Shuneet', serif; font-size:55px; color:  rgb(204, 231, 173); float: left; position: relative; left: -260px; top: 60px; text-shadow: 10px 14px 10px rgb(24, 32, 19); }
 
 :host /deep/ .container{
+    max-width:100%;
     margin-bottom: 7%;
     border-radius: 20px 20px 20px 20px;
     box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.75);
     margin-top: 8%;
     direction: rtl;
     text-align: right;
-    max-width: 700px;
     background: radial-gradient(ellipse at center, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%);
     
 }
