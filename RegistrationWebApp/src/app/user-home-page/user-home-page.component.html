@@ -12,15 +12,17 @@
 </div>
 <div *ngIf="this.db.loggedInUser != null">
     <div class="container">
-       
-            <div class="name">
-                <strong>שלום {{this.db.loggedInUser.firstName}}</strong>
-            </div>
-            
+
+        <div class="name">
+            <strong>שלום {{this.db.loggedInUser.firstName}}</strong>
+        </div>
+
 
         <div *ngIf="this.db.loggedInUser.type == 'תלמיד'">
             <div class="row" id="userstatus">
-                <legend><strong>סטאטוס הרשמה</strong></legend>
+                <legend>
+                    <strong>סטאטוס הרשמה</strong>
+                </legend>
                 <div class="notice notice-info">
                     <strong>{{workExists}}</strong>
                 </div>
@@ -39,13 +41,16 @@
                 <legend>עבודות של התלמידים שלי</legend>
                 <div class="notice notice-success">
                     <div *ngFor="let i of user_projects; let k = index">
-                        <li><b>{{i}}</b> - {{missing_details[k]}}, {{missing_file[k]}}, {{missing_recommendation[k]}}</li>
+                        <li>
+                            <b>{{i}}</b> - {{missing_details[k]}}, {{missing_file[k]}}, {{missing_recommendation[k]}}</li>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <legend><strong>סטאטוס הודעות</strong></legend>
+            <legend>
+                <strong>סטאטוס הודעות</strong>
+            </legend>
             <div class="notice notice-info">
                 <i class="glyphicon glyphicon-comment">
                     <strong>הודעות</strong>
@@ -56,12 +61,14 @@
                 <div *ngIf="this.msg_counter==0">
                     אין הודעות חדשות
                 </div>
-                
+
             </div>
         </div>
 
         <div class="row">
-            <legend><strong>קישורים</strong></legend>
+            <legend>
+                <strong>קישורים</strong>
+            </legend>
             <div class="notice notice-info">
                 <a href="http://www.mada.org.il/young">הדף הראשי של התחרות</a>
                 <br>
@@ -83,39 +90,32 @@
             </div>
         </div>
     </div>
-
-    <div class="row info">
-        <div class="wrapper">
-          <div class="main-content">
-            <div class="counterDown text-center">
-                <legend><strong>נותרו עוד</strong></legend>
-              <div id="demo">
-                <div id="minutes" class="text-center"></div>
-                <div id="heures" class="text-center"></div>
-                <div id="jours" class="text-center"></div>
-              </div>
-              <div id="infos">
-                  <div class="infos-minutes">דקות</div>
-                  <div class="infos-heures">שעות</div>
-                  <div class="infos-jours">ימים</div>
-              </div>
+    <div *ngIf="this.comp_settings != undefined">
+        <div *ngIf="this.comp_settings.is_opened" class="row info">
+            <div class="wrapper">
+                <div class="main-content">
+                    <div class="counterDown text-center">
+                        <legend>
+                            <strong>נותרו עוד</strong>
+                        </legend>
+                        <div id="demo">
+                            <div id="minutes" class="text-center"></div>
+                            <div id="heures" class="text-center"></div>
+                            <div id="jours" class="text-center"></div>
+                        </div>
+                        <div id="infos">
+                            <div class="infos-minutes">דקות</div>
+                            <div class="infos-heures">שעות</div>
+                            <div class="infos-jours">ימים</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
+    </div>
 </div>
-</div>
-
-
-
-
-
-
-
-
-
 
 
 <div class="page-footer">
     <app-footer></app-footer>
 </div>
-

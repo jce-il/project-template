@@ -14,16 +14,28 @@ export class CompetitionSettingsPageComponent implements OnInit {
   ngOnInit() {
     this.db.getSettingsMetaData().subscribe((res) => {
       this.db.competition_settings_db = res;
-      this.comp_settings = this.db.competition_settings_db[0] ;
+      this.comp_settings = this.db.competition_settings_db[0];
     })
-    //this.comp_settings = new CompetitionSettings();
   }
 
-  setSettings() {
+  closeCompetition() {
+    if (window.confirm('האם לסגור תחרות נוכחית?')) {
+      this.comp_settings.is_opened = true;
+      this.comp_settings.is_opened = false;
+      this.comp_settings.name = 'אין תחרות פתוחה';
+      this.comp_settings.start_date = 'NaN';
+      this.comp_settings.end_date = 'NaN';
+      this.db.competition_settings = this.comp_settings;
+      this.db.updateSettingsListing();
+      this.comp_settings = new CompetitionSettings();
+    }
+  }
+
+  openCompetition() {
     this.comp_settings.is_opened = true;
     this.db.competition_settings = this.comp_settings;
     this.db.updateSettingsListing()
-    alert("הפרוייקט נפתח בהצלחה!")
+    alert("התחרות נפתחה בהצלחה!")
   }
 
 }
