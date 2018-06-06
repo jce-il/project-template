@@ -8,9 +8,10 @@
 </div>
 <div class="container" dir="rtl" *ngIf="this.db.loggedInUser != null">
     <h2 class="well">{{title}}</h2>
-    <input type="text" id="myInput" (keyup)="search()" placeholder="הזן ערך לחיפוש..." title="Type in a name">
+    <input type="text" id="myInput" (keyup)="search()" placeholder="הזן ערך לחיפוש..."/>
     <div class="widget-content"></div>
 </div>
+
 
 <div class="window">
         <div class="modal-content">

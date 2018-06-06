@@ -78,7 +78,7 @@ export class  TableComponent implements OnInit {
               this.title="פרוייקטים בתחרות";
               if(!this.flg){this.db.getCheckers()};
               this.handleMaster1();
-            $("button").click(res => {
+            $(".btn-labeled").click(res => {
               var TableLine =res.currentTarget.name;
               if($("input[id="+TableLine+"]").val()==""){
                 alert("errorrr");
@@ -91,6 +91,12 @@ export class  TableComponent implements OnInit {
                 this.db.updateProjectListing(this.db.projectsList[TableLine].project_name);
                 this.flg = true;
               }
+            });
+            $(".btn-warning").click(res =>{
+                
+            });
+            $(".btn-info").click(res =>{
+              
             });
             }
             else if(this.page==2){
@@ -163,7 +169,7 @@ handleChecker(){
   handleMaster1(){
     this.createCheckersInputList();
     this.obj = "<table class='table table-striped table-bordered' id='myTable'><thead><tr><th>שם פרוייקט</th><th>תאריך יצירה</th><th>סוג העבודה</th><th>תחום</th><th>חברי צוות</th>"+
-    "<th>איש הקשר</th><th>המלצה</th><th>פריט עבודה נוכחי</th><th>הקצאת בודק</th><th>שיוך בודק</th></tr></thead><tbody>";
+    "<th>איש הקשר</th><th>המלצה</th><th>פריט עבודה נוכחי</th><th>בתחרות</th><th>הקצאת בודק</th><th>שיוך בודק</th></tr></thead><tbody>";
     for (var i = 0; i < this.db.projectsList.length; i++) {
       this.createTeam(i);
       var str = this.router.parseUrl('/viewproject;id='+this.db.projectsList[i].project_name+'');
@@ -182,6 +188,8 @@ handleChecker(){
         this.obj+="<td>לא קיים פריט עבודה במערכת</td>"
       }
       else{this.obj+="<td><a href="+this.db.projectsList[i].project_file.url+">"+this.db.projectsList[i].project_file.name+"</a></td>"}
+      this.obj+="<td><button type='button' class='btn btn-info btn-circle'><i class='glyphicon glyphicon-ok'></i></button>"+
+                "<button type='button' class='btn btn-warning btn-circle'><i class='glyphicon glyphicon-remove'></i></button></td>";
       if(this.db.projectsList[i].checkerMail != undefined){
         this.obj+="<td><form><input list='chekers' id="+i+"></form><datalist id='chekers'>"+this.inputCheckerList+"<div>הבודק הנוכחי הינו:    "+this.db.projectsList[i].checkerMail+"</div></td>";
         this.obj+="<td><button type='button' name="+i+" class='btn btn-labeled btn-primary'>שייך</button></td></tr>"

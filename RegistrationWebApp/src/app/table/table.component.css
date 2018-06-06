@@ -108,7 +108,7 @@
 :host /deep/ h3{font-weight: bolder; font-family: 'Shuneet', serif; font-size:55px; color:  rgb(204, 231, 173); float: left; position: relative; left: -260px; top: 60px; text-shadow: 10px 14px 10px rgb(24, 32, 19); }
 
 :host /deep/ .container{
-    max-width:100%;
+    min-width: 1500px;
     margin-bottom: 7%;
     border-radius: 20px 20px 20px 20px;
     box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.75);
@@ -116,7 +116,6 @@
     direction: rtl;
     text-align: right;
     background: radial-gradient(ellipse at center, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%);
-    
 }
 
 :host /deep/ .well{ border-radius: 15px; position: relative; background: radial-gradient(ellipse at center, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%);}
@@ -217,6 +216,32 @@
     padding: 12px 20px 12px 40px;
     border: 1px solid #ddd;
     margin-bottom: 12px;
+  }
+ 
+  :host /deep/ .btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+  }
+  :host /deep/ .btn-circle.btn-lg {
+    width: 50px;
+    height: 50px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 25px;
+  }
+  :host /deep/ .btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
   }
   
   
