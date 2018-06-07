@@ -34,6 +34,8 @@ export class  TableComponent implements OnInit {
   flg: boolean = false;
   page;
   team:string;
+  inCompetition:string;
+
 
   constructor(public db: DatabaseService,private cookieService: CookieService,
     public uploadService: UploadFileService,private elementRef: ElementRef,private renderer: Renderer,private route: ActivatedRoute,
@@ -132,7 +134,11 @@ export class  TableComponent implements OnInit {
         var str = this.router.parseUrl('/viewproject;id='+this.db.projectsList[i].project_name+'');
         this.obj+="<tr><td><a href="+str+">"+this.db.projectsList[i].project_name+"</a></td>"
                   +"<td>"+this.db.projectsList[i].status+"</td>"
-                  +"<td class='load' ><button type='button' id="+i+" class='btn btn-labeled btn-primary'>הוסף</button></td>";
+                  +"<td class='load' ><button type='button' id="+i+" class='btn btn-labeled btn-primary'>שנה/הוסף</button></br>";
+        if(this.db.projectsList[i].recommendation_file==null){
+          this.obj+="לא קיים קובץ המלצה במערכת</td>"
+        }
+        else{this.obj+="<a href="+this.db.projectsList[i].recommendation_file.url+">"+this.db.projectsList[i].recommendation_file.name+"</a></td>"}  
         if(this.db.projectsList[i].project_file==null){
           this.obj+="<td>לא קיים פריט עבודה במערכת</td></tr>"
         }
@@ -200,8 +206,10 @@ handleChecker(){
         this.obj+="<td>לא קיים פריט עבודה במערכת</td>"
       }
       else{this.obj+="<td><a href="+this.db.projectsList[i].project_file.url+">"+this.db.projectsList[i].project_file.name+"</a></td>"}
+      if(this.db.projectsList[i].inCompetition){ this.inCompetition = "התקבל";}
+      else{ this.inCompetition = "נדחה";}
       this.obj+="<td><button type='button' name="+i+" class='btn btn-info btn-circle'><i class='glyphicon glyphicon-ok'></i></button>"+
-                "<button type='button' name="+i+" class='btn btn-warning btn-circle'><i class='glyphicon glyphicon-remove'></i></button></td>";
+                "<button type='button' name="+i+" class='btn btn-warning btn-circle'><i class='glyphicon glyphicon-remove'></i></button>"+this.inCompetition+"</td>";
       if(this.db.projectsList[i].checkerMail != undefined){
         this.obj+="<td><form><input list='chekers' id="+i+"></form><datalist id='chekers'>"+this.inputCheckerList+"<div>הבודק הנוכחי הינו:    "+this.db.projectsList[i].checkerMail+"</div></td>";
         this.obj+="<td><button type='button' name="+i+" class='btn btn-labeled btn-primary'>שייך</button></td></tr>"
