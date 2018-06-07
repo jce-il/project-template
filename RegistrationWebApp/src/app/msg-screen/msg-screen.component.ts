@@ -34,4 +34,15 @@ export class MsgScreenComponent implements OnInit {
     }
   }
 
+  delteMessage(msg){
+    console.log(msg)
+    msg=this.db.loggedInUser.messages.length-1-msg;
+    console.log(this.db.loggedInUser.messages)
+    console.log(this.db.loggedInUser.messages[msg])
+    this.db.loggedInUser.messages.splice(msg,1);
+    console.log(this.db.loggedInUser.messages)
+      this.db.updateListing(this.db.loggedInUser.email);
+      this.downloadMsgs()
+  }
+
 }

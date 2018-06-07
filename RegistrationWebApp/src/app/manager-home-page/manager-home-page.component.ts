@@ -21,6 +21,8 @@ export class ManagerHomePageComponent implements OnInit {
 
   ngOnInit() {
     this.cookieService.set('User login status', 'true');
+    this.db.loggedInUserUID = this.cookieService.get('User uid');
+    this.db.loggedIn = this.cookieService.get('User login status');
     this.db.setMetaData();
     this.db.getProjectMetaData().subscribe((res) => {
       this.db.projectsList = res;

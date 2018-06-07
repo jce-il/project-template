@@ -17,7 +17,7 @@
                       <div *ngIf = "this.db.loggedInUser != undefined && this.db.loggedInUser.type == 'מנהל'">
                           <label>נמען:</label>
 
-                        <form><input [(ngModel)]="this.selected_contact" [ngModelOptions]="{standalone: true}" list='contacts' id="+i+"></form><datalist id='contacts'>
+                        <form><input  class="form-control" [(ngModel)]="this.selected_contact" placeholder="הכנס ערך לחיפוש או בחר נמען מתוך הרשימה" [ngModelOptions]="{standalone: true}" list='contacts' id="+i+"></form><datalist id='contacts'>
                                 <option *ngFor="let i of display_contacts" [value]="i">{{i}}</option>
                         </datalist>
                       </div>

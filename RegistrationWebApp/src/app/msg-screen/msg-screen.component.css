@@ -15,6 +15,9 @@
     text-align: right;
 }
 
+h6{
+  font-size: 7px;
+}
 .text-right i{
   margin-left: 10px;
 }

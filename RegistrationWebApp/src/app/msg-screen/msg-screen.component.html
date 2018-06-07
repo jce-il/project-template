@@ -14,12 +14,17 @@
         <h2 class="page-header">הודעות</h2>
           <section class="comment-list">
             <!-- First Comment -->
-            <article class="row"   *ngFor= "let item of msgArray">
-              <div class="col-md-2 col-sm-2 hidden-xs">
+            <article class="row"   *ngFor= "let item of msgArray; let i = index">
+              <div *ngIf = "this.db.loggedInUser.type != 'מנהל'"  class="col-md-2 col-sm-2 hidden-xs">
                 <figure class="thumbnail">
                   <figcaption class="text-center">מנהל המערכת</figcaption>
                 </figure>
               </div>
+              <div *ngIf = "this.db.loggedInUser.type == 'מנהל'"  class="col-md-2 col-sm-2 hidden-xs">
+                  <figure class="thumbnail">
+                    <figcaption class="text-center"> {{item.name}} {{item.last_name}} <br> <h6>{{item.email}}</h6></figcaption>
+                  </figure>
+                </div>
               <div class="col-md-10 col-sm-10">
                 <div class="panel panel-default arrow right">
                   <div class="panel-body">
@@ -34,6 +39,7 @@
                     </div>
                   </div>
                 </div>
+                <button (click)="delteMessage(i)">מחק הודעה</button>
               </div>
             </article>
           </section>
