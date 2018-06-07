@@ -13,11 +13,39 @@
 <div *ngIf="this.db.loggedInUser != null">
     <div class="container">
 
-        <div class="name">
-            <strong>שלום {{this.db.loggedInUser.firstName}}</strong>
-        </div>
-
-
+       <div class="row helloClock">
+            <div class="col">
+                    <div class="name">
+                            <strong>שלום {{this.db.loggedInUser.firstName}}</strong>
+                        </div>
+            </div>
+        
+            <div class="col">
+                    <div *ngIf="this.comp_settings != undefined">
+                            <div *ngIf="this.comp_settings.is_opened" class="row aside">
+                                <div class="wrapper">
+                                    <div class="main-content">
+                                        <div class="counterDown text-center">
+                                            <legend>
+                                                <strong>לסגירת ההרשמה נותרו</strong>
+                                            </legend>
+                                            <div id="demo">
+                                                <div id="minutes" class="text-center"></div>
+                                                <div id="heures" class="text-center"></div>
+                                                <div id="jours" class="text-center"></div>
+                                            </div>
+                                            <div id="infos">
+                                                <div class="infos-minutes">דקות</div>
+                                                <div class="infos-heures">שעות</div>
+                                                <div class="infos-jours">ימים</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+       </div>
         <div *ngIf="this.db.loggedInUser.type == 'תלמיד'">
             <div class="row" id="userstatus">
                 <legend>
@@ -47,66 +75,44 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <legend>
-                <strong>סטאטוס הודעות</strong>
-            </legend>
-            <div class="notice notice-info">
-                <i class="glyphicon glyphicon-comment">
-                    <strong>הודעות</strong>
-                </i>
-                <div *ngIf="this.msg_counter>0">
-                    <strong>{{msg_counter}} הודעות חדשות</strong>
-                </div>
-                <div *ngIf="this.msg_counter==0">
-                    אין הודעות חדשות
-                </div>
-
-            </div>
-        </div>
-
-        <div class="row">
-            <legend>
-                <strong>קישורים</strong>
-            </legend>
-            <div class="notice notice-info">
-                <a href="http://www.mada.org.il/young">הדף הראשי של התחרות</a>
-                <br>
-                <a href="https://student.societyforscience.org/intel-isef">אתר התחרות בארה"ב</a>
-                <br>
-                <a href="https://ec.europa.eu/research/eucys/index.cfm?pg=home">אתר התחרות באירופה</a>
-                <br>
-                <a href="https://www.mada.org.il/young/about">אודות התחרות</a>
-                <br>
-                <div *ngIf="this.db.loggedInUser.type =='מורה'">
-                    <a href="http://yharshama.mada.org.il/young-recommendation-2016.doc">הורדת טופס המלצה</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div *ngIf="this.comp_settings != undefined">
-        <div *ngIf="this.comp_settings.is_opened" class="row info">
-            <div class="wrapper">
-                <div class="main-content">
-                    <div class="counterDown text-center">
+                <div class="row">
                         <legend>
-                            <strong>לסגירת ההרשמה נותרו</strong>
+                            <strong>סטאטוס הודעות</strong>
                         </legend>
-                        <div id="demo">
-                            <div id="minutes" class="text-center"></div>
-                            <div id="heures" class="text-center"></div>
-                            <div id="jours" class="text-center"></div>
-                        </div>
-                        <div id="infos">
-                            <div class="infos-minutes">דקות</div>
-                            <div class="infos-heures">שעות</div>
-                            <div class="infos-jours">ימים</div>
+                        <div class="notice notice-info">
+                            <i class="glyphicon glyphicon-comment">
+                                <strong>הודעות</strong>
+                            </i>
+                            <div *ngIf="this.msg_counter>0">
+                                <strong>{{msg_counter}} הודעות חדשות</strong>
+                            </div>
+                            <div *ngIf="this.msg_counter==0">
+                                אין הודעות חדשות
+                            </div>
+            
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+            
+                    <div class="row">
+                        <legend>
+                            <strong>קישורים</strong>
+                        </legend>
+                        <div class="notice notice-info">
+                            <a href="http://www.mada.org.il/young">הדף הראשי של התחרות</a>
+                            <br>
+                            <a href="https://student.societyforscience.org/intel-isef">אתר התחרות בארה"ב</a>
+                            <br>
+                            <a href="https://ec.europa.eu/research/eucys/index.cfm?pg=home">אתר התחרות באירופה</a>
+                            <br>
+                            <a href="https://www.mada.org.il/young/about">אודות התחרות</a>
+                            <br>
+                            <div *ngIf="this.db.loggedInUser.type =='מורה'">
+                                <a href="http://yharshama.mada.org.il/young-recommendation-2016.doc">הורדת טופס המלצה</a>
+                            </div>
+                        </div>
+                    </div>
     </div>
+    
 </div>
 
 
