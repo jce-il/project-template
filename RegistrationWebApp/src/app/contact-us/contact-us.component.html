@@ -7,13 +7,20 @@
         <app-header></app-header>
     </div>
 
-<div class="container">
+<div *ngIf = "this.db.loggedInUser" class="container">
   <div class="row">
       <div class="col-md-6">
           <div class="well well-sm">
               <form  [formGroup]="form" (ngSubmit)="onSubmit()">
               <div class="row">
                   <div class="col-md-12">
+                      <div *ngIf = "this.db.loggedInUser != undefined && this.db.loggedInUser.type == 'מנהל'">
+                          <label>נמען:</label>
+
+                        <form><input [(ngModel)]="this.selected_contact" [ngModelOptions]="{standalone: true}" list='contacts' id="+i+"></form><datalist id='contacts'>
+                                <option *ngFor="let i of display_contacts" [value]="i">{{i}}</option>
+                        </datalist>
+                      </div>
                       <div class="form-group">
                           <label for="name">
                               נושא</label>
