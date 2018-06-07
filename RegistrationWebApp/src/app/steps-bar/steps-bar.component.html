@@ -28,7 +28,7 @@
                                 </button>
                                 <p>הוסף פרויקט</p>
                             </div>
-                            <div class="process-step">
+                            <div *ngIf="this.db.loggedInUser.type != 'תלמיד' || this.db.loggedInUser.project != undefined" class="process-step">
                                 <button type="button" class="btn btn-default btn-circle" data-toggle="tab" (click)="MyProjectView()">
                                     <i class="fa fa-file-text-o fa-2x"></i>
                                 </button>
