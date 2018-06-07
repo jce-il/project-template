@@ -5,11 +5,10 @@ import { CookieService } from 'ngx-cookie-service';
 import { UploadFileService } from '../services/upload-file.service';
 import { FileUpload } from '../fileupload';
 import { Project } from '../project';
-import {ElementRef,Renderer} from '@angular/core';
 import {Observable} from 'rxjs/Rx';
 import * as $ from 'jquery';
 import { ActivatedRoute,Router } from '@angular/router';
-import { FormsModule, FormGroup, FormControl, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+
 
 @Pipe({
 	name: 'safe'
@@ -39,8 +38,7 @@ export class  TableComponent implements OnInit {
 
 
   constructor(public db: DatabaseService,private cookieService: CookieService,
-    public uploadService: UploadFileService,private elementRef: ElementRef,private renderer: Renderer,private route: ActivatedRoute,
-  private router: Router) {}
+    public uploadService: UploadFileService,private route: ActivatedRoute,private router: Router) {}
 
   ngOnInit() {
   $(".window").hide();
@@ -80,11 +78,21 @@ export class  TableComponent implements OnInit {
             this.title="פרוייקטים לבדיקה";
             this.handleChecker();
             $(".btn-checker").click(res => {
-              var index = res.currentTarget.id;
-              var kaki = "<legend><strong>הערות הבודק</strong></legend>"+
-              "<div class='modal-body'>"+this.db.projectsList[index].check+""+
+              var index,text,winContent;
+              index = res.currentTarget.id;
+              if(this.db.projectsList[index].check==undefined)
+                    text = "בודק יקר,</br>עדיין לא הוזנה בדיקה.</br> על מנת להזין את הבדיקה יש ללחוץ על שם העבודה ולהזין את הבדיקה בשדה המיועד לכך הנמצא בתחתית העמוד."
+              else
+                    text = this.db.projectsList[index].check;    
+               winContent= "<legend><strong>הערות הבודק</strong></legend>"+
+              "<div class='modal-body'><p>"+text+"</p>"+
               "<button type='button' class='btn btn-labeled' id='close' ><i class='glyphicon glyphicon-remove'></i>סגור </button></div>";
-                $(".modal-content").html(kaki);
+                $(".modal-content").html(winContent);
+                $('.modal-content').css('max-width','600px');
+                $('.modal-content').css('max-height','800px');
+                $("p").css({'color': '#f8f8f8',
+                'font-size': '15px',
+                'text-align': 'right'});
                 $(".window").show();
                 $("#close").click(function(){
                   $(".window").hide();
@@ -313,38 +321,3 @@ createCheckersInputList(){
 
 
 }
-
-
-
-
-
-/*
-
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4> 
-      </div>
-      <div class="modal-body">
-        <div style="text-align: center;">
-<iframe src="http://utracker-int.cdmrm.com/unit_storage/PRD/WO579907.pdf" 
-style="width:600px; height:600px;" frameborder="0"></iframe>
-</div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-*/
