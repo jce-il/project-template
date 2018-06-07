@@ -239,7 +239,7 @@ handleChecker(){
                 "<td>"+this.team+"</td>"+
                 "<td>"+this.db.projectsList[i].school_contact_mail+"</td>";
       if(this.db.projectsList[i].recommendation_file==null){
-        this.obj+="<td>לא קיים פריט עבודה במערכת</td>"
+        this.obj+="<td>לא קיים קובץ המלצה במערכת</td>"
       }
       else{this.obj+="<td><a href="+this.db.projectsList[i].recommendation_file.url+">"+this.db.projectsList[i].recommendation_file.name+"</a></td>"}  
       if(this.db.projectsList[i].project_file==null){
