@@ -134,7 +134,7 @@ export class  TableComponent implements OnInit {
         var str = this.router.parseUrl('/viewproject;id='+this.db.projectsList[i].project_name+'');
         this.obj+="<tr><td><a href="+str+">"+this.db.projectsList[i].project_name+"</a></td>"
                   +"<td>"+this.db.projectsList[i].status+"</td>"
-                  +"<td class='load' ><button type='button' id="+i+" class='btn btn-labeled btn-primary'>שנה/הוסף</button></br>";
+                  +"<td class='load' ><button type='button' id="+i+" class='btn btn-labeled btn-primary'>שנה / הוסף</button></br>";
         if(this.db.projectsList[i].recommendation_file==null){
           this.obj+="לא קיים קובץ המלצה במערכת</td>"
         }
