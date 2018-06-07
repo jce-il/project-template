@@ -8,6 +8,7 @@ import { Project } from '../project';
 import {Observable} from 'rxjs/Rx';
 import * as $ from 'jquery';
 import { ActivatedRoute,Router } from '@angular/router';
+import { ExcelService } from '../services/excel.service';
 
 
 @Pipe({
@@ -37,7 +38,8 @@ export class  TableComponent implements OnInit {
 
 
   constructor(public db: DatabaseService,private cookieService: CookieService,
-    public uploadService: UploadFileService,private route: ActivatedRoute,private router: Router) {}
+    public uploadService: UploadFileService,private route: ActivatedRoute,private router: Router,
+    public excelService: ExcelService) {}
 
   ngOnInit() {
   $(".window").hide();
@@ -98,11 +100,14 @@ export class  TableComponent implements OnInit {
                   $(".window").hide();
                 });
             });
-
             break;
           }
           case "מנהל":
           {
+            $(".center-block").click(res =>{
+                if(this.page==1){this.exportProjectsToExcel();}
+                else{this.exportUsersToExcel();}
+            });
             if(this.page==1){
               this.title="פרוייקטים בתחרות";
               this.handleMaster1();
@@ -167,7 +172,6 @@ export class  TableComponent implements OnInit {
   }
   this.obj+="</tbody></table>" ; 
   $(".widget-content").html(this.obj);
- 
 }
 
 
@@ -293,7 +297,6 @@ createCheckersInputList(){
     }
     this.obj+="</tbody></table>" ; 
     $(".widget-content").html(this.obj);
-
   }
 
      search() {
@@ -317,5 +320,13 @@ createCheckersInputList(){
       }
      }
 
-
+     exportUsersToExcel() {
+      this.db.exportUsers();
+      this.excelService.exportAsExcelFile(JSON.parse(JSON.stringify(this.db.user_exp)), 'users');
+    }
+  
+    exportProjectsToExcel() {
+      this.db.exportProjects();
+      this.excelService.exportAsExcelFile(JSON.parse(JSON.stringify(this.db.proj_exp)), 'projects');
+    }
 }
