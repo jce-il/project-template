@@ -211,11 +211,11 @@ handleChecker(){
 createTeam(index){
   this.team="";
   if(this.db.projectsList[index].user1mail!=undefined)
-      this.team+=this.db.projectsList[index].user1mail+"    ";
+      this.team+=this.db.projectsList[index].user1mail+"</br>";
   if(this.db.projectsList[index].user2mail!=undefined)
-      this.team+=this.db.projectsList[index].user2mail+"    ";
+      this.team+=this.db.projectsList[index].user2mail+"</br>";
   if(this.db.projectsList[index].user3mail!=undefined)
-      this.team+=this.db.projectsList[index].user3mail+"    ";
+      this.team+=this.db.projectsList[index].user3mail+"";
 }
 
 createCheckersInputList(){
