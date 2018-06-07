@@ -298,45 +298,20 @@ strong{
   margin-top: 7px;
 }
 
-    #myInput {
-      border-radius: 5px 0 0 5px;
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    width: 45%;
-    font-size: 16px;
-    height: 48px;
-    padding: 13px 20px 12px 40px;
-    border: 1px solid #ddd;
-    margin-bottom: 12px;
+  #myInput {
+  border-radius: 5px 0 0 5px;
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 45%;
+  font-size: 16px;
+  height: 48px;
+  padding: 13px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
 
   }
  
-    .btn-circle {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    padding: 6px 0;
-    font-size: 12px;
-    line-height: 1.428571429;
-    border-radius: 15px;
-  }
-    .btn-circle.btn-lg {
-    width: 50px;
-    height: 50px;
-    padding: 10px 16px;
-    font-size: 18px;
-    line-height: 1.33;
-    border-radius: 25px;
-  }
-    .btn-circle.btn-xl {
-    width: 70px;
-    height: 70px;
-    padding: 10px 16px;
-    font-size: 24px;
-    line-height: 1.33;
-    border-radius: 35px;
-  }
-  
+
   
   /* Safari */
   @-webkit-keyframes spin {

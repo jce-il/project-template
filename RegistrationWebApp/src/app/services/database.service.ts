@@ -201,9 +201,11 @@ export class DatabaseService {
   }
 
   public getCheckers() {
-    for (var i = 0; i < this.usersList.length; i++) {
-      if (this.usersList[i].type == "בודק")
-        this.checkersList.push(this.usersList[i]);
+    if(this.checkersList.length==0){
+      for (var i = 0; i < this.usersList.length; i++) {
+        if (this.usersList[i].type == "בודק")
+          this.checkersList.push(this.usersList[i]);
+      }
     }
   }
 
