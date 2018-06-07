@@ -35,6 +35,7 @@ export class  TableComponent implements OnInit {
   page;
   team:string;
   inCompetition:string;
+  
 
 
   constructor(public db: DatabaseService,private cookieService: CookieService,
@@ -76,7 +77,19 @@ export class  TableComponent implements OnInit {
           case "בודק":
           {
             this.title="פרוייקטים לבדיקה";
-          //  this.handleChecker();
+            this.handleChecker();
+            $(".btn-checker").click(res => {
+              var index = res.currentTarget.id;
+              var kaki = "<legend><strong>הערות הבודק</strong></legend>"+
+              "<div class='modal-body'>"+this.db.projectsList[index].check+""+
+              "<button type='button' class='btn btn-labeled' id='close' ><i class='glyphicon glyphicon-remove'></i>סגור </button></div>";
+                $(".modal-content").html(kaki);
+                $(".window").show();
+                $("#close").click(function(){
+                  $(".window").hide();
+                });
+            });
+
             break;
           }
           case "מנהל":
@@ -180,7 +193,25 @@ recommendationUpload() {
 
 
 handleChecker(){
-    
+  this.obj = "<table class='table table-striped table-bordered' id='myTable'><thead><tr><th>שם פרוייקט</th><th>איש קשר</th><th>פריט עבודה נוכחי</th>"+
+             "<th>קובץ המלצה נוכחי</th><th>הערות למיון</th></tr></thead><tbody>";
+  for (var i = 0; i < this.db.projectsList.length; i++) {
+    var str = this.router.parseUrl('/viewproject;id='+this.db.projectsList[i].project_name+'');
+    this.obj+="<tr><td><a href="+str+">"+this.db.projectsList[i].project_name+"</a></td>"+ 
+              "<td>"+this.db.projectsList[i].school_contact_mail+"</td>";
+    if(this.db.projectsList[i].project_file==null){
+      this.obj+="<td>לא קיים פריט עבודה במערכת</td>"
+    }
+    else{this.obj+="<td><a href="+this.db.projectsList[i].project_file.url+">"+this.db.projectsList[i].project_file.name+"</a></td>"}
+    if(this.db.projectsList[i].recommendation_file==null){
+      this.obj+="<td>לא קיים קובץ המלצה במערכת</td>"
+    }
+    else{this.obj+="<td><a href="+this.db.projectsList[i].recommendation_file.url+">"+this.db.projectsList[i].recommendation_file.name+"</a></td>"}  
+    this.obj+="<td><button id="+i+" class='btn btn-checker btn-lg' data-toggle='modal' data-target='#myModal'>"+
+              "צפיה בהערות הבודק</button></td></tr>";
+  }
+  this.obj+="</tbody></table>" ; 
+  $(".widget-content").html(this.obj);
 }
  
 
@@ -281,3 +312,38 @@ createCheckersInputList(){
 
 
 }
+
+
+
+
+
+/*
+
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4> 
+      </div>
+      <div class="modal-body">
+        <div style="text-align: center;">
+<iframe src="http://utracker-int.cdmrm.com/unit_storage/PRD/WO579907.pdf" 
+style="width:600px; height:600px;" frameborder="0"></iframe>
+</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+*/
