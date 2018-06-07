@@ -14,7 +14,7 @@
         <h2 class="page-header">הודעות</h2>
           <section class="comment-list">
             <!-- First Comment -->
-            <article class="row"   *ngFor= "let item of msgArray">
+            <article class="row"   *ngFor= "let item of msgArray; let i = index">
               <div *ngIf = "this.db.loggedInUser.type != 'מנהל'"  class="col-md-2 col-sm-2 hidden-xs">
                 <figure class="thumbnail">
                   <figcaption class="text-center">מנהל המערכת</figcaption>
@@ -39,6 +39,7 @@
                     </div>
                   </div>
                 </div>
+                <button (click)="delteMessage(i)">מחק הודעה</button>
               </div>
             </article>
           </section>
