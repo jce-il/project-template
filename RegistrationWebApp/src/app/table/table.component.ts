@@ -54,7 +54,7 @@ export class  TableComponent implements OnInit {
         {
           case "מורה":
           {
-            this.title = "פרויקטים של תלמידים שלי";
+            this.title = "פרויקטי התלמידים שלי";
             this.handleTeacher();
             $(document).ready(function(){
               $(".load button").click(function() {
