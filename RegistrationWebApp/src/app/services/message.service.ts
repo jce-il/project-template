@@ -23,7 +23,6 @@ export class MessageService {
       this.db.getUser(email[i], "", "").then(() => {
         this.db.user = this.db.selectedUser[0];
         this.db.user.messages.push(msg);
-        console.log(this.db.user.email)
         this.db.updateListing(this.db.user.email);
       })
         .catch(err => {
