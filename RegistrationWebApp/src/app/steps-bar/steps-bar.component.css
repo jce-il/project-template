@@ -1,31 +1,32 @@
 *{
 	direction: rtl;
+	position: relative;
 }
 
-.participants .container{
+.container{
 	direction: rtl;
 }
 
-.participants .btn-info{
+.btn-info{
 	background-color: steelblue;
 }
 
-.participants .process-step .btn:focus{
+.process-step .btn:focus{
 	outline:none;
 }
 
-.participants .process{
+.process{
 	display:table;
 	position:relative;
 	top: 8px;
 	margin-top: 8px;
 }
 
-.participants .process-row{
+.process-row{
 	display:table-row;
 }
 
-.participants .process-row:before{
+.process-row:before{
 	top: 33%;
 	right: 5%;
 	position:absolute;
@@ -34,7 +35,7 @@
 	background-color:rgb(196, 146, 90);
 }
 
-.participants .process-step{
+.process-step{
 	display:table-cell;
 	text-align:center;
 	position:relative;
@@ -52,7 +53,7 @@
 	font-weight: bolder;
 }
 
-.participants .btn-circle{
+.btn-circle{
 	width:50px;
 	height:50px;
 	text-align:center;
@@ -104,7 +105,38 @@
 	margin-right: 80px;
 }
 
+
 .master{
-	width: 80%;
+	direction: rtl;
+	width: 100%;
+	background-color: transparent;
 }
 
+.master .container{
+	width: 100%;
+	background-color: unset;
+}
+
+.master .navbar{
+	width: 100%;
+	background-color: transparent;
+	border: unset;
+}
+
+.master button{
+	margin: 50px 1px 0 0;
+	height: 35px;
+	background-color: rgba(255, 250, 250, 0.781);
+}
+
+.master p{
+	display: inline;
+}
+
+ .master button:hover{
+	background-color: rgb(167, 212, 243);
+}
+
+.master .btn-info{
+	background-color: steelblue;
+}

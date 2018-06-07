@@ -16,6 +16,8 @@ export class StepsBarComponent implements OnInit {
   isChecker: boolean;
   isMaster: boolean;
   myProjectText: string;
+  showSetComp = false;
+  show_count = 0;
 
   constructor(public db: DatabaseService, public auth: AuthService, public router: Router, private cookieService: CookieService) { }
 
@@ -57,6 +59,7 @@ export class StepsBarComponent implements OnInit {
 
   // on log out button click
   public logOut() {
+    this.cookieService.set('managerLoggedIn', 'false');
     this.cookieService.set('User login status', 'false');
     this.cookieService.set('mode', 'no-manager');
     this.cookieService.set('checkerLoggedIn', 'false');
@@ -68,6 +71,8 @@ export class StepsBarComponent implements OnInit {
   public homePage() {
     if(this.db.loggedInUser.type=='בודק')
       this.router.navigate(['checker']);
+    else if(this.db.loggedInUser.type=='מנהל')
+      this.router.navigate(['manager']);
     else
     this.router.navigate(['homepage'])
   }
@@ -102,4 +107,20 @@ export class StepsBarComponent implements OnInit {
       this.router.navigate(['msgpage']);
     }
 
+    openCompetition() {
+      if (this.show_count % 2 == 0)
+        this.showSetComp = true;
+      else
+        this.showSetComp = false;
+      this.show_count++;
+    }
+
+    projectesTable(userName) {
+      this.router.navigate(['/tablePage'], { queryParams: { page: userName } });
+    }
+
+    public go_to_reg(status) {
+      this.cookieService.set('mode', status);
+      this.router.navigate(['registrationForm']);
+    }
 }

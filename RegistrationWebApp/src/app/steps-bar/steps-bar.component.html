@@ -2,10 +2,8 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <meta charset="utf-8">
 <!------ Include the above in your HEAD tag ---------->
 
 <div *ngIf="this.isChecker==false && this.isMaster==false" class="participants">
@@ -102,17 +100,57 @@
 </div>
 
 <div *ngIf="this.isMaster==true" class="master">
-        <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                  <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Page 2</a></li>
-                  </ul>
-                  <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                  </ul>
+
+              <div class="container">
+                    <div class="row">
+                        <div class="navbar">
+                           
+                                    <button type="button" class="btn btn-info" data-toggle="tab" (click)="homePage()">
+                                        <i class="fa fa-home fa-1x"></i>
+                                        <p>דף הבית</p>
+                                    </button>
+                                    
+                                    <button type="button" class="btn btn-default" data-toggle="tab" (click)="projectesTable(2)">
+                                           <i class="fa fa-users fa-1x"></i>
+                                        <p> רשימת משתמשים</p>
+                                    </button>
+                      
+                                    <button type="button" class="btn btn-default" data-toggle="tab" (click)="projectesTable(1)">
+                                        <i class="fa fa-clipboard fa-1x"></i>
+                                        <p>רשימת פרויקטים</p>
+                                    </button>
+
+                                    <button type="button" class="btn btn-default" data-toggle="tab" (click)="contactUs()">
+                                            <i class="fa fa-envelope-open-o fa-1x"></i>
+                                            <p>שליחת הודעות</p>
+                                    </button>
+
+                                    <button type="button" class="btn btn-default" data-toggle="tab" (click)="msgPage()">
+                                            <i class="fa fa-envelope-o fa-1x"></i>
+                                            <p>הודעות נכנסות</p>
+                                    </button>
+
+                                    <button type="button" class="btn btn-default" data-toggle="tab" (click)="go_to_reg('update')">
+                                            <i class="fa fa-edit fa-1x"></i>
+                                            <p>עדכון פרטים שלי</p>
+                                    </button>
+                                
+                                    <button type="button" class="btn btn-default" data-toggle="tab" (click)="go_to_reg('new')">
+                                            <i class="fa fa-user-plus fa-1x"></i>
+                                            <p>רשום משתמש חדש</p>
+                                    </button>
+
+                                    <button type="button" class="btn btn-default" data-toggle="tab" (click)="openCompetition()">
+                                            <i class="fa fa-cog fa-1x"></i>
+                                            <p>הגדרות תחרות</p>
+                                    </button>
+
+                                    <button type="button" class="btn btn-default btnlogout" data-toggle="tab" (click)="logOut()">
+                                        <i class="fa fa-sign-out fa-1x"></i>
+                                        <p>התנתק</p>
+                                    </button>
+                        </div>
+                
+                    </div>
                 </div>
-              </nav>
-        
-              
 </div>   
