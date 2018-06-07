@@ -31,7 +31,6 @@
 	right: 5%;
 	position:absolute;
 	content:" ";
-	width: 1200px;
 	height:3px;
 	background-color:rgb(196, 146, 90);
 }
