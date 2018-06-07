@@ -30,7 +30,6 @@ export class  TableComponent implements OnInit {
   project: Project;
   progress: { percentage: number } = { percentage: 0 };
   inputCheckerList:string;
-  flg: boolean = false;
   page;
   team:string;
   inCompetition:string;
@@ -51,6 +50,7 @@ export class  TableComponent implements OnInit {
   this.db.getLoggedInUser().then(() => {
     this.db.getProjectMetaData().subscribe((val) => {
         this.db.projectsList = val;
+        this.db.getCheckers()
         switch(this.db.loggedInUser.type)
         {
           case "מורה":
@@ -105,9 +105,8 @@ export class  TableComponent implements OnInit {
           {
             if(this.page==1){
               this.title="פרוייקטים בתחרות";
-              if(!this.flg){this.db.getCheckers()};
               this.handleMaster1();
-            $(".btn-labeled").click(res => {
+            $(".btn-labeled").click(res => { 
               var TableLine =res.currentTarget.name;  
               if($("input[id="+TableLine+"]").val()==""){
                 alert("נא לבחור בודק מהרשימה!");
@@ -119,7 +118,6 @@ export class  TableComponent implements OnInit {
                 this.db.projectsList[TableLine].checkerMail = str;
                 this.db.project = this.db.projectsList[TableLine];
                 this.db.updateProjectListing(this.db.projectsList[TableLine].project_name);
-                this.flg = true;
               }
             });
             $(".btn-warning").click(res =>{
@@ -248,7 +246,7 @@ handleChecker(){
       else{this.obj+="<td><a href="+this.db.projectsList[i].project_file.url+">"+this.db.projectsList[i].project_file.name+"</a></td>"}
       if(this.db.projectsList[i].inCompetition){ this.inCompetition = "התקבל";}
       else{ this.inCompetition = "נדחה";}
-      this.obj+="<td><button type='button' name="+i+" class='btn btn-info btn-circle'><i class='glyphicon glyphicon-ok'></i></button>"+
+      this.obj+="<td width='105px'><button type='button' name="+i+" class='btn btn-info btn-circle'><i class='glyphicon glyphicon-ok'></i></button>&nbsp;"+
                 "<button type='button' name="+i+" class='btn btn-warning btn-circle'><i class='glyphicon glyphicon-remove'></i></button>"+this.inCompetition+"</td>";
       if(this.db.projectsList[i].checkerMail != undefined){
         this.obj+="<td><form><input list='chekers' id="+i+"></form><datalist id='chekers'>"+this.inputCheckerList+"<div>הבודק הנוכחי הינו:    "+this.db.projectsList[i].checkerMail+"</div></td>";
