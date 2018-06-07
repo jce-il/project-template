@@ -1,11 +1,14 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+  <meta charset="utf-8">
 <!------ Include the above in your HEAD tag ---------->
 
-<div *ngIf="this.isChecker==false && this.isMaster==false">
+<div *ngIf="this.isChecker==false && this.isMaster==false" class="participants">
         <div class="container">
                 <div class="row">
                     <div class="process">
@@ -99,46 +102,17 @@
 </div>
 
 <div *ngIf="this.isMaster==true" class="master">
+        <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Page 2</a></li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                  </ul>
+                </div>
+              </nav>
         
-            <div class="container">
-                    
-              <!-- Navigation -->
-              <div class="row">
-                <nav class="navbar navbar-inverse" role="navigation">
-                  <div class="container">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                      </button>
-                      <a class="navbar-brand visible-xs-inline-block nav-logo"></a>
-                    </div>
-            
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse navbar-ex1-collapse">
-                      <ul class="nav navbar-nav js-nav-add-active-class">
-                        <li><a>Home</a></li>
-                        <li class="active"><a>Markets</a></li>
-                        <li><a>Buy</a></li>
-                        <li><a>svStrike</a></li>
-                        <li><a>svStrike</a>></li>
-                        <li><a>Contact Us</a></li>
-                        <li class="visible-xs-block"><a>About Us</a></li>
-                        <li class="visible-xs-block"><a>Careers</a></li>
-                        <li class="visible-xs-block"><a>Press Release</a></li>
-                        <li class="visible-xs-block"><a>Support</a></li>
-                      
-                      </ul>
-                      <ul class="nav navbar-nav navbar-right hidden-xs">
-                        <a type="button" class="navbar-btn btn btn-gradient-blue" am-latosans="bold">Support</a>
-                      </ul>
-                    </div><!-- /.navbar-collapse -->
-                  </div>
-                </nav>
-              </div>
-            </div>
-</div>
-
+              
+</div>   
