@@ -18,9 +18,9 @@ export class ContactUsComponent implements OnInit {
   today;
   contact_emails = [];
   display_contacts = ['כל המשתמשים',
-"תלמידים",
-"מורים",
-"בודקים",
+"כל התלמידים",
+"כל המורים",
+"כל הבודקים",
 "תלמידים שהגישו עבודה",
 "תלמידים ללא עבודה",
 "תלמידים בתחרות",
@@ -107,17 +107,17 @@ export class ContactUsComponent implements OnInit {
         }
         break;
       }
-    case "תלמידים":
+    case "כל התלמידים":
       {
         this.setContactsByType('תלמיד')
         break;
       }
-      case "מורים":
+      case "כל המורים":
       {
         this.setContactsByType('מורה')
         break;
       }
-      case "בודקים":
+      case "כל הבודקים":
       {
         this.setContactsByType('בודק')
         break;
