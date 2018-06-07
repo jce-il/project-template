@@ -3,6 +3,8 @@ import { DatabaseService } from '../services/database.service';
 import { AuthService } from '../services/auth.service';
 import { RouterLink, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import * as $ from 'jquery';
+
 
 @Component({
   selector: 'app-steps-bar',
@@ -21,10 +23,17 @@ export class StepsBarComponent implements OnInit {
     if( this.db.loggedInUser.type == 'תלמיד'){
       this.isStudent = true;
       this.myProjectText = "הפרויקט שלי"
+      $(document).ready(function(){
+        $(".process-row").append("<style>.process-row:before {width: 1000px;}"); 
+      });
     }
     else{
       this.isStudent = false;
-      this.myProjectText = "פרויקטי תלמידים"
+      this.myProjectText = "פרויקטי תלמידים";
+      $(document).ready(function(){
+        $(".process-row").append("<style>.process-row:before {width: 1000px;}"); 
+      });
+      
     }
     
     if(this.db.loggedInUser.type == 'בודק'){
