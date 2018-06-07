@@ -64,8 +64,9 @@ export class  TableComponent implements OnInit {
               });
               $(".load button").bind('click', function (event) {
                 $('.modal-content').css('left',event.pageX);      // <<< use pageX and pageY
-                $('.modal-content').css('top',event.pageY);
-                $('.modal-content').css('display','inline');     
+                $('.modal-content').css('top',event.pageY); 
+                $('.modal-content').css('width','25%');      // <<< use pageX and pageY
+                $('.modal-content').css('height','25%');   
                 });
               $("#close").click(function(){
                 $(".window").hide();

@@ -30,23 +30,33 @@
                     <strong>הוספת המלצה</strong>
                 </legend>
                 <div class="modal-body">
-                            <div class="btn btn-default image-preview-input">
-                            <input type="file" (change)="selectRecommendationFile($event)" required name="fileupload" />
-                            <span class="glyphicon glyphicon-folder-open"></span>
-                            <span class="image-preview-input-title">בחר קובץ</span>
+                           <div class="row">
+                                <div class="btn btn-default image-preview-input">
+                                        <input type="file" (change)="selectRecommendationFile($event)" required name="fileupload" />
+                                        <span class="glyphicon glyphicon-folder-open"></span>
+                                        <span class="image-preview-input-title">בחר קובץ</span>
+                                        </div>
+                                        <div>
+                                        <button type="button" id="send" class="btn btn-labeled btn-primary" [disabled]="!selected_recommendation_files" (click)="recommendationUpload()">
+                                            <span class="btn-label">
+                                            <i class="glyphicon glyphicon-upload"></i>
+                                            </span>שלח</button>
+                                        </div>
+                           </div>
+                            <div class="row">
+                                    <div class="file" *ngIf="this.selected_recommendation_files != null">{{this.selected_recommendation_files.item(0).name}}</div>
                             </div>
-                            <div class="file" *ngIf="this.selected_recommendation_files != null">{{this.selected_recommendation_files.item(0).name}}</div>
-                            <div>
-                            <button type="button" id="send" class="btn btn-labeled btn-primary" [disabled]="!selected_recommendation_files" (click)="recommendationUpload()">
-                                <span class="btn-label">
-                                <i class="glyphicon glyphicon-upload"></i>
-                                </span>שלח</button>
+                            
+                            <div class="row">
+                                    <div *ngIf="current_recommendation_FileUpload" class="progress">
+                                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 100%" attr.aria-valuenow="{{progress.percentage}}"
+                                        aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+                                        {{progress.percentage}}%</div></div>
                             </div>
-                            <button type="button" class="btn btn-labeled" id="close" >בטל</button>
-                            <div *ngIf="current_recommendation_FileUpload" class="progress">
-                            <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 15%" attr.aria-valuenow="{{progress.percentage}}"
-                                aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
-                                {{progress.percentage}}%</div></div>
+
+                            <div class="row">
+                                    <button type="button" class="btn btn-labeled" id="close" ><i class="glyphicon glyphicon-remove"></i>סגור </button>
+                            </div>
                 </div>
         </div>
     </div>
