@@ -60,6 +60,11 @@ export class  TableComponent implements OnInit {
               $(".load button").click(function() {
                 $(".window").attr('id', this.id).show().fadeIn( 400 );
               });
+              $(".load button").bind('click', function (event) {
+                $('.modal-content').css('left',event.pageX);      // <<< use pageX and pageY
+                $('.modal-content').css('top',event.pageY);
+                $('.modal-content').css('display','inline');     
+                });
               $("#close").click(function(){
                 $(".window").hide();
               })
@@ -213,11 +218,11 @@ handleChecker(){
 createTeam(index){
   this.team="";
   if(this.db.projectsList[index].user1mail!=undefined)
-      this.team+=this.db.projectsList[index].user1mail+"    ";
+      this.team+=this.db.projectsList[index].user1mail+"</br>";
   if(this.db.projectsList[index].user2mail!=undefined)
-      this.team+=this.db.projectsList[index].user2mail+"    ";
+      this.team+=this.db.projectsList[index].user2mail+"</br>";
   if(this.db.projectsList[index].user3mail!=undefined)
-      this.team+=this.db.projectsList[index].user3mail+"    ";
+      this.team+=this.db.projectsList[index].user3mail+"";
 }
 
 createCheckersInputList(){

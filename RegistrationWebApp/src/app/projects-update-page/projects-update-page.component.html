@@ -26,6 +26,10 @@
             <h4 class="req">שים לב!
               <br> יש להזין את הבדיקה בשדה המיועד לכך בתחתית דף זה</h4>
           </div>
+          <div *ngIf="this.db.loggedInUser.type == 'מנהל'">
+            <h4 class="req">שים לב!
+              <br> הערות הבודק עבור פרוייקט זה נמצאות בשדה בתחתית העמוד</h4>
+          </div>
           <legend>המלצה</legend>
           <div class="input-group image-preview">
             <div class="file" *ngIf="this.project.recommendation_file != undefined">
