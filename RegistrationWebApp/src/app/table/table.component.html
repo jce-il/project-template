@@ -12,16 +12,23 @@
 </div>
 <div class="container" dir="rtl" *ngIf="this.db.loggedInUser != null">
     <h2 class="well">{{title}}</h2>
-    <input type="text" id="myInput" (keyup)="search()" placeholder="הזן ערך לחיפוש..."/>
+    
+    <div class="input-group">
+        
+        <input type="text" id="myInput" (keyup)="search()" placeholder="הזן ערך לחיפוש..."/>
+        <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+    </div>
+
+    
     <div class="widget-content"></div>
 </div>
 
 
 <div class="window">
         <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">הוספת המלצה</h4>
-            </div>
+            <legend>
+                    <strong>הוספת המלצה</strong>
+                </legend>
                 <div class="modal-body">
                             <div class="btn btn-default image-preview-input">
                             <input type="file" (change)="selectRecommendationFile($event)" required name="fileupload" />

@@ -1,6 +1,7 @@
 *{
     direction: rtl;
 }
+
   .table-bordered {
     border: 1px solid #dddddd;
     border-collapse: separate;
@@ -10,9 +11,9 @@
     border-radius: 4px;
     }
     
-      .table {
+    :host /deep/  .table {
     margin-bottom: 40px;
-    background-color: transparent;
+    background-color: rgba(245, 231, 201, 0.87);
     border-collapse: collapse;
     border-spacing: 0;
     display: table;
@@ -83,6 +84,9 @@
      :host /deep/ th{
         direction: rtl;
         text-align: right;
+        background-color: rgb(146, 118, 56);
+        color: white;
+        font-size: 18px;
     }
     
       .widget .widget-header h3 {
@@ -156,10 +160,11 @@
   .image-preview-input {
     position: relative;
     overflow: hidden;
-	margin: 0px;    
+	  margin: 0 20px 5px 5px;    
     color: #333;
     background-color: #fff;
-    border-color: #ccc;    
+    border-color: #ccc;   
+    float: right; 
 }
   .image-preview-input input[type=file] {
 	position: absolute;
@@ -173,7 +178,8 @@
 	filter: alpha(opacity=0);
 }
   .image-preview-input-title {
-    margin-left:2px;
+    margin-left:1px;
+    margin-top: 0;
 }
 
   .file{
@@ -192,19 +198,37 @@
     direction: rtl;
 }
 
+legend{
+  margin: 15px 15px 5px 15px;
+  text-align: right;
+  width: 95%;
+}
+
+strong{
+  margin-right: 10px;
+}
+
   .modal-content{
-    width: 40%;
-    height: 30%;
+    width: 25%;
+    height: 20%;
     border: 1px solid black;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.75);
-    background-color: rgba(123, 173, 218, 0.63);
+    background-color: rgba(224, 177, 89, 0.808);
+    /*background-color: rgba(218, 185, 123, 0.63);*/
     position: fixed;
 }
 
-  .modal-body button{
+  #send{
     float: right;
-}
+    margin: 2px 10px 0 0;
+    height: 30px;
+    border-radius: 5px;
+  }
+
+  #close{
+
+  }
 
   btn{
     float: right;
@@ -235,14 +259,32 @@
     margin-top: 12%;
 
   }
+
+  .input-group-addon{
+    float: right;
+    margin: 0 2px 3px 0;
+    width: 50px;
+    height: 48px;
+    border-radius: 0 5px 5px 0;
+}
+
+.input-group-addon i{
+  width: 30px;
+  height: 45px;
+  margin-top: 7px;
+}
+
     #myInput {
+      border-radius: 5px 0 0 5px;
     background-position: 10px 10px;
     background-repeat: no-repeat;
-    width: 100%;
+    width: 45%;
     font-size: 16px;
-    padding: 12px 20px 12px 40px;
+    height: 48px;
+    padding: 13px 20px 12px 40px;
     border: 1px solid #ddd;
     margin-bottom: 12px;
+
   }
  
     .btn-circle {
