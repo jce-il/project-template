@@ -14,6 +14,7 @@ import * as $ from 'jquery';
 export class StepsBarComponent implements OnInit {
   isStudent: boolean;
   isChecker: boolean;
+  isMaster: boolean;
   myProjectText: string;
 
   constructor(public db: DatabaseService, public auth: AuthService, public router: Router, private cookieService: CookieService) { }
@@ -41,6 +42,13 @@ export class StepsBarComponent implements OnInit {
     }
     else{
       this.isChecker = false;
+    }
+
+    if(this.db.loggedInUser.type == 'מנהל'){
+      this.isMaster = true;
+    }
+    else{
+      this.isMaster = false;
     }
     })
   }

@@ -5,7 +5,7 @@
 
 <!------ Include the above in your HEAD tag ---------->
 
-<div *ngIf="this.isChecker==false">
+<div *ngIf="this.isChecker==false && this.isMaster==false">
         <div class="container">
                 <div class="row">
                     <div class="process">
@@ -98,4 +98,47 @@
             </div>
 </div>
 
+<div *ngIf="this.isMaster==true" class="master">
+        
+            <div class="container">
+                    
+              <!-- Navigation -->
+              <div class="row">
+                <nav class="navbar navbar-inverse" role="navigation">
+                  <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+                      <a class="navbar-brand visible-xs-inline-block nav-logo"></a>
+                    </div>
+            
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                      <ul class="nav navbar-nav js-nav-add-active-class">
+                        <li><a>Home</a></li>
+                        <li class="active"><a>Markets</a></li>
+                        <li><a>Buy</a></li>
+                        <li><a>svStrike</a></li>
+                        <li><a>svStrike</a>></li>
+                        <li><a>Contact Us</a></li>
+                        <li class="visible-xs-block"><a>About Us</a></li>
+                        <li class="visible-xs-block"><a>Careers</a></li>
+                        <li class="visible-xs-block"><a>Press Release</a></li>
+                        <li class="visible-xs-block"><a>Support</a></li>
+                      
+                      </ul>
+                      <ul class="nav navbar-nav navbar-right hidden-xs">
+                        <a type="button" class="navbar-btn btn btn-gradient-blue" am-latosans="bold">Support</a>
+                      </ul>
+                    </div><!-- /.navbar-collapse -->
+                  </div>
+                </nav>
+              </div>
+            </div>
+</div>
 
