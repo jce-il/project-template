@@ -15,6 +15,12 @@
     
     <div class="input-group">
         
+        <div *ngIf="this.db.loggedInUser.type == 'מנהל'" class="center">
+            <button class="btn btn-primary center-block">
+                <img src = "http://icons.iconarchive.com/icons/ncrow/mega-pack-1/128/Excel-icon.png" width="10%" height="100%">
+                 ייצא טבלה לאקסל
+                </button>
+        </div>
         <input type="text" id="myInput" (keyup)="search()" placeholder="הזן ערך לחיפוש..."/>
         <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
     </div>
