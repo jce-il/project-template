@@ -20,6 +20,8 @@ export class StepsBarComponent implements OnInit {
   constructor(public db: DatabaseService, public auth: AuthService, public router: Router, private cookieService: CookieService) { }
 
   ngOnInit() {
+    this.db.loggedInUserUID = this.cookieService.get('User uid');
+    this.db.loggedIn = this.cookieService.get('User login status');
     this.db.getLoggedInUser().then(() => {
     if( this.db.loggedInUser.type == 'תלמיד'){
       this.isStudent = true;
