@@ -98,23 +98,31 @@ p{
 
 .master{
 	direction: rtl;
-	width: 100%;
-	background-color: transparent;
+	width: 88%;
+	float: left;
+	height: 48px;
+	top: 50px;
+	left: 100px;
+	right: 0;
+	background-color: blue;
+	box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.75);
+	background-color: rgba(196, 219, 233, 0.781);
+	border-radius: 5px;
 }
 
 .master .container{
 	width: 100%;
-	background-color: unset;
-	margin-right: 15%;
+	right: 0;
+	margin: 0;
 }
 
 .master button{
-	margin: 50px 1px 0 0.5px;
-	height: 35px;
-	background-color: rgba(255, 250, 250, 0.781);
-	box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.75);
+	height: 48px;
+	background-color: transparent;
+	margin-left: 20px;
 	color: black;
 	text-align: right;
+	border-color: transparent;
 }
 
 .master p{
@@ -137,11 +145,12 @@ p{
 
 .master .btnlogout{
 	float: left;
-	margin-right: 18px;
+	left: 0;
+	margin-right: 320px;
 }
 
 .master .dropdown{
-	margin-right: 5px;
+	margin-right: 15px;
 	text-align: right;
 }
 
@@ -154,6 +163,15 @@ p{
 	text-align: right;
 }
 
+.master .dropdown li i{
+	margin-left: 10px;
+	text-align: right;
+}
+
 .master a{
 	text-align: right;
+}
+
+.master a:hover{
+	background-color: rgba(160, 180, 194, 0.781);
 }
