@@ -66,7 +66,7 @@
 
 .checker .process-row:before{
 	top: 32%;
-	right: 20%;
+	right: 10%;
 	position:absolute;
 	content:" ";
 	width: 620px;
@@ -102,7 +102,7 @@
 
 .checker .container{
 	float: right;
-	margin-right: 80px;
+	margin-right: 180px;
 }
 
 
