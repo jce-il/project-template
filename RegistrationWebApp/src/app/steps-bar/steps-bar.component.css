@@ -105,12 +105,7 @@ p{
 .master .container{
 	width: 100%;
 	background-color: unset;
-}
-
-.master .navbar{
-	width: 100%;
-	background-color: transparent;
-	border: unset;
+	margin-right: 15%;
 }
 
 .master button{
@@ -121,6 +116,8 @@ p{
 
 .master p{
 	display: inline;
+	font-size: 14px;
+	font-weight: 400;
 }
 
  .master button:hover{
@@ -128,5 +125,14 @@ p{
 }
 
 .master .btn-info{
-	background-color: steelblue;
+	background-color: rgb(180, 173, 70);
+}
+
+.master row{
+	width: 100%;
+}
+
+.master .btnlogout{
+	float: left;
+	margin-right: 23px;
 }
