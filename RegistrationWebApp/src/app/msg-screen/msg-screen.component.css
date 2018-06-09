@@ -1,4 +1,7 @@
-
+*{
+  width: 100%;
+  direction: rtl;
+}
 
 .footer {
     position: fixed;
