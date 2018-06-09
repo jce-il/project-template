@@ -44,11 +44,10 @@
 	width: 100px;
 }
 
-.participants p{
+p{
 	color: black;
 	text-align: center;
 	margin: 4px 0 0 0;
-	width: 125px;
 	font-size: 18px;
 	font-weight: bolder;
 }
@@ -80,15 +79,6 @@
 	position:relative;
 	top: 0;
 	right: 0;
-}
-
-.checker p{
-	color: black;
-	text-align: center;
-	margin: 4px 0 0 0;
-	width: 135px;
-	font-size: 18px;
-	font-weight: bolder;
 }
 
 .checker .process{

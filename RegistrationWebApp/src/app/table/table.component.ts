@@ -97,8 +97,9 @@ export class  TableComponent implements OnInit {
                 $('legend').css('text-align','right');
                 $('legend').css('margin','10px 10px 0 0');
                 $('legend').css('width','95%');
-                $("p").css({'color': '#f8f8f8',
+                $(".modal-body p").css({'color': '#f8f8f8',
                 'font-size': '15px',
+                'width': '100%',
                 'text-align': 'right'});
                 $(".window").show();
                 $("#close").click(function(){

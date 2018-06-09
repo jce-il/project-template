@@ -30,12 +30,14 @@ export class StepsBarComponent implements OnInit {
       this.myProjectText = "הפרויקט שלי"
       $(document).ready(function(){
         $(".process-row").append("<style>.process-row:before {width: 1000px;}"); 
+        $("p").append("<style>p {width: 125px;}"); 
       });
     }
     else{
       this.isStudent = false;
       this.myProjectText = "פרויקטי תלמידים";
       $(document).ready(function(){
+        $("p").append("<style>p {width: 125px;}"); 
         $(".process-row").append("<style>.process-row:before {width: 1000px;}"); 
       });
       
@@ -43,6 +45,9 @@ export class StepsBarComponent implements OnInit {
     
     if(this.db.loggedInUser.type == 'בודק'){
       this.isChecker = true;
+      $(document).ready(function(){
+        $("p").append("<style>p{width: 135px;}"); 
+      });
     }
     else{
       this.isChecker = false;
