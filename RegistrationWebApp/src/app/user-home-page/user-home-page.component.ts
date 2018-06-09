@@ -32,8 +32,8 @@ export class UserHomePageComponent implements OnInit {
   ngOnInit() {
     this.db.getSettingsMetaData().subscribe((res) => {
       this.db.competition_settings_db = res;
-      this.comp_settings = this.db.competition_settings_db[0] ;
-      if(this.comp_settings.is_opened)
+      this.comp_settings = this.db.competition_settings_db[0];
+      if (this.comp_settings.is_opened)
         this.days(); //for countdown clock
     })
     this.db.loggedInUserUID = this.cookieService.get('User uid');
@@ -96,14 +96,15 @@ export class UserHomePageComponent implements OnInit {
       this.date = new Date();
       this.date.setDate(this.date.getDate() - 3);
 
-      for (var i = this.db.loggedInUser.messages.length - 1;
-        i >= 0; i--) {
-        var str_date = this.db.loggedInUser.messages[i].date.toString();
-        var tmp_str = str_date.split("/");
-        var tmp_date: Date = new Date(parseInt(tmp_str[2]), parseInt(tmp_str[1]), parseInt(tmp_str[0]), 0, 0, 0, 0);
+      for (var i = this.db.loggedInUser.messages.length - 1; i >= 0; i--) {
+        if (this.db.loggedInUser.messages[i].date != null) {
+          var str_date = this.db.loggedInUser.messages[i].date.toString();
+          var tmp_str = str_date.split("/");
+          var tmp_date: Date = new Date(parseInt(tmp_str[2]), parseInt(tmp_str[1]), parseInt(tmp_str[0]), 0, 0, 0, 0);
 
-        if (tmp_date >= this.date)
-          this.msg_counter++;
+          if (tmp_date >= this.date)
+            this.msg_counter++;
+        }
       }
     })
   }
