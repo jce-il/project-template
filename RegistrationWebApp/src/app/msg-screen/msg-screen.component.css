@@ -110,9 +110,17 @@ figure{
 
 .panel button{
   float: left;
-  background-color: rgba(112, 128, 144, 0.63)
+  /*background-color: rgba(112, 128, 144, 0.63)*/
 }
 
 .panel button i{
   margin-left: 4px;
+}
+
+.delete{
+  background-color: rgb(250, 46, 87);
+}
+
+.reply{
+  background-color:olivedrab;
 }
