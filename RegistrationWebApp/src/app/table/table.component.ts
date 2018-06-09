@@ -92,6 +92,11 @@ export class  TableComponent implements OnInit {
                 $(".modal-content").html(winContent);
                 $('.modal-content').css('max-width','600px');
                 $('.modal-content').css('max-height','800px');
+                $('.modal-content').css('left','25%');
+                $('.modal-content').css('top','15%');
+                $('legend').css('text-align','right');
+                $('legend').css('margin','10px 10px 0 0');
+                $('legend').css('width','95%');
                 $("p").css({'color': '#f8f8f8',
                 'font-size': '15px',
                 'text-align': 'right'});
