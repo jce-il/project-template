@@ -89,12 +89,31 @@ export class DatabaseService {
       }
     }
   }
+
+  deleteListing(email: string) {
+    for (var i = 0; i < this.usersList.length; i++) {
+      if (this.usersList[i].email == email) {
+        this.listingDoc = this.dataCollections.doc(`${this.usersList[i].id}`); //takes the listing that will be deleted by the doc.id (listing's id)
+        this.listingDoc.delete();
+      }
+    }
+  }
+
   //project name should be unique !!!!!!!
   updateProjectListing(project_name: string) {
     for (var i = 0; i < this.projectsList.length; i++) {
       if (this.projectsList[i].project_name == project_name) {
         this.listingDoc = this.projectCollections.doc(`${this.projectsList[i].id}`); //takes the listing that will be updated by the doc.id (listing's id)
         this.listingDoc.update(JSON.parse(JSON.stringify(this.project)));
+      }
+    }
+  }
+
+  deleteProjectListing(project_name: string) {
+    for (var i = 0; i < this.projectsList.length; i++) {
+      if (this.projectsList[i].project_name == project_name) {
+        this.listingDoc = this.projectCollections.doc(`${this.projectsList[i].id}`); //takes the listing that will be deleted by the doc.id (listing's id)
+        this.listingDoc.delete();
       }
     }
   }
