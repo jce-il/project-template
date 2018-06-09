@@ -4,6 +4,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
 <!------ Include the above in your HEAD tag ---------->
 
 <div *ngIf="this.isChecker==false && this.isMaster==false" class="participants">
@@ -107,41 +108,38 @@
                                         <i class="fa fa-home fa-1x"></i>
                                         <p>דף הבית</p>
                                     </button>
-                                    
-                                    <button type="button" class="btn btn-default" data-toggle="tab" (click)="projectesTable(2)">
-                                           <i class="fa fa-users fa-1x"></i>
-                                        <p> רשימת משתמשים</p>
-                                    </button>
-                      
-                                    <button type="button" class="btn btn-default" data-toggle="tab" (click)="projectesTable(1)">
-                                        <i class="fa fa-clipboard fa-1x"></i>
-                                        <p>רשימת פרויקטים</p>
-                                    </button>
-
-                                    <button type="button" class="btn btn-default" data-toggle="tab" (click)="contactUs()">
-                                            <i class="fa fa-envelope-open-o fa-1x"></i>
-                                            <p>שליחת הודעות</p>
-                                    </button>
-
-                                    <button type="button" class="btn btn-default" data-toggle="tab" (click)="msgPage()">
-                                            <i class="fa fa-envelope-o fa-1x"></i>
-                                            <p>הודעות נכנסות</p>
-                                    </button>
 
                                     <button type="button" class="btn btn-default" data-toggle="tab" (click)="go_to_reg('update')">
-                                            <i class="fa fa-edit fa-1x"></i>
-                                            <p>עדכון פרטים שלי</p>
-                                    </button>
-                                
-                                    <button type="button" class="btn btn-default" data-toggle="tab" (click)="go_to_reg('new')">
-                                            <i class="fa fa-user-plus fa-1x"></i>
-                                            <p>רשום משתמש חדש</p>
+                                        <i class="fa fa-edit fa-1x"></i>
+                                        <p>עדכון פרטים שלי</p>
                                     </button>
 
-                                    <button type="button" class="btn btn-default" data-toggle="tab" (click)="openCompetition()">
-                                            <i class="fa fa-cog fa-1x"></i>
-                                            <p>הגדרות תחרות</p>
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-clipboard fa-1x"></i>רשימות
                                     </button>
+                                        <ul class="dropdown-menu">
+                                          <li><a (click)="projectesTable(2)"><i class="fa fa-users fa-1x"></i>רשימת משתמשים</a></li>
+                                          <li><a (click)="projectesTable(1)"><i class="fa fa-clipboard fa-1x"></i>רשימת פרויקטים</a></li>
+                                        </ul>
+                                      </div>
+
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-envelope"></i>הודעות
+                                    </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a (click)="msgPage()"><i class="fa fa-inbox fa-1x"></i>דואר נכנס</a></li>
+                                          <li><a (click)="contactUs()"><i class="fa fa-send fa-1x"></i>שלח הודעה</a></li>
+                                        </ul>
+                                      </div>
+
+                                    <div class="dropdown">
+                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-cog fa-1x"></i>הגדרות תחרות
+                                    </button>
+                                        <ul class="dropdown-menu">
+                                          <li><a (click)="openCompetition()">פתח תחרות</a></li>
+                                          <li><a (click)="go_to_reg('new')"><i class="fa fa-user-plus fa-1x"></i>רשום משתמש חדש</a></li>
+                                        </ul>
+                                      </div>
 
                                     <button type="button" class="btn btn-default btnlogout" data-toggle="tab" (click)="logOut()">
                                         <i class="fa fa-sign-out fa-1x"></i>
