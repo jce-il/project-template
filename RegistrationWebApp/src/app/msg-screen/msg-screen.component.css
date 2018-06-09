@@ -10,7 +10,7 @@
  }
 
 .container{
-    margin-top: 200px;
+    margin-top: 150px;
     direction: rtl;
     text-align: right;
 }
@@ -26,6 +26,14 @@ h6{
 /*Comment List styles*/
 .comment-list .row {
   margin-bottom: 0px;
+}
+
+.panel{
+  box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.75);
+}
+
+figure{
+  box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.75);
 }
 .comment-list .panel .panel-heading {
   padding: 4px 15px;
@@ -98,4 +106,13 @@ h6{
 }
 .comment-list .comment-post {
   margin-top: 6px;
+}
+
+.panel button{
+  float: left;
+  background-color: rgba(112, 128, 144, 0.63)
+}
+
+.panel button i{
+  margin-left: 4px;
 }
