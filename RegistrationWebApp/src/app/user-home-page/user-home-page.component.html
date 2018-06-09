@@ -54,7 +54,7 @@
                 <div class="notice notice-info">
                     <strong>{{workExists}}</strong>
                 </div>
-                <div *ngIf="this.userProject">
+                <div *ngIf="this.userProject && emptyFields.length != 0">
                     <div class="notice notice-success">
                         <strong>שים לב - בטופס הגשת הפרוייקט חסרים הפרטים הבאים:</strong>
                         <div *ngFor="let i of emptyFields">
