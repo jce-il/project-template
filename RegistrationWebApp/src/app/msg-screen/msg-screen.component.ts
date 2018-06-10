@@ -3,6 +3,7 @@ import { DatabaseService } from '../services/database.service';
 import { Message } from '../message';
 import { User } from '../user';
 import { CookieService } from 'ngx-cookie-service';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-msg-screen',
@@ -23,7 +24,7 @@ export class MsgScreenComponent implements OnInit {
     })
   }
 
-  constructor(public db: DatabaseService,private cookieService: CookieService) { }
+  constructor(public db: DatabaseService,private cookieService: CookieService, public router: Router) { }
 
   downloadMsgs()
   {
@@ -46,6 +47,15 @@ export class MsgScreenComponent implements OnInit {
     this.db.user = this.db.loggedInUser;
       this.db.updateListing(this.db.loggedInUser.email);
       this.downloadMsgs()
+  }
+
+  reply(message){
+    if (this.db.loggedInUser.type != 'מנהל')
+        this.router.navigate(['contactUs']);
+    else{
+      //add cookie
+      this.router.navigate(['contactUs']);
+    }
   }
 
 }
