@@ -38,8 +38,22 @@ export class UserHomePageComponent implements OnInit {
     })
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
-    this.db.getLoggedInUser(); // in order to print logged in user info - on init get it
-    //get missing fields of project
+    this.db.getLoggedInUser().then(()=>{ // in order to print logged in user info - on init get it
+      //get missing fields of project
+      this.date = new Date();
+      this.date.setDate(this.date.getDate() - 3);
+
+      for (var i = this.db.loggedInUser.messages.length - 1; i >= 0; i--) {
+        if (this.db.loggedInUser.messages[i].date != null) {
+          var str_date = this.db.loggedInUser.messages[i].date.toString();
+          var tmp_str = str_date.split("/");
+          var tmp_date: Date = new Date(parseInt(tmp_str[2]), parseInt(tmp_str[1]), parseInt(tmp_str[0]), 0, 0, 0, 0);
+
+          if (tmp_date >= this.date)
+            this.msg_counter++;
+        }
+      }
+    }) 
     this.db.getProjectMetaData().subscribe((res) => {
       this.db.projectsList = res;
       for (var i = 0; i < this.db.projectsList.length; i++) {
@@ -90,20 +104,6 @@ export class UserHomePageComponent implements OnInit {
           else if (this.db.projectsList[i].recommendation_file != undefined)
             this.missing_recommendation[r++] = 'הועלה קובץ המלצה'
           //recommendation_file
-        }
-      }
-
-      this.date = new Date();
-      this.date.setDate(this.date.getDate() - 3);
-
-      for (var i = this.db.loggedInUser.messages.length - 1; i >= 0; i--) {
-        if (this.db.loggedInUser.messages[i].date != null) {
-          var str_date = this.db.loggedInUser.messages[i].date.toString();
-          var tmp_str = str_date.split("/");
-          var tmp_date: Date = new Date(parseInt(tmp_str[2]), parseInt(tmp_str[1]), parseInt(tmp_str[0]), 0, 0, 0, 0);
-
-          if (tmp_date >= this.date)
-            this.msg_counter++;
         }
       }
     })
