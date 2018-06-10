@@ -122,10 +122,12 @@ export class StepsBarComponent implements OnInit {
 
     projectesTable(userName) {
       this.router.navigate(['/tablePage'], { queryParams: { page: userName } });
+      location.reload();
     }
 
     public go_to_reg(status) {
       this.cookieService.set('mode', status);
       this.router.navigate(['registrationForm']);
+      location.reload();
     }
 }
