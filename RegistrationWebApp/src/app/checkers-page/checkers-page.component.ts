@@ -22,7 +22,7 @@ export class CheckersPageComponent implements OnInit {
 
     this.date = new Date();
       this.date.setDate(this.date.getDate() - 3);
-
+    this.db.getLoggedInUser().then(()=>{
       for (var i = this.db.loggedInUser.messages.length - 1; i >= 0; i--) {
         if (this.db.loggedInUser.messages[i].date != null) {
           var str_date = this.db.loggedInUser.messages[i].date.toString();
@@ -33,6 +33,8 @@ export class CheckersPageComponent implements OnInit {
             this.msg_counter++;
         }
       }
+    })
+
   }
 
   // on log out button click
