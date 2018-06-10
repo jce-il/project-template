@@ -40,17 +40,19 @@ export class ManagerHomePageComponent implements OnInit {
 
     this.date = new Date();
     this.date.setDate(this.date.getDate() - 3);
-
-    for (var i = this.db.loggedInUser.messages.length - 1; i >= 0; i--) {
-      if (this.db.loggedInUser.messages[i].date != null) {
-        var str_date = this.db.loggedInUser.messages[i].date.toString();
-        var tmp_str = str_date.split("/");
-        var tmp_date: Date = new Date(parseInt(tmp_str[2]), parseInt(tmp_str[1]), parseInt(tmp_str[0]), 0, 0, 0, 0);
-
-        if (tmp_date >= this.date)
-          this.msg_counter++;
+    this.db.getLoggedInUser().then(()=>{
+      for (var i = this.db.loggedInUser.messages.length - 1; i >= 0; i--) {
+        if (this.db.loggedInUser.messages[i].date != null) {
+          var str_date = this.db.loggedInUser.messages[i].date.toString();
+          var tmp_str = str_date.split("/");
+          var tmp_date: Date = new Date(parseInt(tmp_str[2]), parseInt(tmp_str[1]), parseInt(tmp_str[0]), 0, 0, 0, 0);
+  
+          if (tmp_date >= this.date)
+            this.msg_counter++;
+        }
       }
-    }
+    })
+
   }
   /**
    * Creates an object with relevant fields for excel output
