@@ -12,6 +12,8 @@ import { ProjectsUpdatePageComponent } from '../projects-update-page/projects-up
 import { TableComponent } from '../table/table.component'
 import { CheckersPageComponent } from '../checkers-page/checkers-page.component';
 import { ManagerHomePageComponent } from '../manager-home-page/manager-home-page.component';
+import { CompetitionSettingsPageComponent } from '../competition-settings-page/competition-settings-page.component';
+
 
 //routing links to navigate through the web-app
 const appRouets: Routes = [
@@ -20,13 +22,14 @@ const appRouets: Routes = [
   { path: 'registrationForm', component: RegistrationFormComponent },
   { path: 'homepage', component: UserHomePageComponent/*, canActivate: [AuthGuardService]*/ }, //calling canActivate function from the AuthGuardService class to handle security
   { path: 'resetPassword', component: ResetPasswordComponent },
-  { path: 'contactUs', component: ContactUsComponent},
-  { path: 'projectUpload', component: ProjectUploadScreenComponent},
-  { path: 'msgpage', component: MsgScreenComponent},
-  { path: 'viewproject', component: ProjectsUpdatePageComponent},
-  { path: 'tablePage', component: TableComponent},
-  {path: 'checker', component: CheckersPageComponent},
-  {path: 'manager', component: ManagerHomePageComponent}
+  { path: 'contactUs', component: ContactUsComponent },
+  { path: 'projectUpload', component: ProjectUploadScreenComponent },
+  { path: 'msgpage', component: MsgScreenComponent },
+  { path: 'viewproject', component: ProjectsUpdatePageComponent },
+  { path: 'tablePage', component: TableComponent },
+  { path: 'checker', component: CheckersPageComponent },
+  { path: 'manager', component: ManagerHomePageComponent },
+  { path: 'compsettings', component: CompetitionSettingsPageComponent }
 ]
 
 @NgModule({

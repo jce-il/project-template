@@ -6,104 +6,67 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="header">
-        <app-header></app-header>
-    </div>
+    <app-header></app-header>
+</div>
 
 
-    <div *ngIf="this.db.loggedInUser != null">
-            <div class="container">
-        
-               <div class="row helloClock">
-                    <div class="col">
-                            <div class="name">
-                                    <strong>שלום {{this.db.loggedInUser.firstName}}</strong>
-                                </div>
-                    </div>
-                
-                    <div class="col">
-                            <div *ngIf="this.comp_settings != undefined">
-                                    <div *ngIf="this.comp_settings.is_opened" class="row aside">
-                                        <div class="wrapper">
-                                            <div class="main-content">
-                                                <div class="counterDown text-center">
-                                                    <legend>
-                                                        <strong>לסגירת ההרשמה נותרו</strong>
-                                                    </legend>
-                                                    <div id="demo">
-                                                        <div id="minutes" class="text-center"></div>
-                                                        <div id="heures" class="text-center"></div>
-                                                        <div id="jours" class="text-center"></div>
-                                                    </div>
-                                                    <div id="infos">
-                                                        <div class="infos-minutes">דקות</div>
-                                                        <div class="infos-heures">שעות</div>
-                                                        <div class="infos-jours">ימים</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                    </div>
-               </div>
-         
-                        <div class="row">
-                                <legend>
-                                    <strong>סטאטוס הודעות</strong>
-                                </legend>
-                                <div class="notice notice-info">
-                                    <i class="glyphicon glyphicon-comment">
-                                        <strong>הודעות</strong>
-                                    </i>
-                                    <div *ngIf="this.msg_counter>0">
-                                        <strong>{{msg_counter}} הודעות חדשות</strong>
-                                    </div>
-                                    <div *ngIf="this.msg_counter==0">
-                                        אין הודעות חדשות
-                                    </div>
-                    
-                                </div>
-                            </div>
+<div *ngIf="this.db.loggedInUser != null">
+    <div class="container">
 
+        <div class="row helloClock">
+            <div class="col">
+                <div class="name">
+                    <strong>שלום {{this.db.loggedInUser.firstName}}</strong>
+                </div>
             </div>
-            
 
-            <div class="lala">
-
-                    <div class="col-sm-4 form-group">
-                            <button class="btn btn-primary btn-default" id="save"(click)="logOut()">התנתק</button>
-                            <button class="btn btn-primary btn-default" id="save"(click)="exportUsersToExcel()">יצא טבלת משתמשים לקובץ אקסל</button>
-                            <button class="btn btn-primary btn-default" id="save"(click)="exportProjectsToExcel()">יצא טבלת פרוייקטים לקובץ אקסל</button>
-                            <button class="btn btn-primary btn-default" id="save"(click)="openCompetition()">פתח תחרות</button>
+            <div class="col">
+                <div *ngIf="this.comp_settings != undefined">
+                    <div *ngIf="this.comp_settings.is_opened" class="row aside">
+                        <div class="wrapper">
+                            <div class="main-content">
+                                <div class="counterDown text-center">
+                                    <legend>
+                                        <strong>לסגירת ההרשמה נותרו</strong>
+                                    </legend>
+                                    <div id="demo">
+                                        <div id="minutes" class="text-center"></div>
+                                        <div id="heures" class="text-center"></div>
+                                        <div id="jours" class="text-center"></div>
+                                    </div>
+                                    <div id="infos">
+                                        <div class="infos-minutes">דקות</div>
+                                        <div class="infos-heures">שעות</div>
+                                        <div class="infos-jours">ימים</div>
+                                    </div>
+                                </div>
                             </div>
-                            
-                              
-                            <button class="btn btn-primary btn-default" id="save"(click)="go_to_reg('new')">רשום משתמש חדש</button>
-                            <button class="btn btn-primary btn-default" id="save"(click)="go_to_reg('update')">עדכן פרטים שלי</button>
-                            
-                            <a routerLink="/msgpage">
-                                    <button type="submit" class="btnSignin btn-primary">הודעות נכנסות</button>
-                                </a>
-                            
-                                <a routerLink="/contactUs">
-                                    <button type="submit" class="btnSignin btn-primary">שליחת הודעות</button>
-                                </a>
-                            
-                            <button type="button" class="btn btn-labeled btn-primary" (click)="projectesTable(1)">טבלת פרוייקטים</button>
-                            <button type="button" class="btn btn-labeled btn-primary" (click)="projectesTable(2)">טבלת משתמשים</button>
-                            <div *ngIf = "showSetComp">
-                                    <app-competition-settings-page></app-competition-settings-page>
-                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-
-
-
-
         </div>
-        
-        
 
-<div class="footer">
-        <app-footer></app-footer>
+        <div class="row">
+            <legend>
+                <strong>סטאטוס הודעות</strong>
+            </legend>
+            <div class="notice notice-info">
+                <i class="glyphicon glyphicon-comment">
+                    <strong>הודעות</strong>
+                </i>
+                <div *ngIf="this.msg_counter>0">
+                    <strong>{{msg_counter}} הודעות חדשות</strong>
+                </div>
+                <div *ngIf="this.msg_counter==0">
+                    אין הודעות חדשות
+                </div>
+
+            </div>
+        </div>
+
     </div>
+</div>
+<div class="footer">
+    <app-footer></app-footer>
+</div>

@@ -25,40 +25,40 @@ export class StepsBarComponent implements OnInit {
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
     this.db.getLoggedInUser().then(() => {
-    if( this.db.loggedInUser.type == 'תלמיד'){
-      this.isStudent = true;
-      this.myProjectText = "הפרויקט שלי"
-      $(document).ready(function(){
-        $(".process-row").append("<style>.process-row:before {width: 1000px;}"); 
-        $("p").append("<style>p {width: 125px;}"); 
-      });
-    }
-    else{
-      this.isStudent = false;
-      this.myProjectText = "פרויקטי תלמידים";
-      $(document).ready(function(){
-        $("p").append("<style>p {width: 125px;}"); 
-        $(".process-row").append("<style>.process-row:before {width: 1000px;}"); 
-      });
-      
-    }
-    
-    if(this.db.loggedInUser.type == 'בודק'){
-      this.isChecker = true;
-      $(document).ready(function(){
-        $("p").append("<style>p{width: 135px;}"); 
-      });
-    }
-    else{
-      this.isChecker = false;
-    }
+      if (this.db.loggedInUser.type == 'תלמיד') {
+        this.isStudent = true;
+        this.myProjectText = "הפרויקט שלי"
+        $(document).ready(function () {
+          $(".process-row").append("<style>.process-row:before {width: 1000px;}");
+          $("p").append("<style>p {width: 125px;}");
+        });
+      }
+      else {
+        this.isStudent = false;
+        this.myProjectText = "פרויקטי תלמידים";
+        $(document).ready(function () {
+          $("p").append("<style>p {width: 125px;}");
+          $(".process-row").append("<style>.process-row:before {width: 1000px;}");
+        });
 
-    if(this.db.loggedInUser.type == 'מנהל'){
-      this.isMaster = true;
-    }
-    else{
-      this.isMaster = false;
-    }
+      }
+
+      if (this.db.loggedInUser.type == 'בודק') {
+        this.isChecker = true;
+        $(document).ready(function () {
+          $("p").append("<style>p{width: 135px;}");
+        });
+      }
+      else {
+        this.isChecker = false;
+      }
+
+      if (this.db.loggedInUser.type == 'מנהל') {
+        this.isMaster = true;
+      }
+      else {
+        this.isMaster = false;
+      }
     })
   }
 
@@ -74,12 +74,12 @@ export class StepsBarComponent implements OnInit {
 
   // on home page button click
   public homePage() {
-    if(this.db.loggedInUser.type=='בודק')
+    if (this.db.loggedInUser.type == 'בודק')
       this.router.navigate(['checker']);
-    else if(this.db.loggedInUser.type=='מנהל')
+    else if (this.db.loggedInUser.type == 'מנהל')
       this.router.navigate(['manager']);
     else
-    this.router.navigate(['homepage'])
+      this.router.navigate(['homepage'])
   }
   // on personal info button click
   public personalInfo() {
@@ -92,42 +92,43 @@ export class StepsBarComponent implements OnInit {
   }
   // on My Project info button click
   public MyProject() {
- /*   if(this.db.loggedInUser.type=='בודק')
-          this.router.navigate(['tablePage']);
-    else*/
-          this.router.navigate(['projectUpload']);
+    /*   if(this.db.loggedInUser.type=='בודק')
+             this.router.navigate(['tablePage']);
+       else*/
+    this.router.navigate(['projectUpload']);
   }
 
   public MyProjectView() {
-    if(this.db.loggedInUser.type=='מורה')
-         this.router.navigate(['tablePage']);
-    else if(this.db.loggedInUser.type=='בודק')
-          this.router.navigate(['tablePage']);
+    if (this.db.loggedInUser.type == 'מורה')
+      this.router.navigate(['tablePage']);
+    else if (this.db.loggedInUser.type == 'בודק')
+      this.router.navigate(['tablePage']);
     else
-         this.router.navigate(['viewproject']);
+      this.router.navigate(['viewproject']);
   }
 
-    // on message info button click
-    public msgPage() {
-      this.router.navigate(['msgpage']);
-    }
+  // on message info button click
+  public msgPage() {
+    this.router.navigate(['msgpage']);
+  }
 
-    openCompetition() {
-      if (this.show_count % 2 == 0)
-        this.showSetComp = true;
-      else
-        this.showSetComp = false;
-      this.show_count++;
-    }
+  openCompetition() {
+    this.router.navigate(['/compsettings']);
+  }
 
-    projectesTable(userName) {
-      this.router.navigate(['/tablePage'], { queryParams: { page: userName } });
-      location.reload();
-    }
+  projectesTable(userName) {
+    this.router.navigate(['/tablePage'], { queryParams: { page: userName } });
+    location.reload();
+  }
 
-    public go_to_reg(status) {
-      this.cookieService.set('mode', status);
-      this.router.navigate(['registrationForm']);
-      location.reload();
-    }
+  public go_to_reg(status) {
+    this.cookieService.set('mode', status);
+    this.router.navigate(['registrationForm']);
+    location.reload();
+  }
+
+
+
+
+
 }
