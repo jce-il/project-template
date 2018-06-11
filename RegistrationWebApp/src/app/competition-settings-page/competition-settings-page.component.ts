@@ -17,10 +17,12 @@ export class CompetitionSettingsPageComponent implements OnInit {
       this.comp_settings = this.db.competition_settings_db[0];
     })
   }
-
+/**
+ * Closes competition by entering default values to the comp_settings object
+ * at the end of operations it updates the DB
+ */
   closeCompetition() {
     if (window.confirm('האם לסגור תחרות נוכחית?')) {
-      this.comp_settings.is_opened = true;
       this.comp_settings.is_opened = false;
       this.comp_settings.name = 'אין תחרות פתוחה';
       this.comp_settings.start_date = 'NaN';
@@ -30,7 +32,10 @@ export class CompetitionSettingsPageComponent implements OnInit {
       this.comp_settings = new CompetitionSettings();
     }
   }
-
+/**
+ * Opens competition by collecting entered values from manager to the comp_settings object
+ * at the end of operations it updates the DB
+ */
   openCompetition() {
     this.comp_settings.is_opened = true;
     this.db.competition_settings = this.comp_settings;

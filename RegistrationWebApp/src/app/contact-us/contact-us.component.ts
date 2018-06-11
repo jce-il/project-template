@@ -58,14 +58,19 @@ export class ContactUsComponent implements OnInit {
     
   }
 
-
-  createForm() { //this function build the form and check input validation
+/**
+ *Builds the form and makes input validation
+ */
+  createForm() { 
     this.form = this.fb.group({
       name: ['', Validators.required],
       message: ['', Validators.required],
     });
   }
-
+/**
+ * Create mailing list by selected user type
+ * @param type selected users type
+ */
   setContactsByType(type){
     for (var i = 0, j=0; i < this.db.usersList.length; i++){
       if (this.db.usersList[i].type == type){
@@ -73,7 +78,10 @@ export class ContactUsComponent implements OnInit {
       }
     }
   }
-
+/**
+ * Create mailing list by users who have or don't have projects
+ * @param flag 1 for users with project , 0 for without
+ */
   setContactsByProject(flag){
     for (var i = 0, j=0; i < this.db.usersList.length; i++){
       if ( flag == 1 && this.db.usersList[i].type =='תלמיד' && this.db.usersList[i].project != undefined){
@@ -84,7 +92,10 @@ export class ContactUsComponent implements OnInit {
       }
     }
   }
-
+/**
+ * Create mailing list by users who in or not in a copmetition 
+ * @param flag 1 for users not in competition , 0 who in
+ */
   setContactsByComp(flag){
     for (var i = 0, j=0; i < this.db.usersList.length; i++){
       if ( flag == 1 && this.db.usersList[i].type =='תלמיד' && this.db.usersList[i].project.inCompetition != true){
@@ -95,7 +106,9 @@ export class ContactUsComponent implements OnInit {
       }
     }
   }
-
+/**
+ * Creates mailing list for groups that are chosen by the selected_contact param
+ */
   setContactsList(){
     switch(this.selected_contact){
       case "כל המשתמשים":
@@ -153,8 +166,10 @@ export class ContactUsComponent implements OnInit {
     }
 
   }
-
-  onSubmit() {//this method take the user input and save the input in an object
+/**
+ * Creates a message object that will be filled by users input and then sends it to the contact list that was created before
+ */
+  onSubmit() {
     const { name, email, message } = this.form.value;
     const date = Date();
     const html = `
@@ -174,14 +189,7 @@ export class ContactUsComponent implements OnInit {
     this.msg.last_name = this.db.loggedInUser.lastName;
     this.msgService.addMsgToUser(this.contact_emails, this.msg);
     this.form.reset();
-  }//NOT FINISHED YET!!!--need to ask rony!
-
-
-  /*kaki(){
-      this.router.navigate(['tablePage']);
   }
-*/
-
 }
 
 
