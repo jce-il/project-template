@@ -49,6 +49,8 @@ export class RegistrationFormComponent {
         this.msg.date= new Date();
         this.msg.content = "שימו לב להודעות המופיעות באיזור זה."
         this.user.messages[0] = this.msg; //initilaize!!! ignore
+        this.user.creation_date = new Date();
+        this.user.createion_year = this.user.creation_date.getFullYear();
       }
 
       else if (this.manager_mode=='updateUser'){
@@ -101,6 +103,7 @@ export class RegistrationFormComponent {
             return;
           //successfully registered:
           this.user.uid = res.uid; // sets the uid value in the attribute
+          console.log(this.user)
           this.db.addUserToDB(this.user); // add user to database
           if(this.db.loggedIn == 'true' && this.db.loggedInUser.type == 'מנהל')
               this.router.navigate(['manager']);

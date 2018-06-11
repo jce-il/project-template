@@ -29,6 +29,7 @@ export class Project {
         public checkerMail? : string,
         public check? : string,
         public date? : Date,
+        public creation_year? : number,
         public researchStatus? : string,
         public modelStatus? : string,
         public products? : string,

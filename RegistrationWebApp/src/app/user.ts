@@ -22,6 +22,8 @@ export class User {
         public schoolName?: string,
         public schoolCity?: string,
         public docId?: string,
+        public createion_year? : number,
+        public creation_date? : Date,
         public teacher?: string,
         public project?: Project,
         public messages: Message[] = []

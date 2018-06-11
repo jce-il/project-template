@@ -59,6 +59,7 @@ export class ProjectUploadScreenComponent implements OnInit {
     this.project = new Project();
     this.project.inCompetition = false;
     this.project.date = new Date();
+    this.project.creation_year = this.project.date.getFullYear();
     this.validateForm();
     this.projectError = false; // default- no registration form errors
     this.project.mentor1 = new Mentor();
