@@ -20,16 +20,16 @@ const appRouets: Routes = [
   { path: '', redirectTo: '/loginScreen', pathMatch: 'full' },
   { path: 'loginScreen', component: LoginScreenComponent },
   { path: 'registrationForm', component: RegistrationFormComponent },
-  { path: 'homepage', component: UserHomePageComponent/*, canActivate: [AuthGuardService]*/ }, //calling canActivate function from the AuthGuardService class to handle security
+  { path: 'homepage', component: UserHomePageComponent, canActivate: [AuthGuardService] }, //calling canActivate function from the AuthGuardService class to handle security
   { path: 'resetPassword', component: ResetPasswordComponent },
-  { path: 'contactUs', component: ContactUsComponent },
-  { path: 'projectUpload', component: ProjectUploadScreenComponent },
-  { path: 'msgpage', component: MsgScreenComponent },
-  { path: 'viewproject', component: ProjectsUpdatePageComponent },
-  { path: 'tablePage', component: TableComponent },
-  { path: 'checker', component: CheckersPageComponent },
-  { path: 'manager', component: ManagerHomePageComponent },
-  { path: 'compsettings', component: CompetitionSettingsPageComponent }
+  { path: 'contactUs', component: ContactUsComponent ,canActivate: [AuthGuardService]},
+  { path: 'projectUpload', component: ProjectUploadScreenComponent ,canActivate: [AuthGuardService]},
+  { path: 'msgpage', component: MsgScreenComponent ,canActivate: [AuthGuardService]},
+  { path: 'viewproject', component: ProjectsUpdatePageComponent ,canActivate: [AuthGuardService]},
+  { path: 'tablePage', component: TableComponent ,canActivate: [AuthGuardService]},
+  { path: 'checker', component: CheckersPageComponent ,canActivate: [AuthGuardService]},
+  { path: 'manager', component: ManagerHomePageComponent ,canActivate: [AuthGuardService]},
+  { path: 'compsettings', component: CompetitionSettingsPageComponent ,canActivate: [AuthGuardService]}
 ]
 
 @NgModule({

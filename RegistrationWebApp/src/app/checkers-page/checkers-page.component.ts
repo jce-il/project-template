@@ -20,6 +20,18 @@ export class CheckersPageComponent implements OnInit {
   constructor(public db: DatabaseService, public router: Router, public auth: AuthService, private cookieService: CookieService) { }
 
   ngOnInit() {
+    this.db.getLoggedInUser().then(()=>{
+      if(this.db.loggedInUser.type != 'בודק')
+      {
+        this.cookieService.set('managerLoggedIn', 'false');
+        this.cookieService.set('User login status', 'false');
+        this.cookieService.set('mode', 'no-manager');
+        this.cookieService.set('checkerLoggedIn', 'false');
+        this.db.loggedIn = 'false';
+        this.auth.LogOut();
+        this.router.navigate(['loginScreen']);
+      }
+    })
 
     this.date = new Date();
       this.date.setDate(this.date.getDate() - 3);
