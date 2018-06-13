@@ -247,6 +247,7 @@ export class TableComponent implements OnInit {
     $(".widget-content").html(this.obj);
   }
 
+ 
 
   handleMaster1() {
     this.createCheckersInputList();

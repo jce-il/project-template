@@ -15,6 +15,7 @@ export class CheckersPageComponent implements OnInit {
 
   msg_counter = 0;
   date: Date;
+  works = 0;
   
   constructor(public db: DatabaseService, public router: Router, public auth: AuthService, private cookieService: CookieService) { }
 
@@ -46,6 +47,7 @@ export class CheckersPageComponent implements OnInit {
         }
       }
     })
+    this.countProjects();
 
   }
 
@@ -64,5 +66,17 @@ export class CheckersPageComponent implements OnInit {
   // on message info button click
   public msgPage() {
     this.router.navigate(['msgpage']);
+  }
+  public countProjects()
+  {
+   var temp = this.db.loggedInUser.email;
+    for(var i=0; i<this.db.projectsList.length; i++)
+    {
+      if(temp == this.db.projectsList[i].checkerMail)
+      {
+        if(this.db.projectsList[i].check==undefined)
+          this.works++;
+      }
+    }
   }
 }
