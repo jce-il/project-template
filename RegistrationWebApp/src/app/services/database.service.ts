@@ -6,6 +6,7 @@ import { Project } from '../project';
 import { ExportUser } from '../export-user';
 import { ExportProject } from '../export-project';
 import { CompetitionSettings } from '../competition-settings';
+import * as firebase from 'firebase/app';
 
 @Injectable()
 export class DatabaseService {
@@ -97,6 +98,13 @@ export class DatabaseService {
         this.listingDoc.delete();
       }
     }
+    /*
+user.delete().then(function() {
+  // User deleted.
+}, function(error) {
+  // An error happened.
+});
+*/
   }
 
   //project name should be unique !!!!!!!

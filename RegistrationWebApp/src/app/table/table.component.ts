@@ -161,6 +161,15 @@ export class TableComponent implements OnInit {
               else if (this.page == 2) {
                 this.title = "רשימת משתמשי המערכת";
                 this.handleMaster2();
+                $(".btn-inverse").click(res =>{
+                  var TableLine = res.currentTarget.name;
+                  var msg = "האם אתה בטוח שברצונך למחוק את המשתמש ";
+                  if(window.confirm(msg+this.db.usersList[TableLine].firstName+" "+
+                        this.db.usersList[TableLine].lastName+"?")){
+                          this.db.deleteListing(this.db.usersList[TableLine].email);
+                          $("#"+TableLine+"").remove();
+                        }
+                });
                 $("td").click(() => {
                   this.cookieService.set('mode', 'updateUser');
                 })
@@ -307,15 +316,16 @@ export class TableComponent implements OnInit {
 
   handleMaster2() {
     this.obj = "<table class='table table-striped table-bordered' id='myTable'><thead><tr><th>שם משתמש</th><th>סוג</th><th>תעודת זהות</th><th>כתובת דואל אלקטרוני</th>" +
-      "<th>סיסמא</th><th>טלפון</th></tr></thead><tbody>";
+      "<th>סיסמא</th><th>טלפון</th><th>מחק משתמש</th></tr></thead><tbody>";
     for (var i = 0; i < this.db.usersList.length; i++) {
       var str = this.router.parseUrl('/registrationForm;email=' + this.db.usersList[i].email + '');
-      this.obj += "<tr><td><a href=" + str + ">" + this.db.usersList[i].firstName + " " + this.db.usersList[i].lastName + "</a></td>" +
+      this.obj += "<tr id="+i+"><td><a href=" + str + ">" + this.db.usersList[i].firstName + " " + this.db.usersList[i].lastName + "</a></td>" +
         "<td>" + this.db.usersList[i].type + "</td>" +
         "<td>" + this.db.usersList[i].userid + "</td>" +
         "<td>" + this.db.usersList[i].email + "</td>" +
         "<td>" + this.db.usersList[i].password + "</td>" +
-        "<td>" + this.db.usersList[i].phone + "</td></tr>";
+        "<td>" + this.db.usersList[i].phone + "</td>"+
+        "<td><button type='button' name="+ i +" class='btn btn-inverse'><i class='glyphicon glyphicon-trash'></i> לחץ למחיקה</button></td></tr>";
     }
     this.obj += "</tbody></table>";
     $(".widget-content").html(this.obj);
