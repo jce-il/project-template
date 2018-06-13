@@ -45,11 +45,13 @@ export class MsgScreenComponent implements OnInit {
     }
   }
 
-  reply(message) {
+  reply(message: Message) {
     if (this.db.loggedInUser.type != 'מנהל')
       this.router.navigate(['contactUs']);
     else {
-      //add cookie
+      console.log( this.cookieService.get('contactTo'))
+      this.cookieService.set('contactTo', message.email);
+      console.log( this.cookieService.get('contactTo'))
       this.router.navigate(['contactUs']);
     }
   }
