@@ -27,8 +27,7 @@
                 <div class="col-sm-4 form-group">
                     <div [formGroup]="projectform">
                         <label class="req">כתובת דואר אלקטרוני שלי*</label>
-                        <input type="text" disabled id="partner1" required [(ngModel)]="project.user1mail" name="partner1" formControlName="partner1"
-                        />
+                        <input type="text" disabled id="partner1" required [(ngModel)]="project.user1mail" name="partner1" formControlName="partner1"/>
                         <div *ngIf="partner1.invalid && (partner1.dirty)">
                             <div *ngIf="partner1.errors.email && !CheckIfEmptyField(project.user1mail)" class="alert alert-danger">
                                 נא להזין כתובת דואר אלקטרוני תקינה
@@ -92,7 +91,7 @@
                         <input type="text" [(ngModel)]="this.projectField" formControlName="other" />
                     </div>
                     <label class="reg">מוסד אקדמי בו התבצעה העבודה במידה וקיים</label>
-                    <input class="data" type="text" id="location" [(ngModel)]="project.location" name="location" />
+                    <input class="data" type="text" maxlength="20" id="location" [(ngModel)]="project.location" name="location" />
                     <label class="req">סוג העבודה המוגשת*</label>
                     <select id="type" [(ngModel)]="project.type" name="type">
                         <option>מחקרית</option>

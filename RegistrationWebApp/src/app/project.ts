@@ -34,7 +34,8 @@ export class Project {
         public modelStatus? : string,
         public products? : string,
         public finishTime? : string,
-        public inCompetition? : boolean
+        public inCompetition? : boolean,
+        public wasChecked? : boolean
 
 
     ) { }

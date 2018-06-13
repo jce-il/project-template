@@ -229,7 +229,7 @@ handleChecker(){
                 "צפיה בהערות הבודק</button></td></tr>";
     }
   }
-  this.obj+="</tbody></table>" ; 
+  this.obj+="</tbody></table>" ;
   $(".widget-content").html(this.obj);
 }
  
