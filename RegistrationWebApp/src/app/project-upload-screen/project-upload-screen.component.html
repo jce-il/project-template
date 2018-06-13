@@ -27,8 +27,7 @@
                 <div class="col-sm-4 form-group">
                     <div [formGroup]="projectform">
                         <label class="req">כתובת דואר אלקטרוני שלי*</label>
-                        <input type="text" disabled id="partner1" required [(ngModel)]="project.user1mail" name="partner1" formControlName="partner1"
-                        />
+                        <input type="text" disabled id="partner1" required [(ngModel)]="project.user1mail" name="partner1" formControlName="partner1"/>
                         <div *ngIf="partner1.invalid && (partner1.dirty)">
                             <div *ngIf="partner1.errors.email && !CheckIfEmptyField(project.user1mail)" class="alert alert-danger">
                                 נא להזין כתובת דואר אלקטרוני תקינה
@@ -92,7 +91,7 @@
                         <input type="text" [(ngModel)]="this.projectField" formControlName="other" />
                     </div>
                     <label class="reg">מוסד אקדמי בו התבצעה העבודה במידה וקיים</label>
-                    <input class="data" type="text" id="location" [(ngModel)]="project.location" name="location" />
+                    <input class="data" type="text" maxlength="20" id="location" [(ngModel)]="project.location" name="location" />
                     <label class="req">סוג העבודה המוגשת*</label>
                     <select id="type" [(ngModel)]="project.type" name="type">
                         <option>מחקרית</option>
@@ -121,23 +120,23 @@
             <div class="row">
                 <div class="col-sm-9 form-group">
                     <label class="reg">שאלת מחקר/מטרת הפרוייקט</label>
-                    <textarea class="data" rows="6" cols="80" id="target" [(ngModel)]="project.target" name="target"></textarea>
+                    <textarea class="data" rows="6" cols="80" id="target" maxlength="400" [(ngModel)]="project.target" name="target"></textarea>
                     <label class="reg">רקע (הבסיס המדעי / טכנולוגי לעבודה)</label>
-                    <textarea class="data" rows="6" cols="80" id="background" [(ngModel)]="project.background" name="background"></textarea>
+                    <textarea class="data" rows="6" cols="80" id="background" maxlength="400" [(ngModel)]="project.background" name="background"></textarea>
                     <label class="reg">מוצרים דומים הקיימים בשוק</label>
-                    <textarea class="data" rows="6" cols="80" id="background" [(ngModel)]="project.products" name="background"></textarea>
+                    <textarea class="data" rows="6" cols="80" id="background" maxlength="400" [(ngModel)]="project.products" name="background"></textarea>
                     <label class="reg">תיאור קצר: תאר בקצרה את המוצר, דרך פעולתו, כיצד משיג את מטרתו וכיצד החלטתם על פתרון זה</label>
-                    <textarea class="data" rows="6" cols="80" id="description" [(ngModel)]="project.description" name="description"></textarea>
+                    <textarea class="data" rows="6" cols="80" id="description" maxlength="400" [(ngModel)]="project.description" name="description"></textarea>
                     <label class="reg">היקף: תיאור היקף הפרויקט (למשל- שעות עבודה, מספר דגמים)</label>
-                    <textarea class="data" rows="6" cols="80" id="scope" [(ngModel)]="project.scope" name="scope"></textarea>
+                    <textarea class="data" rows="6" cols="80" id="scope" maxlength="400" [(ngModel)]="project.scope" name="scope"></textarea>
                     <label class="reg">הערכת זמן הנדרש לסיום</label>
-                    <textarea class="data" rows="6" cols="80" id="finishTime" [(ngModel)]="project.finishTime" name="finishTime"></textarea>
+                    <textarea class="data" rows="6" cols="80" id="finishTime" maxlength="400" [(ngModel)]="project.finishTime" name="finishTime"></textarea>
                     <label class="reg">חדשנות: מהו הצד החדשני/ מקורי בפרוייקט? כיצד הוא שונה מפתרונות קיימים?</label>
-                    <textarea class="data" rows="6" cols="80" id="inovetion" [(ngModel)]="project.inovetion" name="inovetion"></textarea>
+                    <textarea class="data" rows="6" cols="80" id="inovetion" maxlength="400" [(ngModel)]="project.inovetion" name="inovetion"></textarea>
                     <label class="reg">יתרונות/תרומה</label>
-                    <textarea class="data" rows="6" cols="80" id="advantages" [(ngModel)]="project.advantages" name="advantages"></textarea>
+                    <textarea class="data" rows="6" cols="80" id="advantages" maxlength="400" [(ngModel)]="project.advantages" name="advantages"></textarea>
                     <label class="reg">נקודת מבט אישית</label>
-                    <textarea class="data" rows="6" cols="80" id="retrospective" [(ngModel)]="project.retrospective" name="retrospective"></textarea>
+                    <textarea class="data" rows="6" cols="80" id="retrospective" maxlength="400" [(ngModel)]="project.retrospective" name="retrospective"></textarea>
                 </div>
             </div>
             <div class="row">

@@ -30,11 +30,11 @@ export class ContactUsComponent implements OnInit {
 
   selected_contact="";
 
-
   constructor(private fb: FormBuilder, private msgService: MessageService, private cookieService: CookieService,
     public db: DatabaseService, public router: Router) { this.createForm(); }
 
   ngOnInit() {
+
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
     this.db.getLoggedInUser().then(()=>{
@@ -49,9 +49,14 @@ export class ContactUsComponent implements OnInit {
       }
       else{
         j=9;
+        var contactTo= this.cookieService.get('contactTo');
         for (var i = 0; i<this.db.usersList.length; i++, j++){
           this.display_contacts[j]=  ""+ this.db.usersList[i].email +" - " + this.db.usersList[i].firstName + " "+this.db.usersList[i].lastName ;
+          if (contactTo == this.db.usersList[i].email){
+            this.selected_contact = this.display_contacts[j]
+          }
         }
+        this.cookieService.set('contactTo', 'null');
       }
     });
   });

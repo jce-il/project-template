@@ -246,7 +246,6 @@ export class ProjectsUpdatePageComponent implements OnInit {
 
     if (!this.projectform.valid) { // validate errors
       this.projectError = true; // form error
-      console.log(this.projectform); //show errors
       return;
     }
     this.projectError = false;
