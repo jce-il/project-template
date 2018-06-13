@@ -103,7 +103,6 @@ export class RegistrationFormComponent {
             return;
           //successfully registered:
           this.user.uid = res.uid; // sets the uid value in the attribute
-          console.log(this.user)
           this.db.addUserToDB(this.user); // add user to database
           if(this.db.loggedIn == 'true' && this.db.loggedInUser.type == 'מנהל')
               this.router.navigate(['manager']);
