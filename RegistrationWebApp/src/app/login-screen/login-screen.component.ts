@@ -57,7 +57,11 @@ export class LoginScreenComponent implements OnInit {
       })
       .catch((err) => {
         this.signInVal = 'כניסה'
+        this.db.loggedIn = 'false';
+        this.db.loggedInUserUID = null;
         this.logInError = true
+        this.cookieService.set('User uid', '');
+        this.cookieService.set('User login status', 'false');
       }
       );
   }

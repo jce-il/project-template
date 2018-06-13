@@ -80,6 +80,8 @@ export class ProjectsUpdatePageComponent implements OnInit {
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
     this.db.getLoggedInUser().then(() => {
+      if(this.db.loggedInUser.project == undefined)
+        this.router.navigate(['homepage']);
       if (this.db.loggedInUser.type == 'תלמיד') {
         this.isStudent = true;
         this.title = "עדכון או צפיה בפרטי פרויקט"

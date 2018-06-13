@@ -24,6 +24,18 @@ export class ManagerHomePageComponent implements OnInit {
   constructor(public auth: AuthService, public excelService: ExcelService, public db: DatabaseService, public router: Router, private cookieService: CookieService) { }
 
   ngOnInit() {
+    this.db.getLoggedInUser().then(()=>{
+      if(this.db.loggedInUser.type != 'מנהל')
+      {
+        this.cookieService.set('managerLoggedIn', 'false');
+        this.cookieService.set('User login status', 'false');
+        this.cookieService.set('mode', 'no-manager');
+        this.cookieService.set('checkerLoggedIn', 'false');
+        this.db.loggedIn = 'false';
+        this.auth.LogOut();
+        this.router.navigate(['loginScreen']);
+      }
+    })
     this.db.getSettingsMetaData().subscribe((res) => {
       this.db.competition_settings_db = res;
       this.comp_settings = this.db.competition_settings_db[0];
