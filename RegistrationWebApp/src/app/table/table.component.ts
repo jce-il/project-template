@@ -246,14 +246,8 @@ export class TableComponent implements OnInit {
     this.obj += "</tbody></table>";
     $(".widget-content").html(this.obj);
   }
-<<<<<<< HEAD
-  this.obj+="</tbody></table>" ;
-  $(".widget-content").html(this.obj);
-}
- 
-=======
->>>>>>> 87d06f30c2e10278e782cc29670a93c98e84d189
 
+ 
 
   handleMaster1() {
     this.createCheckersInputList();
