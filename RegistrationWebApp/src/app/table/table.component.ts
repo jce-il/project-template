@@ -39,8 +39,8 @@ export class TableComponent implements OnInit {
   inCompetition: string;
   acceptedMessage: Message;
   unacceptedMessage: Message;
-  today: string;
-  date: Date;
+  today;
+  date: Date = new Date();
   
 
 
@@ -403,7 +403,8 @@ export class TableComponent implements OnInit {
 
 
   publishResult(){
-    const date = new Date();
+    const date = Date();
+    this.today =this.date.getDate().toString() + "/" + (this.date.getMonth() + 1).toString() + "/" + this.date.getFullYear().toString();
     var emailsAccepted = [];
     var emailsUnAccepted =[];
     this.acceptedMessage= new Message ("תוצאות בדיקת הפרויקט","שמחים לבשר לך כי עברת לשלב הבא, ניצור איתך קשר בימים הקרובים לתאם מועד פגישה",this.today,this.db.loggedInUser.email,"ועדת בדיקה תחרות מדענים צעירים","");
