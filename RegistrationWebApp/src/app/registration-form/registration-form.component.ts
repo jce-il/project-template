@@ -81,9 +81,20 @@ export class RegistrationFormComponent {
 
   // on register user button click adds new user to Database according to the data that was collected from the registration form
   public registerUser() {
-    if (this.user.type != 'תלמיד') { // in case its teacher--> birthday is not required
+    if (this.user.type != 'תלמיד') { // in case is not student--> there is not required fildes
       this.userform.get('birthday').clearValidators();
-      this.userform.get('birthday').updateValueAndValidity(); //now teacher can register
+      this.userform.get('birthday').updateValueAndValidity();
+      this.userform.get('city').clearValidators();
+      this.userform.get('city').updateValueAndValidity();
+      this.userform.get('street').clearValidators();
+      this.userform.get('street').updateValueAndValidity();
+      this.userform.get('appartment').clearValidators();
+      this.userform.get('appartment').updateValueAndValidity();
+      this.userform.get('schoolName').clearValidators();
+      this.userform.get('schoolName').updateValueAndValidity();
+      this.userform.get('schoolCity').clearValidators();
+      this.userform.get('schoolCity').updateValueAndValidity();
+       //now teacher/ checker/ manager can register
     }
     if (!this.validatePassword()) { // condition to prevent confirm password
       this.signUpError = true;
@@ -174,6 +185,26 @@ export class RegistrationFormComponent {
         Validators.pattern("[0-9-]*"),
         Validators.minLength(8),
         Validators.maxLength(10)
+      ]),
+      'city': new FormControl("", [
+        //city is required
+        Validators.required,
+      ]),
+      'street': new FormControl("", [
+        //street is required
+        Validators.required,
+      ]),
+      'appartment': new FormControl("", [
+        //appartment is required
+        Validators.required,
+      ]),
+      'schoolName': new FormControl("", [
+        //schoolName is required
+        Validators.required,
+      ]),
+      'schoolCity': new FormControl("", [
+        //schoolCity is required
+        Validators.required,
       ])
     });
   }
@@ -201,9 +232,20 @@ export class RegistrationFormComponent {
     return false;
   }
   public updateInfo() {
-    if (this.user.type != 'תלמיד') { // in case its teacher--> birthday is not required
+    if (this.user.type != 'תלמיד') { // in case is not student--> there is not required fildes
       this.userform.get('birthday').clearValidators();
-      this.userform.get('birthday').updateValueAndValidity(); //now can updtae
+      this.userform.get('birthday').updateValueAndValidity();
+      this.userform.get('city').clearValidators();
+      this.userform.get('city').updateValueAndValidity();
+      this.userform.get('street').clearValidators();
+      this.userform.get('street').updateValueAndValidity();
+      this.userform.get('appartment').clearValidators();
+      this.userform.get('appartment').updateValueAndValidity();
+      this.userform.get('schoolName').clearValidators();
+      this.userform.get('schoolName').updateValueAndValidity();
+      this.userform.get('schoolCity').clearValidators();
+      this.userform.get('schoolCity').updateValueAndValidity();
+       //now teacher/ checker/ manager can register
     }
     this.userform.get('email').clearValidators();
     this.userform.get('email').updateValueAndValidity(); //clear validator
@@ -238,6 +280,11 @@ export class RegistrationFormComponent {
   get birthday() { return this.userform.get('birthday'); }
   get gender() { return this.userform.get('gender'); }
   get userid() { return this.userform.get('userid'); }
+  get city() { return this.userform.get('city'); }
+  get street() { return this.userform.get('street'); }
+  get appartment() { return this.userform.get('appartment'); }
+  get schoolName() { return this.userform.get('schoolName'); }
+  get schoolCity() { return this.userform.get('schoolCity'); }
 
 }
 

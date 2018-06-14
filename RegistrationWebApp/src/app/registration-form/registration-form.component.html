@@ -225,32 +225,40 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-3 form-group">
-                        <label>ישוב</label>
-                        <input type="text" id="city" [(ngModel)]="user.city" name="city" />
+                            <div [formGroup]="userform">
+                        <label class="req">ישוב*</label>
+                        <input type="text" id="city" [(ngModel)]="user.city" name="city" formControlName="city" />
+                    </div>
                     </div>
                     <div class="col-sm-3 form-group">
-                        <label>רחוב</label>
-                        <input type="text" id="street" [(ngModel)]="user.street" name="street" />
+                    <div [formGroup]="userform">
+                        <label class="req">רחוב*</label>
+                        <input type="text" id="street" [(ngModel)]="user.street" name="street"  formControlName="street" />
+                    </div>
                     </div>
                     <div class="col-sm-3 form-group">
-                        <label>מספר בית</label>
-                        <input type="text" id="appartment" [(ngModel)]="user.appartment" name="appartment">
+                            <div [formGroup]="userform">
+                        <label class="req">*מספר בית</label>
+                        <input type="text" id="appartment" [(ngModel)]="user.appartment" name="appartment"  formControlName="appartment">
+                    </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-10">
-                        <legend>פרטי בית ספר</legend>
+                        <legend>*פרטי בית ספר</legend>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4 form-group">
-                        <label>שם בית הספר</label>
-                        <input type="text" id="schoolName" [(ngModel)]="user.schoolName" name="schoolName" />
-                    </div>
+                            <div [formGroup]="userform">
+                        <label class="req">*שם בית הספר</label>
+                        <input type="text" id="schoolName" [(ngModel)]="user.schoolName" name="schoolName" formControlName="schoolName" />
+                    </div></div>
                     <div class="col-sm-4 form-group">
-                        <label>ישוב בית הספר</label>
-                        <input type="text" id="schoolCity" [(ngModel)]="user.schoolCity" name="schoolCity" />
-                    </div>
+                            <div [formGroup]="userform">
+                        <label class="req">*ישוב בית הספר</label>
+                        <input type="text" id="schoolCity" [(ngModel)]="user.schoolCity" name="schoolCity" formControlName="schoolCity" />
+                    </div></div>
                 </div>
             </div>
             <div class="btnsign">
