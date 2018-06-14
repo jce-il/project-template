@@ -21,6 +21,11 @@
                  ייצא טבלה לאקסל
                 </button>
         </div>
+        <div *ngIf="this.db.loggedInUser.type == 'מנהל' && this.page==1" class="center">
+            <button class="btn btn-primary publish">
+                 פרסום תוצאות
+                </button>
+        </div>
         <input type="text" id="myInput" (keyup)="search()" placeholder="הזן ערך לחיפוש..."/>
         <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
     </div>

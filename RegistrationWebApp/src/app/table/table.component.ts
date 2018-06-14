@@ -10,6 +10,8 @@ import * as $ from 'jquery';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ExcelService } from '../services/excel.service';
 import { AuthService } from '../services/auth.service';
+import { Message } from '../message'
+import { MessageService } from '../services/message.service'
 
 
 @Pipe({
@@ -35,12 +37,17 @@ export class TableComponent implements OnInit {
   page;
   team: string;
   inCompetition: string;
+  acceptedMessage: Message;
+  unacceptedMessage: Message;
+  today: string;
+  date: Date;
+  
 
 
 
   constructor(public auth: AuthService, public db: DatabaseService, private cookieService: CookieService,
     public uploadService: UploadFileService, private route: ActivatedRoute, private router: Router,
-    public excelService: ExcelService) {  this.router.routeReuseStrategy.shouldReuseRoute = function() {//this method reload the ngoninit after navigation
+    public excelService: ExcelService, public msg: MessageService) {  this.router.routeReuseStrategy.shouldReuseRoute = function() {//this method reload the ngoninit after navigation
       return false;
   };
 }
@@ -103,6 +110,9 @@ export class TableComponent implements OnInit {
                 if (this.page == 1) { this.exportProjectsToExcel(); }
                 else { this.exportUsersToExcel(); }
               });
+              $(".publish").click(() =>{
+                this.publishResult();
+            });
               if (this.page == 1) {
                 this.title = "פרוייקטים בתחרות";
                 this.handleMaster1();
@@ -388,4 +398,41 @@ export class TableComponent implements OnInit {
     this.db.exportProjects();
     this.excelService.exportAsExcelFile(JSON.parse(JSON.stringify(this.db.proj_exp)), 'projects');
   }
+
+
+
+
+  publishResult(){
+    const date = new Date();
+    var emailsAccepted = [];
+    var emailsUnAccepted =[];
+    this.acceptedMessage= new Message ("תוצאות בדיקת הפרויקט","שמחים לבשר לך כי עברת לשלב הבא, ניצור איתך קשר בימים הקרובים לתאם מועד פגישה",this.today,this.db.loggedInUser.email,"ועדת בדיקה תחרות מדענים צעירים","");
+    this.unacceptedMessage= new Message ("תוצאות בדיקת הפרויקט","מצטערים לבשר זאת אך לא עברת לשלב הבא.",this.today,this.db.loggedInUser.email,"ועדת בדיקה תחרות מדענים צעירים","");
+
+    for(var i=0; i<this.db.projectsList.length; i++)
+      {
+        if(this.db.projectsList[i].inCompetition)
+        {
+         emailsAccepted.push(this.db.projectsList[i].user1mail);
+         this.msg.addMsgToUser(emailsAccepted ,this.acceptedMessage);
+         emailsAccepted.pop();
+        }
+        else
+        {
+          emailsUnAccepted.push(this.db.projectsList[i].user1mail);
+          this.msg.addMsgToUser(emailsUnAccepted ,this.unacceptedMessage);
+          emailsUnAccepted.pop();
+        }
+      }
+
+    //if (window.confirm('האם לפרסם את התשובות?'))
+    console.log(emailsAccepted);
+    console.log(this.acceptedMessage);
+    console.log('--------------------------')
+    console.log(emailsUnAccepted);
+     // this.msg.addMsgToUser(emailsAccepted ,this.acceptedMessage);
+     // this.msg.addMsgToUser(emailsUnAccepted ,this.unacceptedMessage);
+    
+  }
+  
 }
