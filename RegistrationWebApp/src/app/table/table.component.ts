@@ -415,8 +415,6 @@ export class TableComponent implements OnInit {
                 inCompEmails.push(this.db.projectsList[i].user2mail);
             if(this.db.projectsList[i].user3mail!=undefined)
                 inCompEmails.push(this.db.projectsList[i].user3mail);
-            if(this.db.projectsList[i].school_contact_mail!=undefined)
-                inCompEmails.push(this.db.projectsList[i].school_contact_mail);
         }
         else
         {
@@ -426,8 +424,6 @@ export class TableComponent implements OnInit {
               notInCompEmails.push(this.db.projectsList[i].user2mail);
             if(this.db.projectsList[i].user3mail!=undefined)
               notInCompEmails.push(this.db.projectsList[i].user3mail);
-            if(this.db.projectsList[i].school_contact_mail!=undefined)
-              notInCompEmails.push(this.db.projectsList[i].school_contact_mail);
         }
       }
       for(var i=0;i<inCompEmails.length;i++){
