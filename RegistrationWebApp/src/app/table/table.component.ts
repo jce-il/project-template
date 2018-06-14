@@ -145,10 +145,10 @@ export class TableComponent implements OnInit {
                           $("#"+TableLine+"").remove();
                         }
                 });
-                $("td").click(() => {
-                  this.cookieService.set('mode', 'updateUser');
-                })
               }
+              $("td").click(() => {
+                this.cookieService.set('mode', 'updateUser');
+              })
               break;
             }
         }
@@ -223,7 +223,7 @@ export class TableComponent implements OnInit {
           this.obj += "<td>לא קיים קובץ המלצה במערכת</td>"
         }
         else { this.obj += "<td><a href=" + this.db.projectsList[i].recommendation_file.url + ">" + this.db.projectsList[i].recommendation_file.name + "</a></td>" }
-        this.obj += "<td><button id=" + i + " class='btn btn-checker btn-lg' data-toggle='modal' data-target='#myModal'>" +
+        this.obj += "<td><button id=" + i + " class='btn btn-checker' data-toggle='modal' data-target='#myModal'>" +
           "צפיה בהערות הבודק</button></td></tr>";
       }
     }
@@ -258,16 +258,16 @@ export class TableComponent implements OnInit {
       else { this.obj += "<td><a href=" + this.db.projectsList[i].project_file.url + ">" + this.db.projectsList[i].project_file.name + "</a></td>" }
       if (this.db.projectsList[i].inCompetition) { this.inCompetition = "התקבל"; }
       else { this.inCompetition = "נדחה"; }
-      this.obj += "<td width='105px'><button type='button' name=" + i + " class='btn btn-info btn-circle'><i class='glyphicon glyphicon-ok'></i></button>&nbsp;" +
+      this.obj += "<td width='105px'><button type='button' name="+i+" class='btn btn-info btn-circle'><i class='glyphicon glyphicon-ok'></i></button>&nbsp;" +
         "<button type='button' name=" + i + " class='btn btn-warning btn-circle'><i class='glyphicon glyphicon-remove'></i></button>" + this.inCompetition + "</td>";
       if (this.db.projectsList[i].checkerMail != undefined) {
-        this.obj += "<td><form><input list='chekers' id=" + i + "></form><datalist id='chekers'>" + this.inputCheckerList + "<div>הבודק הנוכחי הינו:    " + this.db.projectsList[i].checkerMail + "</div>"+
+        this.obj += "<td><form><input list='chekers' id="+i+"></form><datalist id='chekers'>" + this.inputCheckerList + "<div>הבודק הנוכחי הינו:    " + this.db.projectsList[i].checkerMail + "</div>"+
                     "<button name="+i+" class='btn btn-checker'>צפיה בהערות הבודק</button></td>";
-        this.obj += "<td><button type='button' name=" + i + " class='btn btn-labeled btn-primary'>שייך</button></td></tr>"
+        this.obj += "<td><button type='button' name="+i+" class='btn btn-labeled btn-primary'>שייך</button></td></tr>"
       }
       else {
-        this.obj += "<td><form><input list='chekers' id=" + i + "></form><datalist id='chekers'>" + this.inputCheckerList + "</td>";
-        this.obj += "<td><button type='button' name=" + i + " class='btn btn-labeled btn-primary'>שייך</button></td></tr>"
+        this.obj += "<td><form><input list='chekers' id="+i+" placeholder='בחר בודק מהרשימה'></form><datalist id='chekers'>" + this.inputCheckerList + "</td>";
+        this.obj += "<td><button type='button' name="+i+" class='btn btn-labeled btn-primary'>שייך</button></td></tr>"
       }
     }
     this.obj += "</tbody></table>";
@@ -328,7 +328,10 @@ export class TableComponent implements OnInit {
       if(currentValue==1){index = res.currentTarget.id;}
       else{index = res.currentTarget.name;}
       if (this.db.projectsList[index].check == undefined)
-        text = "בודק יקר,</br>עדיין לא הוזנה בדיקה.</br> על מנת להזין את הבדיקה יש ללחוץ על שם העבודה ולהזין את הבדיקה בשדה המיועד לכך הנמצא בתחתית העמוד."
+        if(currentValue==1)
+            text = "בודק יקר,</br>עדיין לא הוזנה בדיקה.</br> על מנת להזין את הבדיקה יש ללחוץ על שם העבודה ולהזין את הבדיקה בשדה המיועד לכך הנמצא בתחתית העמוד.";
+        else
+            text = "טרם בוצעה בדיקה."
       else
         text = this.db.projectsList[index].check;
       winContent = "<legend><strong>הערות הבודק</strong></legend>" +
