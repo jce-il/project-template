@@ -81,6 +81,15 @@ export class RegistrationFormComponent {
 
   // on register user button click adds new user to Database according to the data that was collected from the registration form
   public registerUser() {
+    for (var i = 0; i < this.db.usersList.length; i++){
+      console.log(this.db.usersList[i].userid)
+      if (this.db.usersList[i].userid == this.user.userid){
+        console.log("id"+this.db.usersList[i].userid)
+        this.signUpError = true;
+        alert("תעודת זהות כבר קיימת במערכת")
+        return;  
+      }
+    }
     if (this.user.type != 'תלמיד') { // in case is not student--> there is not required fildes
       this.userform.get('birthday').clearValidators();
       this.userform.get('birthday').updateValueAndValidity();
@@ -100,6 +109,7 @@ export class RegistrationFormComponent {
       this.signUpError = true;
       return;
     }
+
     if (this.userform.valid) { // no validate errors
       this.signUpError = false;
       this.auth.emailSignUp(this.user.email, this.user.password) // sign up User
@@ -232,6 +242,7 @@ export class RegistrationFormComponent {
     return false;
   }
   public updateInfo() {
+
     if (this.user.type != 'תלמיד') { // in case is not student--> there is not required fildes
       this.userform.get('birthday').clearValidators();
       this.userform.get('birthday').updateValueAndValidity();
@@ -253,6 +264,7 @@ export class RegistrationFormComponent {
     this.userform.get('password').updateValueAndValidity(); //clear validator
     this.userform.get('confimpassword').clearValidators();
     this.userform.get('confimpassword').updateValueAndValidity(); //clear validator
+
     if (this.userform.valid) { // no validate errors
         this.db.user = this.user; //update current user data of the service !!!
         this.db.updateListing(this.user.email);
