@@ -199,3 +199,6 @@ p{
 	margin-left: 15px;
 }
 
+.master button:active{
+	border-color: transparent;
+}
