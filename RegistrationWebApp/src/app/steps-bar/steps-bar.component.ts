@@ -118,7 +118,6 @@ export class StepsBarComponent implements OnInit {
 
   projectesTable(userName) {
     this.router.navigate(['/tablePage'], { queryParams: { page: userName } });
-    location.reload();
   }
 
   public go_to_reg(status) {

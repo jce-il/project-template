@@ -40,9 +40,13 @@ export class TableComponent implements OnInit {
 
   constructor(public auth: AuthService, public db: DatabaseService, private cookieService: CookieService,
     public uploadService: UploadFileService, private route: ActivatedRoute, private router: Router,
-    public excelService: ExcelService) { }
+    public excelService: ExcelService) {  this.router.routeReuseStrategy.shouldReuseRoute = function() {//this method reload the ngoninit after navigation
+      return false;
+  };
+}
 
   ngOnInit() {
+ 
     this.db.getLoggedInUser().then(() => {
       if (this.db.loggedInUser.type == 'תלמיד') {
         this.cookieService.set('managerLoggedIn', 'false');
@@ -299,12 +303,16 @@ export class TableComponent implements OnInit {
 
   createTeam(index) {
     this.team = "";
-    if (this.db.projectsList[index].user1mail != undefined)
-      this.team += this.db.projectsList[index].user1mail + "</br>";
-    if (this.db.projectsList[index].user2mail != undefined)
-      this.team += this.db.projectsList[index].user2mail + "</br>";
-    if (this.db.projectsList[index].user3mail != undefined)
-      this.team += this.db.projectsList[index].user3mail + "";
+    var currentProj = this.db.projectsList[index];
+    for(var i=0;i<this.db.usersList.length;i++){
+      if (currentProj.user1mail!=undefined && this.db.usersList[i].email==currentProj.user1mail)
+        this.team += this.db.projectsList[index].user1mail + "</br>";
+      if (currentProj.user2mail!=undefined && this.db.usersList[i].email==currentProj.user2mail)
+        this.team += this.db.projectsList[index].user2mail + "</br>";
+      if (currentProj.user3mail!=undefined && this.db.usersList[i].email==currentProj.user3mail)
+        this.team += this.db.projectsList[index].user3mail + "";
+    }
+
   }
 
   createCheckersInputList() {
