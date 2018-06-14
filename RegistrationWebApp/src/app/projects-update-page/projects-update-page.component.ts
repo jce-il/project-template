@@ -5,7 +5,7 @@ import { UploadFileService } from '../services/upload-file.service';
 import { FormsModule, FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { FileUpload } from '../fileupload';
 import { Project } from '../project';
-import { RouterLink, Router,ActivatedRoute, Params } from '@angular/router';
+import { RouterLink, Router, ActivatedRoute, Params } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from 'firebase';
 import * as $ from "jquery"
@@ -43,7 +43,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
   send: string
 
 
-  constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService,private route: ActivatedRoute) {
+  constructor(public db: DatabaseService, public auth: AuthService, public uploadService: UploadFileService, public router: Router, private cookieService: CookieService, private route: ActivatedRoute) {
     this.send = "שלח פרוייקט לתחרות";
     this.fields = [
       "מתמטיקה", "מדעי החיים", "כימיה",
@@ -53,20 +53,20 @@ export class ProjectsUpdatePageComponent implements OnInit {
       "עוד לא סיימתי את העבודה המעשית ואין לי תוצאות",
       "עוד לא סיימתי את העבודה המעשית אך יש לי תוצאות חלקיות",
       "סיימתי את כל העבודה המעשית ואני בכתיבת העבודה"];
-      this.researchStatus = [
-        "לא התחלתי ניסויים",
-        "התחלתי",
-        "יש תוצאות",
-        "יש אנליזה של תוצאות"
-      ];
-      this.modelStatus = [
-        "אין",
-        "לא התחלתי תכנון",
-        "יש תכנון",
-        "יש דגם ראשוני",
-        "יש דגם עובד",
-        "יש מוצר סופי"
-      ];
+    this.researchStatus = [
+      "לא התחלתי ניסויים",
+      "התחלתי",
+      "יש תוצאות",
+      "יש אנליזה של תוצאות"
+    ];
+    this.modelStatus = [
+      "אין",
+      "לא התחלתי תכנון",
+      "יש תכנון",
+      "יש דגם ראשוני",
+      "יש דגם עובד",
+      "יש מוצר סופי"
+    ];
     this.project = new Project();
     this.validateForm();
     this.projectError = false; // default- no registration form errors
@@ -80,7 +80,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
     this.db.getLoggedInUser().then(() => {
-      if(this.db.loggedInUser.project == undefined)
+      if (this.db.loggedInUser.project == undefined)
         this.router.navigate(['homepage']);
       if (this.db.loggedInUser.type == 'תלמיד') {
         this.isStudent = true;
@@ -90,13 +90,13 @@ export class ProjectsUpdatePageComponent implements OnInit {
         this.isStudent = false;
         if (this.db.loggedInUser.type == 'מורה')
           this.title = "פרויקטים של תלמידים שלי"
-        else if (this.db.loggedInUser.type=="בודק"){
-        this.title = "פרוייקטים לבדיקה"
-        this.send = "שלח בדיקה"
+        else if (this.db.loggedInUser.type == "בודק") {
+          this.title = "פרוייקטים לבדיקה"
+          this.send = "שלח בדיקה"
         }
-        else if (this.db.loggedInUser.type=="מנהל"){
-        this.title = "פרוייקטים"
-        this.send = "עדכן פרוייקט"
+        else if (this.db.loggedInUser.type == "מנהל") {
+          this.title = "פרוייקטים"
+          this.send = "עדכן פרוייקט"
         }
       }
       this.db.getProjectMetaData().subscribe((val) => {
@@ -113,35 +113,35 @@ export class ProjectsUpdatePageComponent implements OnInit {
           }
         }
         else {
-          if (this.db.loggedInUser.type == 'מורה'){
-          for (var i = 0; i < this.db.projectsList.length; i++) {
-            if (this.db.projectsList[i].school_contact_mail == this.db.loggedInUser.email) {
+          if (this.db.loggedInUser.type == 'מורה') {
+            for (var i = 0; i < this.db.projectsList.length; i++) {
+              if (this.db.projectsList[i].school_contact_mail == this.db.loggedInUser.email) {
+                this.user_projects[j++] = this.db.projectsList[i].project_name;
+                this.user_project_objects.push(this.db.projectsList[i]);
+              }
+            }
+          }
+          else if (this.db.loggedInUser.type == 'בודק') {
+            for (var i = 0; i < this.db.projectsList.length; i++) {
+              if (this.db.projectsList[i].checkerMail == this.db.loggedInUser.email) {
+                this.user_projects[j++] = this.db.projectsList[i].project_name;
+                this.user_project_objects.push(this.db.projectsList[i]);
+              }
+            }
+          }
+
+          else if (this.db.loggedInUser.type == 'מנהל') {
+            for (var i = 0; i < this.db.projectsList.length; i++) {
               this.user_projects[j++] = this.db.projectsList[i].project_name;
               this.user_project_objects.push(this.db.projectsList[i]);
             }
           }
-        }
-        else if (this.db.loggedInUser.type == 'בודק'){
-          for (var i = 0; i < this.db.projectsList.length; i++) {
-            if (this.db.projectsList[i].checkerMail == this.db.loggedInUser.email) {
-              this.user_projects[j++] = this.db.projectsList[i].project_name;
-              this.user_project_objects.push(this.db.projectsList[i]);
-            }
-          } 
-        }
-
-        else if (this.db.loggedInUser.type == 'מנהל'){
-          for (var i = 0; i < this.db.projectsList.length; i++) {
-              this.user_projects[j++] = this.db.projectsList[i].project_name;
-              this.user_project_objects.push(this.db.projectsList[i]);
-            }
-        }
 
 
         }
-        if (this.routerId!=undefined){
-        this.selectedWork = this.routerId;
-        this.onChangeObj();
+        if (this.routerId != undefined) {
+          this.selectedWork = this.routerId;
+          this.onChangeObj();
         }
       })
     });
@@ -149,8 +149,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
 
   onChangeObj() {
     for (var i = 0; i < this.user_project_objects.length; i++) {
-      if (this.selectedWork == this.user_project_objects[i].project_name)
-      {
+      if (this.selectedWork == this.user_project_objects[i].project_name) {
         this.project = this.user_project_objects[i];
         this.uploadService.basePath = this.project.project_name;
       }
@@ -160,31 +159,41 @@ export class ProjectsUpdatePageComponent implements OnInit {
   //Holds the selected file from the form
   selectFile(event) {
     this.selectedFiles = event.target.files;
+    if (this.selectedFiles.item(0).size > 5242880) {
+      this.cancelSelectFile();
+      alert("גודל הקובץ חייב להיות עד 5 מגה בייט")
+      return;
+    }
     this.file_project_selected = true;
   }
 
-  cancelSelectFile(){
+  cancelSelectFile() {
     this.selectedFiles = null;
     this.file_project_selected = false;
   }
 
-  cancelSelectedRecommendation(){
+  cancelSelectedRecommendation() {
     this.selected_recommendation_files = null;
     this.recommendation_selected = false;
   }
   //Uploads the selected file to firebase storage and deletes the previous one
   upload() {
-    if(this.userFile != undefined)
+    if (this.userFile != undefined)
       this.uploadService.deleteFileUpload(this.userFile);
     const file = this.selectedFiles.item(0);
     this.selectedFiles = undefined;
     this.currentFileUpload = new FileUpload(file);
-    this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress).then(()=>{
+    this.uploadService.pushFileToStorage(this.currentFileUpload, this.progress).then(() => {
       this.file_project_selected = false;
     })
   }
 
   selectRecommendationFile(event) {
+    if (this.selected_recommendation_files.item(0).size > 5242880) {
+      this.cancelSelectedRecommendation();
+      alert("גודל הקובץ חייב להיות עד 5 מגה בייט")
+      return;
+    }
     this.selected_recommendation_files = event.target.files;
     this.recommendation_selected = true;
   }
@@ -219,27 +228,27 @@ export class ProjectsUpdatePageComponent implements OnInit {
       this.project.project_field = this.projectField;
     }
 
-    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor1.email)){
+    if (this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor1.email)) {
       this.projectform.get('mailmentor1').clearValidators();
       this.projectform.get('mailmentor1').updateValueAndValidity(); //clear error
     }
-    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor1.phone)){
+    if (this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor1.phone)) {
       this.projectform.get('phonementor1').clearValidators();
       this.projectform.get('phonementor1').updateValueAndValidity(); //clear error
     }
-    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor2.email)){
+    if (this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor2.email)) {
       this.projectform.get('mailmentor2').clearValidators();
       this.projectform.get('mailmentor2').updateValueAndValidity(); //clear error
     }
-    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor2.phone)){
+    if (this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor2.phone)) {
       this.projectform.get('phonementor2').clearValidators();
       this.projectform.get('phonementor2').updateValueAndValidity(); //clear error
     }
-    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor3.email)){
+    if (this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor3.email)) {
       this.projectform.get('mailmentor3').clearValidators();
       this.projectform.get('mailmentor3').updateValueAndValidity(); //clear error
     }
-    if ( this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor3.phone)){
+    if (this.project.isMentors == true || this.CheckIfEmptyField(this.project.mentor3.phone)) {
       this.projectform.get('phonementor3').clearValidators();
       this.projectform.get('phonementor3').updateValueAndValidity(); //clear error
     }
@@ -389,7 +398,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
   get phonementor2() { return this.projectform.get('phonementor2'); }
   get mailmentor3() { return this.projectform.get('mailmentor3'); }
   get phonementor3() { return this.projectform.get('phonementor3'); }
-  get status() {return this.projectform.get('status');  }
+  get status() { return this.projectform.get('status'); }
 
   //check if a field is empty
   public CheckIfEmptyField(field: string) {
@@ -400,13 +409,13 @@ export class ProjectsUpdatePageComponent implements OnInit {
   }
 
   // set submission attribute to the project.
-  public checkSubmission(){
+  public checkSubmission() {
     var data_fields = $(".data");
-    for ( var i = 0 ; i < 13 ; i++){
-      if (this.CheckIfEmptyField(data_fields[i].value)){
+    for (var i = 0; i < 13; i++) {
+      if (this.CheckIfEmptyField(data_fields[i].value)) {
         this.project.submission = false;
         return;
-        }
+      }
     }
     this.project.submission = true;
   }
