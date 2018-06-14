@@ -306,13 +306,12 @@ export class TableComponent implements OnInit {
     var currentProj = this.db.projectsList[index];
     for(var i=0;i<this.db.usersList.length;i++){
       if (currentProj.user1mail!=undefined && this.db.usersList[i].email==currentProj.user1mail)
-        this.team += this.db.projectsList[index].user1mail + "</br>";
+        this.team +=this.db.usersList[i].firstName+" "+this.db.usersList[i].lastName+": "+currentProj.user1mail+"</br>";
       if (currentProj.user2mail!=undefined && this.db.usersList[i].email==currentProj.user2mail)
-        this.team += this.db.projectsList[index].user2mail + "</br>";
+        this.team +=this.db.usersList[i].firstName+" "+this.db.usersList[i].lastName+": "+currentProj.user2mail+"</br>";
       if (currentProj.user3mail!=undefined && this.db.usersList[i].email==currentProj.user3mail)
-        this.team += this.db.projectsList[index].user3mail + "";
+        this.team +=this.db.usersList[i].firstName+" "+this.db.usersList[i].lastName+": "+currentProj.user3mail+"";
     }
-
   }
 
   createCheckersInputList() {
