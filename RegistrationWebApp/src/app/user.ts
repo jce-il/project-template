@@ -26,6 +26,7 @@ export class User {
         public creation_date? : Date,
         public teacher?: string,
         public project?: Project,
+        public compResultMsg?: string,
         public messages: Message[] = []
     ) { }
 }

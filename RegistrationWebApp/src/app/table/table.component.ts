@@ -291,19 +291,16 @@ export class TableComponent implements OnInit {
     for(var i=0;i<this.db.usersList.length;i++){
       if (currentProj.user1mail!=undefined && this.db.usersList[i].email==currentProj.user1mail){
         str = this.router.parseUrl('/registrationForm;email=' + this.db.projectsList[index].user1mail + '');
-        this.team +="<a href=" + str + ">" +this.db.usersList[i].firstName+" "+this.db.usersList[i].lastName+": "+currentProj.user1mail +"</a></br>";
-      }
-        
+        this.team ="<a href=" + str + ">" +this.db.usersList[i].firstName+" "+this.db.usersList[i].lastName+": "+currentProj.user1mail +"</a></br>";
+      } 
       if (currentProj.user2mail!=undefined && this.db.usersList[i].email==currentProj.user2mail){
-        str = this.router.parseUrl('/registrationForm;email=' + this.db.projectsList[index].user1mail + '');
+        str = this.router.parseUrl('/registrationForm;email=' + this.db.projectsList[index].user2mail + '');
         this.team +="<a href=" + str + ">"+this.db.usersList[i].firstName+" "+this.db.usersList[i].lastName+": "+currentProj.user2mail+"</a></br>";
-      }
-        
+      } 
       if (currentProj.user3mail!=undefined && this.db.usersList[i].email==currentProj.user3mail){
-        str = this.router.parseUrl('/registrationForm;email=' + this.db.projectsList[index].user1mail + '');
+        str = this.router.parseUrl('/registrationForm;email=' + this.db.projectsList[index].user3mail + '');
         this.team +="<a href=" + str + ">"+this.db.usersList[i].firstName+" "+this.db.usersList[i].lastName+": "+currentProj.user3mail+"</a>";
-      }
-        
+      }  
     }
   }
 
@@ -403,36 +400,50 @@ export class TableComponent implements OnInit {
 
 
   publishResult(){
-    const date = new Date();
-    var emailsAccepted = [];
-    var emailsUnAccepted =[];
-    this.acceptedMessage= new Message ("תוצאות בדיקת הפרויקט","שמחים לבשר לך כי עברת לשלב הבא, ניצור איתך קשר בימים הקרובים לתאם מועד פגישה",this.today,this.db.loggedInUser.email,"ועדת בדיקה תחרות מדענים צעירים","");
-    this.unacceptedMessage= new Message ("תוצאות בדיקת הפרויקט","מצטערים לבשר זאת אך לא עברת לשלב הבא.",this.today,this.db.loggedInUser.email,"ועדת בדיקה תחרות מדענים צעירים","");
+    var inCompEmails = [];
+    var notInCompEmails = [];
+    var acceptedMsg = "שמחים לבשר לך כי עברת לשלב הבא, ניצור איתך קשר בימים הקרובים לתאם מועד פגישה";
+    var unacceptedMsg = "מצטערים לבשר זאת אך לא עברת לשלב הבא";
 
     for(var i=0; i<this.db.projectsList.length; i++)
       {
         if(this.db.projectsList[i].inCompetition)
         {
-         emailsAccepted.push(this.db.projectsList[i].user1mail);
-         this.msg.addMsgToUser(emailsAccepted ,this.acceptedMessage);
-         emailsAccepted.pop();
+            if(this.db.projectsList[i].user1mail!=undefined)
+                inCompEmails.push(this.db.projectsList[i].user1mail);
+            if(this.db.projectsList[i].user2mail!=undefined)
+                inCompEmails.push(this.db.projectsList[i].user2mail);
+            if(this.db.projectsList[i].user3mail!=undefined)
+                inCompEmails.push(this.db.projectsList[i].user3mail);
+            if(this.db.projectsList[i].school_contact_mail!=undefined)
+                inCompEmails.push(this.db.projectsList[i].school_contact_mail);
         }
         else
         {
-          emailsUnAccepted.push(this.db.projectsList[i].user1mail);
-          this.msg.addMsgToUser(emailsUnAccepted ,this.unacceptedMessage);
-          emailsUnAccepted.pop();
+            if(this.db.projectsList[i].user1mail!=undefined)
+              notInCompEmails.push(this.db.projectsList[i].user1mail);
+            if(this.db.projectsList[i].user2mail!=undefined)
+              notInCompEmails.push(this.db.projectsList[i].user2mail);
+            if(this.db.projectsList[i].user3mail!=undefined)
+              notInCompEmails.push(this.db.projectsList[i].user3mail);
+            if(this.db.projectsList[i].school_contact_mail!=undefined)
+              notInCompEmails.push(this.db.projectsList[i].school_contact_mail);
         }
       }
-
-    //if (window.confirm('האם לפרסם את התשובות?'))
-    console.log(emailsAccepted);
-    console.log(this.acceptedMessage);
-    console.log('--------------------------')
-    console.log(emailsUnAccepted);
-     // this.msg.addMsgToUser(emailsAccepted ,this.acceptedMessage);
-     // this.msg.addMsgToUser(emailsUnAccepted ,this.unacceptedMessage);
-    
+      for(var i=0;i<inCompEmails.length;i++){
+        this.db.getUser(inCompEmails[i], "", "").then(() => {
+          this.db.user = this.db.selectedUser[0];
+          this.db.user.compResultMsg = acceptedMsg;
+          this.db.updateListing(this.db.user.email);
+        });
+      }
+      for(var i=0;i<notInCompEmails.length;i++){
+        this.db.getUser(notInCompEmails[i], "", "").then(() => {
+          this.db.user = this.db.selectedUser[0];
+          this.db.user.compResultMsg = unacceptedMsg;
+          this.db.updateListing(this.db.user.email);
+        });
+      }
   }
   
 }
