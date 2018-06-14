@@ -130,10 +130,12 @@ p{
 	display: inline;
 	font-size: 14px;
 	font-weight: 400;
+	margin: 0;
 }
 
  .master button:hover{
-	background-color: rgb(167, 212, 243);
+	box-shadow: 0px 0px 29px 3px rgba(120, 139, 141, 0.75);
+	background-color: rgba(160, 180, 194, 0.781);
 }
 
 .master .btn-info{
@@ -150,29 +152,50 @@ p{
 	margin-right: 320px;
 }
 
-.master .dropdown{
-	margin-right: 15px;
-	text-align: right;
-}
-
-.master .dropdown button{
-	text-align: right;
-}
-
 .master .dropdown i{
 	margin-left: 5px;
 	text-align: right;
 }
 
-.master .dropdown li i{
-	margin-left: 10px;
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	border-radius:  0 0 5px 5px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+	display: block;
+	cursor: pointer;
 	text-align: right;
 }
 
-.master a{
-	text-align: right;
-}
-
-.master a:hover{
+.dropdown-content a:hover {
 	background-color: rgba(160, 180, 194, 0.781);
+	border-radius:  5px 5px 5px 5px;
 }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .btn {
+	background-color: rgba(160, 180, 194, 0.781);
+	box-shadow: 0px 0px 29px 3px rgba(120, 139, 141, 0.75);
+}
+
+.dropdown-toggle p{
+	margin-left: 15px;
+}
+
