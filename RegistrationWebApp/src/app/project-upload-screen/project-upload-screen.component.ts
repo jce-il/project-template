@@ -69,7 +69,7 @@ export class ProjectUploadScreenComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.cookieService.set('page', 'uploadScreen');
     this.db.setMetaData();
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');

@@ -46,7 +46,7 @@ export class TableComponent implements OnInit {
 }
 
   ngOnInit() {
- 
+    this.cookieService.set('page', 'table');
     this.db.getLoggedInUser().then(() => {
       if (this.db.loggedInUser.type == 'תלמיד') {
         this.cookieService.set('managerLoggedIn', 'false');

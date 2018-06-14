@@ -16,6 +16,7 @@ export class MsgScreenComponent implements OnInit {
   numOfMessage;
 
   ngOnInit() {
+    this.cookieService.set('page', 'msg');
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
     this.db.getLoggedInUser().then(() => {

@@ -25,6 +25,7 @@ export class StepsBarComponent implements OnInit {
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
     this.db.getLoggedInUser().then(() => {
+      this.pageButtonColor();
       if (this.db.loggedInUser.type == 'תלמיד') {
         this.isStudent = true;
         this.myProjectText = "הפרויקט שלי"
@@ -126,6 +127,35 @@ export class StepsBarComponent implements OnInit {
     location.reload();
   }
 
+  public pageButtonColor(){
+    if(this.cookieService.get('page') == 'userHomePage'){
+      $(document).ready(function () {
+        $(".userHomePage").css("background-color", 'black');
+      });
+    }
+    else if(this.cookieService.get('page') == 'registrationForm'){
+      $(document).ready(function () {
+        $(".registrationForm").css("background-color", 'black');
+      });
+    }
+    else if(this.cookieService.get('page') == 'table' || this.cookieService.get('page') == 'uploadScreen' || this.cookieService.get('page') == 'updateScreen'){
+      $(document).ready(function () {
+        $(".project").css("background-color", 'black');
+      });
+    }
+    else if(this.cookieService.get('page') == 'msg'){
+      $(document).ready(function () {
+        $(".msgUserPage").css("background-color", 'black');
+      });
+    }
+  
+    else if(this.cookieService.get('page') == 'contactusPage'){
+      $(document).ready(function () {
+        $(".contactPage").css("background-color", 'black');
+      });
+    }
+  
+  }
 
 
 

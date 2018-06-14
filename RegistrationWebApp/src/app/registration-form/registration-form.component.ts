@@ -31,6 +31,7 @@ export class RegistrationFormComponent {
   constructor(public db: DatabaseService, public auth: AuthService, public router: Router, private cookieService: CookieService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.cookieService.set('page', 'registrationForm');
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
     this.manager_mode = this.cookieService.get('mode');

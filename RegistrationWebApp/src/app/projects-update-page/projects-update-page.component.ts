@@ -73,6 +73,7 @@ export class ProjectsUpdatePageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.cookieService.set('page','updateScreen');
     this.route.params.subscribe((params: Params) => {
       this.routerId = params['id'];
     });

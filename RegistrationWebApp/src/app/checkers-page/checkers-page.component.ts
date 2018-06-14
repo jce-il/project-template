@@ -20,6 +20,7 @@ export class CheckersPageComponent implements OnInit {
   constructor(public db: DatabaseService, public router: Router, public auth: AuthService, private cookieService: CookieService) { }
 
   ngOnInit() {
+    this.cookieService.set('page', 'userHomePage');
     this.db.getLoggedInUser().then(()=>{
       if(this.db.loggedInUser.type != 'בודק')
       {

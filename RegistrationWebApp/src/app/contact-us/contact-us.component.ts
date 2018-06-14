@@ -34,7 +34,7 @@ export class ContactUsComponent implements OnInit {
     public db: DatabaseService, public router: Router) { this.createForm(); }
 
   ngOnInit() {
-
+    this.cookieService.set('page', 'contactusPage');
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
     this.db.getLoggedInUser().then(()=>{

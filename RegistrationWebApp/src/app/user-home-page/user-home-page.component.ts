@@ -30,6 +30,7 @@ export class UserHomePageComponent implements OnInit {
   constructor(public db: DatabaseService, public auth: AuthService, public router: Router, public cookieService: CookieService) { }
 
   ngOnInit() {
+    this.cookieService.set('page', 'userHomePage');
     this.db.getSettingsMetaData().subscribe((res) => {
       this.db.competition_settings_db = res;
       this.comp_settings = this.db.competition_settings_db[0];
