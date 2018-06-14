@@ -8,7 +8,8 @@
 }
 
 .btn-info{
-	background-color: steelblue;
+	background-color: rgb(111, 144, 172);
+	border-color: aliceblue;
 }
 
 .process-step .btn:focus{
