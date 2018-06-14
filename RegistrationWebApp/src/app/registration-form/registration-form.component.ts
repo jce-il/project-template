@@ -136,11 +136,13 @@ export class RegistrationFormComponent {
         Validators.email
       ]),
       'engfname': new FormControl(this.user.engFname, [
-        //English First Name. Must have only English letters
+        //English First Name is required. Must have only English letters
+        Validators.required,
         Validators.pattern("[a-zA-Z ']*")
       ]),
       'englname': new FormControl(this.user.engFname, [
-        //English First Name. Must have only English letters
+        //English First Name is required. Must have only English letters
+        Validators.required,
         Validators.pattern("[a-zA-Z ']*")
       ]),
       'phone': new FormControl("", [

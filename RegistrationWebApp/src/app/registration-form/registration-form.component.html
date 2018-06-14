@@ -125,7 +125,7 @@
             <div class="row">
                 <div class="col-sm-4 form-group">
                     <div [formGroup]="userform">
-                        <label for="engFname">שם פרטי באנגלית</label>
+                        <label class="req" for="engFname">שם פרטי באנגלית*</label>
                         <input type="text" id="engFname" [(ngModel)]="user.engFname" name="engFname" formControlName="engfname" />
                         <div *ngIf="engfname.invalid && (engfname.dirty) && !CheckIfEmptyField(user.engFname)" class="alert alert-danger">
                             <div *ngIf="engfname.errors.pattern && !CheckIfEmptyField(user.engFname)">
@@ -136,7 +136,7 @@
                 </div>
                 <div class="col-sm-4 form-group">
                     <div [formGroup]="userform">
-                        <label for="engLname">שם משפחה באנגלית</label>
+                        <label class="req" for="engLname">שם משפחה באנגלית*</label>
                         <input type="text" id="engLname" [(ngModel)]="user.engLname" name="engLname" formControlName="englname" />
                         <div *ngIf="englname.invalid && (englname.dirty)" class="alert alert-danger">
                             <div *ngIf="englname.errors.pattern">

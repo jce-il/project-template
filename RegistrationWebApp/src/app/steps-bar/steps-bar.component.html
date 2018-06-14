@@ -1,8 +1,14 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 
 <!------ Include the above in your HEAD tag ---------->
@@ -115,30 +121,29 @@
                                     </button>
 
                                     <div class="dropdown">
-                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-clipboard fa-1x"></i>רשימות
-                                    </button>
-                                        <ul class="dropdown-menu">
-                                          <li><a (click)="projectesTable(2)"><i class="fa fa-users fa-1x"></i>רשימת משתמשים</a></li>
-                                          <li><a (click)="projectesTable(1)"><i class="fa fa-clipboard fa-1x"></i>רשימת פרויקטים</a></li>
-                                        </ul>
+                                        <button class="btn dropdown-toggle" type="button"><i class="fa fa-clipboard fa-1x"></i><p>רשימות</p></button>
+                                        <div class="dropdown-content">
+                                          <a (click)="projectesTable(2)"><i class="fa fa-users fa-1x"></i>רשימת משתמשים</a>
+                                          <a (click)="projectesTable(1)"><i class="fa fa-clipboard fa-1x"></i>רשימת פרויקטים</a>
+                                        </div>
                                       </div>
 
                                     <div class="dropdown">
-                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-envelope"></i>הודעות
+                                        <button class="btn dropdown-toggle" type="button"><i class="fa fa-envelope"></i><p>הודעות</p>
                                     </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a (click)="msgPage()"><i class="fa fa-inbox fa-1x"></i>דואר נכנס</a></li>
-                                          <li><a (click)="contactUs()"><i class="fa fa-send fa-1x"></i>שלח הודעה</a></li>
-                                        </ul>
+                                        <div class="dropdown-content">
+                                            <a (click)="msgPage()"><i class="fa fa-inbox fa-1x"></i>דואר נכנס</a>
+                                          <a (click)="contactUs()"><i class="fa fa-send fa-1x"></i>שלח הודעה</a>
+                                        </div>
                                       </div>
 
                                     <div class="dropdown">
-                                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-cog fa-1x"></i>הגדרות תחרות
+                                        <button class="btn dropdown-toggle" type="button"><i class="fa fa-cog fa-1x"></i><p>הגדרות תחרות</p>
                                     </button>
-                                        <ul class="dropdown-menu">
-                                          <li><a (click)="openCompetition()">פתח תחרות</a></li>
-                                          <li><a (click)="go_to_reg('new')"><i class="fa fa-user-plus fa-1x"></i>רשום משתמש חדש</a></li>
-                                        </ul>
+                                        <div class="dropdown-content">
+                                          <a (click)="openCompetition()">פתח תחרות</a>
+                                          <a (click)="go_to_reg('new')"><i class="fa fa-user-plus fa-1x"></i>רשום משתמש חדש</a>
+                                        </div>
                                       </div>
 
                                     <button type="button" class="btn btn-default btnlogout" data-toggle="tab" (click)="logOut()">
