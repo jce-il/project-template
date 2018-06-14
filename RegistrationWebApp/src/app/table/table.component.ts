@@ -403,7 +403,7 @@ export class TableComponent implements OnInit {
     var inCompEmails = [];
     var notInCompEmails = [];
     var acceptedMsg = "שמחים לבשר לך כי עברת לשלב הבא, ניצור איתך קשר בימים הקרובים לתאם מועד פגישה";
-    var unacceptedMsg = "מצטערים לבשר זאת אך לא עברת לשלב הבא";
+    var unacceptedMsg = "שלום רב, לצערנו החלטת ועדת המיון היא כי העבודה אשר הגשתם לתחרות לא תעלה לשלב הבא. חשוב להדגיש כי אין הדבר מעיד עליכם או הצלחת העבודה בבחינת הבגרות. אנו מודים לכם על ההרשמה ומאחלים לכם הצלחה רבה בהמשך הדרך.";
 
     for(var i=0; i<this.db.projectsList.length; i++)
       {
