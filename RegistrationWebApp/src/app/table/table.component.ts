@@ -39,8 +39,8 @@ export class TableComponent implements OnInit {
   inCompetition: string;
   acceptedMessage: Message;
   unacceptedMessage: Message;
-  today: string;
-  date: Date;
+  today;
+  date: Date = new Date();
   
 
 
