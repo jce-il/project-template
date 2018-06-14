@@ -46,7 +46,19 @@
                         </div>
             </div>
        </div>
+
         <div *ngIf="this.db.loggedInUser.type == 'תלמיד'">
+
+                <div *ngIf="this.db.loggedInUser.compResultMsg!=undefined" class="row" id="acceptedStudent">
+                        <div><br></div>
+                     <div class="notice notice-success">
+                             <div class="noticText">
+                                     <img src="../../assets/certification-icon-9.jpg"/>
+                                     <p>{{this.db.loggedInUser.compResultMsg}}</p>
+                             </div>
+                     </div>
+                 </div>
+
             <div class="row" id="userstatus">
                 <legend>
                     <strong>סטאטוס הרשמה</strong>
@@ -92,7 +104,7 @@
             
                         </div>
                     </div>
-            
+
                     <div class="row">
                         <legend>
                             <strong>קישורים</strong>
