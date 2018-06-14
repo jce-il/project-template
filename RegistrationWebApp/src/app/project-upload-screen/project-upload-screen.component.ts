@@ -69,6 +69,7 @@ export class ProjectUploadScreenComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.db.setMetaData();
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
@@ -80,11 +81,11 @@ export class ProjectUploadScreenComponent implements OnInit {
     this.db.getSettingsMetaData().subscribe((res) => {
       this.db.competition_settings_db = res;
 
-      if(this.dateWithin(this.db.competition_settings_db[0].start_date,this.db.competition_settings_db[0].end_date,this.project.date))
+      if (this.dateWithin(this.db.competition_settings_db[0].start_date, this.db.competition_settings_db[0].end_date, this.project.date))
         this.competition_open = 'true';
       else
         this.competition_open = 'false';
-     
+
     })
   }
 
@@ -102,6 +103,16 @@ export class ProjectUploadScreenComponent implements OnInit {
   //Holds the selected file from the form
   selectFile(event) {
     this.selectedFiles = event.target.files;
+    if (this.project.project_name == undefined || this.project.project_name == '') {
+      this.cancelSelectFile();
+      alert("חובה להזין שם פרוייקט טרם העלאת הקובץ")
+      return;
+    }
+    if (this.selectedFiles.item(0).size > 5242880) {
+      this.cancelSelectFile();
+      alert("גודל הקובץ חייב להיות עד 5 מגה בייט")
+      return;
+    }
     this.file_project_selected = true;
   }
 
