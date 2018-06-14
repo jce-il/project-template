@@ -188,4 +188,16 @@ html {
   height: 30px;
 }
 
+#acceptedStudent{
+  float: right;
+}
 
+#acceptedStudent img{
+  width: 100px;
+  float: right;
+}
+
+.noticText p{
+  margin-top: 10px;
+  font-size: 18px;
+}
