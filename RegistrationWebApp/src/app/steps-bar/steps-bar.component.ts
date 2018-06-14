@@ -130,28 +130,27 @@ export class StepsBarComponent implements OnInit {
   public pageButtonColor(){
     if(this.cookieService.get('page') == 'userHomePage'){
       $(document).ready(function () {
-        $(".userHomePage").css("background-color", 'black');
+        $(".userHomePage").css({'background-color': 'rgb(169, 179, 38)', 'border-color': 'rgb(75, 88, 18)'});
       });
     }
     else if(this.cookieService.get('page') == 'registrationForm'){
       $(document).ready(function () {
-        $(".registrationForm").css("background-color", 'black');
+        $(".registrationForm").css({'background-color': 'rgb(169, 179, 38)', 'border-color': 'rgb(75, 88, 18)'});
       });
     }
     else if(this.cookieService.get('page') == 'table' || this.cookieService.get('page') == 'uploadScreen' || this.cookieService.get('page') == 'updateScreen'){
       $(document).ready(function () {
-        $(".project").css("background-color", 'black');
+        $(".project").css({'background-color': 'rgb(169, 179, 38)', 'border-color': 'rgb(75, 88, 18)'});
       });
     }
     else if(this.cookieService.get('page') == 'msg'){
       $(document).ready(function () {
-        $(".msgUserPage").css("background-color", 'black');
+        $(".msgUserPage").css({'background-color': 'rgb(169, 179, 38)', 'border-color': 'rgb(75, 88, 18)'});
       });
     }
-  
     else if(this.cookieService.get('page') == 'contactusPage'){
       $(document).ready(function () {
-        $(".contactPage").css("background-color", 'black');
+        $(".contactPage").css({'background-color': 'rgb(169, 179, 38)', 'border-color': 'rgb(75, 88, 18)'});
       });
     }
   
