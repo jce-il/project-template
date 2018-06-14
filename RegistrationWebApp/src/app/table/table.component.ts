@@ -95,35 +95,6 @@ export class TableComponent implements OnInit {
             {
               this.title = "פרוייקטים לבדיקה";
               this.handleChecker();
-              $(".btn-checker").click(res => {
-                var index, text, winContent;
-                index = res.currentTarget.id;
-                if (this.db.projectsList[index].check == undefined)
-                  text = "בודק יקר,</br>עדיין לא הוזנה בדיקה.</br> על מנת להזין את הבדיקה יש ללחוץ על שם העבודה ולהזין את הבדיקה בשדה המיועד לכך הנמצא בתחתית העמוד."
-                else
-                  text = this.db.projectsList[index].check;
-                winContent = "<legend><strong>הערות הבודק</strong></legend>" +
-                  "<div class='modal-body'><p>" + text + "</p>" +
-                  "<button type='button' class='btn btn-labeled' id='close' ><i class='glyphicon glyphicon-remove'></i>סגור </button></div>";
-                $(".modal-content").html(winContent);
-                $('.modal-content').css('max-width', '600px');
-                $('.modal-content').css('max-height', '800px');
-                $('.modal-content').css('left', '25%');
-                $('.modal-content').css('top', '15%');
-                $('legend').css('text-align', 'right');
-                $('legend').css('margin', '10px 10px 0 0');
-                $('legend').css('width', '95%');
-                $(".modal-body p").css({
-                  'color': '#f8f8f8',
-                  'font-size': '15px',
-                  'width': '100%',
-                  'text-align': 'right'
-                });
-                $(".window").show();
-                $("#close").click(function () {
-                  $(".window").hide();
-                });
-              });
               break;
             }
           case "מנהל":
@@ -258,6 +229,7 @@ export class TableComponent implements OnInit {
     }
     this.obj += "</tbody></table>";
     $(".widget-content").html(this.obj);
+    this.checkerRecommendation(1);
   }
 
  
@@ -289,7 +261,8 @@ export class TableComponent implements OnInit {
       this.obj += "<td width='105px'><button type='button' name=" + i + " class='btn btn-info btn-circle'><i class='glyphicon glyphicon-ok'></i></button>&nbsp;" +
         "<button type='button' name=" + i + " class='btn btn-warning btn-circle'><i class='glyphicon glyphicon-remove'></i></button>" + this.inCompetition + "</td>";
       if (this.db.projectsList[i].checkerMail != undefined) {
-        this.obj += "<td><form><input list='chekers' id=" + i + "></form><datalist id='chekers'>" + this.inputCheckerList + "<div>הבודק הנוכחי הינו:    " + this.db.projectsList[i].checkerMail + "</div></td>";
+        this.obj += "<td><form><input list='chekers' id=" + i + "></form><datalist id='chekers'>" + this.inputCheckerList + "<div>הבודק הנוכחי הינו:    " + this.db.projectsList[i].checkerMail + "</div>"+
+                    "<button name="+i+" class='btn btn-checker'>צפיה בהערות הבודק</button></td>";
         this.obj += "<td><button type='button' name=" + i + " class='btn btn-labeled btn-primary'>שייך</button></td></tr>"
       }
       else {
@@ -299,18 +272,29 @@ export class TableComponent implements OnInit {
     }
     this.obj += "</tbody></table>";
     $(".widget-content").html(this.obj);
+    this.checkerRecommendation(2);
   }
 
   createTeam(index) {
     this.team = "";
-    var currentProj = this.db.projectsList[index];
+    var str,currentProj = this.db.projectsList[index];
     for(var i=0;i<this.db.usersList.length;i++){
-      if (currentProj.user1mail!=undefined && this.db.usersList[i].email==currentProj.user1mail)
+      if (currentProj.user1mail!=undefined && this.db.usersList[i].email==currentProj.user1mail){
+        str = this.router.parseUrl('/registrationForm;email=' + this.db.projectsList[index].user1mail + '');
         this.team +=this.db.usersList[i].firstName+" "+this.db.usersList[i].lastName+": "+currentProj.user1mail+"</br>";
-      if (currentProj.user2mail!=undefined && this.db.usersList[i].email==currentProj.user2mail)
+        "<a href=" + str + ">" + this.db.usersList[i].firstName +"</a></br>";
+      }
+        
+      if (currentProj.user2mail!=undefined && this.db.usersList[i].email==currentProj.user2mail){
+        str = this.router.parseUrl('/registrationForm;email=' + this.db.projectsList[index].user1mail + '');
         this.team +=this.db.usersList[i].firstName+" "+this.db.usersList[i].lastName+": "+currentProj.user2mail+"</br>";
-      if (currentProj.user3mail!=undefined && this.db.usersList[i].email==currentProj.user3mail)
+      }
+        
+      if (currentProj.user3mail!=undefined && this.db.usersList[i].email==currentProj.user3mail){
+        str = this.router.parseUrl('/registrationForm;email=' + this.db.projectsList[index].user1mail + '');
         this.team +=this.db.usersList[i].firstName+" "+this.db.usersList[i].lastName+": "+currentProj.user3mail+"";
+      }
+        
     }
   }
 
@@ -337,6 +321,39 @@ export class TableComponent implements OnInit {
     }
     this.obj += "</tbody></table>";
     $(".widget-content").html(this.obj);
+  }
+
+  checkerRecommendation(currentValue){
+    $(".btn-checker").click(res => {
+      var index, text, winContent;
+      if(currentValue==1){index = res.currentTarget.id;}
+      else{index = res.currentTarget.name;}
+      if (this.db.projectsList[index].check == undefined)
+        text = "בודק יקר,</br>עדיין לא הוזנה בדיקה.</br> על מנת להזין את הבדיקה יש ללחוץ על שם העבודה ולהזין את הבדיקה בשדה המיועד לכך הנמצא בתחתית העמוד."
+      else
+        text = this.db.projectsList[index].check;
+      winContent = "<legend><strong>הערות הבודק</strong></legend>" +
+        "<div class='modal-body'><p>" + text + "</p>" +
+        "<button type='button' class='btn btn-labeled' id='close' ><i class='glyphicon glyphicon-remove'></i>סגור </button></div>";
+      $(".modal-content").html(winContent);
+      $('.modal-content').css('max-width', '600px');
+      $('.modal-content').css('max-height', '800px');
+      $('.modal-content').css('left', '25%');
+      $('.modal-content').css('top', '15%');
+      $('legend').css('text-align', 'right');
+      $('legend').css('margin', '10px 10px 0 0');
+      $('legend').css('width', '95%');
+      $(".modal-body p").css({
+        'color': '#f8f8f8',
+        'font-size': '15px',
+        'width': '100%',
+        'text-align': 'right'
+      });
+      $(".window").show();
+      $("#close").click(function () {
+        $(".window").hide();
+      });
+    });
   }
 
   search() {
