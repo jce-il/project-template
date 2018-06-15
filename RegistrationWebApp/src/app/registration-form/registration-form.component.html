@@ -33,7 +33,7 @@
                     </select>
                 </div>
             </div>
-            <div *ngIf="this.db.loggedIn == 'true' && this.db.loggedInUser.type=='מנהל'" class="row">
+            <div *ngIf="this.db.loggedIn == 'true' && this.db.loggedInUser.type=='מנהל' && this.user.email != this.db.loggedInUser.email" class="row">
                     <div class="col-sm-4 form-group">
                         <label class="req">סוג משתמש *</label>
                         <select class="user-type" id="type" required [(ngModel)]="user.type" name="type">
