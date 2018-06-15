@@ -159,6 +159,8 @@
               <select id="restatus" [(ngModel)]="project.researchStatus" name="researchStatus">
                 <option *ngFor="let type of researchStatus" [value]="type">{{type}}</option>
               </select>
+            </div>
+            <div *ngIf="project.type == 'מחקרית'">
               <label class="reg">סטטוס דגם</label>
               <select id="mostatus" [(ngModel)]="project.modelStatus" name="modelStatus">
                 <option *ngFor="let type of modelStatus" [value]="type">{{type}}</option>
@@ -192,9 +194,12 @@
             </div>
             <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" maxlength="400" class="data" rows="6" cols="80" id="background"
               [(ngModel)]="project.background" name="background"></textarea>
-            <label class="reg">מוצרים דומים הקיימים בשוק</label>
-            <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" maxlength="400" class="data" rows="6" cols="80" id="background"
-              [(ngModel)]="project.products" name="background"></textarea>
+            <div *ngIf="project.type == 'עבודה טכנולוגית'">
+              <label class="reg">מוצרים דומים הקיימים בשוק</label>
+              <textarea [readonly]="this.db.loggedInUser.type == 'בודק'" maxlength="400" class="data" rows="6" cols="80" id="background"
+                [(ngModel)]="project.products" name="background"></textarea>
+            </div>
+
             <div *ngIf="project.type == 'עבודה טכנולוגית'">
               <label class="reg">תיאור קצר - תאר בקצרה את המוצר, דרך פעולתו, כיצד משיג את מטרתו וכיצד החלטתם על פתרון זה</label>
             </div>
