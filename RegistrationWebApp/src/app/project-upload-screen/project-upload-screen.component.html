@@ -27,7 +27,8 @@
                 <div class="col-sm-4 form-group">
                     <div [formGroup]="projectform">
                         <label class="req">כתובת דואר אלקטרוני שלי*</label>
-                        <input type="text" disabled id="partner1" required [(ngModel)]="project.user1mail" name="partner1" formControlName="partner1"/>
+                        <input type="text" disabled id="partner1" required [(ngModel)]="project.user1mail" name="partner1" formControlName="partner1"
+                        />
                         <div *ngIf="partner1.invalid && (partner1.dirty)">
                             <div *ngIf="partner1.errors.email && !CheckIfEmptyField(project.user1mail)" class="alert alert-danger">
                                 נא להזין כתובת דואר אלקטרוני תקינה
@@ -97,11 +98,13 @@
                         <option>מחקרית</option>
                         <option>עבודה טכנולוגית</option>
                     </select>
-                    <div *ngIf="project.type == 'עבודה טכנולוגית'">
+                    <div *ngIf="project.type == 'מחקרית'">
                         <label class="reg">סטטוס מחקר</label>
                         <select id="restatus" [(ngModel)]="project.researchStatus" name="researchStatus">
                             <option *ngFor="let type of researchStatus" [value]="type">{{type}}</option>
                         </select>
+                    </div>
+                    <div *ngIf="project.type == 'עבודה טכנולוגית'">
                         <label class="reg">סטטוס דגם</label>
                         <select id="mostatus" [(ngModel)]="project.modelStatus" name="modelStatus">
                             <option *ngFor="let type of modelStatus" [value]="type">{{type}}</option>
@@ -119,23 +122,71 @@
             </div>
             <div class="row">
                 <div class="col-sm-9 form-group">
-                    <label class="reg">שאלת מחקר/מטרת הפרוייקט</label>
-                    <textarea class="data" rows="6" cols="80" id="target" maxlength="400" [(ngModel)]="project.target" name="target"></textarea>
-                    <label class="reg">רקע (הבסיס המדעי / טכנולוגי לעבודה)</label>
-                    <textarea class="data" rows="6" cols="80" id="background" maxlength="400" [(ngModel)]="project.background" name="background"></textarea>
-                    <label class="reg">מוצרים דומים הקיימים בשוק</label>
-                    <textarea class="data" rows="6" cols="80" id="background" maxlength="400" [(ngModel)]="project.products" name="background"></textarea>
-                    <label class="reg">תיאור קצר: תאר בקצרה את המוצר, דרך פעולתו, כיצד משיג את מטרתו וכיצד החלטתם על פתרון זה</label>
-                    <textarea class="data" rows="6" cols="80" id="description" maxlength="400" [(ngModel)]="project.description" name="description"></textarea>
-                    <label class="reg">היקף: תיאור היקף הפרויקט (למשל- שעות עבודה, מספר דגמים)</label>
-                    <textarea class="data" rows="6" cols="80" id="scope" maxlength="400" [(ngModel)]="project.scope" name="scope"></textarea>
+                    <div *ngIf="project.type == 'עבודה טכנולוגית'">
+                        <label class="reg">מטרת הפרוייקט</label>
+                        <textarea class="data" rows="6" cols="80" id="target" maxlength="400" [(ngModel)]="project.target" name="target"></textarea>
+                    </div>
+                    <div *ngIf="project.type == 'מחקרית'">
+                        <label class="reg">שאלת מחקר</label>
+                        <textarea class="data" rows="6" cols="80" id="target" maxlength="400" [(ngModel)]="project.target" name="target"></textarea>
+                    </div>
+
+
+                    <div *ngIf="project.type == 'עבודה טכנולוגית'">
+                        <label class="reg">רקע - הבסיס טכנולוגי לעבודה</label>
+                        <textarea class="data" rows="6" cols="80" id="background" maxlength="400" [(ngModel)]="project.background" name="background"></textarea>
+                    </div>
+                    <div *ngIf="project.type == 'מחקרית'">
+                        <label class="reg">רקע - הבסיס המדעי לעבודה</label>
+                        <textarea class="data" rows="6" cols="80" id="background" maxlength="400" [(ngModel)]="project.background" name="background"></textarea>
+                    </div>
+
+                    <div *ngIf="project.type == 'עבודה טכנולוגית'">
+                        <label class="reg">מוצרים דומים הקיימים בשוק</label>
+                        <textarea class="data" rows="6" cols="80" id="background" maxlength="400" [(ngModel)]="project.products" name="background"></textarea>
+                    </div>
+
+                    <div *ngIf="project.type == 'עבודה טכנולוגית'">
+                        <label class="reg">תיאור קצר - תאר בקצרה את המוצר, דרך פעולתו, כיצד משיג את מטרתו וכיצד החלטתם על פתרון זה</label>
+                        <textarea class="data" rows="6" cols="80" id="description" maxlength="400" [(ngModel)]="project.description" name="description"></textarea>
+                    </div>
+                    <div *ngIf="project.type == 'מחקרית'">
+                        <label class="reg">תיאור קצר - תיאור כלי המחקר ומהלך העבודה</label>
+                        <textarea class="data" rows="6" cols="80" id="description" maxlength="400" [(ngModel)]="project.description" name="description"></textarea>
+                    </div>
+
+
+                    <div *ngIf="project.type == 'עבודה טכנולוגית'">
+                        <label class="reg">היקף - תיאור היקף הפרויקט (למשל- שעות עבודה, מספר דגמים)</label>
+                        <textarea class="data" rows="6" cols="80" id="scope" maxlength="400" [(ngModel)]="project.scope" name="scope"></textarea>
+                    </div>
+                    <div *ngIf="project.type == 'מחקרית'">
+                        <label class="reg">היקף - שעות העבודה</label>
+                        <textarea class="data" rows="6" cols="80" id="scope" maxlength="400" [(ngModel)]="project.scope" name="scope"></textarea>
+                    </div>
+
                     <label class="reg">הערכת זמן הנדרש לסיום</label>
                     <textarea class="data" rows="6" cols="80" id="finishTime" maxlength="400" [(ngModel)]="project.finishTime" name="finishTime"></textarea>
-                    <label class="reg">חדשנות: מהו הצד החדשני/ מקורי בפרוייקט? כיצד הוא שונה מפתרונות קיימים?</label>
-                    <textarea class="data" rows="6" cols="80" id="inovetion" maxlength="400" [(ngModel)]="project.inovetion" name="inovetion"></textarea>
-                    <label class="reg">יתרונות/תרומה</label>
-                    <textarea class="data" rows="6" cols="80" id="advantages" maxlength="400" [(ngModel)]="project.advantages" name="advantages"></textarea>
-                    <label class="reg">נקודת מבט אישית</label>
+
+                    <div *ngIf="project.type == 'עבודה טכנולוגית'">
+                        <label class="reg">חדשנות - מהו הצד החדשני/ מקורי בפרוייקט? כיצד הוא שונה מפתרונות קיימים?</label>
+                        <textarea class="data" rows="6" cols="80" id="inovetion" maxlength="400" [(ngModel)]="project.inovetion" name="inovetion"></textarea>
+                    </div>
+                    <div *ngIf="project.type == 'מחקרית'">
+                        <label class="reg">חדשנות - מה חדשני/מקורי במחקר?</label>
+                        <textarea class="data" rows="6" cols="80" id="inovetion" maxlength="400" [(ngModel)]="project.inovetion" name="inovetion"></textarea>
+                    </div>
+
+                    <div *ngIf="project.type == 'עבודה טכנולוגית'">
+                        <label class="reg">יתרונות/תרומה</label>
+                        <textarea class="data" rows="6" cols="80" id="advantages" maxlength="400" [(ngModel)]="project.advantages" name="advantages"></textarea>
+                    </div>
+                    <div *ngIf="project.type == 'מחקרית'">
+                        <label class="reg">יתרונות/תרומה - מהם יתרונות המחקר לחברה?</label>
+                        <textarea class="data" rows="6" cols="80" id="advantages" maxlength="400" [(ngModel)]="project.advantages" name="advantages"></textarea>
+                    </div>
+
+                    <label class="reg">נקודת מבט אישית - כתבו כ-10 שורות על העבודה, חשיבותה ותרומתה לכם</label>
                     <textarea class="data" rows="6" cols="80" id="retrospective" maxlength="400" [(ngModel)]="project.retrospective" name="retrospective"></textarea>
                 </div>
             </div>
