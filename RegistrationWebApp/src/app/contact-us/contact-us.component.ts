@@ -194,6 +194,8 @@ export class ContactUsComponent implements OnInit {
     this.msg.last_name = this.db.loggedInUser.lastName;
     this.msgService.addMsgToUser(this.contact_emails, this.msg);
     this.form.reset();
+    if(this.db.loggedInUser.type == 'מנהל')
+      this.contact_emails = [];
   }
 }
 
