@@ -39,7 +39,7 @@ export class UserHomePageComponent implements OnInit {
     })
     this.db.loggedInUserUID = this.cookieService.get('User uid');
     this.db.loggedIn = this.cookieService.get('User login status');
-    this.db.getLoggedInUser().then(()=>{ // in order to print logged in user info - on init get it
+    this.db.getLoggedInUser().then(() => { // in order to print logged in user info - on init get it
       //get missing fields of project
       this.date = new Date();
       this.date.setDate(this.date.getDate() - 3);
@@ -54,7 +54,7 @@ export class UserHomePageComponent implements OnInit {
             this.msg_counter++;
         }
       }
-    }) 
+    })
     this.db.getProjectMetaData().subscribe((res) => {
       this.db.projectsList = res;
       for (var i = 0; i < this.db.projectsList.length; i++) {
@@ -67,6 +67,8 @@ export class UserHomePageComponent implements OnInit {
           this.emptyFields.push('עדיין לא הועלה קובץ פרויקט')
         if (this.userProject.location == undefined || this.userProject.location == '')
           this.emptyFields.push('מוסד אקדמי בו התבצעה העבודה')
+
+        //=============================================================================================//
         if (this.userProject.advantages == undefined || this.userProject.advantages == '')
           this.emptyFields.push('יתרונות/תרומה')
         if (this.userProject.background == undefined || this.userProject.background == '')
@@ -81,11 +83,20 @@ export class UserHomePageComponent implements OnInit {
           this.emptyFields.push('היקף')
         if (this.userProject.target == undefined || this.userProject.target == '')
           this.emptyFields.push('שאלת מחקר/מטרת הפרויקט')
-        if (this.userProject.mentor1.name == undefined || this.userProject.mentor1.name == '')
+        if ((this.userProject.products == undefined || this.userProject.products == '') && this.userProject.type == 'עבודה טכנולוגית')
+          this.emptyFields.push('מוצרים דומים הקיימים בשוק')
+        if (this.userProject.finishTime == undefined || this.userProject.target == '')
+          this.emptyFields.push('הערכת זמן')
+        if ((this.userProject.researchStatus == undefined || this.userProject.researchStatus == '') && this.userProject.type == 'מחקרית')
+          this.emptyFields.push('סטטום מחקר')
+        if ((this.userProject.modelStatus == undefined || this.userProject.modelStatus == '') && this.userProject.type == 'עבודה טכנולוגית')
+          this.emptyFields.push('סטטום דגם')
+        //=============================================================================================//
+        if (this.userProject.isMentors == false && (this.userProject.mentor1.name == undefined || this.userProject.mentor1.name == ''))
           this.emptyFields.push('שם מנחה')
-        if (this.userProject.mentor1.phone == undefined || this.userProject.mentor1.phone == '')
+        if (this.userProject.isMentors == false && (this.userProject.mentor1.phone == undefined || this.userProject.mentor1.phone == ''))
           this.emptyFields.push('טלפון מנחה')
-        if (this.userProject.mentor1.email == undefined || this.userProject.mentor1.email == '')
+        if (this.userProject.isMentors == false && (this.userProject.mentor1.email == undefined || this.userProject.mentor1.email == ''))
           this.emptyFields.push('מייל מנחה')
       }
       var j = 0, k = 0, f = 0, r = 0;
