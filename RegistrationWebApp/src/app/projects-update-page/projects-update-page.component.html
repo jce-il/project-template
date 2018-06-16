@@ -154,13 +154,13 @@
               <option>מחקרית</option>
               <option>עבודה טכנולוגית</option>
             </select>
-            <div *ngIf="project.type == 'עבודה טכנולוגית'">
+            <div *ngIf="project.type == 'מחקרית'">
               <label class="reg">סטטוס מחקר</label>
               <select id="restatus" [(ngModel)]="project.researchStatus" name="researchStatus">
                 <option *ngFor="let type of researchStatus" [value]="type">{{type}}</option>
               </select>
             </div>
-            <div *ngIf="project.type == 'מחקרית'">
+            <div *ngIf="project.type == 'עבודה טכנולוגית'">
               <label class="reg">סטטוס דגם</label>
               <select id="mostatus" [(ngModel)]="project.modelStatus" name="modelStatus">
                 <option *ngFor="let type of modelStatus" [value]="type">{{type}}</option>
