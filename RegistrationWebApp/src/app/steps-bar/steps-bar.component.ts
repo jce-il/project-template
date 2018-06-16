@@ -123,8 +123,8 @@ export class StepsBarComponent implements OnInit {
 
   public go_to_reg(status) {
     this.cookieService.set('mode', status);
-    this.router.navigate(['registrationForm']);
-    location.reload();
+    this.router.navigate(['msgpage'])
+    .then(()=>{this.router.navigate(['registrationForm'])})
   }
 
   public pageButtonColor(){
