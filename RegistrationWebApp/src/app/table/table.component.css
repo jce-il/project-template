@@ -221,6 +221,36 @@ strong{
     position: fixed;
 }
 
+.exportTable button{
+  width: 150px;
+  background-color: rgba(106, 143, 20, 0.788);
+  box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.75);
+  border-color: aliceblue;
+}
+
+.exportTable img{
+  float: right;
+}
+
+.exportTable p{
+  margin-top: 1px;
+  margin-right: 4px;
+}
+
+.publish{
+  box-shadow: 0px 0px 29px 3px rgba(0,0,0,0.75);
+  background-color: rgba(0, 128, 128, 0.822);
+}
+
+.publish i{
+  float: right;
+  margin-top: 4px;
+}
+
+.publish p{
+  margin-top: 6px;
+}
+
 .modal-body row{
   margin: 5px;
   width: 100%;
