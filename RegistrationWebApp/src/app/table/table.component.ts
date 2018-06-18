@@ -157,6 +157,7 @@ export class TableComponent implements OnInit {
                         this.db.projectsList[TableLine].user2mail==this.db.usersList[i].email ||
                         this.db.projectsList[TableLine].user3mail==this.db.usersList[i].email){                          
                             this.db.user = this.db.usersList[i];
+                            this.db.usersList[i].project = 'not found';
                             this.db.updateListing( this.db.usersList[i].email);
                         }
                     }

@@ -61,7 +61,7 @@ export class UserHomePageComponent implements OnInit {
         if (this.db.projectsList[i].id == this.db.loggedInUser.project)
           this.userProject = this.db.projectsList[i];
       }
-      if (this.db.usersList[i].project != undefined && this.db.usersList[i].project != 'not found') {
+      if (this.userProject != undefined && this.userProject != 'not found') {
         this.workExists = 'קיימת עבודה במערכת'
         if (this.userProject.project_file == undefined)
           this.emptyFields.push('עדיין לא הועלה קובץ פרויקט')
