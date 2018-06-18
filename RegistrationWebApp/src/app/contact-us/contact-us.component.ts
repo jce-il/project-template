@@ -148,16 +148,6 @@ export class ContactUsComponent implements OnInit {
         this.setContactsByProject(0);
         break;
       }
-      case "תלמידים בתחרות":
-      {
-        this.setContactsByComp(1)
-        break;
-      }
-      case "תלמידים לא בתחרות":
-      {
-        this.setContactsByComp(0)
-        break;
-      }
       
       default:
       {
