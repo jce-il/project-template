@@ -23,8 +23,6 @@ export class ContactUsComponent implements OnInit {
 "כל הבודקים",
 "תלמידים שהגישו עבודה",
 "תלמידים ללא עבודה",
-"תלמידים בתחרות",
-"תלמידים לא בתחרות",
 "- - - - - - - - - - - - - - - - - - - - -"
 ]
 
@@ -48,7 +46,7 @@ export class ContactUsComponent implements OnInit {
         }
       }
       else{
-        j=9;
+        j=7;
         var contactTo= this.cookieService.get('contactTo');
         for (var i = 0; i<this.db.usersList.length; i++, j++){
           this.display_contacts[j]=  ""+ this.db.usersList[i].email +" - " + this.db.usersList[i].firstName + " "+this.db.usersList[i].lastName ;
