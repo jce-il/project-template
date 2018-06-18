@@ -111,7 +111,8 @@ export class TableComponent implements OnInit {
                 else { this.exportUsersToExcel(); }
               });
               $(".publish").click(() =>{
-                this.publishResult();
+                if(window.confirm("שים לב! בעת לחיצה על אישור התוצאות ישלחו לכל התלמידים. האם ברצונך להמשיך?"))
+                      this.publishResult();
             });
               if (this.page == 1) {
                 this.title = "פרוייקטים בתחרות";
@@ -405,7 +406,7 @@ export class TableComponent implements OnInit {
     var acceptedMsg = "שמחים לבשר לך כי עברת לשלב הבא, ניצור איתך קשר בימים הקרובים לתאם מועד פגישה";
     var unacceptedMsg = "שלום רב, לצערנו החלטת ועדת המיון היא כי העבודה אשר הגשתם לתחרות לא תעלה לשלב הבא. חשוב להדגיש כי אין הדבר מעיד עליכם או הצלחת העבודה בבחינת הבגרות. אנו מודים לכם על ההרשמה ומאחלים לכם הצלחה רבה בהמשך הדרך.";
 
-    for(var i=0; i<this.db.projectsList.length; i++)
+      for(var i=0; i<this.db.projectsList.length; i++)
       {
         if(this.db.projectsList[i].inCompetition)
         {
@@ -426,20 +427,20 @@ export class TableComponent implements OnInit {
               notInCompEmails.push(this.db.projectsList[i].user3mail);
         }
       }
-      for(var i=0;i<inCompEmails.length;i++){
-        this.db.getUser(inCompEmails[i], "", "").then(() => {
-          this.db.user = this.db.selectedUser[0];
-          this.db.user.compResultMsg = acceptedMsg;
-          this.db.updateListing(this.db.user.email);
-        });
-      }
-      for(var i=0;i<notInCompEmails.length;i++){
-        this.db.getUser(notInCompEmails[i], "", "").then(() => {
-          this.db.user = this.db.selectedUser[0];
-          this.db.user.compResultMsg = unacceptedMsg;
-          this.db.updateListing(this.db.user.email);
-        });
-      }
-  }
+        for(var i=0;i<inCompEmails.length;i++){
+          this.db.getUser(inCompEmails[i], "", "").then(() => {
+            this.db.user = this.db.selectedUser[0];
+            this.db.user.compResultMsg = acceptedMsg;
+            this.db.updateListing(this.db.user.email);
+          });
+        }
+        for(var i=0;i<notInCompEmails.length;i++){
+          this.db.getUser(notInCompEmails[i], "", "").then(() => {
+            this.db.user = this.db.selectedUser[0];
+            this.db.user.compResultMsg = unacceptedMsg;
+            this.db.updateListing(this.db.user.email);
+          });
+        }
+    }
   
 }
