@@ -1,7 +1,6 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <meta charset="utf-8" />
 
@@ -16,16 +15,15 @@
     
     <div class="input-group">
         
-        <div *ngIf="this.db.loggedInUser.type == 'מנהל'" class="center exportTable">
+        <div *ngIf="this.db.loggedInUser.type == 'מנהל'" class="center">
             <button class="btn btn-primary center-block">
-                <img src = "../../assets/Excel-icon.png" width="15%" height="100%">
-                 <p>ייצא טבלה לאקסל</p>
+                <img src = "http://icons.iconarchive.com/icons/ncrow/mega-pack-1/128/Excel-icon.png" width="10%" height="100%">
+                 ייצא טבלה לאקסל
                 </button>
         </div>
         <div *ngIf="this.db.loggedInUser.type == 'מנהל' && this.page==1" class="center">
-            <button class="publish">
-                    <i class="material-icons">&#xe255;</i>
-                 <p>פרסום תוצאות</p>
+            <button class="publish" (click)="publishResult()">
+                 פרסום תוצאות
                 </button>
         </div>
         <input type="text" id="myInput" (keyup)="search()" placeholder="הזן ערך לחיפוש..."/>

@@ -112,10 +112,6 @@ export class TableComponent implements OnInit {
                 if (this.page == 1) { this.exportProjectsToExcel(); }
                 else { this.exportUsersToExcel(); }
               });
-              $(".publish").click(() =>{
-                if(window.confirm("שים לב! בעת לחיצה על אישור התוצאות ישלחו לכל התלמידים. האם ברצונך להמשיך?"))
-                      this.publishResult();
-            });
               if (this.page == 1) {
                 this.title = "פרוייקטים בתחרות";
                 for(var i=0;i<this.db.usersList.length;i++){
@@ -164,7 +160,7 @@ export class TableComponent implements OnInit {
               }
               $("td").click(() => {
                 this.cookieService.set('mode', 'updateUser');
-              })
+              });
               break;
             }
         }
@@ -460,6 +456,7 @@ export class TableComponent implements OnInit {
     var acceptedMsg = "שמחים לבשר לך כי עברת לשלב הבא, ניצור איתך קשר בימים הקרובים לתאם מועד פגישה";
     var unacceptedMsg = "שלום רב, לצערנו החלטת ועדת המיון היא כי העבודה אשר הגשתם לתחרות לא תעלה לשלב הבא. חשוב להדגיש כי אין הדבר מעיד עליכם או הצלחת העבודה בבחינת הבגרות. אנו מודים לכם על ההרשמה ומאחלים לכם הצלחה רבה בהמשך הדרך.";
 
+    if(window.confirm("שים לב! בעת לחיצה על אישור התוצאות ישלחו לכל התלמידים. האם ברצונך להמשיך?")){
       for(var i=0; i<this.db.projectsList.length; i++)
       {
         if(this.db.projectsList[i].inCompetition)
@@ -496,5 +493,5 @@ export class TableComponent implements OnInit {
           });
         }
     }
-  
+  }
 }
