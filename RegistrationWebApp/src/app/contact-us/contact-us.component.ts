@@ -23,8 +23,6 @@ export class ContactUsComponent implements OnInit {
 "כל הבודקים",
 "תלמידים שהגישו עבודה",
 "תלמידים ללא עבודה",
-"תלמידים בתחרות",
-"תלמידים לא בתחרות",
 "- - - - - - - - - - - - - - - - - - - - -"
 ]
 
@@ -48,7 +46,7 @@ export class ContactUsComponent implements OnInit {
         }
       }
       else{
-        j=9;
+        j=7;
         var contactTo= this.cookieService.get('contactTo');
         for (var i = 0; i<this.db.usersList.length; i++, j++){
           this.display_contacts[j]=  ""+ this.db.usersList[i].email +" - " + this.db.usersList[i].firstName + " "+this.db.usersList[i].lastName ;
@@ -89,10 +87,10 @@ export class ContactUsComponent implements OnInit {
  */
   setContactsByProject(flag){
     for (var i = 0, j=0; i < this.db.usersList.length; i++){
-      if ( flag == 1 && this.db.usersList[i].type =='תלמיד' && this.db.usersList[i].project != undefined){
+      if ( flag == 1 && this.db.usersList[i].type =='תלמיד' &&(this.db.usersList[i].project != undefined && this.db.usersList[i].project != 'not found')){
         this.contact_emails[j++] = this.db.usersList[i].email
       }
-      else if (flag == 0 && this.db.usersList[i].type =='תלמיד' && this.db.usersList[i].project == undefined){
+      else if (flag == 0 && this.db.usersList[i].type =='תלמיד' && (this.db.usersList[i].project == undefined || this.db.usersList[i].project == 'not found')){
         this.contact_emails[j++] = this.db.usersList[i].email
       }
     }
