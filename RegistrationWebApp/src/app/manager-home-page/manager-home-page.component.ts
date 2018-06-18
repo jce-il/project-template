@@ -74,7 +74,10 @@ export class ManagerHomePageComponent implements OnInit {
     this.db.exportUsers();
     this.excelService.exportAsExcelFile(JSON.parse(JSON.stringify(this.db.user_exp)), 'users');
   }
-
+  /**
+   * Creates an object with relevant fields for excel output
+   * and then exports it to excel in xls format
+   */
   exportProjectsToExcel() {
     this.db.exportProjects();
     this.excelService.exportAsExcelFile(JSON.parse(JSON.stringify(this.db.proj_exp)), 'projects');

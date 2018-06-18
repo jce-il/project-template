@@ -36,8 +36,8 @@ export class DatabaseService {
   public settingsCollection;
   settingsDoc: AngularFirestoreDocument<CompetitionSettings>; //holds FB listing for update operation
   observableSettings: Observable<CompetitionSettings[]>; //A temp variable that returns metadata. used by usersList
-  competition_settings_db = [];
-  competition_settings : CompetitionSettings;
+  competition_settings_db = []; //holds comp settings from FB
+  competition_settings : CompetitionSettings; //holds comp settings to be set in FB
 
   constructor(private afs: AngularFirestore) {
     //==========Connection to firebase table============//
@@ -60,12 +60,12 @@ export class DatabaseService {
   public addProjectToDB(project: Project) {
     this.projectCollections.add(JSON.parse(JSON.stringify(project)));
   }
-
+  //sets competition settings into db
   public addCompetitionSettingsToDB(settings: CompetitionSettings) {
     this.settingsCollection.add(JSON.parse(JSON.stringify(settings)));
   }
-
-  getSettingsMetaData() { //Returns the DB table meta data from firebase including all table fields id and users
+  //Returns the DB table meta data from firebase including all table fields id and users
+  getSettingsMetaData() {
     this.observableSettings = this.settingsCollection.snapshotChanges().map(actions => {
       return actions.map(a => {
         const data = a.payload.doc.data() as CompetitionSettings;
@@ -75,7 +75,7 @@ export class DatabaseService {
     });
     return this.observableSettings;
   }
-
+  //Update a settings listing. the object that is passed to the update function has to be already with the wanted changes!!! (It writes a new object)
   updateSettingsListing() {
     this.settingsDoc = this.settingsCollection.doc(`${this.competition_settings_db[0].id}`); //takes the listing that will be updated by the doc.id (listing's id)
     this.settingsDoc.update(JSON.parse(JSON.stringify(this.competition_settings)));
@@ -90,7 +90,7 @@ export class DatabaseService {
       }
     }
   }
-
+  //deletes user listing by a given email
   deleteListing(email: string) {
     for (var i = 0; i < this.usersList.length; i++) {
       if (this.usersList[i].email == email) {
@@ -98,16 +98,9 @@ export class DatabaseService {
         this.listingDoc.delete();
       }
     }
-    /*
-user.delete().then(function() {
-  // User deleted.
-}, function(error) {
-  // An error happened.
-});
-*/
   }
 
-  //project name should be unique !!!!!!!
+  //Updates a project listing by a given email. the object that is passed to the update function has to be already with the wanted changes!!! (It writes a new object)
   updateProjectListing(project_name: string) {
     for (var i = 0; i < this.projectsList.length; i++) {
       if (this.projectsList[i].project_name == project_name) {
@@ -116,7 +109,7 @@ user.delete().then(function() {
       }
     }
   }
-
+  //deletes project listing by a given email
   deleteProjectListing(project_name: string) {
     for (var i = 0; i < this.projectsList.length; i++) {
       if (this.projectsList[i].project_name == project_name) {
@@ -226,7 +219,7 @@ user.delete().then(function() {
     }
     return 'not found';
   }
-
+//sets checkers array with checkers from users list
   public getCheckers() {
     if(this.checkersList.length==0){
       for (var i = 0; i < this.usersList.length; i++) {
@@ -235,7 +228,7 @@ user.delete().then(function() {
       }
     }
   }
-
+//exports users data from db into excel sheet
   exportUsers() {
     for (var i = 0; i < this.usersList.length; i++) {
       this.user_exp[i] = new ExportUser();
@@ -258,7 +251,7 @@ user.delete().then(function() {
       this.user_exp[i].Password = this.usersList[i].password;
     }
   }
-
+//exports projects data from db into excel sheet
   exportProjects() {
     for (var i = 0; i < this.projectsList.length; i++) {
       this.proj_exp[i] = new ExportProject();

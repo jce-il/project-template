@@ -5,9 +5,6 @@ import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firesto
 
 @Injectable()
 export class MessageService {
-
-  // public currentTable = [{name:"מורה",flg:false},{name:"בודק",flg:false}];
-  //public routName:string;
   constructor(public db: DatabaseService) {
     this.db.getMetaData().subscribe(res => {
       this.db.usersList = res;
@@ -17,7 +14,7 @@ export class MessageService {
       this.db.projectsList = res;
     });
   }
-
+//adds message to array of messages into specific user (the user that the message is named to)
   addMsgToUser(email: string[], msg: Message) {
     for (var i = 0; i < email.length; i++) {
       this.db.getUser(email[i], "", "").then(() => {
@@ -30,22 +27,4 @@ export class MessageService {
         })
     }
   }
-
-  /*getCurrentTable(){
-    this.currentTable.forEach(element => {
-      if(element.flg==true){
-          this.routName = element.name
-    }
-  });
-  }*/
-
-  /* setCurrentTable(name:string,flg:boolean){
-     this.currentTable.forEach(element => {
-       if(element.name==name){
-           element.flg=true;
-     }
-   });
-   }*/
-
-
 }
