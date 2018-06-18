@@ -53,8 +53,17 @@
                         <div><br></div>
                      <div class="notice notice-success">
                              <div class="noticText">
-                                     <img src="../../assets/certification-icon-9.jpg"/>
-                                     <p>{{this.db.loggedInUser.compResultMsg}}</p>
+                                    <div class="row">
+                                            <div class="col-sm-2">
+                                                    <div *ngIf="this.userProject.inCompetition == true">
+                                                            <img src="../../assets/certification-icon-9.jpg"/>
+                                                    </div>
+                                                    <div *ngIf="this.userProject.inCompetition == false">
+                                                            <img src="../../assets/attention .png"/>
+                                                    </div>
+                                            </div>
+                                             <div class="col-sm-8"><p>{{this.db.loggedInUser.compResultMsg}}</p></div>
+                                    </div>
                              </div>
                      </div>
                  </div>

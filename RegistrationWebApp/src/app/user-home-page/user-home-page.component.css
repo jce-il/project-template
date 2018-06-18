@@ -193,11 +193,36 @@ html {
 }
 
 #acceptedStudent img{
-  width: 100px;
+  width: 60px;
+  height: 60px;
   float: right;
+  margin-right: 0;
+  padding: 0;
+}
+
+.noticText .col-sm-2{
+  margin-left: 5px;
+  margin-right: 0;
+  float: right;
+}
+
+.noticText .col-sm-8{
+  margin-right: 10px;
 }
 
 .noticText p{
   margin-top: 10px;
-  font-size: 18px;
+  font-size: 15px;
+}
+
+.noticText .row{
+    direction: rtl;
+    text-align: right;
+    float: right;
+    width: 400px;
+    box-shadow: 0px 0px 0px 0px transparent;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
 }
