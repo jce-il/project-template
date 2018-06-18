@@ -34,7 +34,7 @@ required{
 button{
     float: left;
     border-radius: 12px;
-    background-color: rgb(67, 103, 145);
+    background-color: rgba(0, 128, 128, 0.822);
     color: aliceblue;
     margin: 15px;
     height: 40px;
