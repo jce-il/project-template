@@ -154,9 +154,7 @@ export class TableComponent implements OnInit {
                     for(var i=0;i<this.db.usersList.length;i++){
                       if(this.db.projectsList[TableLine].user1mail==this.db.usersList[i].email ||
                         this.db.projectsList[TableLine].user2mail==this.db.usersList[i].email ||
-                        this.db.projectsList[TableLine].user3mail==this.db.usersList[i].email){
-                          
-                            this.db.usersList[i].project = undefined;
+                        this.db.projectsList[TableLine].user3mail==this.db.usersList[i].email){                          
                             this.db.user = this.db.usersList[i];
                             this.db.updateListing( this.db.usersList[i].email);
                         }
@@ -399,9 +397,9 @@ export class TableComponent implements OnInit {
         "<td>" + this.db.usersList[i].email + "</td>" +
         "<td>" + this.db.usersList[i].password + "</td>" +
         "<td>" + this.db.usersList[i].phone + "</td>";
-        if(this.db.usersList[i].type=="תלמיד" && this.db.usersList[i].project==undefined)
+        if(this.db.usersList[i].type=="תלמיד" && (this.db.usersList[i].project==undefined || this.db.usersList[i].project=='not found'))
               this.obj +="<td>חסר עבודה</td>";
-        else if(this.db.usersList[i].type=="תלמיד" && this.db.usersList[i].project!=undefined)
+        else if(this.db.usersList[i].type=="תלמיד" && (this.db.usersList[i].project!=undefined && this.db.usersList[i].project!='not found'))
               this.obj +="<td>קיים</td>";
         else
               this.obj +="<td></td>";
