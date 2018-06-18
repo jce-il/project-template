@@ -42,6 +42,7 @@ export class TableComponent implements OnInit {
   userProject:Project;
   emptyFields = [];
   missingFields:string;
+  teacherList = [];
   
 
 
@@ -117,6 +118,9 @@ export class TableComponent implements OnInit {
             });
               if (this.page == 1) {
                 this.title = "פרוייקטים בתחרות";
+                for(var i=0;i<this.db.usersList.length;i++){
+                  if(this.db.usersList[i].type == 'מורה'){this.teacherList.push({email:this.db.usersList[i].email,name:this.db.usersList[i].firstName+" "+this.db.usersList[i].lastName+" - "+this.db.usersList[i].email});}
+                }
                 this.handleMaster1();
                 $(".btn-labeled").click(res => {
                   var TableLine = res.currentTarget.name;
@@ -295,13 +299,14 @@ export class TableComponent implements OnInit {
     for (var i = 0; i < this.db.projectsList.length; i++) {
       this.createTeam(i);
       var str = this.router.parseUrl('/viewproject;id=' + this.db.projectsList[i].project_name + '');
+      var str2 = this.router.parseUrl('/registrationForm;email='+this.db.projectsList[i].school_contact_mail+ '');
       this.obj += "<tr><td><a href=" + str + ">" + this.db.projectsList[i].project_name + "</a></td>";
       var date = new Date(this.db.projectsList[i].date);
       this.obj += "<td>" + date.getDate().toString() + "/" + (date.getMonth() + 1).toString() + "/" + date.getFullYear().toString() + "</td>" +
         "<td>" + this.db.projectsList[i].type + "</td>" +
         "<td>" + this.db.projectsList[i].project_field + "</td>" +
         "<td>" + this.team + "</td>" +
-        "<td>" + this.db.projectsList[i].school_contact_mail + "</td>";
+        "<td>" +"<a href=" + str2 + ">" + this.teacherList.find(x => x.email == this.db.projectsList[i].school_contact_mail).name + "</a></td>";
       if (this.db.projectsList[i].recommendation_file == null) {
         this.obj += "<td>לא קיים קובץ המלצה במערכת</td>"
       }
