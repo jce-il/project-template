@@ -87,10 +87,10 @@ export class ContactUsComponent implements OnInit {
  */
   setContactsByProject(flag){
     for (var i = 0, j=0; i < this.db.usersList.length; i++){
-      if ( flag == 1 && this.db.usersList[i].type =='תלמיד' && this.db.usersList[i].project != undefined){
+      if ( flag == 1 && this.db.usersList[i].type =='תלמיד' &&(this.db.usersList[i].project != undefined && this.db.usersList[i].project != 'not found')){
         this.contact_emails[j++] = this.db.usersList[i].email
       }
-      else if (flag == 0 && this.db.usersList[i].type =='תלמיד' && this.db.usersList[i].project == undefined){
+      else if (flag == 0 && this.db.usersList[i].type =='תלמיד' && (this.db.usersList[i].project == undefined || this.db.usersList[i].project == 'not found')){
         this.contact_emails[j++] = this.db.usersList[i].email
       }
     }
