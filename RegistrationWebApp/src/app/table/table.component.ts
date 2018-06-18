@@ -478,8 +478,7 @@ export class TableComponent implements OnInit {
   }
 
 
-<<<<<<< HEAD
-  editMsg(){
+  editMsg(){//
     var winContent = "<div class='modal-body'><div class='row answerMsg'>"+
                     "<legend><strong>הודעה עבור משתמשים שהתקבלו</strong></legend>"+
                     "<textarea id='acceptText' rows='5' cols=80'>" + this.acceptedMsg + "</textarea>"+
@@ -487,14 +486,6 @@ export class TableComponent implements OnInit {
                     "<textarea id='unacceptText' rows='5' cols='80'>" + this.unacceptedMsg + "</textarea></div>"+
                     "<div class='row btnOp'><button type='button' class='btn btn-labeled' id='closeWin'><i class='glyphicon glyphicon-remove'></i>סגור </button>"+
                     "<button type='button' class='btn btn-labeled' id='ok'><i class='glyphicon glyphicon-save-file'></i>שמור שינויים</button></div></div>";
-=======
-  editMsg(){//
-    var winContent = "<legend><strong>הודעה עבור משתמשים שהתקבלו</strong></legend>" +
-    "<div class='modal-body'><textarea id='acceptText' rows='5' cols=80'>" + this.acceptedMsg + "</textarea><legend><strong>הודעה עבור משתמשים שלא התקבלו</strong></legend>"+
-    "<textarea id='unacceptText' rows='5' cols='80'>" + this.unacceptedMsg + "</textarea>"+
-    "<button type='button' class='btn' id='close' ><i class='glyphicon glyphicon-remove'>&nbsp;</i>סגור</button></div>"+
-    "<button type='button' class='btn' id='ok' >שמור שינויים</button></div>";
->>>>>>> 6ea17b334e8c179cee6c281191f25953bc41e081
     $(".modal-content").html(winContent);
     $('.modal-content').css({'max-width': '700px',
                               'max-height': '800px',
