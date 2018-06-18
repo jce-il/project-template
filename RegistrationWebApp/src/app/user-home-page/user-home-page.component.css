@@ -208,11 +208,14 @@ html {
 
 .noticText .col-sm-8{
   margin-right: 10px;
+  width: 100%;
 }
 
 .noticText p{
   margin-top: 10px;
   font-size: 15px;
+  height: 100%;
+  width: 100%;
 }
 
 .noticText .row{
@@ -225,4 +228,5 @@ html {
     padding: 0;
     margin: 0;
     background-color: transparent;
+
 }
