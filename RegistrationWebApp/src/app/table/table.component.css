@@ -403,10 +403,10 @@ strong{
     box-shadow: 0px 0px 29px 3px rgba(120, 139, 141, 0.75);
   }
   
-  
-  
-  
-
+  :host /deep/ .delProject{
+    margin-right: 20%;
+    border-radius:  5px 5px 5px 5px;
+  }
   
   /* Safari */
   @-webkit-keyframes spin {

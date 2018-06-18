@@ -479,14 +479,38 @@ export class TableComponent implements OnInit {
 
 
   editMsg(){
-    var winContent = "<legend><strong>הודעה עבור משתמשים שהתקבלו</strong></legend>" +
-    "<div class='modal-body'><textarea id='acceptText' rows='5' cols=80'>" + this.acceptedMsg + "</textarea><legend><strong>הודעה עבור משתמשים שלא התקבלו</strong></legend>"+
-    "<textarea id='unacceptText' rows='5' cols='80'>" + this.unacceptedMsg + "</textarea>"+
-    "<button type='button' class='btn btn-labeled' id='close' ><i class='glyphicon glyphicon-remove'></i>סגור </button></div>"+
-    "<button type='button' class='btn btn-labeled' id='ok' >שמור שינויים</button></div>";
+    var winContent = "<div class='modal-body'><div class='row answerMsg'>"+
+                    "<legend><strong>הודעה עבור משתמשים שהתקבלו</strong></legend>"+
+                    "<textarea id='acceptText' rows='5' cols=80'>" + this.acceptedMsg + "</textarea>"+
+                    "<legend><strong>הודעה עבור משתמשים שלא התקבלו</strong></legend>"+
+                    "<textarea id='unacceptText' rows='5' cols='80'>" + this.unacceptedMsg + "</textarea></div>"+
+                    "<div class='row btnOp'><button type='button' class='btn btn-labeled' id='closeWin'><i class='glyphicon glyphicon-remove'></i>סגור </button>"+
+                    "<button type='button' class='btn btn-labeled' id='ok'><i class='glyphicon glyphicon-save-file'></i>שמור שינויים</button></div></div>";
     $(".modal-content").html(winContent);
+    $('.modal-content').css({'max-width': '700px',
+                              'max-height': '800px',
+                              'left': '30%',
+                              'right': '20%',
+                              'top': '15%'});
+
+      $('legend').css({'text-align': 'right',
+                        'margin': '10px 10px 0 0',
+                        'width': '65%'});
+    
+      $('textarea').css({'float': 'right',
+                        'margin': '10px 10px'});
+
+      $('.modal-body .btnOp').css({'bottom': '0',
+                                    'float': 'left',
+                                    'margin': '5px'});
+      $('.modal-body button').css({'margin': '5px'});
+      $('.modal-body button i').css({'margin-left': '5px'});
+      $('#closeWin').css({'background-color': 'rgba(107, 103, 103, 0.911)',
+                          'color': 'aliceblue'});
+      $('#ok').css({'background-color': 'teal',
+                          'color': 'aliceblue'});
     $(".window").show();
-    $("#close").click(function () {
+    $("#closeWin").click(function () {
       $(".window").hide();
     });
     $("#ok").click(() =>{
