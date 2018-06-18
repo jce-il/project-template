@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ExcelService } from '../services/excel.service';
 import { AuthService } from '../services/auth.service';
 import { Message } from '../message'
-import { MessageService } from '../services/message.service'
+import { MessageService } from '../services/message.service';
 
 
 @Pipe({
@@ -39,8 +39,9 @@ export class TableComponent implements OnInit {
   inCompetition: string;
   acceptedMessage: Message;
   unacceptedMessage: Message;
-  today;
-  date: Date = new Date();
+  userProject:Project;
+  emptyFields = [];
+  missingFields:string;
   
 
 
@@ -168,12 +169,13 @@ export class TableComponent implements OnInit {
   }
 
   handleTeacher() {
-    this.obj = "<table class='table table-striped table-bordered' id='myTable'><thead><tr><th>שם פרוייקט</th><th>סטאטוס</th><th>הוספת המלצה</th><th>פריט עבודה נוכחי</th></tr></thead><tbody>";
+    this.obj = "<table class='table table-striped table-bordered' id='myTable'><thead><tr><th>שם פרוייקט</th><th>סטאטוס הרשמה</th><th>הוספת המלצה</th><th>פריט עבודה נוכחי</th></tr></thead><tbody>";
     for (var i = 0; i < this.db.projectsList.length; i++) {
       if (this.db.projectsList[i].school_contact_mail == this.db.loggedInUser.email) {
+        this.ProjectStatusForTeacher(i);
         var str = this.router.parseUrl('/viewproject;id=' + this.db.projectsList[i].project_name + '');
         this.obj += "<tr><td><a href=" + str + ">" + this.db.projectsList[i].project_name + "</a></td>"
-          + "<td>" + this.db.projectsList[i].status + "</td>"
+          + "<td>" + this.missingFields + "</td>"
           + "<td class='load' ><button type='button' id=" + i + " class='btn btn-labeled btn-primary'>שנה / הוסף</button></br>";
         if (this.db.projectsList[i].recommendation_file == null) {
           this.obj += "לא קיים קובץ המלצה במערכת</td>"
@@ -189,6 +191,47 @@ export class TableComponent implements OnInit {
     $(".widget-content").html(this.obj);
   }
 
+  ProjectStatusForTeacher(index){
+      this.userProject = this.db.projectsList[index];
+      if (this.userProject.location == undefined || this.userProject.location == '')
+        this.emptyFields.push('מוסד אקדמי בו התבצעה העבודה')
+
+      //=============================================================================================//
+      if (this.userProject.advantages == undefined || this.userProject.advantages == '')
+        this.emptyFields.push('יתרונות/תרומה')
+      if (this.userProject.background == undefined || this.userProject.background == '')
+        this.emptyFields.push('רקע')
+      if (this.userProject.description == undefined || this.userProject.description == '')
+        this.emptyFields.push('תיאור קצר')
+      if (this.userProject.inovetion == undefined || this.userProject.inovetion == '')
+        this.emptyFields.push('חדשנות')
+      if (this.userProject.retrospective == undefined || this.userProject.retrospective == '')
+        this.emptyFields.push('נקודת מבט אישית')
+      if (this.userProject.scope == undefined || this.userProject.scope == '')
+        this.emptyFields.push('היקף')
+      if (this.userProject.target == undefined || this.userProject.target == '')
+        this.emptyFields.push('שאלת מחקר/מטרת הפרויקט')
+      if ((this.userProject.products == undefined || this.userProject.products == '') && this.userProject.type == 'עבודה טכנולוגית')
+        this.emptyFields.push('מוצרים דומים הקיימים בשוק')
+      if (this.userProject.finishTime == undefined || this.userProject.target == '')
+        this.emptyFields.push('הערכת זמן')
+      if ((this.userProject.researchStatus == undefined || this.userProject.researchStatus == '') && this.userProject.type == 'מחקרית')
+        this.emptyFields.push('סטטום מחקר')
+      if ((this.userProject.modelStatus == undefined || this.userProject.modelStatus == '') && this.userProject.type == 'עבודה טכנולוגית')
+        this.emptyFields.push('סטטום דגם')
+      //=============================================================================================//
+      if (this.userProject.isMentors == false && (this.userProject.mentor1.name == undefined || this.userProject.mentor1.name == ''))
+        this.emptyFields.push('שם מנחה')
+      if (this.userProject.isMentors == false && (this.userProject.mentor1.phone == undefined || this.userProject.mentor1.phone == ''))
+        this.emptyFields.push('טלפון מנחה')
+      if (this.userProject.isMentors == false && (this.userProject.mentor1.email == undefined || this.userProject.mentor1.email == ''))
+        this.emptyFields.push('מייל מנחה')
+    this.missingFields = "<div>";
+    for(var i=0;i<this.emptyFields.length;i++){
+      this.missingFields+="<li>"+this.emptyFields[i]+"</li>";
+    }
+    this.missingFields+="</div>";
+  }
 
   selectRecommendationFile(event) {
     this.selected_recommendation_files = event.target.files;
