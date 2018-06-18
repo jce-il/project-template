@@ -47,7 +47,8 @@ export class RegistrationFormComponent {
       if (this.db.loggedIn != 'true' || this.manager_mode=='new'){
         this.user = new User(false, this.userTypes[0]); //deafult type is student
         this.msg.subj="ברוכים הבאים לאתר ההרשמה";
-        this.msg.date= new Date();
+        this.date = new Date();
+        this.msg.date = this.date.getDate().toString() + "/" + (this.date.getMonth() + 1).toString() + "/" + this.date.getFullYear().toString();
         this.msg.content = "שימו לב להודעות המופיעות באיזור זה."
         this.user.messages[0] = this.msg; //initilaize!!! ignore
         this.user.creation_date = new Date();
