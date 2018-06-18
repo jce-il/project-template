@@ -49,7 +49,7 @@
 
         <div *ngIf="this.db.loggedInUser.type == 'תלמיד'">
 
-                <div *ngIf="this.db.loggedInUser.compResultMsg!=undefined" class="row" id="acceptedStudent">
+                <div *ngIf="this.userProject!=undefined && this.userProject.inCompetition!=undefined && this.db.loggedInUser.compResultMsg!=undefined" class="row" id="acceptedStudent">
                         <div><br></div>
                      <div class="notice notice-success">
                              <div class="noticText">
