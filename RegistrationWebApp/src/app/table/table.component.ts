@@ -44,8 +44,7 @@ export class TableComponent implements OnInit {
   emptyFields = [];
   missingFields:string;
   teacherList = [];
-  unacceptedMsg:string = "לצערנו החלטת ועדת המיון היא כי העבודה אשר הגשתם לתחרות לא תעלה לשלב הבא. חשוב להדגיש כי אין הדבר מעיד עליכם או על הצלחת העבודה בבחינת הבגרות. אנו מודים לכם על ההרשמה ומאחלים לכם הצלחה רבה בהמשך הדרך."+
-  "בנוסף היא מבקשת שזאת תיהיה אופציה להודעת ברירת מחדל. היא רוצה במידה וזה לא קשה לאפשר גם הזנה ידנית של ההודעה במקום הודעת ברירת מחדל"
+  unacceptedMsg:string ="לצערנו החלטת ועדת המיון היא כי העבודה אשר הגשתם לתחרות לא תעלה לשלב הבא. חשוב להדגיש כי אין הדבר מעיד עליכם או על הצלחת העבודה בבחינת הבגרות. אנו מודים לכם על ההרשמה ומאחלים לכם הצלחה רבה בהמשך הדרך.";
   acceptedMsg:string = "שלום רב אנו שמחים לבשר לכם כי עברתם בהצלחה את שלב המיון הראשוני וכעת אתם מוזמנים לסדנת מיון במוזיאון המדע.";
   
 
@@ -481,8 +480,8 @@ export class TableComponent implements OnInit {
 
   editMsg(){
     var winContent = "<legend><strong>הודעה עבור משתמשים שהתקבלו</strong></legend>" +
-    "<div class='modal-body'><textarea id='acceptText' rows='4' cols=50'>" + this.acceptedMsg + "</textarea><legend><strong>הודעה עבור משתמשים שלא התקבלו</strong></legend>"+
-    "<textarea id='unacceptText' rows='4' cols='50'>" + this.unacceptedMsg + "</textarea>"+
+    "<div class='modal-body'><textarea id='acceptText' rows='5' cols=80'>" + this.acceptedMsg + "</textarea><legend><strong>הודעה עבור משתמשים שלא התקבלו</strong></legend>"+
+    "<textarea id='unacceptText' rows='5' cols='80'>" + this.unacceptedMsg + "</textarea>"+
     "<button type='button' class='btn btn-labeled' id='close' ><i class='glyphicon glyphicon-remove'></i>סגור </button></div>"+
     "<button type='button' class='btn btn-labeled' id='ok' >שמור שינויים</button></div>";
     $(".modal-content").html(winContent);
