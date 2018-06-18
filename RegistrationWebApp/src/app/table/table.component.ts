@@ -197,7 +197,7 @@ export class TableComponent implements OnInit {
   }
 
   handleTeacher() {
-    this.obj = "<table class='table table-striped table-bordered' id='myTable'><thead><tr><th>שם פרוייקט</th><th>סטאטוס הרשמה</th><th>הוספת המלצה</th><th>פריט עבודה נוכחי</th></tr></thead><tbody>";
+    this.obj = "<table class='table table-striped table-bordered' id='myTable'><thead><tr><th>שם פרוייקט</th><th>סטאטוס הרשמה (חוסרים)</th><th>הוספת המלצה</th><th>פריט עבודה נוכחי</th></tr></thead><tbody>";
     for (var i = 0; i < this.db.projectsList.length; i++) {
       if (this.db.projectsList[i].school_contact_mail == this.db.loggedInUser.email) {
         this.ProjectStatusForTeacher(i);
@@ -424,7 +424,7 @@ export class TableComponent implements OnInit {
         text = this.db.projectsList[index].check;
       winContent = "<legend><strong>הערות הבודק</strong></legend>" +
         "<div class='modal-body'><p>" + text + "</p>" +
-        "<button type='button' class='btn btn-labeled' id='close' ><i class='glyphicon glyphicon-remove'></i>סגור </button></div>";
+        "<button type='button' class='btn btn-labeled' id='close' ><i class='glyphicon glyphicon-remove'>&nbsp;</i>סגור</button></div>";
       $(".modal-content").html(winContent);
       $('.modal-content').css('max-width', '600px');
       $('.modal-content').css('max-height', '800px');
@@ -478,6 +478,7 @@ export class TableComponent implements OnInit {
   }
 
 
+<<<<<<< HEAD
   editMsg(){
     var winContent = "<div class='modal-body'><div class='row answerMsg'>"+
                     "<legend><strong>הודעה עבור משתמשים שהתקבלו</strong></legend>"+
@@ -486,6 +487,14 @@ export class TableComponent implements OnInit {
                     "<textarea id='unacceptText' rows='5' cols='80'>" + this.unacceptedMsg + "</textarea></div>"+
                     "<div class='row btnOp'><button type='button' class='btn btn-labeled' id='closeWin'><i class='glyphicon glyphicon-remove'></i>סגור </button>"+
                     "<button type='button' class='btn btn-labeled' id='ok'><i class='glyphicon glyphicon-save-file'></i>שמור שינויים</button></div></div>";
+=======
+  editMsg(){//
+    var winContent = "<legend><strong>הודעה עבור משתמשים שהתקבלו</strong></legend>" +
+    "<div class='modal-body'><textarea id='acceptText' rows='5' cols=80'>" + this.acceptedMsg + "</textarea><legend><strong>הודעה עבור משתמשים שלא התקבלו</strong></legend>"+
+    "<textarea id='unacceptText' rows='5' cols='80'>" + this.unacceptedMsg + "</textarea>"+
+    "<button type='button' class='btn' id='close' ><i class='glyphicon glyphicon-remove'>&nbsp;</i>סגור</button></div>"+
+    "<button type='button' class='btn' id='ok' >שמור שינויים</button></div>";
+>>>>>>> 6ea17b334e8c179cee6c281191f25953bc41e081
     $(".modal-content").html(winContent);
     $('.modal-content').css({'max-width': '700px',
                               'max-height': '800px',
@@ -516,19 +525,17 @@ export class TableComponent implements OnInit {
     $("#ok").click(() =>{
       this.acceptedMsg = $("#acceptText").val();
       this.unacceptedMsg = $("#unacceptText").val();
-      console.log(this.acceptedMsg);
-      console.log(this.unacceptedMsg);
       $(".window").hide();
       alert("תוכן ההודעות שונה בהצלחה. על מנת לפרסם את תוצאות התחרות יש ללחוץ על כפתור 'פרסום תוצאות'");
     });
   }
 
   publishResult(){
-    var inCompEmails = [];
-    var notInCompEmails = [];
+    var inCompEmails = [];// an array that holds all the emails of the students that accept to the competition
+    var notInCompEmails = [];// an array that holds all the emails of the students that unaccept to the competition
  
     if(window.confirm("שים לב! בעת לחיצה על אישור התוצאות ישלחו לכל התלמידים. האם ברצונך להמשיך?")){
-      for(var i=0; i<this.db.projectsList.length; i++)
+      for(var i=0; i<this.db.projectsList.length; i++)//go over the projectsList and check which project got accepted.
       {
         if(this.db.projectsList[i].inCompetition)
         {
@@ -549,14 +556,14 @@ export class TableComponent implements OnInit {
               notInCompEmails.push(this.db.projectsList[i].user3mail);
         }
       }
-        for(var i=0;i<inCompEmails.length;i++){
+        for(var i=0;i<inCompEmails.length;i++){//go over our array that was build and update the current msg
           this.db.getUser(inCompEmails[i], "", "").then(() => {
             this.db.user = this.db.selectedUser[0];
             this.db.user.compResultMsg = this.acceptedMsg;
             this.db.updateListing(this.db.user.email);
           });
         }
-        for(var i=0;i<notInCompEmails.length;i++){
+        for(var i=0;i<notInCompEmails.length;i++){//go over our array that was build and update the current msg
           this.db.getUser(notInCompEmails[i], "", "").then(() => {
             this.db.user = this.db.selectedUser[0];
             this.db.user.compResultMsg = this.unacceptedMsg;

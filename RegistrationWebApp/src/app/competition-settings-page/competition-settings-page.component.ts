@@ -40,7 +40,7 @@ export class CompetitionSettingsPageComponent implements OnInit {
   closeCompetition() {
     if (window.confirm('האם לסגור תחרות נוכחית?')) {
       this.comp_settings.is_opened = false;
-      this.comp_settings.name = 'אין תחרות פתוחה';
+      this.comp_settings.name = 'נא לבחור שם לתחרות';
       this.comp_settings.start_date = 'NaN';
       this.comp_settings.end_date = 'NaN';
       this.db.competition_settings = this.comp_settings;
