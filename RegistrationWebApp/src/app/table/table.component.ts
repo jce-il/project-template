@@ -363,7 +363,7 @@ export class TableComponent implements OnInit {
 
   handleMaster2() {
     this.obj = "<table class='table table-striped table-bordered' id='myTable'><thead><tr><th>שם משתמש</th><th>סוג</th><th>תעודת זהות</th><th>כתובת דואל אלקטרוני</th>" +
-      "<th>סיסמא</th><th>טלפון</th><th>מחק משתמש</th></tr></thead><tbody>";
+      "<th>סיסמא</th><th>טלפון</th><th>פרוייקט</th><th>מחק משתמש</th></tr></thead><tbody>";
     for (var i = 0; i < this.db.usersList.length; i++) {
       var str = this.router.parseUrl('/registrationForm;email=' + this.db.usersList[i].email + '');
       this.obj += "<tr id="+i+"><td><a href=" + str + ">" + this.db.usersList[i].firstName + " " + this.db.usersList[i].lastName + "</a></td>" +
@@ -371,8 +371,14 @@ export class TableComponent implements OnInit {
         "<td>" + this.db.usersList[i].userid + "</td>" +
         "<td>" + this.db.usersList[i].email + "</td>" +
         "<td>" + this.db.usersList[i].password + "</td>" +
-        "<td>" + this.db.usersList[i].phone + "</td>"+
-        "<td><button type='button' name="+ i +" class='btn btn-inverse'><i class='glyphicon glyphicon-trash'></i> לחץ למחיקה</button></td></tr>";
+        "<td>" + this.db.usersList[i].phone + "</td>";
+        if(this.db.usersList[i].type=="תלמיד" && this.db.usersList[i].project==undefined)
+              this.obj +="<td>חסר עבודה</td>";
+        else if(this.db.usersList[i].type=="תלמיד" && this.db.usersList[i].project!=undefined)
+              this.obj +="<td>קיים</td>";
+        else
+              this.obj +="<td></td>";
+        this.obj +="<td><button type='button' name="+ i +" class='btn btn-inverse'><i class='glyphicon glyphicon-trash'></i> לחץ למחיקה</button></td></tr>";
     }
     this.obj += "</tbody></table>";
     $(".widget-content").html(this.obj);
