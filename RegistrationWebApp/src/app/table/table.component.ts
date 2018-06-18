@@ -424,7 +424,7 @@ export class TableComponent implements OnInit {
         text = this.db.projectsList[index].check;
       winContent = "<legend><strong>הערות הבודק</strong></legend>" +
         "<div class='modal-body'><p>" + text + "</p>" +
-        "<button type='button' class='btn btn-labeled' id='close' ><i class='glyphicon glyphicon-remove'></i>סגור </button></div>";
+        "<button type='button' class='btn btn-labeled' id='close' ><i class='glyphicon glyphicon-remove'>&nbsp;</i>סגור</button></div>";
       $(".modal-content").html(winContent);
       $('.modal-content').css('max-width', '600px');
       $('.modal-content').css('max-height', '800px');
@@ -482,8 +482,8 @@ export class TableComponent implements OnInit {
     var winContent = "<legend><strong>הודעה עבור משתמשים שהתקבלו</strong></legend>" +
     "<div class='modal-body'><textarea id='acceptText' rows='5' cols=80'>" + this.acceptedMsg + "</textarea><legend><strong>הודעה עבור משתמשים שלא התקבלו</strong></legend>"+
     "<textarea id='unacceptText' rows='5' cols='80'>" + this.unacceptedMsg + "</textarea>"+
-    "<button type='button' class='btn btn-labeled' id='close' ><i class='glyphicon glyphicon-remove'></i>סגור </button></div>"+
-    "<button type='button' class='btn btn-labeled' id='ok' >שמור שינויים</button></div>";
+    "<button type='button' class='btn' id='close' ><i class='glyphicon glyphicon-remove'>&nbsp;</i>סגור</button></div>"+
+    "<button type='button' class='btn' id='ok' >שמור שינויים</button></div>";
     $(".modal-content").html(winContent);
     $(".window").show();
     $("#close").click(function () {
@@ -492,8 +492,6 @@ export class TableComponent implements OnInit {
     $("#ok").click(() =>{
       this.acceptedMsg = $("#acceptText").val();
       this.unacceptedMsg = $("#unacceptText").val();
-      console.log(this.acceptedMsg);
-      console.log(this.unacceptedMsg);
       $(".window").hide();
       alert("תוכן ההודעות שונה בהצלחה. על מנת לפרסם את תוצאות התחרות יש ללחוץ על כפתור 'פרסום תוצאות'");
     });
