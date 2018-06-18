@@ -12,6 +12,7 @@ import { ExcelService } from '../services/excel.service';
 import { AuthService } from '../services/auth.service';
 import { Message } from '../message'
 import { MessageService } from '../services/message.service';
+import * as firebase from 'firebase/app';
 
 
 @Pipe({
@@ -153,6 +154,14 @@ export class TableComponent implements OnInit {
                   var msg = "האם אתה בטוח שברצונך למחוק את המשתמש ";
                   if(window.confirm(msg+this.db.usersList[TableLine].firstName+" "+
                         this.db.usersList[TableLine].lastName+"?")){
+                          firebase.auth()
+                      .signInWithEmailAndPassword(this.db.usersList[TableLine].email, this.db.usersList[TableLine].password)
+                      .then(function(user) {
+                          user.delete().then(function() {
+                          }).catch(function(error) {
+                            alert("שגיאה במחיקת המשתמש")
+                          });
+                      })
                           this.db.deleteListing(this.db.usersList[TableLine].email);
                           $("#"+TableLine+"").remove();
                         }
