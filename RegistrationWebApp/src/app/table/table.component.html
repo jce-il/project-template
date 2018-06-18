@@ -2,8 +2,13 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://unpkg.com/popper.js/dist/umd/popper.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <meta charset="utf-8" />
 
 <div class="header">
@@ -23,11 +28,20 @@
                  <p>ייצא טבלה לאקסל</p>
                 </button>
         </div>
-        <div *ngIf="this.db.loggedInUser.type == 'מנהל' && this.page==1" class="center">
-            <button class="publish" (click)="publishResult()">
-                    <i class="material-icons">&#xe255;</i><p>פרסום תוצאות</p>
-                </button>
+
+            <div *ngIf="this.db.loggedInUser.type == 'מנהל' && this.page==1" class="center">
+                <div class="dropdown">
+                        <button class="dropdown-toggle" type="button"><i class="fa fa-bookmark-o fa-1x"></i><p>תוצאות התחרות</p></button>
+                        <div class="dropdown-content">
+                          <a class="publish" (click)="publishResult()"><i class="material-icons" style="font-size:20px">&#xe255;</i><p>פרסום תוצאות</p></a>
+                          <a ><i class="fa fa-pencil fa-1x"></i><p>ערוך הודעת תוצאה</p></a>
+                        </div>
+                      </div>
         </div>
+
+        
+
+
         <input type="text" id="myInput" (keyup)="search()" placeholder="הזן ערך לחיפוש..."/>
         <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
     </div>
@@ -73,9 +87,8 @@
                 </div>
         </div>
     </div>
-    
 
-    
+
 
 <div class="footer">
     <app-footer></app-footer>
