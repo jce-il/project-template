@@ -478,7 +478,7 @@ export class TableComponent implements OnInit {
   }
 
 
-  editMsg(){
+  editMsg(){//
     var winContent = "<legend><strong>הודעה עבור משתמשים שהתקבלו</strong></legend>" +
     "<div class='modal-body'><textarea id='acceptText' rows='5' cols=80'>" + this.acceptedMsg + "</textarea><legend><strong>הודעה עבור משתמשים שלא התקבלו</strong></legend>"+
     "<textarea id='unacceptText' rows='5' cols='80'>" + this.unacceptedMsg + "</textarea>"+
@@ -498,11 +498,11 @@ export class TableComponent implements OnInit {
   }
 
   publishResult(){
-    var inCompEmails = [];
-    var notInCompEmails = [];
+    var inCompEmails = [];// an array that holds all the emails of the students that accept to the competition
+    var notInCompEmails = [];// an array that holds all the emails of the students that unaccept to the competition
  
     if(window.confirm("שים לב! בעת לחיצה על אישור התוצאות ישלחו לכל התלמידים. האם ברצונך להמשיך?")){
-      for(var i=0; i<this.db.projectsList.length; i++)
+      for(var i=0; i<this.db.projectsList.length; i++)//go over the projectsList and check which project got accepted.
       {
         if(this.db.projectsList[i].inCompetition)
         {
@@ -523,14 +523,14 @@ export class TableComponent implements OnInit {
               notInCompEmails.push(this.db.projectsList[i].user3mail);
         }
       }
-        for(var i=0;i<inCompEmails.length;i++){
+        for(var i=0;i<inCompEmails.length;i++){//go over our array that was build and update the current msg
           this.db.getUser(inCompEmails[i], "", "").then(() => {
             this.db.user = this.db.selectedUser[0];
             this.db.user.compResultMsg = this.acceptedMsg;
             this.db.updateListing(this.db.user.email);
           });
         }
-        for(var i=0;i<notInCompEmails.length;i++){
+        for(var i=0;i<notInCompEmails.length;i++){//go over our array that was build and update the current msg
           this.db.getUser(notInCompEmails[i], "", "").then(() => {
             this.db.user = this.db.selectedUser[0];
             this.db.user.compResultMsg = this.unacceptedMsg;
