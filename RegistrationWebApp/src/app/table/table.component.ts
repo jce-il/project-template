@@ -44,8 +44,9 @@ export class TableComponent implements OnInit {
   emptyFields = [];
   missingFields:string;
   teacherList = [];
-  unacceptedMsg:string = "שלום רב, לצערנו החלטת ועדת המיון היא כי העבודה אשר הגשתם לתחרות לא תעלה לשלב הבא. חשוב להדגיש כי אין הדבר מעיד עליכם או הצלחת העבודה בבחינת הבגרות. אנו מודים לכם על ההרשמה ומאחלים לכם הצלחה רבה בהמשך הדרך.";
-  acceptedMsg:string = "שמחים לבשר לך כי עברת לשלב הבא, ניצור איתך קשר בימים הקרובים לתאם מועד פגישה";
+  unacceptedMsg:string = "לצערנו החלטת ועדת המיון היא כי העבודה אשר הגשתם לתחרות לא תעלה לשלב הבא. חשוב להדגיש כי אין הדבר מעיד עליכם או על הצלחת העבודה בבחינת הבגרות. אנו מודים לכם על ההרשמה ומאחלים לכם הצלחה רבה בהמשך הדרך."+
+  "בנוסף היא מבקשת שזאת תיהיה אופציה להודעת ברירת מחדל. היא רוצה במידה וזה לא קשה לאפשר גם הזנה ידנית של ההודעה במקום הודעת ברירת מחדל"
+  acceptedMsg:string = "שלום רב אנו שמחים לבשר לכם כי עברתם בהצלחה את שלב המיון הראשוני וכעת אתם מוזמנים לסדנת מיון במוזיאון המדע.";
   
 
 
@@ -477,32 +478,31 @@ export class TableComponent implements OnInit {
   }
 
 
-
+  editMsg(){
+    var winContent = "<legend><strong>הודעה עבור משתמשים שהתקבלו</strong></legend>" +
+    "<div class='modal-body'><textarea id='acceptText' rows='4' cols=50'>" + this.acceptedMsg + "</textarea><legend><strong>הודעה עבור משתמשים שלא התקבלו</strong></legend>"+
+    "<textarea id='unacceptText' rows='4' cols='50'>" + this.unacceptedMsg + "</textarea>"+
+    "<button type='button' class='btn btn-labeled' id='close' ><i class='glyphicon glyphicon-remove'></i>סגור </button></div>"+
+    "<button type='button' class='btn btn-labeled' id='ok' >שמור שינויים</button></div>";
+    $(".modal-content").html(winContent);
+    $(".window").show();
+    $("#close").click(function () {
+      $(".window").hide();
+    });
+    $("#ok").click(() =>{
+      this.acceptedMsg = $("#acceptText").val();
+      this.unacceptedMsg = $("#unacceptText").val();
+      console.log(this.acceptedMsg);
+      console.log(this.unacceptedMsg);
+      $(".window").hide();
+      alert("תוכן ההודעות שונה בהצלחה. על מנת לפרסם את תוצאות התחרות יש ללחוץ על כפתור 'פרסום תוצאות'");
+    });
+  }
 
   publishResult(){
     var inCompEmails = [];
     var notInCompEmails = [];
-
-
-   var winContent = "<legend><strong>הודעה עבור משתמשים שהתקבלו</strong></legend>" +
-        "<div class='modal-body'><textarea id='acceptText' rows='4' cols=50'>" + this.acceptedMsg + "</textarea><legend><strong>הודעה עבור משתמשים שלא התקבלו</strong></legend>"+
-        "<textarea id='unacceptText' rows='4' cols='50'>" + this.unacceptedMsg + "</textarea>"+
-        "<button type='button' class='btn btn-labeled' id='close' ><i class='glyphicon glyphicon-remove'></i>סגור </button></div>"+
-        "<button type='button' class='btn btn-labeled' id='ok' >שמור שינויים</button></div>";
-        $(".modal-content").html(winContent);
-        $(".window").show();
-        $("#close").click(function () {
-          $(".window").hide();
-        });
-        $("#ok").click(() =>{
-          this.acceptedMsg = $("#acceptText").val();
-          this.unacceptedMsg = $("#unacceptText").val();
-          console.log(this.acceptedMsg);
-          console.log(this.unacceptedMsg);
-          $(".window").hide();
-        });
-
-       
+ 
     if(window.confirm("שים לב! בעת לחיצה על אישור התוצאות ישלחו לכל התלמידים. האם ברצונך להמשיך?")){
       for(var i=0; i<this.db.projectsList.length; i++)
       {
