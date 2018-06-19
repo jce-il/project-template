@@ -181,7 +181,9 @@ export class TableComponent implements OnInit {
                             alert("שגיאה במחיקת המשתמש")
                           });
                       })
+                         // this.db.user = this.db.usersList[TableLine];
                           this.db.deleteListing(this.db.usersList[TableLine].email);
+                          //this.db.updateListing( this.db.user.email);
                           $("#"+TableLine+"").remove();
                         }
                 });
