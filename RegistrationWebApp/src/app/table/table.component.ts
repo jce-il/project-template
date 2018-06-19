@@ -366,7 +366,7 @@ export class TableComponent implements OnInit {
     for(var i=0;i<this.db.usersList.length;i++){
       if (currentProj.user1mail!=undefined && this.db.usersList[i].email==currentProj.user1mail){
         str = this.router.parseUrl('/registrationForm;email=' + this.db.projectsList[index].user1mail + '');
-        this.team ="<a href=" + str + ">" +this.db.usersList[i].firstName+" "+this.db.usersList[i].lastName+": "+currentProj.user1mail +"</a></br>";
+        this.team +="<a href=" + str + ">" +this.db.usersList[i].firstName+" "+this.db.usersList[i].lastName+": "+currentProj.user1mail +"</a></br>";
       } 
       if (currentProj.user2mail!=undefined && this.db.usersList[i].email==currentProj.user2mail){
         str = this.router.parseUrl('/registrationForm;email=' + this.db.projectsList[index].user2mail + '');
@@ -374,7 +374,7 @@ export class TableComponent implements OnInit {
       } 
       if (currentProj.user3mail!=undefined && this.db.usersList[i].email==currentProj.user3mail){
         str = this.router.parseUrl('/registrationForm;email=' + this.db.projectsList[index].user3mail + '');
-        this.team +="<a href=" + str + ">"+this.db.usersList[i].firstName+" "+this.db.usersList[i].lastName+": "+currentProj.user3mail+"</a>";
+        this.team +="<a href=" + str + ">"+this.db.usersList[i].firstName+" "+this.db.usersList[i].lastName+": "+currentProj.user3mail+"</a></br>";
       }  
     }
   }
